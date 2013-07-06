@@ -85,6 +85,7 @@ class PartDefinition
         /*! \brief Gets a part object from a part definition xml schema
         *
         * \param xml XML data defining a part
+        * \todo implement
         */
         static shared_ptr<PartDefinition> get_from_xml(Glib::ustring xml);
 

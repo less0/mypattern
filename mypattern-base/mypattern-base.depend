@@ -2611,7 +2611,7 @@
 	"glibmm/ustring.h"
 	<list>
 
-1369324082 /home/paul/Programming/MyPattern/source/mypattern-base/include/landmark.h
+1371225744 /home/paul/Programming/MyPattern/source/mypattern-base/include/landmark.h
 	"point.h"
 	"measures.h"
 	"beziercomplex.h"
@@ -2703,8 +2703,9 @@
 	<patternparameter.h>
 	<valuerangetype.h>
 
-1345018476 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/landmark.cpp
+1371225426 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/landmark.cpp
 	"landmark.h"
+	<sstream>
 
 1369559156 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/measures.cpp
 	"measures.h"
@@ -2726,10 +2727,11 @@
 
 1369156368 /home/paul/Programming/MyPattern/source/mypattern-base/include/size.h
 
-1370011108 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/partdefinition.cpp
+1371446252 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/partdefinition.cpp
 	"partdefinition.h"
+	<sstream>
 
-1370011127 /home/paul/Programming/MyPattern/source/mypattern-base/include/partdefinition.h
+1370629199 /home/paul/Programming/MyPattern/source/mypattern-base/include/partdefinition.h
 	"part.h"
 	"measures.h"
 	"patternparametervalue.h"
@@ -2798,7 +2800,7 @@
 1345021790 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/user.cpp
 	"user.h"
 
-1348797606 /usr/include/glibmm-2.4/glibmm/ustring.h
+1364292398 /usr/include/glibmm-2.4/glibmm/ustring.h
 	<glibmmconfig.h>
 	<glibmm/unicode.h>
 	<glib.h>
@@ -2808,13 +2810,13 @@
 	<string>
 	<cstddef>
 
-1348797608 /usr/lib/i386-linux-gnu/glibmm-2.4/include/glibmmconfig.h
+1364292399 /usr/lib/i386-linux-gnu/glibmm-2.4/include/glibmmconfig.h
 
-1348797606 /usr/include/glibmm-2.4/glibmm/unicode.h
+1364292398 /usr/include/glibmm-2.4/glibmm/unicode.h
 	<glib.h>
 	<cctype>
 
-1352013538 /usr/include/glib-2.0/glib.h
+1365614827 /usr/include/glib-2.0/glib.h
 	<glib/galloca.h>
 	<glib/garray.h>
 	<glib/gasyncqueue.h>
@@ -2890,40 +2892,40 @@
 	<glib/deprecated/grel.h>
 	<glib/deprecated/gthread.h>
 
-1352013538 /usr/include/glib-2.0/glib/galloca.h
+1365614827 /usr/include/glib-2.0/glib/galloca.h
 	<glib/gtypes.h>
 	<alloca.h>
 	<malloc.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtypes.h
+1365614827 /usr/include/glib-2.0/glib/gtypes.h
 	<glibconfig.h>
 	<glib/gmacros.h>
 	<glib/gversionmacros.h>
 	<time.h>
 
-1352013538 /usr/lib/i386-linux-gnu/glib-2.0/include/glibconfig.h
+1365614827 /usr/lib/i386-linux-gnu/glib-2.0/include/glibconfig.h
 	<glib/gmacros.h>
 	<limits.h>
 	<float.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmacros.h
+1365614827 /usr/include/glib-2.0/glib/gmacros.h
 	<stddef.h>
 
-1359376376 /usr/include/limits.h
+1366286875 /usr/include/limits.h
 	<features.h>
 	<bits/wordsize.h>
 	<bits/posix1_lim.h>
 	<bits/posix2_lim.h>
 	<bits/xopen_lim.h>
 
-1359376376 /usr/include/features.h
-	<bits/predefs.h>
+1366286875 /usr/include/features.h
+	<stdc-predef.h>
 	<sys/cdefs.h>
 	<gnu/stubs.h>
 
-1352013538 /usr/include/glib-2.0/glib/gversionmacros.h
+1365614827 /usr/include/glib-2.0/glib/gversionmacros.h
 
-1359376406 /usr/include/time.h
+1366286904 /usr/include/time.h
 	<features.h>
 	<stddef.h>
 	<bits/time.h>
@@ -2934,18 +2936,18 @@
 	<bits/types.h>
 	<xlocale.h>
 
-1359376377 /usr/include/xlocale.h
+1366286876 /usr/include/xlocale.h
 
-1359376398 /usr/include/alloca.h
+1366286897 /usr/include/alloca.h
 	<features.h>
 	<stddef.h>
 
-1359376402 /usr/include/malloc.h
+1366286902 /usr/include/malloc.h
 	<features.h>
 	<stddef.h>
 	<stdio.h>
 
-1359376401 /usr/include/stdio.h
+1366286899 /usr/include/stdio.h
 	<features.h>
 	<stddef.h>
 	<bits/types.h>
@@ -2958,7 +2960,7 @@
 	<bits/stdio2.h>
 	<bits/stdio-ldbl.h>
 
-1359376401 /usr/include/libio.h
+1366286899 /usr/include/libio.h
 	<_G_config.h>
 	<stdarg.h>
 	<sys/cdefs.h>
@@ -2966,13 +2968,13 @@
 	<shlib-compat.h>
 	<bits/libio-ldbl.h>
 
-1359376401 /usr/include/_G_config.h
+1366286899 /usr/include/_G_config.h
 	<bits/types.h>
 	<stddef.h>
 	<wchar.h>
 	<gconv.h>
 
-1359376404 /usr/include/wchar.h
+1366286903 /usr/include/wchar.h
 	<features.h>
 	<stdio.h>
 	<stdarg.h>
@@ -2986,57 +2988,57 @@
 	<bits/wchar2.h>
 	<bits/wchar-ldbl.h>
 
-1359376414 /usr/include/wctype.h
+1366286910 /usr/include/wctype.h
 	<features.h>
 	<bits/types.h>
 	<wchar.h>
 	<endian.h>
 	<xlocale.h>
 
-1359376403 /usr/include/endian.h
+1366286903 /usr/include/endian.h
 	<features.h>
 	<bits/endian.h>
 	<bits/byteswap.h>
 
-1359376377 /usr/include/gconv.h
+1366286875 /usr/include/gconv.h
 	<features.h>
 	<wchar.h>
 	<stddef.h>
 
-1359376408 /usr/include/getopt.h
+1366286906 /usr/include/getopt.h
 	<ctype.h>
 
-1359376393 /usr/include/ctype.h
+1366286892 /usr/include/ctype.h
 	<features.h>
 	<bits/types.h>
 	<endian.h>
 	<xlocale.h>
 
-1352013538 /usr/include/glib-2.0/glib/garray.h
+1365614827 /usr/include/glib-2.0/glib/garray.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gasyncqueue.h
+1365614827 /usr/include/glib-2.0/glib/gasyncqueue.h
 	<glib/gthread.h>
 
-1352013538 /usr/include/glib-2.0/glib/gthread.h
+1365614827 /usr/include/glib-2.0/glib/gthread.h
 	<glib/gatomic.h>
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gatomic.h
+1365614827 /usr/include/glib-2.0/glib/gatomic.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gerror.h
+1365614827 /usr/include/glib-2.0/glib/gerror.h
 	<stdarg.h>
 	<glib/gquark.h>
 
-1352013538 /usr/include/glib-2.0/glib/gquark.h
+1365614827 /usr/include/glib-2.0/glib/gquark.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gbacktrace.h
+1365614827 /usr/include/glib-2.0/glib/gbacktrace.h
 	<glib/gtypes.h>
 	<signal.h>
 
-1359376398 /usr/include/signal.h
+1366286896 /usr/include/signal.h
 	<features.h>
 	<bits/sigset.h>
 	<bits/types.h>
@@ -3051,230 +3053,231 @@
 	<bits/pthreadtypes.h>
 	<bits/sigthread.h>
 
-1352013538 /usr/include/glib-2.0/glib/gbase64.h
+1365614827 /usr/include/glib-2.0/glib/gbase64.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gbitlock.h
+1365614827 /usr/include/glib-2.0/glib/gbitlock.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gbookmarkfile.h
+1365614827 /usr/include/glib-2.0/glib/gbookmarkfile.h
 	<glib/gerror.h>
 	<time.h>
 
-1352013538 /usr/include/glib-2.0/glib/gbytes.h
+1365614827 /usr/include/glib-2.0/glib/gbytes.h
 	<glib/gtypes.h>
 	<glib/garray.h>
 
-1352013538 /usr/include/glib-2.0/glib/gcharset.h
+1365614827 /usr/include/glib-2.0/glib/gcharset.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gchecksum.h
+1365614827 /usr/include/glib-2.0/glib/gchecksum.h
 	<glib/gtypes.h>
 	<glib/gbytes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gconvert.h
+1365614827 /usr/include/glib-2.0/glib/gconvert.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gdataset.h
+1365614827 /usr/include/glib-2.0/glib/gdataset.h
 	<glib/gquark.h>
 
-1352013538 /usr/include/glib-2.0/glib/gdate.h
+1365614827 /usr/include/glib-2.0/glib/gdate.h
 	<time.h>
 	<glib/gtypes.h>
 	<glib/gquark.h>
 
-1352013538 /usr/include/glib-2.0/glib/gdatetime.h
+1365614827 /usr/include/glib-2.0/glib/gdatetime.h
 	<glib/gtimezone.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtimezone.h
+1365614827 /usr/include/glib-2.0/glib/gtimezone.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gdir.h
+1365614827 /usr/include/glib-2.0/glib/gdir.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/genviron.h
+1365614827 /usr/include/glib-2.0/glib/genviron.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gfileutils.h
+1365614827 /usr/include/glib-2.0/glib/gfileutils.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/ggettext.h
+1365614827 /usr/include/glib-2.0/glib/ggettext.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/ghash.h
+1365614827 /usr/include/glib-2.0/glib/ghash.h
 	<glib/gtypes.h>
 	<glib/glist.h>
 
-1352013538 /usr/include/glib-2.0/glib/glist.h
+1365614827 /usr/include/glib-2.0/glib/glist.h
 	<glib/gmem.h>
 	<glib/gnode.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmem.h
+1365614827 /usr/include/glib-2.0/glib/gmem.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gnode.h
+1365614827 /usr/include/glib-2.0/glib/gnode.h
 	<glib/gmem.h>
 
-1352013538 /usr/include/glib-2.0/glib/ghmac.h
+1365614827 /usr/include/glib-2.0/glib/ghmac.h
 	<glib/gtypes.h>
 	"gchecksum.h"
 
-1352013538 /usr/include/glib-2.0/glib/ghook.h
+1365614827 /usr/include/glib-2.0/glib/ghook.h
 	<glib/gmem.h>
 
-1352013538 /usr/include/glib-2.0/glib/ghostutils.h
+1365614827 /usr/include/glib-2.0/glib/ghostutils.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/giochannel.h
+1365614827 /usr/include/glib-2.0/glib/giochannel.h
 	<glib/gconvert.h>
 	<glib/gmain.h>
 	<glib/gstring.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmain.h
+1365614827 /usr/include/glib-2.0/glib/gmain.h
 	<glib/gpoll.h>
 	<glib/gslist.h>
 	<glib/gthread.h>
 
-1352013538 /usr/include/glib-2.0/glib/gpoll.h
+1365614827 /usr/include/glib-2.0/glib/gpoll.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gslist.h
+1365614827 /usr/include/glib-2.0/glib/gslist.h
 	<glib/gmem.h>
 	<glib/gnode.h>
 
-1352013538 /usr/include/glib-2.0/glib/gstring.h
+1365614827 /usr/include/glib-2.0/glib/gstring.h
 	<glib/gtypes.h>
 	<glib/gunicode.h>
 	<glib/gbytes.h>
 	<glib/gutils.h>
 
-1352013538 /usr/include/glib-2.0/glib/gunicode.h
+1365614827 /usr/include/glib-2.0/glib/gunicode.h
 	<glib/gerror.h>
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gutils.h
+1365614827 /usr/include/glib-2.0/glib/gutils.h
 	<glib/gtypes.h>
 	<stdarg.h>
 
-1352013538 /usr/include/glib-2.0/glib/gkeyfile.h
+1365614827 /usr/include/glib-2.0/glib/gkeyfile.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmappedfile.h
+1365614827 /usr/include/glib-2.0/glib/gmappedfile.h
 	<glib/gbytes.h>
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmarkup.h
+1365614827 /usr/include/glib-2.0/glib/gmarkup.h
 	<stdarg.h>
 	<glib/gerror.h>
 	<glib/gslist.h>
 
-1352013538 /usr/include/glib-2.0/glib/gmessages.h
+1365614827 /usr/include/glib-2.0/glib/gmessages.h
 	<stdarg.h>
 	<glib/gtypes.h>
 	<glib/gmacros.h>
 
-1352013538 /usr/include/glib-2.0/glib/goption.h
+1365614827 /usr/include/glib-2.0/glib/goption.h
 	<glib/gerror.h>
 	<glib/gquark.h>
 
-1352013538 /usr/include/glib-2.0/glib/gpattern.h
+1365614827 /usr/include/glib-2.0/glib/gpattern.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gprimes.h
+1365614827 /usr/include/glib-2.0/glib/gprimes.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gqsort.h
+1365614827 /usr/include/glib-2.0/glib/gqsort.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gqueue.h
+1365614827 /usr/include/glib-2.0/glib/gqueue.h
 	<glib/glist.h>
 
-1352013538 /usr/include/glib-2.0/glib/grand.h
+1365614827 /usr/include/glib-2.0/glib/grand.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gregex.h
+1365614827 /usr/include/glib-2.0/glib/gregex.h
 	<glib/gerror.h>
 	<glib/gstring.h>
 
-1352013538 /usr/include/glib-2.0/glib/gscanner.h
+1365614827 /usr/include/glib-2.0/glib/gscanner.h
 	<glib/gdataset.h>
 	<glib/ghash.h>
 
-1352013538 /usr/include/glib-2.0/glib/gsequence.h
+1365614827 /usr/include/glib-2.0/glib/gsequence.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gshell.h
+1365614827 /usr/include/glib-2.0/glib/gshell.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gslice.h
+1365614827 /usr/include/glib-2.0/glib/gslice.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gspawn.h
+1365614827 /usr/include/glib-2.0/glib/gspawn.h
 	<glib/gerror.h>
 
-1352013538 /usr/include/glib-2.0/glib/gstrfuncs.h
+1365614827 /usr/include/glib-2.0/glib/gstrfuncs.h
 	<stdarg.h>
 	<glib/gmacros.h>
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gstringchunk.h
+1365614827 /usr/include/glib-2.0/glib/gstringchunk.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtestutils.h
+1365614827 /usr/include/glib-2.0/glib/gtestutils.h
 	<glib/gmessages.h>
 	<glib/gstring.h>
 	<glib/gerror.h>
 	<glib/gslist.h>
 
-1352013538 /usr/include/glib-2.0/glib/gthreadpool.h
+1365614827 /usr/include/glib-2.0/glib/gthreadpool.h
 	<glib/gthread.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtimer.h
+1365614827 /usr/include/glib-2.0/glib/gtimer.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtrashstack.h
+1365614827 /usr/include/glib-2.0/glib/gtrashstack.h
 	<glib/gutils.h>
 
-1352013538 /usr/include/glib-2.0/glib/gtree.h
+1365614827 /usr/include/glib-2.0/glib/gtree.h
 	<glib/gnode.h>
 
-1352013538 /usr/include/glib-2.0/glib/gurifuncs.h
+1365614827 /usr/include/glib-2.0/glib/gurifuncs.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gvarianttype.h
+1365614827 /usr/include/glib-2.0/glib/gvarianttype.h
 	<glib/gmessages.h>
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gvariant.h
+1365614827 /usr/include/glib-2.0/glib/gvariant.h
 	<glib/gvarianttype.h>
 	<glib/gstring.h>
+	<glib/gbytes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gversion.h
+1365614827 /usr/include/glib-2.0/glib/gversion.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/gwin32.h
+1365614827 /usr/include/glib-2.0/glib/gwin32.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/gallocator.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/gallocator.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/gcache.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/gcache.h
 	<glib/glist.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/gcompletion.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/gcompletion.h
 	<glib/glist.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/gmain.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/gmain.h
 	<glib/gmain.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/grel.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/grel.h
 	<glib/gtypes.h>
 
-1352013538 /usr/include/glib-2.0/glib/deprecated/gthread.h
+1365614827 /usr/include/glib-2.0/glib/deprecated/gthread.h
 	<glib/gthread.h>
 	<pthread.h>
 
-1359376424 /usr/include/pthread.h
+1366286916 /usr/include/pthread.h
 	<features.h>
 	<endian.h>
 	<sched.h>
@@ -3283,7 +3286,7 @@
 	<bits/setjmp.h>
 	<bits/wordsize.h>
 
-1359376408 /usr/include/sched.h
+1366286906 /usr/include/sched.h
 	<features.h>
 	<bits/types.h>
 	<stddef.h>
@@ -3374,16 +3377,16 @@
 1349108320 /usr/include/cairomm-1.0/cairomm/enums.h
 	<cairo.h>
 
-1354216300 /usr/include/cairo/cairo.h
+1360581541 /usr/include/cairo/cairo.h
 	"cairo-version.h"
 	"cairo-features.h"
 	"cairo-deprecated.h"
 
-1354216300 /usr/include/cairo/cairo-version.h
+1360581541 /usr/include/cairo/cairo-version.h
 
-1354216300 /usr/include/cairo/cairo-features.h
+1360581541 /usr/include/cairo/cairo-features.h
 
-1354216300 /usr/include/cairo/cairo-deprecated.h
+1360581541 /usr/include/cairo/cairo-deprecated.h
 
 1349108320 /usr/include/cairomm-1.0/cairomm/exception.h
 	<cairomm/enums.h>
@@ -3405,29 +3408,29 @@
 	<string>
 	<cairo-ft.h>
 
-1354216300 /usr/include/cairo/cairo-ft.h
+1360581541 /usr/include/cairo/cairo-ft.h
 	"cairo.h"
 	<ft2build.h>
 	<fontconfig/fontconfig.h>
 
-1357937142 /usr/include/ft2build.h
+1360326437 /usr/include/ft2build.h
 	<freetype/config/ftheader.h>
 
-1357937142 /usr/include/freetype2/freetype/config/ftheader.h
+1360326437 /usr/include/freetype2/freetype/config/ftheader.h
 
-1345609005 /usr/include/fontconfig/fontconfig.h
+1362554385 /usr/include/fontconfig/fontconfig.h
 	<sys/types.h>
 	<sys/stat.h>
 	<stdarg.h>
 
-1354216300 /usr/include/cairo/cairo-pdf.h
+1360581541 /usr/include/cairo/cairo-pdf.h
 	"cairo.h"
 
-1354216300 /usr/include/cairo/cairo-ps.h
+1360581541 /usr/include/cairo/cairo-ps.h
 	"cairo.h"
 	<stdio.h>
 
-1354216300 /usr/include/cairo/cairo-svg.h
+1360581541 /usr/include/cairo/cairo-svg.h
 	"cairo.h"
 
 1349108320 /usr/include/cairomm-1.0/cairomm/fontface.h
@@ -3579,7 +3582,7 @@
 	<sigc++/functors/ptr_fun.h>
 	<sigc++/functors/mem_fun.h>
 
-1359376396 /usr/include/math.h
+1366286895 /usr/include/math.h
 	<features.h>
 	<bits/huge_val.h>
 	<bits/huge_valf.h>
@@ -3609,4 +3612,24 @@
 1369679250 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/point.cpp
 	"point.h"
 	<cmath>
+
+1366286875 /usr/include/stdc-predef.h
+	<bits/predefs.h>
+
+1372349571 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/xmlparameter.cpp
+	"xmlparameter.h"
+
+1372348175 /home/paul/Programming/MyPattern/source/mypattern-base/include/xmlparameter.h
+	"glibmm/ustring.h"
+
+1372349481 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/xmlnode.cpp
+	"xmlnode.h"
+	<sstream>
+
+1372349362 /home/paul/Programming/MyPattern/source/mypattern-base/include/xmlnode.h
+	"xmlparameter.h"
+	"glibmm/ustring.h"
+	<list>
+	<memory>
+	<sstream>
 

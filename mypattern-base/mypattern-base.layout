@@ -1,139 +1,249 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug Linux" />
-	<File name="include/bezier.h" open="0" top="0" tabpos="7">
-		<Cursor position="13" topLine="0" />
+	<File name="include/patternparametervalue.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/beziercomplex.h" open="0" top="0" tabpos="1">
-		<Cursor position="176" topLine="0" />
+	<File name="include/beziercomplex.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/bezierdefinition.h" open="0" top="0" tabpos="2">
-		<Cursor position="335" topLine="10" />
+	<File name="src/point.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/constants.h" open="0" top="0" tabpos="4">
-		<Cursor position="0" topLine="0" />
+	<File name="src/patternerror.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/curvedefinition.h" open="0" top="0" tabpos="2">
-		<Cursor position="0" topLine="0" />
+	<File name="src/partdefinition.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5778" topLine="211" />
+		</Cursor>
 	</File>
-	<File name="include/drawoptions.h" open="0" top="0" tabpos="4">
-		<Cursor position="0" topLine="0" />
+	<File name="src/papersettings.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/errorcode.h" open="0" top="0" tabpos="1">
-		<Cursor position="0" topLine="0" />
+	<File name="include/patternparameter.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/floatpatternparameter.h" open="0" top="0" tabpos="13">
-		<Cursor position="0" topLine="0" />
+	<File name="src/bezierdefinition.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/landmark.h" open="0" top="0" tabpos="1">
-		<Cursor position="0" topLine="0" />
+	<File name="include/xmlnode.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="956" topLine="13" />
+		</Cursor>
 	</File>
-	<File name="include/measures.h" open="0" top="0" tabpos="1">
-		<Cursor position="117" topLine="0" />
+	<File name="include/measurevalue.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/measurevalue.h" open="0" top="0" tabpos="2">
-		<Cursor position="61" topLine="0" />
+	<File name="include/user.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/objecttype.h" open="0" top="0" tabpos="7">
-		<Cursor position="0" topLine="0" />
+	<File name="src/floatpatternparameter.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/papersettings.h" open="0" top="0" tabpos="2">
-		<Cursor position="0" topLine="0" />
+	<File name="include/pattern.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/part.h" open="0" top="0" tabpos="1">
-		<Cursor position="0" topLine="0" />
+	<File name="include/drawoptions.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/partdefinition.h" open="1" top="0" tabpos="3">
-		<Cursor position="3645" topLine="77" />
+	<File name="include/patternerror.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/pattern.h" open="0" top="0" tabpos="3">
-		<Cursor position="255" topLine="0" />
+	<File name="include/bezier.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/patterndefinition.h" open="1" top="0" tabpos="1">
-		<Cursor position="9546" topLine="218" />
+	<File name="include/units.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/patternerror.h" open="0" top="0" tabpos="4">
-		<Cursor position="125" topLine="15" />
+	<File name="src/patterndefinition.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/patternobject.h" open="0" top="0" tabpos="4">
-		<Cursor position="0" topLine="0" />
+	<File name="src/patternobject.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/patternparameter.h" open="0" top="0" tabpos="5">
-		<Cursor position="124" topLine="0" />
+	<File name="src/measures.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/patternparametervalue.h" open="0" top="0" tabpos="8">
-		<Cursor position="0" topLine="0" />
+	<File name="src/measurevalue.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/point.h" open="0" top="0" tabpos="6">
-		<Cursor position="196" topLine="0" />
+	<File name="include/measures.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/size.h" open="0" top="0" tabpos="4">
-		<Cursor position="0" topLine="0" />
+	<File name="include/bezierdefinition.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/units.h" open="0" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+	<File name="include/size.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/user.h" open="0" top="0" tabpos="5">
-		<Cursor position="0" topLine="0" />
+	<File name="src/part.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="include/valuerangetype.h" open="0" top="0" tabpos="6">
-		<Cursor position="0" topLine="0" />
+	<File name="src/xmlparameter.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="127" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/bezier.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="0" topLine="19" />
+	<File name="include/valuerangetype.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/beziercomplex.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2441" topLine="98" />
+	<File name="src/beziercomplex.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/bezierdefinition.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="704" topLine="32" />
+	<File name="include/part.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/curvedefinition.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="380" topLine="0" />
+	<File name="src/patternparameter.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/drawoptions.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="0" topLine="0" />
+	<File name="src/drawoptions.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/floatpatternparameter.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="0" topLine="0" />
+	<File name="include/landmark.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3721" topLine="86" />
+		</Cursor>
 	</File>
-	<File name="src/intpatternparameter.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="0" topLine="0" />
+	<File name="include/patterndefinition.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/landmark.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="0" topLine="0" />
+	<File name="include/point.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/measures.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="0" topLine="0" />
+	<File name="include/patternobject.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/measurevalue.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="0" topLine="0" />
+	<File name="src/landmark.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="470" topLine="21" />
+		</Cursor>
 	</File>
-	<File name="src/papersettings.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="0" topLine="0" />
+	<File name="src/bezier.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/part.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="647" topLine="8" />
+	<File name="include/objecttype.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/partdefinition.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="5181" topLine="182" />
+	<File name="include/xmlparameter.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="160" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/pattern.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="62" topLine="0" />
+	<File name="include/partdefinition.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/patterndefinition.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="20" topLine="0" />
+	<File name="include/floatpatternparameter.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/patternerror.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+	<File name="include/errorcode.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/patternobject.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="0" topLine="0" />
+	<File name="src/pattern.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="src/patternparameter.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="1389" topLine="23" />
+	<File name="src/xmlnode.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="841" topLine="41" />
+		</Cursor>
 	</File>
-	<File name="src/point.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="0" topLine="0" />
+	<File name="src/intpatternparameter.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/papersettings.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/curvedefinition.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/curvedefinition.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/constants.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
