@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1372349129 source:/home/paul/Programming/MyPattern/source/mypattern-base-test/src/main.cpp
+1373555044 source:/home/paul/Programming/MyPattern/source/mypattern-base-test/src/main.cpp
+	<iostream>
 	"xmlnode.h"
 
 1372225482 /home/paul/Programming/MyPattern/source/mypattern-base-test/include/xmlnode.h

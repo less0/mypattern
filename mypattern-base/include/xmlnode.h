@@ -32,7 +32,7 @@ class XmlNode
         static int find_end_tag(Glib::ustring schema,Glib::ustring tag_name);
         static bool tag_is_terminated(Glib::ustring tag);
 
-        Glib::ustring m_name;
+        Glib::ustring m_name = "";
         list<XmlParameter> m_parameters;
 };
 
