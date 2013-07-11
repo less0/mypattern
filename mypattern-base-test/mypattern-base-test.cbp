@@ -16,6 +16,10 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="d_mypattern-base" />
+					<Add directory="$(GTK_BASEPATH)/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="libmypattern-base-test" prefix_auto="1" extension_auto="1" />
@@ -24,12 +28,13 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-O2" />
+					<Add option="-Wall" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add library="mypattern-base" />
+					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 			</Target>
 			<Target title="Debug Linux">
@@ -87,7 +92,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
+			<Add option="-std=c++0x" />
 			<Add directory="include" />
 			<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
 			<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
@@ -104,6 +109,7 @@
 		</Compiler>
 		<Linker>
 			<Add library="glibmm-2.4" />
+			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
 		</Linker>
 		<Unit filename="src/main.cpp" />

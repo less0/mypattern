@@ -82,7 +82,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
+			<Add option="-std=c++0x" />
 			<Add directory="include" />
 			<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
 			<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
