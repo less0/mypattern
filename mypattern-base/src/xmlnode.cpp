@@ -22,7 +22,7 @@ XmlNode::XmlNode(const XmlNode& base)
 
 shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 {
-    //shared_ptr<XmlNode> result(new XmlNode());
+    shared_ptr<XmlNode> result(new XmlNode());
     int subschema_index = 0;
     Glib::ustring subschema = "";
 
@@ -32,12 +32,12 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     Glib::ustring tag_name = schema.substr(start_tag_index + 1, schema.find_first_of(' ') - start_tag_index - 1);
 
     ///\todo parse key value pairs
-    list<XmlParameter> parameters = XmlParameter::parse_from_tag(tag);
+    result->m_parameters = XmlParameter::parse_from_tag(tag);
 
 
     if(tag_is_terminated(Glib::ustring(tag)))
     {
-
+        return result;
     }
 
     stringstream end_tag_builder;
@@ -46,15 +46,8 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
         << ">";
 
     int end_tag_index = schema.find(end_tag_builder.str(), start_tag_index);
-//
-//    int end_tag_index = find_end_tag(schema, tag);
-//
-//    subschema_index = start_tag_index + tag.length();
-//    subschema = schema.substr(subschema_index, end_tag_index + subschema_index);
 
-
-
-    return shared_ptr<XmlNode>(new XmlNode());
+    return result;
 }
 
 ///\brief splits a string by XML nodes

@@ -34,8 +34,8 @@ XmlParameter XmlParameter::parse(Glib::ustring key_value_pair)
     Glib::ustring key = key_value_pair.substr(0, equalSignIndex);
     Glib::ustring value = key_value_pair.substr(equalSignIndex + 1);
 
-    result.m_key = key;
-    result.m_value = value;
+    result.m_key = Glib::ustring(key);
+    result.m_value = Glib::ustring(value);
 
     return XmlParameter(result);
 }
@@ -65,7 +65,7 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
         if(parsed_parameter.m_key != "" &&
            parsed_parameter.m_value != "")
            {
-                parsed_parameters.push_back(parsed_parameter);
+                parsed_parameters.push_back(XmlParameter(parsed_parameter));
            }
 
         spaceIndex = nextSpaceIndex;
