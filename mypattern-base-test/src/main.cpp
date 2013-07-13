@@ -4,16 +4,17 @@
 
 int main()
 {
-    int in;
+    Glib::ustring in;
     shared_ptr<XmlNode> xmlNode = XmlNode::parse(Glib::ustring("<node name=\"mynode\" test=\"myPattern\" />"));
 
-    list<XmlParameter>::iterator it = xmlNode->get_parameters().begin();
+    list<XmlParameter> listOfParameters = xmlNode->get_parameters();
+    list<XmlParameter>::iterator it = listOfParameters.begin();
 
     //cout << it->get_name() <<  ":" << it->get_value() << std::endl;
 
-    while(it != xmlNode->get_parameters().end())
+    while(it != listOfParameters.end())
     {
-        std::cout << it->get_name() << std::endl; // << ": " << it->get_value() << std::endl;
+        std::cout << it->get_name() << ": " << it->get_value() << std::endl;
         it++;
     }
 

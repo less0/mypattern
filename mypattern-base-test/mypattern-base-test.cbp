@@ -18,6 +18,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="d_mypattern-base" />
+					<Add library="glibmm-2.4" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 			</Target>
@@ -34,6 +35,7 @@
 				<Linker>
 					<Add option="-s" />
 					<Add library="mypattern-base" />
+					<Add library="glibmm-2.4" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 			</Target>
