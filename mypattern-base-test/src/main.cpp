@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "xmlnode.h"
 
@@ -18,5 +19,5 @@ int main()
         it++;
     }
 
-    std::cin >> in;
+     std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 }
