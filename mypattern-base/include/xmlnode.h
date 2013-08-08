@@ -25,6 +25,9 @@ class XmlNode
         bool remove_parameter(XmlParameter);
         bool remove_parameter(Glib::ustring);
 
+        list<shared_ptr<XmlNode>> get_nodes();
+        void add_node(shared_ptr<XmlNode>);
+        //bool remove_node(shared_ptr<XmlNode>);
     protected:
     private:
         static list<Glib::ustring> split_nodes(Glib::ustring);
@@ -34,6 +37,7 @@ class XmlNode
 
         Glib::ustring m_name;
         list<XmlParameter> m_parameters;
+        list<shared_ptr<XmlNode>> m_subnodes;
 };
 
 #endif // XMLNODE_H

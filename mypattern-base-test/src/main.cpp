@@ -6,7 +6,7 @@
 int main()
 {
     Glib::ustring in;
-    shared_ptr<XmlNode> xmlNode = XmlNode::parse(Glib::ustring("<node name=\"mynode\" test=\"myPattern\" />"));
+    shared_ptr<XmlNode> xmlNode = XmlNode::parse(Glib::ustring("<node name=\"mynode\" test=\"myPattern\"><subnode name=\"asubnode\" /></node>"));
 
     list<XmlParameter> listOfParameters = xmlNode->get_parameters();
     list<XmlParameter>::iterator it = listOfParameters.begin();

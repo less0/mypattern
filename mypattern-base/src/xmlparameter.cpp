@@ -53,12 +53,13 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
     }
 
     int spaceIndex = tag_remainder.find(" ");
-    int nextSpaceIndex = tag_remainder.find(" ", spaceIndex + 1);
+    int nextEndParameterIndex = tag_remainder.find(" ", spaceIndex + 1);
 
 
-    while(nextSpaceIndex > 0)
+    while(nextEndParameterIndex > 0)
     {
-        Glib::ustring key_value_pair = tag_remainder.substr(spaceIndex, nextSpaceIndex - spaceIndex);
+        Glib::ustring key_value_pair = tag_remainder.substr(spaceIndex,
+                                                            nextEndParameterIndex - spaceIndex);
 
         XmlParameter parsed_parameter = XmlParameter::parse(key_value_pair);
 
@@ -68,8 +69,14 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
                 parsed_parameters.push_back(XmlParameter(parsed_parameter));
            }
 
-        spaceIndex = nextSpaceIndex;
-        nextSpaceIndex = tag_remainder.find(" ", spaceIndex + 1);
+        spaceIndex = nextEndParameterIndex;
+        nextEndParameterIndex = tag_remainder.find(" ", spaceIndex + 1);
+
+        if(nextEndParameterIndex == -1)
+        {
+            nextEndParameterIndex = tag_remainder.find(">", spaceIndex + 1);
+        }
+
     }
 
     return parsed_parameters;

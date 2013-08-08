@@ -25,15 +25,16 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     shared_ptr<XmlNode> result(new XmlNode());
     int subschema_index = 0;
     Glib::ustring subschema = "";
+    list<Glib::ustring> ls_nodes;
 
     int start_tag_index = schema.find_first_of('<');
     Glib::ustring tag = get_tag(schema, start_tag_index);
 
-    Glib::ustring tag_name = schema.substr(start_tag_index + 1, schema.find_first_of(' ') - start_tag_index - 1);
+    Glib::ustring tag_name = schema.substr(start_tag_index + 1,
+                                           schema.find_first_of(' ') - start_tag_index - 1);
 
     ///\todo parse key value pairs
     result->m_parameters = XmlParameter::parse_from_tag(tag);
-
 
     if(tag_is_terminated(Glib::ustring(tag)))
     {
@@ -47,6 +48,20 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 
     int end_tag_index = schema.find(end_tag_builder.str(), start_tag_index);
 
+    subschema = schema.substr(start_tag_index + tag.length(),
+                              end_tag_index - start_tag_index - tag.length());
+
+    ls_nodes = split_nodes(subschema);
+
+    list<Glib::ustring>::iterator it = ls_nodes.begin();
+
+    while(it != ls_nodes.end())
+    {
+        result->m_subnodes.push_back(XmlNode::parse(*it));
+        it++;
+    }
+
+
     return result;
 }
 
@@ -57,7 +72,7 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
 
     list<Glib::ustring> nodes;
 
-    while(node_begin >= 0 && node_begin <= (int)subschema.length())
+    while(node_begin >= 0 && node_begin < (int)subschema.length())
     {
         int node_name_end = subschema.find(' ', node_begin);
 
@@ -78,7 +93,7 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
         if(tag_is_terminated(tag))
         {
             nodes.push_back(tag);
-            node_begin = node_begin + tag.length();
+            node_begin = subschema.find('<', node_begin + tag.length());
         }
         else
         {
@@ -89,7 +104,7 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
 
             int node_end_index = subschema.find(end_tag.str(), node_begin) + end_tag.str().length();
             nodes.push_back(subschema.substr(node_begin, node_end_index - node_begin));
-            node_begin = node_end_index + 1;
+            node_begin = subschema.find('<', node_end_index + 1);
         }
     }
 

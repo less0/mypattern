@@ -3,11 +3,7 @@
 	<ActiveTarget name="Debug" />
 	<File name="src\main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-<<<<<<< .mine
-			<Cursor1 position="0" topLine="0" />
-=======
-			<Cursor1 position="38" topLine="0" />
->>>>>>> .r10
+			<Cursor1 position="592" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
