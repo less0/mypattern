@@ -15,8 +15,6 @@ class XmlNode
         XmlNode();
         XmlNode(const XmlNode& base);
 
-        static shared_ptr<XmlNode> parse(Glib::ustring);
-
         Glib::ustring get_name();
         void set_name(Glib::ustring);
 
@@ -27,7 +25,8 @@ class XmlNode
 
         list<shared_ptr<XmlNode>> get_nodes();
         void add_node(shared_ptr<XmlNode>);
-        //bool remove_node(shared_ptr<XmlNode>);
+
+        static shared_ptr<XmlNode> parse(Glib::ustring);
     protected:
     private:
         static list<Glib::ustring> split_nodes(Glib::ustring);

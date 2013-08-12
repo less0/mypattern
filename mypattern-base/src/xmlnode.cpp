@@ -23,7 +23,7 @@ XmlNode::XmlNode(const XmlNode& base)
 shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 {
     shared_ptr<XmlNode> result(new XmlNode());
-    int subschema_index = 0;
+    //int subschema_index = 0;
     Glib::ustring subschema = "";
     list<Glib::ustring> ls_nodes;
 
@@ -33,6 +33,7 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     Glib::ustring tag_name = schema.substr(start_tag_index + 1,
                                            schema.find_first_of(' ') - start_tag_index - 1);
 
+    result->m_name = tag_name;
     ///\todo parse key value pairs
     result->m_parameters = XmlParameter::parse_from_tag(tag);
 
@@ -137,6 +138,11 @@ Glib::ustring XmlNode::get_name()
 void XmlNode::set_name(Glib::ustring name)
 {
     this->m_name = name;
+}
+
+list<shared_ptr<XmlNode>> XmlNode::get_nodes()
+{
+    return this->m_subnodes;
 }
 
 list<XmlParameter> XmlNode::get_parameters()

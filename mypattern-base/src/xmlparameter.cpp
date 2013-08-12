@@ -31,8 +31,10 @@ XmlParameter XmlParameter::parse(Glib::ustring key_value_pair)
         return XmlParameter();
     }
 
+    //TODO: Check if the value is placed between "s
+
     Glib::ustring key = key_value_pair.substr(0, equalSignIndex);
-    Glib::ustring value = key_value_pair.substr(equalSignIndex + 1);
+    Glib::ustring value = key_value_pair.substr(equalSignIndex + 2, key_value_pair.length() - (equalSignIndex + 2) - 1);
 
     result.m_key = Glib::ustring(key);
     result.m_value = Glib::ustring(value);
@@ -53,13 +55,19 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
     }
 
     int spaceIndex = tag_remainder.find(" ");
+    int keyValuePairIndex = tag_remainder.find_first_of("[A-Za-u]+=\"[A-Za-z0-9]+\"", spaceIndex);
     int nextEndParameterIndex = tag_remainder.find(" ", spaceIndex + 1);
+
 
 
     while(nextEndParameterIndex > 0)
     {
-        Glib::ustring key_value_pair = tag_remainder.substr(spaceIndex,
-                                                            nextEndParameterIndex - spaceIndex);
+        //TODO: the current implementation works but in not best practice
+        //maybe the following procedure should be implemented: search for the
+        //first space after tag name. Search for the first letter after w
+
+        Glib::ustring key_value_pair = tag_remainder.substr(spaceIndex + 1,
+                                                            nextEndParameterIndex - spaceIndex - 1);
 
         XmlParameter parsed_parameter = XmlParameter::parse(key_value_pair);
 
@@ -72,9 +80,20 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
         spaceIndex = nextEndParameterIndex;
         nextEndParameterIndex = tag_remainder.find(" ", spaceIndex + 1);
 
+
         if(nextEndParameterIndex == -1)
         {
-            nextEndParameterIndex = tag_remainder.find(">", spaceIndex + 1);
+            int nextClosingBracket = tag_remainder.find(">", spaceIndex + 1);
+            int nextSlash = tag_remainder.find("/", spaceIndex + 1);
+
+            if(nextSlash == -1 || nextSlash > nextClosingBracket)
+            {
+                nextEndParameterIndex = nextClosingBracket;
+            }
+            else
+            {
+                nextEndParameterIndex = nextSlash;
+            }
         }
 
     }

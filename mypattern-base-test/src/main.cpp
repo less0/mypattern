@@ -3,21 +3,55 @@
 
 #include "xmlnode.h"
 
+void node_out(shared_ptr<XmlNode>, int);
+
 int main()
 {
     Glib::ustring in;
     shared_ptr<XmlNode> xmlNode = XmlNode::parse(Glib::ustring("<node name=\"mynode\" test=\"myPattern\"><subnode name=\"asubnode\" /></node>"));
 
-    list<XmlParameter> listOfParameters = xmlNode->get_parameters();
-    list<XmlParameter>::iterator it = listOfParameters.begin();
+    node_out(xmlNode, 0);
 
-    //cout << it->get_name() <<  ":" << it->get_value() << std::endl;
-
-    while(it != listOfParameters.end())
-    {
-        std::cout << it->get_name() << ": " << it->get_value() << std::endl;
-        it++;
-    }
+//    list<XmlParameter> listOfParameters = xmlNode->get_parameters();
+//    list<XmlParameter>::iterator it = listOfParameters.begin();
+//
+//    //cout << it->get_name() <<  ":" << it->get_value() << std::endl;
+//
+//    while(it != listOfParameters.end())
+//    {
+//        std::cout << it->get_name() << ": " << it->get_value() << std::endl;
+//        it++;
+//    }
 
      std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+}
+
+void node_out(shared_ptr<XmlNode> node, int level)
+{
+    Glib::ustring indent = "";
+
+    for(int i=0; i<level; i++)
+    {
+        indent += "\t";
+    }
+
+    std::cout << indent << node->get_name() << std::endl;
+
+    list<XmlParameter> listOfParameters = node->get_parameters();
+    list<XmlParameter>::iterator it_parameters = listOfParameters.begin();
+
+    while(it_parameters != listOfParameters.end())
+    {
+        std::cout << indent << "\t" << it_parameters->get_name() << ": " << it_parameters->get_value() << std::endl;
+        it_parameters++;
+    }
+
+    list<shared_ptr<XmlNode>> listOfNodes = node->get_nodes();
+    list<shared_ptr<XmlNode>>::iterator it_node = listOfNodes.begin();
+
+    while(it_node != listOfNodes.end())
+    {
+        node_out(*it_node, level + 1);
+        it_node++;
+    }
 }
