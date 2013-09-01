@@ -4,7 +4,9 @@
 
 Landmark::Landmark()
 {
-    //ctor
+    m_name = "";
+    m_x_definition = "";
+    m_y_definition = "";
 }
 
 Landmark::~Landmark()

@@ -42,7 +42,14 @@ void node_out(shared_ptr<XmlNode> node, int level)
 
     while(it_parameters != listOfParameters.end())
     {
-        std::cout << indent << "\t" << it_parameters->get_name() << ": " << it_parameters->get_value() << std::endl;
+        std::cout
+            << indent
+            << "\t"
+            << it_parameters->get_name()
+            << ": "
+            << it_parameters->get_value()
+            << std::endl;
+
         it_parameters++;
     }
 

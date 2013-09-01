@@ -73,6 +73,7 @@ Point BezierComplex::get_coordinate(float rel_length)
     {
         float current_bezier_length = (*it).get_length();
 
+        //check if the given point llies within the current Bézier
         if((sum + current_bezier_length)/length > rel_length)
         {
             float rel_length_bezier = (rel_length * length - sum)/current_bezier_length;

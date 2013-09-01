@@ -13,30 +13,30 @@
 
 using namespace std;
 
+/*! \brief Abstract pparametrizable representation of points in the pattern.
+*
+*
+*/
 class Landmark
 {
     public:
         Landmark();
         virtual ~Landmark();
 
-        /*! \brief Gets the definition for the X-coordinate of the landmark,
-        * i.e. the dependency of the X-coordinate on other pattern objects and
-        * parameters
+        /*! \brief Gets the definition for the X-coordinate of the landmark, i.e. the dependency of
+         *the X-coordinate on other pattern objects and parameters
         *
-        * Landmarks in patterns usually depend on other Landmarks, on Curves or
-        * on Parameters of the pattern. The dependency on other pattern objects
-        * is defined in a string and passed to this method. When a Pattern is
-        * created from a PatternDefinition, these definitions are
+        * Landmarks in patterns usually depend on other Landmarks, on Curves or on Parameters of the
+        * pattern. The dependency on other pattern objects is defined in a string and passed to this
+        * method. When a Pattern is created from a PatternDefinition, these definitions are
         */
         Glib::ustring get_definition_x();
-        /*! \brief Sets the definition for the X-coordinate of the landmark,
-        * i.e. the dependency of the X-coordinate on other pattern objects and
-        * parameters
+        /*! \brief Sets the definition for the X-coordinate of the landmark, i.e. the dependency of
+        * the X-coordinate on other pattern objects and parameters
         *
-        * Landmarks in patterns usually depend on other Landmarks, on Curves or
-        * on Parameters of the pattern. The dependency on other pattern objects
-        * is defined in a string and passed to this method. When a Pattern is
-        * created from a PatternDefinition, these definitions are used to
+        * Landmarks in patterns usually depend on other Landmarks, on Curves or on Parameters of the
+        * pattern. The dependency on other pattern objects is defined in a string and passed to this
+        * method. When a Pattern is created from a PatternDefinition, these definitions are used to
         * evaluate the conditional positions of the landmarks.
         */
         bool set_definition_x(Glib::ustring);
@@ -51,22 +51,23 @@ class Landmark
         /*! \brief
         *
         * \param measures Object containing body measures
-        * \param points List of points created from landmarks, the current
-        * landmark depends on
-        * \param curves List of curves created from curve definitions the
-        * current landmark depends on
+        * \param points List of points created from the landmarks the current landmark depends on
+        * \param curves List of curves created from curve definitions the current landmark depends
+        * on
         * \param parameterValues List of parameter values the current landmark
         * depends on
         */
-        Point get_point(Measures measures, list<Point> points, list<BezierComplex> curves, list<PatternParameterValue> parameterValues);
+        Point get_point(Measures measures,
+                        list<Point> points,
+                        list<BezierComplex> curves,
+                        list<PatternParameterValue> parameterValues);
 
 
         Glib::ustring get_name();
         /*! \brief Sets the name of the Landmark
         *
-        * This function sets the name of the Landmark. To check if the name is
-        * valid, this function calls ths function that's been passed in the
-        * add_request_fct function.
+        * This function sets the name of the Landmark. To check if the name is valid, this function
+        * calls ths function that's been passed in the add_request_fct function.
         * \param name The new name of the Landmark
         * \return True if the name change was allowed, false if the name change request was denied.
         */
@@ -83,10 +84,9 @@ class Landmark
 
         /*! \brief Adds a function to request a name change
         *
-        * This function takes a function pointer to add to the current Landmark
-        * object to request if a name change is valid. Validity of a name change
-        * includes the validity of the form of the name as well as the
-        * uniqueness of the name.
+        * This function takes a function pointer to add to the current Landmark object to request if
+        * a name change is valid. Validity of a name change includes the validity of the form of the
+        * name as well as the uniqueness of the name.
         * \param request_fct_ptr function pointer to the function to request the name change
         */
         sigc::signal2<bool,Glib::ustring,ObjectType> signal_name_change_request();

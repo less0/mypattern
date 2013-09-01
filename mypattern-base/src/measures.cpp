@@ -6,5 +6,4 @@ Measures::Measures()
 
 Measures::~Measures()
 {
-    //dtor
 }

@@ -1,5 +1,7 @@
 #include "bezierdefinition.h"
 
+#include <sstream>
+
 BezierDefinition::BezierDefinition()
 {
     //ctor
@@ -47,6 +49,13 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
 
 ustring BezierDefinition::get_xml()
 {
+    std::stringstream out_stream;
+
+    stringstream << "<curve type=\"bezier\" name=\"" << get_name() << "\">\r\n";
+
     ///\todo Implement
+
+    stringstream << "</curve>";
+
     return "";
 }

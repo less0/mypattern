@@ -25,7 +25,7 @@ class Bezier
         Bezier(const Bezier& bezier);
         Bezier();
 
-        /*! \brief Draws the bezier curve
+        /*! \brief Draws the bezier curve to a cairo context
         */
         void draw(shared_ptr<Cairo::Context> context);
 

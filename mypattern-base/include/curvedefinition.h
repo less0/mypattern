@@ -22,11 +22,12 @@ class CurveDefinition
         //
 
         //pure virtual functions
+        //these functions are overwritten in the actual implementtations of curves
         virtual int get_min_landmarks() = 0;
         virtual int get_max_landmarks() = 0;
         virtual BezierComplex get_bezier(list<Point>) = 0;
         virtual ustring get_xml() = 0;
-        //
+
 
         ustring get_name();
         /*! \brief Sets the name of the CurveDefinition
@@ -40,6 +41,8 @@ class CurveDefinition
         *
         * This function adds a Landmark too the list of Landmark objects in the CurveDefinifion. The
         * Landmark is added after the last landmark
+        * \todo This way recreating the landmarks from XML is quite hard, maybe the curves should
+        * only reference the names of the landmarks
         * \todo Implement add_landmark
         */
         bool add_landmark(shared_ptr<Landmark>);
@@ -50,6 +53,8 @@ class CurveDefinition
         * \param landmark Pointer to a Landmark object to add.
         * \param after Name of the landmark to add the new object after
         * \todo Implement add_landmark
+        * \todo This way recreating the landmarks from XML is quite hard, maybe the curves should
+        * only reference the names of the landmarks
         */
         bool add_landmark(shared_ptr<Landmark> landmark, ustring after);
         /*! \brief Gets the names of Landmarks in the current CurveDefinition

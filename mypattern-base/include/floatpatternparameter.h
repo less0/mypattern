@@ -15,10 +15,12 @@ class FloatPatternParameter : public PatternParameter
 {
     public:
         FloatPatternParameter(Glib::ustring name);
-        FloatPatternParameter(Glib::ustring name, list<float> valueRange, ValueRangeType type = VALUERANGETYPE_UNKNOWN);
+        FloatPatternParameter(Glib::ustring name,
+                              list<float> valueRange,
+                              ValueRangeType type = VALUERANGETYPE_UNKNOWN);
         virtual ~FloatPatternParameter();
 
-        //! \todo refactor XML input and output for use with TinyXML
+
         Glib::ustring get_xml();
         void parse_value_range(Glib::ustring valueRange);
 
