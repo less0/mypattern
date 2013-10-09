@@ -56,9 +56,22 @@
 			<Cursor1 position="3249" topLine="47" />
 		</Cursor>
 	</File>
+	<File name="src\xmlnode.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1132" topLine="33" />
+		</Cursor>
+		<Folding>
+			<Collapse line="70" />
+		</Folding>
+	</File>
 	<File name="include\bezier.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="623" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="src\xmlparameter.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2751" topLine="55" />
 		</Cursor>
 	</File>
 	<File name="include\beziercomplex.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -81,22 +94,9 @@
 			<Cursor1 position="333" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\xmlnode.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1132" topLine="33" />
-		</Cursor>
-		<Folding>
-			<Collapse line="70" />
-		</Folding>
-	</File>
 	<File name="src\beziercomplex.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2737" topLine="83" />
-		</Cursor>
-	</File>
-	<File name="src\xmlparameter.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2751" topLine="55" />
 		</Cursor>
 	</File>
 	<File name="src\bezierdefinition.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
