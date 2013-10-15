@@ -3,6 +3,7 @@
 #include <list>
 
 using namespace std;
+using namespace MyPattern::Base;
 
 BezierComplex::BezierComplex(list<Bezier> bezier_curves)
 {

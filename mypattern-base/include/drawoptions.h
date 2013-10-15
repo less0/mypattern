@@ -5,15 +5,22 @@
 #include "patternobject.h"
 #include <memory>
 
-class DrawOptions
+namespace MyPattern
 {
-    public:
-        DrawOptions();
+    namespace Base
+    {
+        class DrawOptions
+        {
+            public:
+                DrawOptions();
 
-        PaperSettings get_paper_settings();
-        void set_paper_settings(const PaperSettings&);
-    protected:
-    private:
-};
+                PaperSettings get_paper_settings();
+                void set_paper_settings(const PaperSettings&);
+            protected:
+            private:
+        };
+    }
+}
+
 
 #endif // DRAWOPTIONS_H

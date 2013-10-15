@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mypattern-data" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Linux">
+				<Option output="d_mypattern-data" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add directory="/usr/include/glibmm-2.4" />
+					<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
+					<Add directory="/usr/include/glib-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
+					<Add directory="/usr/include/sigc++-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
+					<Add directory="/usr/lib/i386-linux-gnu/cairomm-1.0/include" />
+					<Add directory="/usr/include/cairomm-1.0" />
+					<Add directory="/usr/include/cairo" />
+					<Add directory="/usr/include/freetype2" />
+				</Compiler>
+			</Target>
+			<Target title="Release Linux">
+				<Option output="mypattern-data" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+					<Add directory="/usr/include/glibmm-2.4" />
+					<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
+					<Add directory="/usr/include/glib-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
+					<Add directory="/usr/include/sigc++-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add directory="include" />
+			<Add directory="../mypattern-base/include" />
+		</Compiler>
+		<Unit filename="include/filereader.h" />
+		<Unit filename="include/xmlfilereader.h" />
+		<Unit filename="include/xmlnode.h" />
+		<Unit filename="include/xmlparameter.h" />
+		<Unit filename="src/filereader.cpp" />
+		<Unit filename="src/xmlfilereader.cpp" />
+		<Unit filename="src/xmlnode.cpp" />
+		<Unit filename="src/xmlparameter.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

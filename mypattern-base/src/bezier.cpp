@@ -1,5 +1,8 @@
 #include "bezier.h"
 
+
+using namespace MyPattern::Base;
+
 Bezier::Bezier(array<Point,4> points)
 {
     m_points = points;

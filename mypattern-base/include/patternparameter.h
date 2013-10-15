@@ -23,19 +23,9 @@ class PatternParameter
         */
         Glib::ustring get_name();
 
-        /*! \brief Creates an XML element to save the parameter definition in an XML schema
-        *
-        */
-        virtual Glib::ustring get_xml() = 0;
 
         virtual void parse_value_range(Glib::ustring valueRange) = 0;
 
-        /*! \brief Creates a PatternParameter object from an XML element
-        *
-        * This function creates an object of one of the classes derived from PatternParameter.
-        * \return A new PatternParameter object if the creation succeeded, a NULL-pointer otherwise
-        */
-        static shared_ptr<PatternParameter> get_from_xml(Glib::ustring xml);
         /*! \brief Creates a PatternParameter object given a name and a type
         *
         * This static function creates an object of one of the types derived from PatternParameter.

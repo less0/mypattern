@@ -1,10 +1,5 @@
 #include "curvedefinition.h"
 
-CurveDefinition::~CurveDefinition()
-{
-    //dtor
-}
-
 Glib::ustring CurveDefinition::get_name()
 {
     return m_name;
@@ -51,3 +46,21 @@ bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
     }
 }
 
+bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark, ustring after)
+{
+    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
+
+    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
+    {
+        while(it != m_landmarks.end())
+        {
+            if((*it)->get_name() == after)
+            {
+                m_landmarks.insert(++it, landmark);
+                return true;
+            }
+        }
+        return false;
+    }
+    return false;
+}

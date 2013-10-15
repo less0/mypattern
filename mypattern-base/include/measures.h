@@ -9,18 +9,25 @@
 
 using namespace std;
 
-class Measures
+namespace MyPattern
 {
-    public:
-        Measures();
-        virtual ~Measures();
+    namespace Base
+    {
+        class Measures
+        {
+            public:
+                Measures();
+                virtual ~Measures();
 
-        shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment);
-        list<shared_ptr<MeasureValue>> get_measure_values();
+                shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment);
+                list<shared_ptr<MeasureValue>> get_measure_values();
 
-    protected:
-    private:
-        list<shared_ptr<MeasureValue>> m_measureValues;
-};
+            protected:
+            private:
+                list<shared_ptr<MeasureValue>> m_measureValues;
+        };
+    }
+}
+
 
 #endif // MEASURES_H

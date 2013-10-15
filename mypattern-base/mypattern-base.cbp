@@ -124,8 +124,6 @@
 		<Unit filename="include/units.h" />
 		<Unit filename="include/user.h" />
 		<Unit filename="include/valuerangetype.h" />
-		<Unit filename="include/xmlnode.h" />
-		<Unit filename="include/xmlparameter.h" />
 		<Unit filename="src/bezier.cpp" />
 		<Unit filename="src/beziercomplex.cpp" />
 		<Unit filename="src/bezierdefinition.cpp" />
@@ -148,8 +146,6 @@
 		<Unit filename="src/point.cpp" />
 		<Unit filename="src/size.cpp" />
 		<Unit filename="src/user.cpp" />
-		<Unit filename="src/xmlnode.cpp" />
-		<Unit filename="src/xmlparameter.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

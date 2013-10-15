@@ -3,18 +3,25 @@
 
 #include "part.h"
 
-class Pattern
+namespace MyPattern
 {
-    public:
-        Pattern();
+    namespace Base
+    {
+        class Pattern
+        {
+            public:
+                Pattern();
 
-        void set_name(Glib::ustring name);
-        Glib::ustring get_name();
+                void set_name(Glib::ustring name);
+                Glib::ustring get_name();
 
-        list<Part> get_parts();
-        void add_part(Part part);
-    protected:
-    private:
-};
+                list<Part> get_parts();
+                void add_part(Part part);
+            protected:
+            private:
+        };
+    }
+}
+
 
 #endif // PATTERN_H

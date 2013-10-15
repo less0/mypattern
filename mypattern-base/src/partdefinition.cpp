@@ -190,42 +190,42 @@ bool PartDefinition::set_name(Glib::ustring name)
     return false;
 }
 
-Glib::ustring PartDefinition::get_xml()
-{
-    stringstream result;
-    result << "<part name=\"" << this->get_name() << "\">" << endl;
+//Glib::ustring PartDefinition::get_xml()
+//{
+//    stringstream result;
+//    result << "<part name=\"" << this->get_name() << "\">" << endl;
+//
+//    list<shared_ptr<Landmark>>::iterator it_landmarks = this->m_landmarks.begin();
+//
+//    while(it_landmarks != this->m_landmarks.end())
+//    {
+//        result << (*it_landmarks)->get_xml();
+//
+//        it_landmarks++;
+//    }
+//
+//    list<shared_ptr<CurveDefinition>>::iterator it_curves = this->m_curve_definitions.begin();
+//
+//    while(it_curves != this->m_curve_definitions.end())
+//    {
+//        result << (*it_curves)->get_xml();
+//
+//        it_curves++;
+//    }
+//
+//    result << "</part>" << endl;
+//
+//    return result.str();
+//}
 
-    list<shared_ptr<Landmark>>::iterator it_landmarks = this->m_landmarks.begin();
-
-    while(it_landmarks != this->m_landmarks.end())
-    {
-        result << (*it_landmarks)->get_xml();
-
-        it_landmarks++;
-    }
-
-    list<shared_ptr<CurveDefinition>>::iterator it_curves = this->m_curve_definitions.begin();
-
-    while(it_curves != this->m_curve_definitions.end())
-    {
-        result << (*it_curves)->get_xml();
-
-        it_curves++;
-    }
-
-    result << "</part>" << endl;
-
-    return result.str();
-}
-
-shared_ptr<PartDefinition> PartDefinition::get_from_xml(Glib::ustring xml)
-{
-    shared_ptr<PartDefinition> part_definition(new PartDefinition());
-
-
-
-    return part_definition;
-}
+//shared_ptr<PartDefinition> PartDefinition::get_from_xml(Glib::ustring xml)
+//{
+//    shared_ptr<PartDefinition> part_definition(new PartDefinition());
+//
+//
+//
+//    return part_definition;
+//}
 
 sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
 {

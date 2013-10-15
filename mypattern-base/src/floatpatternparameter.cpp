@@ -45,12 +45,6 @@ FloatPatternParameter::~FloatPatternParameter()
     //dtor
 }
 
-Glib::ustring FloatPatternParameter::get_xml()
-{
-    //! \todo Implement XML output
-    return "";
-}
-
 void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
 {
     size_t spaceIndex = 0;

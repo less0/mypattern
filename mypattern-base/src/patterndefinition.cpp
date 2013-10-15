@@ -38,65 +38,65 @@ Pattern PatternDefinition::get_pattern(Measures measures, list<PatternParameterV
     return pattern;
 }
 
-shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename)
-{
-    shared_ptr<PatternDefinition> pattern_definition(new PatternDefinition());
-    std::ifstream input_stream;
+//shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename)
+//{
+//    shared_ptr<PatternDefinition> pattern_definition(new PatternDefinition());
+//    std::ifstream input_stream;
+//
+//    input_stream.open(filename);
+//
+//    if(!input_stream.is_open())
+//    {
+//        ///\todo change to exception model instead of just returning NULL
+//        return shared_ptr<PatternDefinition>((PatternDefinition*)NULL);
+//    }
+//
+//    ///\todo Read XML here and then parse it
+//
+//    input_stream.close();
+//
+//    return pattern_definition;
+//}
 
-    input_stream.open(filename);
-
-    if(!input_stream.is_open())
-    {
-        ///\todo change to exception model instead of just returning NULL
-        return shared_ptr<PatternDefinition>((PatternDefinition*)NULL);
-    }
-
-    ///\todo Read XML here and then parse it
-
-    input_stream.close();
-
-    return pattern_definition;
-}
-
-bool PatternDefinition::write_xml(Glib::ustring filename)
-{
-    std::ofstream output_stream;
-    list<shared_ptr<PatternParameter>>::iterator it_parameters;
-    list<shared_ptr<PartDefinition>>::iterator it_parts;
-
-    output_stream.open(filename);
-
-    if(!output_stream.is_open())
-    {
-        return false;
-    }
-
-    output_stream << "<pattern name=\"" << this->m_name << "\">" << endl;
-
-    it_parameters = this->m_pattern_parameters.begin();
-
-    while(it_parameters != this->m_pattern_parameters.end())
-    {
-        output_stream << (**it_parameters).get_xml();
-
-        it_parameters++;
-    }
-
-    it_parts = this->m_part_definitions.begin();
-
-    while(it_parts != this->m_part_definitions.end())
-    {
-        output_stream << (**it_parts).get_xml();
-
-        it_parts++;
-    }
-
-    output_stream << "</pattern>";
-
-    output_stream.close();
-
-    return true;
-}
+//bool PatternDefinition::write_xml(Glib::ustring filename)
+//{
+//    std::ofstream output_stream;
+//    list<shared_ptr<PatternParameter>>::iterator it_parameters;
+//    list<shared_ptr<PartDefinition>>::iterator it_parts;
+//
+//    output_stream.open(filename);
+//
+//    if(!output_stream.is_open())
+//    {
+//        return false;
+//    }
+//
+//    output_stream << "<pattern name=\"" << this->m_name << "\">" << endl;
+//
+//    it_parameters = this->m_pattern_parameters.begin();
+//
+//    while(it_parameters != this->m_pattern_parameters.end())
+//    {
+//        output_stream << (**it_parameters).get_xml();
+//
+//        it_parameters++;
+//    }
+//
+//    it_parts = this->m_part_definitions.begin();
+//
+//    while(it_parts != this->m_part_definitions.end())
+//    {
+//        output_stream << (**it_parts).get_xml();
+//
+//        it_parts++;
+//    }
+//
+//    output_stream << "</pattern>";
+//
+//    output_stream.close();
+//
+//    return true;
+//}
 
 shared_ptr<PartDefinition> PatternDefinition::create_part_definition(Glib::ustring name)
 {

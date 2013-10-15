@@ -3,5 +3,9 @@
 	<Workspace title="Workspace">
 		<Project filename="mypattern-base/mypattern-base.cbp" />
 		<Project filename="mypattern-base-test/mypattern-base-test.cbp" />
+		<Project filename="mypattern-data/mypattern-data.cbp">
+			<Depends filename="mypattern-base/mypattern-base.cbp" />
+		</Project>
+		<Project filename="../../test/test.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

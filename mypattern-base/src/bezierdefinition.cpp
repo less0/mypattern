@@ -41,21 +41,30 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
 
     beziers.push_back(Bezier(a_points));
 
-    ///\todo check how the object casts work and then cast this to CurveDefinition to get the name
     BezierComplex bezier_complex(beziers, dynamic_cast<CurveDefinition*>(this)->get_name());
 
     return bezier_complex;
 }
 
-ustring BezierDefinition::get_xml()
-{
-    std::stringstream out_stream;
-
-    stringstream << "<curve type=\"bezier\" name=\"" << get_name() << "\">\r\n";
-
-    ///\todo Implement
-
-    stringstream << "</curve>";
-
-    return "";
-}
+//shared_ptr<XmlNode> BezierDefinition::get_xml()
+//{
+//
+//    shared_ptr<XmlNode> output(new XmlNode());
+//
+//    output->set_name("curve");
+//    output->add_parameter(XmlParameter("type", "bezier"));
+//    output->add_parameter(XmlParameter("name", this->get_name()));
+//
+//
+////    std::stringstream out_stream;
+////
+////    stringstream << "<curve type=\"bezier\" name=\"" << get_name() << "\">\r\n";
+////
+////    ///\todo Implement
+////
+////    stringstream << "</curve>";
+////
+////    return "";
+//
+//    return output;
+//}
