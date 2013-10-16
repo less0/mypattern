@@ -7,18 +7,144 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\mypattern-cad" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Debug" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/mypattern-cad" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-mwindows" />
+					<Add directory="$(GTK_BASEPATH)/include" />
+					<Add directory="$(GTK_BASEPATH)/include/libglademm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/cairo" />
+					<Add directory="$(GTK_BASEPATH)/include/libglade-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/gtk-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/glib-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/pango-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/atk-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/libxml2" />
+					<Add directory="$(GTK_BASEPATH)/include/gtkmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/gdkmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/atkmm-1.6" />
+					<Add directory="$(GTK_BASEPATH)/include/sigc++-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/giomm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/cairomm-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/pangomm-1.4" />
+					<Add directory="$(GTK_BASEPATH)/include/freetype2" />
+					<Add directory="$(GTK_BASEPATH)/lib/glib-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtk-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/libglademm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gdkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include " />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/pangomm-1.4/include" />
+					<Add directory="C:/Users/Paul/Programmieren/GTK+/GTK/lib/sigc++-2.0/include" />
+					<Add directory="../mypattern-base/include" />
+					<Add directory="include" />
+					<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
 				</Compiler>
+				<Linker>
+					<Add library="gtk-win32-2.0" />
+					<Add library="gdk-win32-2.0" />
+				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\mypattern-cad" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/mypattern-cad" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-mwindows" />
+					<Add directory="$(GTK_BASEPATH)/include" />
+					<Add directory="$(GTK_BASEPATH)/include/libglademm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/cairo" />
+					<Add directory="$(GTK_BASEPATH)/include/libglade-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/gtk-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/glib-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/pango-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/atk-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/libxml2" />
+					<Add directory="$(GTK_BASEPATH)/include/gtkmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/gdkmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/atkmm-1.6" />
+					<Add directory="$(GTK_BASEPATH)/include/sigc++-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/giomm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/cairomm-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/pangomm-1.4" />
+					<Add directory="$(GTK_BASEPATH)/include/freetype2" />
+					<Add directory="$(GTK_BASEPATH)/lib/glib-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtk-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/libglademm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gdkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include " />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/pangomm-1.4/include" />
+					<Add directory="C:/Users/Paul/Programmieren/GTK+/GTK/lib/sigc++-2.0/include" />
+					<Add directory="../mypattern-base/include" />
+					<Add directory="include" />
+					<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="gdk-win32-2.0" />
+				</Linker>
+			</Target>
+			<Target title="Debug Linux">
+				<Option output="bin/Debug/mypattern-cad" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="/usr/include" />
+					<Add directory="/usr/include/libglademm-2.4" />
+					<Add directory="/usr/include/cairo" />
+					<Add directory="$(GTK_BASEPATH)/include/libglade-2.0" />
+					<Add directory="/usr/include/gtk-2.0" />
+					<Add directory="/usr/include/glib-2.0" />
+					<Add directory="/usr/include/pango-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/atk-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/libxml2" />
+					<Add directory="/usr/include/gtkmm-2.4" />
+					<Add directory="/usr/include/glibmm-2.4" />
+					<Add directory="/usr/include/gdkmm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/atkmm-1.6" />
+					<Add directory="/usr/include/sigc++-2.0" />
+					<Add directory="$(GTK_BASEPATH)/include/giomm-2.4" />
+					<Add directory="$(GTK_BASEPATH)/include/cairomm-1.0" />
+					<Add directory="$(GTK_BASEPATH)/include/pangomm-1.4" />
+					<Add directory="$(GTK_BASEPATH)/include/freetype2" />
+					<Add directory="$(GTK_BASEPATH)/lib/glib-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtk-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/libglademm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gtkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/gdkmm-2.4/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include " />
+					<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
+					<Add directory="$(GTK_BASEPATH)/lib/pangomm-1.4/include" />
+					<Add directory="C:/Users/Paul/Programmieren/GTK+/GTK/lib/sigc++-2.0/include" />
+					<Add directory="../mypattern-base/include" />
+					<Add directory="include" />
+					<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include/" />
+				</Compiler>
+				<Linker>
+					<Add directory="/usr/lib/" />
+				</Linker>
+			</Target>
+			<Target title="Release Linux">
+				<Option output="bin/Release/mypattern-cad" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,40 +157,39 @@
 		</Build>
 		<Compiler>
 			<Add option="-pedantic-errors" />
-			<Add option="-Wall" />
 			<Add option="-std=c++11" />
-			<Add option="-mwindows" />
-			<Add directory="$(GTK_BASEPATH)\include" />
-			<Add directory="$(GTK_BASEPATH)\include\libglademm-2.4" />
-			<Add directory="$(GTK_BASEPATH)\include\cairo" />
-			<Add directory="$(GTK_BASEPATH)\include\libglade-2.0" />
-			<Add directory="$(GTK_BASEPATH)\include\gtk-2.0" />
-			<Add directory="$(GTK_BASEPATH)\include\glib-2.0" />
-			<Add directory="$(GTK_BASEPATH)\include\pango-1.0" />
-			<Add directory="$(GTK_BASEPATH)\include\atk-1.0" />
-			<Add directory="$(GTK_BASEPATH)\include\libxml2" />
-			<Add directory="$(GTK_BASEPATH)\include\gtkmm-2.4" />
-			<Add directory="$(GTK_BASEPATH)\include\glibmm-2.4" />
-			<Add directory="$(GTK_BASEPATH)\include\gdkmm-2.4" />
-			<Add directory="$(GTK_BASEPATH)\include\atkmm-1.6" />
-			<Add directory="$(GTK_BASEPATH)\include\sigc++-2.0" />
-			<Add directory="$(GTK_BASEPATH)\include\giomm-2.4" />
-			<Add directory="$(GTK_BASEPATH)\include\cairomm-1.0" />
-			<Add directory="$(GTK_BASEPATH)\include\pangomm-1.4" />
-			<Add directory="$(GTK_BASEPATH)\include\freetype2" />
-			<Add directory="$(GTK_BASEPATH)\lib\glib-2.0\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\gtk-2.0\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\libglademm-2.4\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\gtkmm-2.4\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\glibmm-2.4\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\gdkmm-2.4\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\sigc++-2.0\include " />
-			<Add directory="$(GTK_BASEPATH)\lib\sigc++-2.0\include" />
-			<Add directory="$(GTK_BASEPATH)\lib\pangomm-1.4\include" />
-			<Add directory="C:\Users\Paul\Programmieren\GTK+\GTK\lib\sigc++-2.0\include" />
-			<Add directory="..\mypattern-base\include" />
+			<Add option="-Wall" />
+			<Add directory="$(GTK_BASEPATH)/include" />
+			<Add directory="$(GTK_BASEPATH)/include/libglademm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/include/cairo" />
+			<Add directory="$(GTK_BASEPATH)/include/libglade-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include/gtk-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include/glib-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include/pango-1.0" />
+			<Add directory="$(GTK_BASEPATH)/include/atk-1.0" />
+			<Add directory="$(GTK_BASEPATH)/include/libxml2" />
+			<Add directory="$(GTK_BASEPATH)/include/gtkmm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/include/gdkmm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/include/atkmm-1.6" />
+			<Add directory="$(GTK_BASEPATH)/include/sigc++-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include/giomm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/include/cairomm-1.0" />
+			<Add directory="$(GTK_BASEPATH)/include/pangomm-1.4" />
+			<Add directory="$(GTK_BASEPATH)/include/freetype2" />
+			<Add directory="$(GTK_BASEPATH)/lib/glib-2.0/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/gtk-2.0/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/libglademm-2.4/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/gtkmm-2.4/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/gdkmm-2.4/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include " />
+			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/pangomm-1.4/include" />
+			<Add directory="C:/Users/Paul/Programmieren/GTK+/GTK/lib/sigc++-2.0/include" />
+			<Add directory="../mypattern-base/include" />
 			<Add directory="include" />
-			<Add directory="$(GTK_BASEPATH)\include\gdk-pixbuf-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
 		</Compiler>
 		<Linker>
 			<Add library="gtk-win32-2.0" />
@@ -91,18 +216,18 @@
 			<Add library="z" />
 			<Add library="ws2_32" />
 			<Add library="mypattern-base" />
-			<Add directory="$(GTK_BASEPATH)\lib" />
-			<Add directory="..\mypattern-base" />
+			<Add directory="$(GTK_BASEPATH)/lib" />
+			<Add directory="../mypattern-base" />
 		</Linker>
 		<ExtraCommands>
 			<Add after='cmd /c copy &quot;$(PROJECT_DIR)..\..\GUI\mypattern.glade&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)&quot;' />
 			<Mode after="always" />
 		</ExtraCommands>
-		<Unit filename="include\cadmainwindow.h" />
-		<Unit filename="include\program.h" />
+		<Unit filename="include/cadmainwindow.h" />
+		<Unit filename="include/program.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src\cadmainwindow.cpp" />
-		<Unit filename="src\program.cpp" />
+		<Unit filename="src/cadmainwindow.cpp" />
+		<Unit filename="src/program.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
