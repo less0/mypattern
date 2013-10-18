@@ -18,6 +18,7 @@ namespace MyPattern
                 void set_paper_settings(const PaperSettings&);
             protected:
             private:
+                PaperSettings m_paperSettings;
         };
     }
 }

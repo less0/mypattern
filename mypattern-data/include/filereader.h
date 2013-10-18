@@ -16,7 +16,7 @@ namespace MyPattern
         {
             public:
 //                virtual FileReader(Glib::ustring fileName);
-                virtual shared_ptr<PatternDefinition> read_pattern() = 0;
+                virtual shared_ptr<MyPattern::Base::PatternDefinition> read_pattern() = 0;
                 virtual void set_filename(Glib::ustring filename) = 0;
                 virtual Glib::ustring get_filename();
             protected:

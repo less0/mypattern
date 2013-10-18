@@ -5,6 +5,8 @@
 #include <iostream>
 #include <fstream>
 
+using namespace MyPattern::Base;
+
 PatternDefinition::PatternDefinition()
 {
     this->m_name = "";

@@ -1,4 +1,7 @@
 #include "floatpatternparameter.h"
+#include "glibmm/regex.h"
+
+using namespace MyPattern::Base;
 
 FloatPatternParameter::FloatPatternParameter(Glib::ustring name)
 {
@@ -49,9 +52,30 @@ void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
 {
     size_t spaceIndex = 0;
 
+    //prepare REGEX expressions
+    Glib::ustring regexFloat = "[\\+\\-]{0,1}[0-9]{1,}(\\.[0-9]{1,}){0,1}([eE][\\+\\-]{0,1}[0-9]{1,}){0,1}";
+    Glib::ustring regexUpperLimit = Glib::ustring("^\\<")
+        .append(regexFloat)
+        .append("$");
+    Glib::ustring regexLowerLimit = Glib::ustring("^\\>")
+        .append(regexFloat)
+        .append("$");
+    Glib::ustring regexInterval = Glib::ustring("^")
+        .append(regexFloat)
+        .append("\\-")
+        .append(regexFloat)
+        .append("$");
+    Glib::ustring regexDiscrete = Glib::ustring("^(")
+        .append(regexFloat)
+        .append("\\,){0,}(")
+        .append(regexFloat)
+        .append(")");
+
     Glib::ustring substring = "";
     m_valueRange = list<float>();
 
+    ///\todo this is not a high performance function, thus the code parsing the
+    /// values may be moved to a separate function
     while(spaceIndex >= 0)
     {
         size_t oldIndex = spaceIndex;
@@ -84,78 +108,12 @@ void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
             substring = valueRange.substr(start, n);
         }
 
-        //parse substring
-        bool parseError         = false;
-        float parsedValue       = 0.0f;
-        float decimalDecade     = 1;
-        int exponent            = 0;
-        bool negative           = false;
-        bool comma              = false;
-        bool parseExponent      = false;
-        bool exponentNegative   = false;
+        float value;
 
-        size_t parseIndex       = 0;
-
-        if(substring[parseIndex] == '-')
+        if(try_parse_value(substring, &value))
         {
-            negative = true;
-            parseIndex++;
+            m_valueRange.push_back(value);
         }
-
-        while(parseIndex < substring.length())
-        {
-            if(((int)substring[parseIndex] - 48) >= 0 && ((int)substring[parseIndex] - 48) <= 9)
-            {
-                int digit = (int)substring[parseIndex]-48;
-
-                if(parseExponent)
-                    exponent = exponent * 10 + digit;
-                else if(comma)
-                {
-                    parsedValue = parsedValue + ((float)digit)/decimalDecade;
-                    decimalDecade++;
-                }
-                else
-                {
-                    parsedValue *= 10.0;
-                    parsedValue += (float)digit;
-                }
-            }
-
-            if(substring[parseIndex] == 'E' || substring[parseIndex] == 'e')
-            {
-                //there's been an 'E' or 'e' already
-                if(parseExponent)
-                {
-                    parseError = true;
-                    break;
-                }
-
-                if(parseIndex < (substring.length()-1))
-                {
-                    if(substring[parseIndex+1] == '-')
-                    {
-                        exponentNegative = true;
-                        parseIndex++;
-                    }
-                    else if(substring[parseIndex + 1] == '+')
-                    {
-                        exponentNegative = false;
-                        parseIndex++;
-                    }
-                }
-
-
-                parseExponent = true;
-            }
-
-        }
-
-        parsedValue = (negative ? -1.0f : 1.0f) * parsedValue * pow(10.0, (float)exponent * (exponentNegative ? -1.0f : 1.0f));
-
-        //add to list
-        if(!parseError)
-            m_valueRange.push_back(parsedValue);
     }
 
     //guess ValueRangeType
@@ -173,4 +131,83 @@ void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
     default:
         m_rangeType = VALUERANGETYPE_DISCRETE;
     }
+}
+
+bool FloatPatternParameter::try_parse_value(Glib::ustring s, float* o)
+{
+    bool parseError         = false;
+    float parsedValue       = 0.0f;
+    float decimalDecade     = 1;
+    int exponent            = 0;
+    bool negative           = false;
+    bool comma              = false;
+    bool parseExponent      = false;
+    bool exponentNegative   = false;
+
+    size_t parseIndex       = 0;
+
+    if(s[parseIndex] == '-')
+    {
+        negative = true;
+        parseIndex++;
+    }
+
+    while(parseIndex < s.length())
+    {
+        if(((int)s[parseIndex] - 48) >= 0 && ((int)s[parseIndex] - 48) <= 9)
+        {
+            int digit = (int)s[parseIndex]-48;
+
+            if(parseExponent)
+                exponent = exponent * 10 + digit;
+            else if(comma)
+            {
+                parsedValue = parsedValue + ((float)digit)/decimalDecade;
+                decimalDecade++;
+            }
+            else
+            {
+                parsedValue *= 10.0;
+                parsedValue += (float)digit;
+            }
+        }
+
+        if(s[parseIndex] == 'E' || s[parseIndex] == 'e')
+        {
+            //there's been an 'E' or 'e' already
+            if(parseExponent)
+            {
+                parseError = true;
+                break;
+            }
+
+            if(parseIndex < (s.length()-1))
+            {
+                if(s[parseIndex+1] == '-')
+                {
+                    exponentNegative = true;
+                    parseIndex++;
+                }
+                else if(s[parseIndex + 1] == '+')
+                {
+                    exponentNegative = false;
+                    parseIndex++;
+                }
+            }
+
+
+            parseExponent = true;
+        }
+    }
+
+    if(parseError)
+    {
+        *o = .0;
+        return false;
+    }
+
+    parsedValue = (negative ? -1.0f : 1.0f) * parsedValue * pow(10.0, (float)exponent * (exponentNegative ? -1.0f : 1.0f));
+
+    *o = parsedValue;
+    return true;
 }

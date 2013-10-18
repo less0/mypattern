@@ -1,5 +1,7 @@
 #include "part.h"
 
+using namespace MyPattern::Base;
+
 Part::Part(Glib::ustring name, list<Point> points, list<BezierComplex> curves)
 {
     //ctor

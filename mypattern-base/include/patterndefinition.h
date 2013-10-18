@@ -49,6 +49,7 @@ namespace MyPattern
                 * if the creation failed
                 */
                 shared_ptr<PartDefinition> create_part_definition(Glib::ustring name);
+
                 /*! \brief Adds an existing PartDefinition object to the current
                 * PatternDefinition
                 *
@@ -58,6 +59,7 @@ namespace MyPattern
                 * defintion, true otherwise
                 */
                 bool add_part_definition(shared_ptr<PartDefinition> part);
+
                 /*! \brief Gets a PartDefinition object by name
                 *
                 * \param name Name of the part definition
@@ -65,6 +67,7 @@ namespace MyPattern
                 * with the given name exists, NULL otherwise
                 */
                 shared_ptr<PartDefinition> get_part_definition(Glib::ustring name);
+
                 /*! \brief Gets a PartDefinition object by index
                 *
                 * Gets a PartDefinition based on a zero-based index, which will usually
@@ -75,14 +78,17 @@ namespace MyPattern
                 * exists, NULL otherwise
                 */
                 shared_ptr<PartDefinition> get_part_definition(unsigned long index);
+
                 /*! \brief Returns a list of all PartDefintion objects in the current
                 * PatternDefinition object
                 */
                 std::list<shared_ptr<PartDefinition>> get_part_definitions();
+
                 /*! \brief Returns a list of all PartDefinition names in the current
                 * PatternDefinition object
                 */
                 std::list<Glib::ustring> get_part_defintion_names();
+
                 /*! Removes a PartDefinition from the current PatternDefinition
                 *
                 * Removes a PartDefinition object from a PatternDefinition, based on the
@@ -126,12 +132,14 @@ namespace MyPattern
 
                 /*! \brief Returns the author of the current PatternDefintion */
                 shared_ptr<User> get_author();
+
                 /*! \brief Gets the version of the PatternDefinition object
                 *
                 * This function returns the version of the current pattern definition.
                 * \return Pattern definition version
                 */
                 int get_version();
+
                 /*! \brief Sets the version of the current PatternDefinition
                 *
                 * This function changes the version of the current pattern definition.
@@ -142,6 +150,7 @@ namespace MyPattern
                 * \param version Main version number of the pattern definition
                 */
                 void set_version(int version);
+
                 /*! \brief Gets the revision number of the current PatternDefinition
                 *
                 * This function returns the revision number of the current pattern
@@ -149,6 +158,7 @@ namespace MyPattern
                 * existing UID is uploaded.
                 */
                 int get_revision();
+
                 /*! \brief Sets the revision number of the current PatternDefinition
                 *
                 * This function sets the revision number of the current pattern
@@ -157,14 +167,18 @@ namespace MyPattern
                 * \param revision Revision number
                 */
                 void set_revision(int revision);
+
                 /*! \brief Gets the license text for the current PatternDefinition
                 */
                 Glib::ustring get_license();
+
                 /*! \brief Sets the license text of the pattern definition */
                 void set_license(Glib::ustring);
+
                 /*! \brief Gets the PatternType of the current PatternDefinition
                 */
                 PatternType get_pattern_type();
+
                 /*! \brief Sets the PatternType
                 *
                 * Sets the type of the pattern. The pattern type has no influence on the
@@ -172,11 +186,13 @@ namespace MyPattern
                 * \param type The type of the pattern definition
                 */
                 void set_pattern_type(PatternType type);
+
                 /*! \brief Gets the name of the pattern definition
                 *
                 * \return The name of a pattern definition.
                 */
                 Glib::ustring get_name();
+
                 /*! \brief Set pattern definition name
                 *
                 * This function sets the name of a pattern definition. This name is to
@@ -185,6 +201,7 @@ namespace MyPattern
                 * \param name The designated name of the pattern
                 */
                 void set_name(Glib::ustring name);
+
                 /*! \brief Gets the UID of the pattern definition
                 *
                 * If a pattern definition is uploaded, the server assigns a unique
@@ -192,6 +209,7 @@ namespace MyPattern
                 * version patterns.
                 */
                 Glib::ustring get_uid();
+
                 /*! \brief Sets the uid of the pattern definition
                 *
                 * If (and only if) a pattern is uploaded, the server assigns an unique
@@ -200,7 +218,6 @@ namespace MyPattern
                 * \param uid UID of the pattern
                 */
                 void set_uid(Glib::ustring uid);
-
 
                 /*! \brief Checks the pattern definition for errors
                 *

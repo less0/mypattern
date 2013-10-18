@@ -3,17 +3,25 @@
 #ifndef PATTERNPARAMETERVALUE_H
 #define PATTERNPARAMETERVALUE_H
 
-class PatternParameterValue
+namespace MyPattern
 {
-    public:
-        PatternParameterValue();
-        virtual ~PatternParameterValue();
+    namespace Base
+    {
+        class PatternParameterValue
+        {
+            public:
+                PatternParameterValue();
+                virtual ~PatternParameterValue();
 
-        void set_parameterName(Glib::ustring name);
-        Glib::ustring get_paramterName();
+                void set_parameterName(Glib::ustring name);
+                Glib::ustring get_paramterName();
 
-    protected:
-    private:
-};
+            protected:
+            private:
+        };
+    }
+}
+
+
 
 #endif // PATTERNPARAMETERVALUE_H

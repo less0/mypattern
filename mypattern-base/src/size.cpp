@@ -1,5 +1,7 @@
 #include "size.h"
 
+using namespace MyPattern::Base;
+
 Size::Size()
 {
     //ctor

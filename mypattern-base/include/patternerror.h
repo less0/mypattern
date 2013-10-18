@@ -5,7 +5,7 @@
 #ifndef PATTERNERROR_H
 #define PATTERNERROR_H
 
-namespace PatternDefinition
+namespace MyPattern
 {
     namespace Base
     {
@@ -29,7 +29,7 @@ namespace PatternDefinition
                 * \param object_type The type of the object causing the problem
                 * \param error_message Message indicating the error
                 */
-                PatternError(Glib::ustring part_name, Glib::ustring object_name, ObjectType object_type, Glib::ustring error_message);
+                PatternError(Glib::ustring part_name, Glib::ustring object_name, MyPattern::Base::ObjectType object_type, Glib::ustring error_message);
                 /*! \brief Initializes a specific PatternError with a proper ErrorCode
                 *
                 * This constructor initializes a new PatternError object with the ErrorCode
@@ -40,7 +40,7 @@ namespace PatternDefinition
                 * \param object_type The type of the object causing the problem
                 * \param error_code ErrorCode indicating the type of the error
                 */
-                PatternError(Glib::ustring part_name, Glib::ustring object_name, ObjectType object_type, ErrorCode error_code);
+                PatternError(Glib::ustring part_name, Glib::ustring object_name, MyPattern::Base::ObjectType object_type, MyPattern::Base::ErrorCode error_code);
                 virtual ~PatternError();
 
                 /*! \brief Gets a string representation of the PatternError
@@ -57,21 +57,21 @@ namespace PatternDefinition
                 Glib::ustring get_object_name();
                 /*! \brief Get the ObjectType of the object causing the error
                 */
-                ObjectType get_object_type();
+                MyPattern::Base::ObjectType get_object_type();
 
                 /*! \brief Gets the message assigned to the error
                 */
                 Glib::ustring get_error_message();
                 /*! \brief Gets the error code assigned to the error
                 */
-                ErrorCode get_error_code();
+                MyPattern::Base::ErrorCode get_error_code();
             protected:
             private:
                 Glib::ustring m_error_message;
                 Glib::ustring m_part_name;
                 Glib::ustring m_object_name;
-                ObjectType m_object_type;
-                ErrorCode m_error_code;
+                MyPattern::Base::ObjectType m_object_type;
+                MyPattern::Base::ErrorCode m_error_code;
         };
     }
 }

@@ -94,3 +94,5 @@ float Bezier::binom(int n, int k)
 
     return binom;
 }
+
+

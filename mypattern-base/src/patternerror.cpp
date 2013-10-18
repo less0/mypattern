@@ -1,5 +1,7 @@
 #include "patternerror.h"
 
+using namespace MyPattern::Base;
+
 PatternError::PatternError(Glib::ustring part_name, Glib::ustring object_name, ObjectType object_type, Glib::ustring message)
 {
     this->m_part_name = part_name;

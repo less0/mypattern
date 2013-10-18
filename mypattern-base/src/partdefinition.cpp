@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+using namespace MyPattern::Base;
+
 
 PartDefinition::PartDefinition()
 {

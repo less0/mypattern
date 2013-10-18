@@ -26,12 +26,12 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
 
         if(it_params != parameters.end())
         {
-            switch(it_params->get_name())
+            if(it_params->get_name() == "name")
             {
-                case "name":
-                    result->set_name(it_params.get_value());
-                    break;
+                result->set_name(it_params->get_value());
             }
+
+
 
             it_params++;
         }
@@ -42,14 +42,17 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
 
         while(it_nodes != subnodes.end())
         {
-            switch((*it_nodes)->get_name())
+            Glib::ustring subnode_name = (*it_nodes)->get_name();
+
+            if(subnode_name == "part")
             {
-                case "part":
-                    get_part((*it_nodes), result);
-                    break;
-                case "user":
-                    break;
+                get_part((*it_nodes), result);
             }
+            else if(subnode_name == "user")
+            {
+            }
+
+
             it_nodes++;
         }
     }
@@ -92,20 +95,20 @@ Glib::ustring XmlFileReader::read_file(Glib::ustring filename)
 
 shared_ptr<PartDefinition> get_part(shared_ptr<XmlNode> node, shared_ptr<PatternDefinition> pattern)
 {
-
+    return shared_ptr<PartDefinition>((PartDefinition*)NULL);
 }
 
 shared_ptr<Landmark> XmlFileReader::get_landmark(shared_ptr<XmlNode> node, shared_ptr<PartDefinition> part)
 {
-
+    return shared_ptr<Landmark>((Landmark*)NULL);
 }
 
 shared_ptr<CurveDefinition> XmlFileReader::get_curve(shared_ptr<XmlNode> node, shared_ptr<PartDefinition> part)
 {
-
+    return shared_ptr<CurveDefinition>((CurveDefinition*)NULL);
 }
 
 shared_ptr<PatternParameter> XmlFileReader::get_parameter(shared_ptr<XmlNode> node, shared_ptr<PatternDefinition> pattern)
 {
-
+    return shared_ptr<PatternParameter>((PatternParameter*)NULL);
 }

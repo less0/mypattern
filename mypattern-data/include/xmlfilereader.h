@@ -7,6 +7,8 @@
 #include <xmlnode.h>
 #include <memory>
 
+using namespace MyPattern::Base;
+
 namespace MyPattern
 {
     namespace Data

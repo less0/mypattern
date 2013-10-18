@@ -3,16 +3,22 @@
 #ifndef USER_H
 #define USER_H
 
-
-class User
+namespace MyPattern
 {
-    public:
-        User();
-        virtual ~User();
-        virtual Glib::ustring get_name() = 0;
+    namespace Base
+    {
+        ///\todo User class may be misplaced in this module
+        class User
+        {
+            public:
+                User();
+                virtual ~User();
+                virtual Glib::ustring get_name() = 0;
 
-    protected:
-    private:
-};
+            protected:
+            private:
+        };
+    }
+}
 
 #endif // USER_H

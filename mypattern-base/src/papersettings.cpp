@@ -1,5 +1,7 @@
 #include "papersettings.h"
 
+using namespace MyPattern::Base;
+
 PaperSettings::PaperSettings()
 {
     //ctor

@@ -4,6 +4,8 @@
 #include "floatpatternparameter.h"
 #include "intpatternparameter.h"
 
+using namespace MyPattern::Base;
+
 PatternParameter::~PatternParameter()
 {
     //dtor

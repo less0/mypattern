@@ -1,5 +1,7 @@
 #include "intpatternparameter.h"
 
+using namespace MyPattern::Base;
+
 //! \todo Implement the functions of IntPatternParameter
 
 IntPatternParameter::IntPatternParameter(Glib::ustring name, std::list<int> valueRange, ValueRangeType valueRangeType)

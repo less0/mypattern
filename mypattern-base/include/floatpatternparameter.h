@@ -32,6 +32,8 @@ namespace MyPattern
             private:
                 list<float> m_valueRange;
                 ValueRangeType m_rangeType;
+
+                bool try_parse_value(Glib::ustring, float*);
         };
     }
 }

@@ -1,5 +1,7 @@
 #include "curvedefinition.h"
 
+using namespace MyPattern::Base;
+
 Glib::ustring CurveDefinition::get_name()
 {
     return m_name;

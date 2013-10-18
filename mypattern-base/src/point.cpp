@@ -1,6 +1,8 @@
 #include "point.h"
 #include <cmath>
 
+using namespace MyPattern::Base;
+
 Point::Point(float x, float y)
 {
     m_x = x;

@@ -27,4 +27,5 @@ bool CADMainWindow::init(const Glib::RefPtr<Gtk::Builder>& builder)
     //connect signals
     item->signal_button_release_event().connect(sigc::mem_fun(this, &CADMainWindow::closeButton_clicked));
 
+    return true;
 }
