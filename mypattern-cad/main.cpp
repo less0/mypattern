@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 {
     int return_value;
 
-    Program prog(argc,argv);
+    MyPattern::CAD::Program prog(argc,argv);
     return_value = prog.run();
 
     return return_value;

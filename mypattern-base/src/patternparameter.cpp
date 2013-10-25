@@ -43,3 +43,12 @@ shared_ptr<PatternParameter> PatternParameter::create_object(Glib::ustring name,
     return createdObject;
 }
 
+Glib::ustring PatternParameter::get_name()
+{
+    return m_name;
+}
+
+void PatternParameter::set_name(Glib::ustring name)
+{
+    m_name = name;
+}

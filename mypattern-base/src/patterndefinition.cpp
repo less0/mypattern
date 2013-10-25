@@ -127,7 +127,10 @@ bool PatternDefinition::add_part_definition(shared_ptr<PartDefinition> part_defi
         it++;
     }
 
-    part_definition->signal_name_change_request().connect(sigc::mem_fun(this, &PatternDefinition::on_name_change_request));
+    //connect part definitions event on name change
+    part_definition->signal_name_change_request().connect(sigc::mem_fun(this,
+        &PatternDefinition::on_name_change_request));
+    this->m_part_definitions.push_back(part_definition);
 
     return true;
 }
@@ -187,6 +190,20 @@ bool PatternDefinition::add_pattern_parameter(shared_ptr<PatternParameter> param
     this->m_pattern_parameters.push_back(parameter);
 
     return true;
+}
+
+list<Glib::ustring> PatternDefinition::get_part_defintion_names()
+{
+    list<Glib::ustring> names;
+    list<shared_ptr<PartDefinition>>::iterator it = this->m_part_definitions.begin();
+
+    while(it != m_part_definitions.end())
+    {
+        names.push_back((*it)->get_name());
+        it++;
+    }
+
+    return names;
 }
 
 list<Glib::ustring> PatternDefinition::get_pattern_parameter_names()
@@ -290,4 +307,20 @@ Glib::ustring PatternDefinition::get_uid()
 void PatternDefinition::set_uid(Glib::ustring uid)
 {
     this->m_uid = uid;
+}
+
+bool PatternDefinition::on_name_change_request(Glib::ustring name)
+{
+    list<shared_ptr<PartDefinition>>::iterator it = m_part_definitions.begin();
+
+    while(it != m_part_definitions.end())
+    {
+        if((*it)->get_name() == name)
+        {
+            return false;
+        }
+        it++;
+    }
+
+    return true;
 }

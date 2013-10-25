@@ -11,6 +11,8 @@ namespace MyPattern
         {
             public:
                 Pattern();
+                //copy ctor
+                Pattern(const Pattern&);
 
                 void set_name(Glib::ustring name);
                 Glib::ustring get_name();
@@ -19,6 +21,8 @@ namespace MyPattern
                 void add_part(Part part);
             protected:
             private:
+                Glib::ustring m_name;
+                list<Part> m_parts;
         };
     }
 }

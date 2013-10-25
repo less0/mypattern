@@ -183,7 +183,19 @@ Glib::ustring PartDefinition::get_name()
 
 bool PartDefinition::set_name(Glib::ustring name)
 {
-    if(this->m_signal_name_change_request.emit(name))
+    int numberOfSlots = 0;
+
+    sigc::signal1<bool,Glib::ustring>::slot_list_type slotList = m_signal_name_change_request.slots();
+    sigc::signal1<bool,Glib::ustring>::slot_list_type::iterator it = slotList.begin();
+
+    while(it != slotList.end())
+    {
+        numberOfSlots++;
+        it++;
+    }
+
+    if(numberOfSlots == 0 ||
+        this->m_signal_name_change_request.emit(name))
     {
         this->m_name = name;
 

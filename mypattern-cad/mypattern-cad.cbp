@@ -155,7 +155,8 @@
 					<Add directory="../mypattern-base" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="cp $(PROJECT_DIR)../GUI/mypattern.glade $(PROJECT_DIR)bin/Debug/" />
+					<Add after="cp $(PROJECT_DIR)../GUI/mypattern.glade $(PROJECT_DIR)bin/Debug/" />
+					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Release Linux">
@@ -225,19 +226,22 @@
 			<Add library="sigc-2.0" />
 			<Add library="libglademm-2.4" />
 			<Add library="z" />
-			<Add library="mypattern-base" />
 			<Add library="cairomm-1.0" />
 			<Add library="cairo" />
 			<Add directory="$(GTK_BASEPATH)/lib" />
 			<Add directory="../mypattern-base" />
 		</Linker>
 		<Unit filename="include/cadmainwindow.h" />
+		<Unit filename="include/patterncolumnrecord.h" />
 		<Unit filename="include/program.h" />
+		<Unit filename="include/selectnamewindow.h" />
 		<Unit filename="include/undocommand.h" />
 		<Unit filename="include/undocommandqueue.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/cadmainwindow.cpp" />
+		<Unit filename="src/patterncolumnrecord.cpp" />
 		<Unit filename="src/program.cpp" />
+		<Unit filename="src/selectnamewindow.cpp" />
 		<Unit filename="src/undocommand.cpp" />
 		<Unit filename="src/undocommandqueue.cpp" />
 		<Extensions>

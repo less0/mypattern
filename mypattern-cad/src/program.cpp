@@ -1,4 +1,7 @@
 #include "program.h"
+#include "patterncolumnrecord.h"
+
+using namespace MyPattern::CAD;
 
 Program::Program(int argc, char* argv[])
 {

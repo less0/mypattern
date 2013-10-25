@@ -1,5 +1,7 @@
 #include "measurevalue.h"
 
+using namespace MyPattern::Base;
+
 MeasureValue::MeasureValue(Glib::ustring name, Glib::ustring description, double value)
 {
     this->m_name = name;

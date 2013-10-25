@@ -93,3 +93,8 @@ void Point::draw(shared_ptr<Cairo::Context> context, bool selected)
 
     context->stroke();
 }
+
+Glib::ustring Point::get_landmark_name()
+{
+    return m_landmark_name;
+}
