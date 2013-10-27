@@ -32,8 +32,6 @@ void CADMainWindow::buttonAddPart_clicked()
         selectNameWindow->set_modal();
         selectNameWindow->init(m_builder);
 
-
-
         m_selectNameWindow = shared_ptr<SelectNameWindow>(selectNameWindow);
 
         m_selectNameWindow->signal_hide().connect(sigc::mem_fun(this, &CADMainWindow::selectNameWindow_addPattern_hide));
