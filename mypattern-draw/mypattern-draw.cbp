@@ -86,7 +86,6 @@
 		<Unit filename="src/drawoptions.cpp" />
 		<Unit filename="src/papersettings.cpp" />
 		<Unit filename="src/patterndrawer.cpp" />
-		<Unit filename="src/size.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
