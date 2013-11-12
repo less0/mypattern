@@ -78,11 +78,13 @@
 			<Add directory="include" />
 			<Add directory="../mypattern-base/include" />
 		</Compiler>
+		<Unit filename="include/cairopatterndrawer.h" />
 		<Unit filename="include/drawoptions.h" />
 		<Unit filename="include/papersettings.h" />
 		<Unit filename="include/patterndrawer.h" />
 		<Unit filename="include/size.h" />
 		<Unit filename="include/units.h" />
+		<Unit filename="src/cairopatterndrawer.cpp" />
 		<Unit filename="src/drawoptions.cpp" />
 		<Unit filename="src/papersettings.cpp" />
 		<Unit filename="src/patterndrawer.cpp" />

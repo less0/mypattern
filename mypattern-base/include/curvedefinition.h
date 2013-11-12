@@ -25,10 +25,16 @@ namespace MyPattern
                 virtual ~CurveDefinition();
 
                 //pure virtual functions
-                //these functions are overwritten in the actual implementtations of curves
+                //these functions are overwritten in the actual implementations of curves
+                /*!\brief Gets the minimum number of Landmarks that are required for the curve */
                 virtual int get_min_landmarks() = 0;
+                /*!\brief Gets the maximum number of Landmarks that are required for the curve */
                 virtual int get_max_landmarks() = 0;
+                /*!\brief Calculates the curve and returns a BezierComplex, which is a complex curve
+                    assembled from single Bézier curves
+                */
                 virtual BezierComplex get_bezier(list<Point>) = 0;
+
 
                 ustring get_name();
                 /*! \brief Sets the name of the CurveDefinition
@@ -88,12 +94,16 @@ namespace MyPattern
                 * change
                 */
                 sigc::signal2<bool,Glib::ustring,ObjectType> signal_name_change_request();
-
+                sigc::signal2<void, shared_ptr<CurveDefinition>, Glib::ustring> signal_name_changed();
+                sigc::signal1<void, shared_ptr<CurveDefinition>> signal_changed();
             protected:
+                sigc::signal2<void, shared_ptr<CurveDefinition>, Glib::ustring> m_signal_name_changed;
+                sigc::signal1<void, shared_ptr<CurveDefinition>> m_signal_changed;
+                list<shared_ptr<Landmark>> m_landmarks;
             private:
                 ustring m_name;
                 sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;
-                list<shared_ptr<Landmark>> m_landmarks;
+
         };
     }
 }

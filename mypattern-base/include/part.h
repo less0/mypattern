@@ -29,25 +29,7 @@ namespace MyPattern
                 Part(const Part&);
                 virtual ~Part();
 
-//                /*! \brief Draws the part in the canvas
-//                */
-//                void draw(shared_ptr<Cairo::Context>);
-//                /*! \brief Draws a single page with respect to the PaperSize in the DrawOption object
-//                *
-//                * \param context Cairo::Context object
-//                * \param options
-//                */
-//                void draw(shared_ptr<Cairo::Context> context,
-//                          shared_ptr<DrawOptions> options,
-//                          array<int,2> page);
 
-//                /*! \brief Gets the number of pages with repsect to a DrawOption object
-//                */
-//                array<int,2> get_pages(shared_ptr<Cairo::Context> context,
-//                                       shared_ptr<DrawOptions> options);
-
-
-//                Size get_size();
                 Glib::ustring get_name();
 
                 void set_name(Glib::ustring);

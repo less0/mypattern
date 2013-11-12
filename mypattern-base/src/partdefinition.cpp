@@ -23,7 +23,12 @@ Part PartDefinition::get_part(Measures measures, list<PatternParameterValue> par
     return Part(this->get_name(), points, curves);
 }
 
-PatternError PartDefinition::evaluate_landmark(Glib::ustring landmark_name, shared_ptr<list<PatternObject>> object_stack, shared_ptr<list<Point>> points, shared_ptr<list<BezierComplex>> curves, Measures measures, list<PatternParameterValue> parameters)
+PatternError PartDefinition::evaluate_landmark(Glib::ustring landmark_name,
+                                               shared_ptr<list<PatternObject>> object_stack,
+                                               shared_ptr<list<Point>> points,
+                                               shared_ptr<list<BezierComplex>> curves,
+                                               Measures measures,
+                                               list<PatternParameterValue> parameters)
 {
     shared_ptr<Landmark> current_landmark = this->get_landmark(landmark_name);
 
@@ -92,7 +97,10 @@ PatternError PartDefinition::evaluate_curve(Glib::ustring curve_name, shared_ptr
 
     object_stack->push_back(PatternObject(PARTTYPE_CURVE, current_curve_definition->get_name()));
 
-    return PatternError(this->get_name(), current_curve_definition->get_name(), PARTTYPE_CURVE, "evaluate_curve is not implemented yet");
+    return PatternError(this->get_name(),
+                        current_curve_definition->get_name(),
+                        PARTTYPE_CURVE,
+                        "evaluate_curve is not implemented yet");
 }
 
 shared_ptr<Landmark> PartDefinition::get_landmark(Glib::ustring name)
@@ -245,3 +253,5 @@ sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
 {
     return this->m_signal_name_change_request;
 }
+
+

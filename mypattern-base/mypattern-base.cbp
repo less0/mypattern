@@ -96,13 +96,13 @@
 			<Add directory="$(GTK_BASEPATH)/lib/cairomm-1.0/include" />
 			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
 		</Compiler>
-		<Unit filename="include/MeasureValue.h" />
 		<Unit filename="include/bezier.h" />
 		<Unit filename="include/beziercomplex.h" />
 		<Unit filename="include/bezierdefinition.h" />
 		<Unit filename="include/constants.h" />
 		<Unit filename="include/curvedefinition.h" />
 		<Unit filename="include/errorcode.h" />
+		<Unit filename="include/evaluationtreenode.h" />
 		<Unit filename="include/floatpatternparameter.h" />
 		<Unit filename="include/intpatternparameter.h" />
 		<Unit filename="include/landmark.h" />
@@ -119,16 +119,13 @@
 		<Unit filename="include/patternparametervalue.h" />
 		<Unit filename="include/patterntype.h" />
 		<Unit filename="include/point.h" />
-		<Unit filename="include/test.h" />
 		<Unit filename="include/user.h" />
 		<Unit filename="include/valuerangetype.h" />
-		<Unit filename="include/xmlnode.h" />
-		<Unit filename="include/xmlparameter.h" />
-		<Unit filename="src/MeasureValue.cpp" />
 		<Unit filename="src/bezier.cpp" />
 		<Unit filename="src/beziercomplex.cpp" />
 		<Unit filename="src/bezierdefinition.cpp" />
 		<Unit filename="src/curvedefinition.cpp" />
+		<Unit filename="src/evaluationtreenode.cpp" />
 		<Unit filename="src/floatpatternparameter.cpp" />
 		<Unit filename="src/intpatternparameter.cpp" />
 		<Unit filename="src/landmark.cpp" />

@@ -12,9 +12,9 @@ namespace MyPattern
         class PatternDrawer
         {
             public:
-                virtual void draw(MyPattern::Base::Pattern) = 0;
-                virtual void draw_page(MyPattern::Base::Pattern, int, int) = 0;
-                virtual MyPattern::Draw::Size get_size(MyPattern::Base::Pattern) = 0;
+                virtual void draw(MyPattern::Base::Part) = 0;
+                virtual void draw_page(MyPattern::Base::Part, int, int) = 0;
+                virtual MyPattern::Draw::Size get_size(MyPattern::Base::Part) = 0;
 
                 void set_paper_settings(const PaperSettings&);
             protected:

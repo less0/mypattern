@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_layout_file>
-	<ActiveProject path="mypattern-draw/mypattern-draw.cbp" />
+	<ActiveProject path="mypattern-base-test/mypattern-base-test.cbp" />
+	<PreferredTarget name="Debug Linux" />
 </CodeBlocks_workspace_layout_file>

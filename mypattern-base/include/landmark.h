@@ -54,16 +54,25 @@ namespace MyPattern
 
                 /*! \brief Gets a list of objects (Landmarks, Curves), Measures, and
                 * PatternParameters the Landmark depends on
+                *
+                * \todo Change template parameter of return value from Glib::ustring to
+                *   PatternObject
                 */
                 list<Glib::ustring> depends_on();
-                /*! \brief
+
+                /*! \brief Calculates and returns the position of the landmark, given a set of
+                *          Measures, Point objects representing the Landmarks this Landmark
+                *          depends on, BezierComplex objects representing CurveDefinitions this
+                *          Landmark depends on and PatternParameterValues of PatternParameters this
+                *          Landmark depends on
                 *
                 * \param measures Object containing body measures
-                * \param points List of points created from the landmarks the current landmark depends on
-                * \param curves List of curves created from curve definitions the current landmark depends
-                * on
+                * \param points List of points created from the landmarks the current landmark
+                *        depends on
+                * \param curves List of curves created from curve definitions the current landmark
+                *        depends on
                 * \param parameterValues List of parameter values the current landmark
-                * depends on
+                *        depends on
                 */
                 Point get_point(Measures measures,
                                 list<Point> points,
@@ -74,22 +83,29 @@ namespace MyPattern
                 Glib::ustring get_name();
                 /*! \brief Sets the name of the Landmark
                 *
-                * This function sets the name of the Landmark. To check if the name is valid, this function
-                * calls ths function that's been passed in the add_request_fct function.
+                * This function sets the name of the Landmark. To check if the name is valid, this
+                * function emits the signal returned by signal_name_change_request
                 * \param name The new name of the Landmark
-                * \return True if the name change was allowed, false if the name change request was denied.
+                * \return True if the name change was allowed, false if the name change request was
+                *         denied.
+                * \see signal_name_change_request
                 */
                 bool set_name(Glib::ustring name);
 
-                /*! \brief Adds a function to request a name change
+                /*! \brief Gets a signal that's emitted to request a name change
                 *
-                * This function takes a function pointer to add to the current Landmark object to request if
-                * a name change is valid. Validity of a name change includes the validity of the form of the
-                * name as well as the uniqueness of the name.
-                * \param request_fct_ptr function pointer to the function to request the name change
+                * \see set_name
                 */
                 sigc::signal2<bool,Glib::ustring,ObjectType> signal_name_change_request();
-            protected:
+
+                /*! \brief Gets the signal that is emitted when the Landmark has changed
+                */
+                sigc::signal1<void, shared_ptr<Landmark>> signal_changed();
+
+                /*! \brief Gets the signal that is emitted when the Landmarks name has changed
+                *
+                */
+                sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> signal_name_changed();
             private:
                 //data
                 Glib::ustring m_name;
@@ -97,11 +113,11 @@ namespace MyPattern
                 Glib::ustring m_y_definition;
 
                 sigc::signal2<bool,Glib::ustring,ObjectType> m_signal_name_change_request;
+                sigc::signal1<void,shared_ptr<Landmark>> m_signal_changed;
+                sigc::signal2<void,shared_ptr<Landmark>, Glib::ustring> m_signal_name_changed;
 
                 //methods
                 bool validate_definition(Glib::ustring definition);
-
-
         };
     }
 }
