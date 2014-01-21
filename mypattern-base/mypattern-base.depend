@@ -1,0 +1,3467 @@
+<<<<<<< .mine
+# depslib dependency file v1.0
+1353702068 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\beziercomplex.cpp
+	"beziercomplex.h"
+	<list>
+
+1369678244 plex.h"
+
+1353057787 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\beziercomplex.h
+	"point.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	"bezier.h"
+	"drawoptions.h"
+
+1369678780 ns.h"
+
+1353700113 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\point.h
+
+1289342402 c:\users\paul\programmieren\gtk+\gtk\include\glibmm-2.4\glibmm\ustring.h
+	<glibmmconfig.h>
+	<glibmm/unicode.h>
+	<glib.h>
+	<iosfwd>
+	<iterator>
+	<sstream>
+	<string>
+	<cstddef>
+
+1289346124 
+
+1289342090 c:\users\paul\programmieren\gtk+\gtk\lib\glibmm-2.4\include\glibmmconfig.h
+
+1289342402 c:\users\paul\programmieren\gtk+\gtk\include\glibmm-2.4\glibmm\unicode.h
+	<glib.h>
+	<cctype>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib.h
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gcache.h>
+	<glib/gchecksum.h>
+	<glib/gcompletion.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdatetime.h>
+	<glib/gdir.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ghash.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/grel.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtimezone.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gwin32.h>
+
+1289346124 32.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\galloca.h
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gtypes.h
+	<glibconfig.h>
+	<glib/gmacros.h>
+
+1289346124 ros.h>
+
+1289342412 c:\users\paul\programmieren\gtk+\gtk\lib\glib-2.0\include\glibconfig.h
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmacros.h
+	<stddef.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\garray.h
+	<glib/gtypes.h>
+
+1289346124 es.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gasyncqueue.h
+	<glib/gthread.h>
+
+1289346124 ead.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gthread.h
+	<glib/gerror.h>
+	<glib/gutils.h>
+	<glib/gatomic.h>
+
+1289346124 mic.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gerror.h
+	<stdarg.h>
+	<glib/gquark.h>
+
+1289346124 rk.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gquark.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gutils.h
+	<glib/gtypes.h>
+	<stdarg.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gatomic.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gbacktrace.h
+	<glib/gtypes.h>
+	<signal.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gbase64.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gbitlock.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gbookmarkfile.h
+	<glib/gerror.h>
+	<time.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gcache.h
+	<glib/glist.h>
+
+1289346124 t.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\glist.h
+	<glib/gmem.h>
+
+1289346124 .h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmem.h
+	<glib/gslice.h>
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gslice.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gchecksum.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gcompletion.h
+	<glib/glist.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gconvert.h
+	<glib/gerror.h>
+
+1289346124 or.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gdataset.h
+	<glib/gquark.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gdate.h
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gdatetime.h
+	<glib/gtimezone.h>
+
+1289346124 ezone.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gtimezone.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gdir.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gfileutils.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\ghash.h
+	<glib/gtypes.h>
+	<glib/glist.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\ghook.h
+	<glib/gmem.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\ghostutils.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\giochannel.h
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+
+1289346124 ing.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmain.h
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gpoll.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gslist.h
+	<glib/gmem.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gstring.h
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gutils.h>
+
+1289346124 ls.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gunicode.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gkeyfile.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmappedfile.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmarkup.h
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1289346124 st.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gmessages.h
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gnode.h
+	<glib/gmem.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\goption.h
+	<glib/gerror.h>
+	<glib/gquark.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gpattern.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gprimes.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gqsort.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gqueue.h
+	<glib/glist.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\grand.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\grel.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gregex.h
+	<glib/gerror.h>
+	<glib/gstring.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gscanner.h
+	<glib/gdataset.h>
+	<glib/ghash.h>
+
+1289346124 h.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gsequence.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gshell.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gspawn.h
+	<glib/gerror.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gstrfuncs.h
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gtestutils.h
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gthreadpool.h
+	<glib/gthread.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gtimer.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gtree.h
+	<glib/gnode.h>
+
+1289346124 e.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gurifuncs.h
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gvarianttype.h
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gvariant.h
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\glib-2.0\glib\gwin32.h
+	<glib/gtypes.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\cairomm.h
+	<cairommconfig.h>
+	<cairomm/context.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontface.h>
+	<cairomm/fontoptions.h>
+	<cairomm/matrix.h>
+	<cairomm/path.h>
+	<cairomm/pattern.h>
+	<cairomm/scaledfont.h>
+	<cairomm/surface.h>
+
+1289345996 urface.h>
+
+1289342090 c:\users\paul\programmieren\gtk+\gtk\lib\cairomm-1.0\include\cairommconfig.h
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\context.h
+	<vector>
+	<utility>
+	<cairomm/surface.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/pattern.h>
+	<cairomm/path.h>
+	<cairomm/scaledfont.h>
+	<cairomm/types.h>
+	<valarray>
+	<vector>
+	<cairo.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\surface.h
+	<string>
+	<vector>
+	<sigc++/slot.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontoptions.h>
+	<cairomm/refptr.h>
+	<cairo-pdf.h>
+	<cairo-ps.h>
+	<cairo-svg.h>
+	<cairo-glitz.h>
+
+1289345996 tz.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\slot.h
+	<sigc++/functors/slot.h>
+
+1289346010 nctors/slot.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\functors\slot.h
+	<sigc++/trackable.h>
+	<sigc++/visit_each.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/slot_base.h>
+
+1289346010 nctors/slot_base.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\trackable.h
+	<list>
+	<sigc++config.h>
+
+1289346010 fig.h>
+
+1289342092 c:\users\paul\programmieren\gtk+\gtk\include\sigc++config.h
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\visit_each.h
+	<sigc++/type_traits.h>
+
+1289346010 pe_traits.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\type_traits.h
+	<sigc++config.h>
+
+1289342408 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\adaptors\adaptor_trait.h
+	<sigc++config.h>
+	<sigc++/visit_each.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/adaptors/deduce_result_type.h>
+
+1289346008 aptors/deduce_result_type.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\functors\functor_trait.h
+	<sigc++/type_traits.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\functors\ptr_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+
+1289346010 nctors/functor_trait.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\functors\mem_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/limit_reference.h>
+
+1289346010 mit_reference.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\limit_reference.h
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+
+1289346010 ackable.h>
+
+1289342408 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\adaptors\deduce_result_type.h
+	<sigc++/functors/functor_trait.h>
+
+1289342410 c:\users\paul\programmieren\gtk+\gtk\include\sigc++-2.0\sigc++\functors\slot_base.h
+	<sigc++config.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/functor_trait.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\enums.h
+	<cairo.h>
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo.h
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+
+1289346122 recated.h"
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-version.h
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-features.h
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-deprecated.h
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\exception.h
+	<cairomm/enums.h>
+	<stdexcept>
+
+1289345996 >
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\fontoptions.h
+	<cairomm/enums.h>
+	<string>
+	<cairo-ft.h>
+
+1289345996 h>
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-ft.h
+	"cairo.h"
+	<ft2build.h>
+	<fontconfig/fontconfig.h>
+
+1289346122 g/fontconfig.h>
+
+1289342524 c:\users\paul\programmieren\gtk+\gtk\include\ft2build.h
+	<freetype/config/ftheader.h>
+
+1289346124 config/ftheader.h>
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\freetype2\freetype\config\ftheader.h
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\fontconfig\fontconfig.h
+	<sys/types.h>
+	<sys/stat.h>
+	<stdarg.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\refptr.h
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-pdf.h
+	"cairo.h"
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-ps.h
+	"cairo.h"
+	<stdio.h>
+
+1289342522 c:\users\paul\programmieren\gtk+\gtk\include\cairo\cairo-svg.h
+	"cairo.h"
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\fontface.h
+	<string>
+	<vector>
+	<cairomm/enums.h>
+	<cairomm/types.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairo-ft.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\types.h
+	<cairo.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\matrix.h
+	<cairo.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\pattern.h
+	<cairomm/surface.h>
+	<cairomm/enums.h>
+	<cairo.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\path.h
+	<cairomm/enums.h>
+	<string>
+	<cairo.h>
+
+1289342396 c:\users\paul\programmieren\gtk+\gtk\include\cairomm-1.0\cairomm\scaledfont.h
+	<cairomm/refptr.h>
+	<cairomm/fontoptions.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/types.h>
+	<vector>
+	<cairo-ft.h>
+
+1354259989 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\bezier.h
+	"cairomm/context.h"
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+
+1349281457 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\drawoptions.h
+	"papersettings.h"
+	"patternobject.h"
+
+1352447388 ject.h"
+
+1349281909 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\papersettings.h
+	"units.h"
+
+1349281736 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\units.h
+
+1351099855 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternobject.h
+	"objecttype.h"
+	"Glibmm\ustring.h"
+
+1369558265 tring.h"
+
+1349281548 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\objecttype.h
+
+1348073721 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\bezierdefinition.cpp
+	"bezierdefinition.h"
+
+1369114686 inition.h"
+
+1353704535 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\bezierdefinition.h
+	<curvedefinition.h>
+	<list>
+	"glibmm\ustring.h"
+
+1353704492 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\curvedefinition.h
+	"landmark.h"
+	"beziercomplex.h"
+	"glibmm/ustring.h"
+	<list>
+
+1347910134 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\landmark.h
+	"point.h"
+	"measures.h"
+	"beziercomplex.h"
+	"patternparametervalue.h"
+	<list>
+	"glibmm/ustring.h"
+	"objecttype.h"
+
+1369199848 e.h"
+
+1345021901 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\measures.h
+
+1345064050 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternparametervalue.h
+	"glibmm\ustring.h"
+
+1353704323 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\curvedefinition.cpp
+	"curvedefinition.h"
+
+1369508349 nition.h"
+
+1345022214 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\drawoptions.cpp
+	"drawoptions.h"
+
+1346330677 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\floatpatternparameter.cpp
+	"floatpatternparameter.h"
+
+1346327076 ernparameter.h"
+
+1346329255 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\floatpatternparameter.h
+	"valuerangetype.h"
+	"glibmm/ustring.h"
+	"valuerangetype.h"
+	<patternparameter.h>
+	<list>
+	"math.h"
+
+1345109610 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\valuerangetype.h
+
+1346269902 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternparameter.h
+	"glibmm/ustring.h"
+
+1346274300 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\intpatternparameter.cpp
+	"intpatternparameter.h"
+
+1351096494 nparameter.h"
+
+1346272909 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\intpatternparameter.h
+	"glibmm/ustring.h"
+	<list>
+	<patternparameter.h>
+	<valuerangetype.h>
+
+1346269308 etype.h>
+
+1345022077 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\landmark.cpp
+	"landmark.h"
+
+1369559154 h"
+
+1345021901 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\measures.cpp
+	"measures.h"
+
+1345022252 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\papersettings.cpp
+	"papersettings.h"
+
+1345018652 ings.h"
+
+1352447313 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\part.cpp
+	"part.h"
+
+1352447339 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\part.h
+	<list>
+	"Glibmm\ustring.h"
+	"cairomm\cairomm.h"
+	"point.h"
+	"beziercomplex.h"
+	"size.h"
+
+1352447135 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\size.h
+
+1345022053 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\partdefinition.cpp
+	"partdefinition.h"
+
+1369560014 ition.h"
+
+1353700483 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\partdefinition.h
+	"part.h"
+	"measures.h"
+	"patternparametervalue.h"
+	"landmark.h"
+	"curvedefinition.h"
+	"glibmm\ustring.h"
+
+1345022142 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\pattern.cpp
+	"pattern.h"
+
+1345018542 "
+
+1345022142 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\pattern.h
+
+1345021778 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patterndefinition.cpp
+	"patterndefinition.h"
+
+1345018178 finition.h"
+
+1345030758 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patterndefinition.h
+	"pattern.h"
+	"measures.h"
+	"patternparameter.h"
+	"patternparametervalue.h"
+	"partdefinition.h"
+	"patterntype.h"
+	"glibmm\ustring.h"
+	"patternerror.h"
+	"user.h"
+	<list>
+
+1345030155 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patterntype.h
+
+1345060062 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternerror.h
+	"objecttype.h"
+	"glibmm\ustring.h"
+
+1345061558 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\user.h
+	"glibmm\ustring.h"
+
+1345059997 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternerror.cpp
+	"patternerror.h"
+
+1369560058 ror.h"
+
+1352447389 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternobject.cpp
+	"patternobject.h"
+
+1351100094 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternparameter.cpp
+	"patternparameter.h"
+	"constants.h"
+	"floatpatternparameter.h"
+	"intpatternparameter.h"
+
+1345109096 c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\constants.h
+
+1345021984 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternparametervalue.cpp
+	"patternparametervalue.h"
+
+1345018384 rametervalue.h"
+
+1353703582 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\point.cpp
+	"point.h"
+
+1352447136 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\size.cpp
+	"size.h"
+
+1345025391 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\user.cpp
+	"user.h"
+
+1354260046 source:c:\users\paul\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\bezier.cpp
+	"bezier.h"
+
+1369678948 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/bezier.cpp
+	"bezier.h"
+	"bezier.h"
+
+1369805610 /home/paul/Programming/MyPattern/source/mypattern-base/include/bezier.h
+	"cairomm/context.h"
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+	<memory>
+	"cairomm/cairomm.h"
+
+1369678722 /home/paul/Programming/MyPattern/source/mypattern-base/include/point.h
+	"glibmm/ustring.h"
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	<memory>
+
+1369806338 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/beziercomplex.cpp
+	"beziercomplex.h"
+	<list>
+	"beziercomplex.h"
+	<list>
+
+1369806315 /home/paul/Programming/MyPattern/source/mypattern-base/include/beziercomplex.h
+	"point.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	"bezier.h"
+	"drawoptions.h"
+	"point.h"
+	"bezier.h"
+	"drawoptions.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	<memory>
+	<limits>
+
+1369675594 /home/paul/Programming/MyPattern/source/mypattern-base/include/drawoptions.h
+	"papersettings.h"
+	"patternobject.h"
+	"papersettings.h"
+	"patternobject.h"
+	<memory>
+
+1369675782 /home/paul/Programming/MyPattern/source/mypattern-base/include/papersettings.h
+	"units.h"
+	"units.h"
+	<array>
+
+1349278136 /home/paul/Programming/MyPattern/source/mypattern-base/include/units.h
+
+1369199848 /home/paul/Programming/MyPattern/source/mypattern-base/include/patternobject.h
+	"glibmm/ustring.h"
+	"objecttype.h"
+	"glibmm/ustring.h"
+	"objecttype.h"
+
+1349277948 /home/paul/Programming/MyPattern/source/mypattern-base/include/objecttype.h
+
+1369508350 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/curvedefinition.cpp
+	"curvedefinition.h"
+	"curvedefinition.h"
+
+1369560834 /home/paul/Programming/MyPattern/source/mypattern-base/include/curvedefinition.h
+	"landmark.h"
+	"beziercomplex.h"
+	"glibmm/ustring.h"
+	<list>
+	"landmark.h"
+	"beziercomplex.h"
+	"glibmm/ustring.h"
+	<list>
+
+1371225744 /home/paul/Programming/MyPattern/source/mypattern-base/include/landmark.h
+	"point.h"
+	"measures.h"
+	"beziercomplex.h"
+	"patternparametervalue.h"
+	<list>
+	"glibmm/ustring.h"
+	"objecttype.h"
+	"sigc++/sigc++.h"
+	"sigc++/signal.h"
+	"point.h"
+	"measures.h"
+	"beziercomplex.h"
+	"patternparametervalue.h"
+	<list>
+	"glibmm/ustring.h"
+	"objecttype.h"
+	"sigc++/sigc++.h"
+	"sigc++/signal.h"
+
+1369324082 gnal.h"
+
+1369806509 /home/paul/Programming/MyPattern/source/mypattern-base/include/measures.h
+	"measurevalue.h"
+	<memory>
+	<list>
+	"glibmm/ustring.h"
+
+1369114624 /home/paul/Programming/MyPattern/source/mypattern-base/include/patternparametervalue.h
+	"glibmm/ustring.h"
+	"glibmm/ustring.h"
+
+1369678782 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/drawoptions.cpp
+	"drawoptions.h"
+	"drawoptions.h"
+
+1346327076 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/floatpatternparameter.cpp
+	"floatpatternparameter.h"
+	"floatpatternparameter.h"
+
+1346325654 /home/paul/Programming/MyPattern/source/mypattern-base/include/floatpatternparameter.h
+	"valuerangetype.h"
+	"glibmm/ustring.h"
+	"valuerangetype.h"
+	<patternparameter.h>
+	<list>
+	"math.h"
+	"valuerangetype.h"
+	"glibmm/ustring.h"
+	"valuerangetype.h"
+	<patternparameter.h>
+	<list>
+	"math.h"
+
+1345106010 /home/paul/Programming/MyPattern/source/mypattern-base/include/valuerangetype.h
+
+1369892817 /home/paul/Programming/MyPattern/source/mypattern-base/include/patternparameter.h
+	"glibmm/ustring.h"
+	"glibmm/ustring.h"
+	<memory>
+
+1346270700 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/intpatternparameter.cpp
+	"intpatternparameter.h"
+	"intpatternparameter.h"
+
+1346269308 /home/paul/Programming/MyPattern/source/mypattern-base/include/intpatternparameter.h
+	"glibmm/ustring.h"
+	<list>
+	<patternparameter.h>
+	<valuerangetype.h>
+	"glibmm/ustring.h"
+	<list>
+	<patternparameter.h>
+	<valuerangetype.h>
+
+1371225426 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/landmark.cpp
+	"landmark.h"
+	"landmark.h"
+	<sstream>
+
+1369559156 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/measures.cpp
+	"measures.h"
+	"measures.h"
+
+1345018652 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/papersettings.cpp
+	"papersettings.h"
+	"papersettings.h"
+
+1369678666 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/part.cpp
+	"part.h"
+	"part.h"
+
+1369805997 /home/paul/Programming/MyPattern/source/mypattern-base/include/part.h
+	<list>
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	"point.h"
+	"beziercomplex.h"
+	"size.h"
+	<list>
+	<memory>
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	"point.h"
+	"beziercomplex.h"
+	"size.h"
+
+1369156368 /home/paul/Programming/MyPattern/source/mypattern-base/include/size.h
+
+1371446252 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/partdefinition.cpp
+	"partdefinition.h"
+	"partdefinition.h"
+	<sstream>
+
+1370629199 /home/paul/Programming/MyPattern/source/mypattern-base/include/partdefinition.h
+	"part.h"
+	"measures.h"
+	"patternparametervalue.h"
+	"patternerror.h"
+	"landmark.h"
+	"curvedefinition.h"
+	"glibmm/ustring.h"
+	<memory>
+	"part.h"
+	"measures.h"
+	"patternparametervalue.h"
+	"patternerror.h"
+	"landmark.h"
+	"curvedefinition.h"
+	"glibmm/ustring.h"
+	<memory>
+
+1369841936 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/pattern.cpp
+	"pattern.h"
+	"pattern.h"
+
+1369841529 /home/paul/Programming/MyPattern/source/mypattern-base/include/pattern.h
+	"part.h"
+
+1370011294 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/patterndefinition.cpp
+	"patterndefinition.h"
+	"patterndefinition.h"
+	"patternerror.h"
+	<iostream>
+	<fstream>
+
+1370011322 /home/paul/Programming/MyPattern/source/mypattern-base/include/patterndefinition.h
+	"pattern.h"
+	"measures.h"
+	"patternparameter.h"
+	"patternparametervalue.h"
+	"partdefinition.h"
+	"patterntype.h"
+	"glibmm/ustring.h"
+	"patternerror.h"
+	"user.h"
+	<list>
+	"pattern.h"
+	"measures.h"
+	"patternparameter.h"
+	"patternparametervalue.h"
+	"partdefinition.h"
+	"patterntype.h"
+	"glibmm/ustring.h"
+	"patternerror.h"
+	"user.h"
+	<list>
+
+1345026554 /home/paul/Programming/MyPattern/source/mypattern-base/include/patterntype.h
+
+1369237552 /home/paul/Programming/MyPattern/source/mypattern-base/include/patternerror.h
+	"objecttype.h"
+	"glibmm/ustring.h"
+	"errorcode.h"
+	"objecttype.h"
+	"glibmm/ustring.h"
+	"errorcode.h"
+
+1369237552 .h"
+
+1369114772 /home/paul/Programming/MyPattern/source/mypattern-base/include/user.h
+	"glibmm/ustring.h"
+	"glibmm/ustring.h"
+
+1369560060 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/patternerror.cpp
+	"patternerror.h"
+	"patternerror.h"
+
+1352443788 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/patternobject.cpp
+	"patternobject.h"
+	"patternobject.h"
+
+1369892956 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/patternparameter.cpp
+	"patternparameter.h"
+	"constants.h"
+	"floatpatternparameter.h"
+	"intpatternparameter.h"
+	"patternparameter.h"
+	"constants.h"
+	"floatpatternparameter.h"
+	"intpatternparameter.h"
+
+1345105496 /home/paul/Programming/MyPattern/source/mypattern-base/include/constants.h
+
+1345018384 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/patternparametervalue.cpp
+	"patternparametervalue.h"
+	"patternparametervalue.h"
+
+1369679250 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/point.cpp
+	"point.h"
+	"point.h"
+	<cmath>
+
+1369150546 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/size.cpp
+	"size.h"
+	"size.h"
+
+1345021790 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/user.cpp
+	"user.h"
+	"user.h"
+
+1364292398 /usr/include/glibmm-2.4/glibmm/ustring.h
+	<glibmmconfig.h>
+	<glibmm/unicode.h>
+	<glib.h>
+	<iosfwd>
+	<iterator>
+	<sstream>
+	<string>
+	<cstddef>
+	<glibmmconfig.h>
+	<glibmm/unicode.h>
+	<glib.h>
+	<iosfwd>
+	<iterator>
+	<sstream>
+	<string>
+	<cstddef>
+
+1364292398 /usr/include/glibmm-2.4/glibmm/unicode.h
+	<glib.h>
+	<cctype>
+	<glib.h>
+	<cctype>
+
+1365614827 /usr/include/glib-2.0/glib.h
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gbytes.h>
+	<glib/gcharset.h>
+	<glib/gchecksum.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdatetime.h>
+	<glib/gdir.h>
+	<glib/genviron.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ggettext.h>
+	<glib/ghash.h>
+	<glib/ghmac.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gstringchunk.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtimezone.h>
+	<glib/gtrashstack.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gversion.h>
+	<glib/gversionmacros.h>
+	<glib/gwin32.h>
+	<glib/deprecated/gallocator.h>
+	<glib/deprecated/gcache.h>
+	<glib/deprecated/gcompletion.h>
+	<glib/deprecated/gmain.h>
+	<glib/deprecated/grel.h>
+	<glib/deprecated/gthread.h>
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gbytes.h>
+	<glib/gcharset.h>
+	<glib/gchecksum.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdatetime.h>
+	<glib/gdir.h>
+	<glib/genviron.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ggettext.h>
+	<glib/ghash.h>
+	<glib/ghmac.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gstringchunk.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtimezone.h>
+	<glib/gtrashstack.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gversion.h>
+	<glib/gversionmacros.h>
+	<glib/gwin32.h>
+	<glib/deprecated/gallocator.h>
+	<glib/deprecated/gcache.h>
+	<glib/deprecated/gcompletion.h>
+	<glib/deprecated/gmain.h>
+	<glib/deprecated/grel.h>
+	<glib/deprecated/gthread.h>
+
+1352013538 ecated/gthread.h>
+
+1365614827 /usr/include/glib-2.0/glib/galloca.h
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtypes.h
+	<glibconfig.h>
+	<glib/gmacros.h>
+	<glib/gversionmacros.h>
+	<time.h>
+	<glibconfig.h>
+	<glib/gmacros.h>
+	<glib/gversionmacros.h>
+	<time.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmacros.h
+	<stddef.h>
+	<stddef.h>
+
+1365614827 /usr/include/glib-2.0/glib/gversionmacros.h
+
+1365614827 /usr/include/glib-2.0/glib/garray.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gasyncqueue.h
+	<glib/gthread.h>
+	<glib/gthread.h>
+
+1365614827 /usr/include/glib-2.0/glib/gthread.h
+	<glib/gatomic.h>
+	<glib/gerror.h>
+	<glib/gatomic.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gatomic.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gerror.h
+	<stdarg.h>
+	<glib/gquark.h>
+	<stdarg.h>
+	<glib/gquark.h>
+
+1365614827 /usr/include/glib-2.0/glib/gquark.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gbacktrace.h
+	<glib/gtypes.h>
+	<signal.h>
+	<glib/gtypes.h>
+	<signal.h>
+
+1365614827 /usr/include/glib-2.0/glib/gbase64.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gbitlock.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gbookmarkfile.h
+	<glib/gerror.h>
+	<time.h>
+	<glib/gerror.h>
+	<time.h>
+
+1365614827 /usr/include/glib-2.0/glib/gbytes.h
+	<glib/gtypes.h>
+	<glib/garray.h>
+	<glib/gtypes.h>
+	<glib/garray.h>
+
+1352013538 ay.h>
+
+1365614827 /usr/include/glib-2.0/glib/gcharset.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gchecksum.h
+	<glib/gtypes.h>
+	<glib/gbytes.h>
+	<glib/gtypes.h>
+	<glib/gbytes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gconvert.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gdataset.h
+	<glib/gquark.h>
+	<glib/gquark.h>
+
+1365614827 /usr/include/glib-2.0/glib/gdate.h
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+
+1365614827 /usr/include/glib-2.0/glib/gdatetime.h
+	<glib/gtimezone.h>
+	<glib/gtimezone.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtimezone.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gdir.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/genviron.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gfileutils.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/ggettext.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/ghash.h
+	<glib/gtypes.h>
+	<glib/glist.h>
+	<glib/gtypes.h>
+	<glib/glist.h>
+
+1365614827 /usr/include/glib-2.0/glib/glist.h
+	<glib/gmem.h>
+	<glib/gnode.h>
+	<glib/gmem.h>
+	<glib/gnode.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmem.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gnode.h
+	<glib/gmem.h>
+	<glib/gmem.h>
+
+1365614827 /usr/include/glib-2.0/glib/ghmac.h
+	<glib/gtypes.h>
+	"gchecksum.h"
+	<glib/gtypes.h>
+	"gchecksum.h"
+
+1365614827 /usr/include/glib-2.0/glib/ghook.h
+	<glib/gmem.h>
+	<glib/gmem.h>
+
+1365614827 /usr/include/glib-2.0/glib/ghostutils.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/giochannel.h
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmain.h
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+
+1365614827 /usr/include/glib-2.0/glib/gpoll.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gslist.h
+	<glib/gmem.h>
+	<glib/gnode.h>
+	<glib/gmem.h>
+	<glib/gnode.h>
+
+1365614827 /usr/include/glib-2.0/glib/gstring.h
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gbytes.h>
+	<glib/gutils.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gbytes.h>
+	<glib/gutils.h>
+
+1365614827 /usr/include/glib-2.0/glib/gunicode.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+	<glib/gerror.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gutils.h
+	<glib/gtypes.h>
+	<stdarg.h>
+	<glib/gtypes.h>
+	<stdarg.h>
+
+1365614827 /usr/include/glib-2.0/glib/gkeyfile.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmappedfile.h
+	<glib/gbytes.h>
+	<glib/gerror.h>
+	<glib/gbytes.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmarkup.h
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1365614827 /usr/include/glib-2.0/glib/gmessages.h
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+
+1365614827 /usr/include/glib-2.0/glib/goption.h
+	<glib/gerror.h>
+	<glib/gquark.h>
+	<glib/gerror.h>
+	<glib/gquark.h>
+
+1365614827 /usr/include/glib-2.0/glib/gpattern.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gprimes.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gqsort.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gqueue.h
+	<glib/glist.h>
+	<glib/glist.h>
+
+1365614827 /usr/include/glib-2.0/glib/grand.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gregex.h
+	<glib/gerror.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gstring.h>
+
+1365614827 /usr/include/glib-2.0/glib/gscanner.h
+	<glib/gdataset.h>
+	<glib/ghash.h>
+	<glib/gdataset.h>
+	<glib/ghash.h>
+
+1365614827 /usr/include/glib-2.0/glib/gsequence.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gshell.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gslice.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gspawn.h
+	<glib/gerror.h>
+	<glib/gerror.h>
+
+1365614827 /usr/include/glib-2.0/glib/gstrfuncs.h
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gstringchunk.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtestutils.h
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1365614827 /usr/include/glib-2.0/glib/gthreadpool.h
+	<glib/gthread.h>
+	<glib/gthread.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtimer.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtrashstack.h
+	<glib/gutils.h>
+	<glib/gutils.h>
+
+1365614827 /usr/include/glib-2.0/glib/gtree.h
+	<glib/gnode.h>
+	<glib/gnode.h>
+
+1365614827 /usr/include/glib-2.0/glib/gurifuncs.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gvarianttype.h
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gvariant.h
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+	<glib/gbytes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gversion.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/gwin32.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/gallocator.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/gcache.h
+	<glib/glist.h>
+	<glib/glist.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/gcompletion.h
+	<glib/glist.h>
+	<glib/glist.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/gmain.h
+	<glib/gmain.h>
+	<glib/gmain.h>
+
+1352013538 n.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/grel.h
+	<glib/gtypes.h>
+	<glib/gtypes.h>
+
+1365614827 /usr/include/glib-2.0/glib/deprecated/gthread.h
+	<glib/gthread.h>
+	<pthread.h>
+	<glib/gthread.h>
+	<pthread.h>
+
+1364292399 /usr/lib/i386-linux-gnu/glibmm-2.4/include/glibmmconfig.h
+
+1365614827 /usr/lib/i386-linux-gnu/glib-2.0/include/glibconfig.h
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+
+1366286875 /usr/include/limits.h
+	<features.h>
+	<bits/wordsize.h>
+	<bits/posix1_lim.h>
+	<bits/posix2_lim.h>
+	<bits/xopen_lim.h>
+	<features.h>
+	<bits/wordsize.h>
+	<bits/posix1_lim.h>
+	<bits/posix2_lim.h>
+	<bits/xopen_lim.h>
+
+1359376376 n_lim.h>
+
+1366286875 /usr/include/features.h
+	<bits/predefs.h>
+	<sys/cdefs.h>
+	<gnu/stubs.h>
+	<stdc-predef.h>
+	<sys/cdefs.h>
+	<gnu/stubs.h>
+
+1366286904 /usr/include/time.h
+	<features.h>
+	<stddef.h>
+	<bits/time.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<xlocale.h>
+	<features.h>
+	<stddef.h>
+	<bits/time.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<xlocale.h>
+
+1366286876 /usr/include/xlocale.h
+
+1366286897 /usr/include/alloca.h
+	<features.h>
+	<stddef.h>
+	<features.h>
+	<stddef.h>
+
+1366286902 /usr/include/malloc.h
+	<features.h>
+	<stddef.h>
+	<stdio.h>
+	<features.h>
+	<stddef.h>
+	<stdio.h>
+
+1366286899 /usr/include/stdio.h
+	<features.h>
+	<stddef.h>
+	<bits/types.h>
+	<libio.h>
+	<stdarg.h>
+	<bits/stdio_lim.h>
+	<bits/sys_errlist.h>
+	<getopt.h>
+	<bits/stdio.h>
+	<bits/stdio2.h>
+	<bits/stdio-ldbl.h>
+	<features.h>
+	<stddef.h>
+	<bits/types.h>
+	<libio.h>
+	<stdarg.h>
+	<bits/stdio_lim.h>
+	<bits/sys_errlist.h>
+	<getopt.h>
+	<bits/stdio.h>
+	<bits/stdio2.h>
+	<bits/stdio-ldbl.h>
+
+1359376401 o-ldbl.h>
+
+1366286899 /usr/include/libio.h
+	<_G_config.h>
+	<stdarg.h>
+	<sys/cdefs.h>
+	<bits/stdio-lock.h>
+	<shlib-compat.h>
+	<bits/libio-ldbl.h>
+	<_G_config.h>
+	<stdarg.h>
+	<sys/cdefs.h>
+	<bits/stdio-lock.h>
+	<shlib-compat.h>
+	<bits/libio-ldbl.h>
+
+1366286899 /usr/include/_G_config.h
+	<bits/types.h>
+	<stddef.h>
+	<wchar.h>
+	<gconv.h>
+	<bits/types.h>
+	<stddef.h>
+	<wchar.h>
+	<gconv.h>
+
+1366286903 /usr/include/wchar.h
+	<features.h>
+	<stdio.h>
+	<stdarg.h>
+	<bits/wchar.h>
+	<stddef.h>
+	<wctype.h>
+	<xlocale.h>
+	<xlocale.h>
+	<xlocale.h>
+	<wctype.h>
+	<bits/wchar2.h>
+	<bits/wchar-ldbl.h>
+	<features.h>
+	<stdio.h>
+	<stdarg.h>
+	<bits/wchar.h>
+	<stddef.h>
+	<wctype.h>
+	<xlocale.h>
+	<xlocale.h>
+	<xlocale.h>
+	<wctype.h>
+	<bits/wchar2.h>
+	<bits/wchar-ldbl.h>
+
+1359376404 r-ldbl.h>
+
+1366286910 /usr/include/wctype.h
+	<features.h>
+	<bits/types.h>
+	<wchar.h>
+	<endian.h>
+	<xlocale.h>
+	<features.h>
+	<bits/types.h>
+	<wchar.h>
+	<endian.h>
+	<xlocale.h>
+
+1366286903 /usr/include/endian.h
+	<features.h>
+	<bits/endian.h>
+	<bits/byteswap.h>
+	<features.h>
+	<bits/endian.h>
+	<bits/byteswap.h>
+
+1359376403 swap.h>
+
+1366286875 /usr/include/gconv.h
+	<features.h>
+	<wchar.h>
+	<stddef.h>
+	<features.h>
+	<wchar.h>
+	<stddef.h>
+
+1366286906 /usr/include/getopt.h
+	<ctype.h>
+	<ctype.h>
+
+1366286892 /usr/include/ctype.h
+	<features.h>
+	<bits/types.h>
+	<endian.h>
+	<xlocale.h>
+	<features.h>
+	<bits/types.h>
+	<endian.h>
+	<xlocale.h>
+
+1366286896 /usr/include/signal.h
+	<features.h>
+	<bits/sigset.h>
+	<bits/types.h>
+	<bits/signum.h>
+	<time.h>
+	<bits/siginfo.h>
+	<bits/sigaction.h>
+	<bits/sigcontext.h>
+	<stddef.h>
+	<bits/sigstack.h>
+	<sys/ucontext.h>
+	<bits/pthreadtypes.h>
+	<bits/sigthread.h>
+	<features.h>
+	<bits/sigset.h>
+	<bits/types.h>
+	<bits/signum.h>
+	<time.h>
+	<bits/siginfo.h>
+	<bits/sigaction.h>
+	<bits/sigcontext.h>
+	<stddef.h>
+	<bits/sigstack.h>
+	<sys/ucontext.h>
+	<bits/pthreadtypes.h>
+	<bits/sigthread.h>
+
+1359376398 hread.h>
+
+1366286916 /usr/include/pthread.h
+	<features.h>
+	<endian.h>
+	<sched.h>
+	<time.h>
+	<bits/pthreadtypes.h>
+	<bits/setjmp.h>
+	<bits/wordsize.h>
+	<features.h>
+	<endian.h>
+	<sched.h>
+	<time.h>
+	<bits/pthreadtypes.h>
+	<bits/setjmp.h>
+	<bits/wordsize.h>
+
+1359376424 size.h>
+
+1366286906 /usr/include/sched.h
+	<features.h>
+	<bits/types.h>
+	<stddef.h>
+	<time.h>
+	<bits/sched.h>
+	<features.h>
+	<bits/types.h>
+	<stddef.h>
+	<time.h>
+	<bits/sched.h>
+
+1359376408 d.h>
+
+1366286895 /usr/include/math.h
+	<features.h>
+	<bits/huge_val.h>
+	<bits/huge_valf.h>
+	<bits/huge_vall.h>
+	<bits/inf.h>
+	<bits/nan.h>
+	<bits/mathdef.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathinline.h>
+	<bits/math-finite.h>
+	<features.h>
+	<bits/huge_val.h>
+	<bits/huge_valf.h>
+	<bits/huge_vall.h>
+	<bits/inf.h>
+	<bits/nan.h>
+	<bits/mathdef.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathinline.h>
+	<bits/math-finite.h>
+
+1359376396 -finite.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/context.h
+	<vector>
+	<utility>
+	<cairomm/surface.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/pattern.h>
+	<cairomm/path.h>
+	<cairomm/scaledfont.h>
+	<cairomm/types.h>
+	<valarray>
+	<vector>
+	<cairo.h>
+	<vector>
+	<utility>
+	<cairomm/surface.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/pattern.h>
+	<cairomm/path.h>
+	<cairomm/scaledfont.h>
+	<cairomm/types.h>
+	<valarray>
+	<vector>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/surface.h
+	<string>
+	<vector>
+	<sigc++/slot.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/device.h>
+	<cairomm/fontoptions.h>
+	<cairomm/refptr.h>
+	<cairo-pdf.h>
+	<cairo-ps.h>
+	<cairo-svg.h>
+	<cairo-glitz.h>
+	<string>
+	<vector>
+	<sigc++/slot.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/device.h>
+	<cairomm/fontoptions.h>
+	<cairomm/refptr.h>
+	<cairo-pdf.h>
+	<cairo-ps.h>
+	<cairo-svg.h>
+	<cairo-glitz.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/slot.h
+	<sigc++/functors/slot.h>
+	<sigc++/functors/slot.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/functors/slot.h
+	<sigc++/trackable.h>
+	<sigc++/visit_each.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/slot_base.h>
+	<sigc++/trackable.h>
+	<sigc++/visit_each.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/slot_base.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/trackable.h
+	<list>
+	<sigc++config.h>
+	<list>
+	<sigc++config.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/visit_each.h
+	<sigc++/type_traits.h>
+	<sigc++/type_traits.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/type_traits.h
+	<sigc++config.h>
+	<sigc++config.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/adaptor_trait.h
+	<sigc++config.h>
+	<sigc++/visit_each.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/adaptors/deduce_result_type.h>
+	<sigc++config.h>
+	<sigc++/visit_each.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/adaptors/deduce_result_type.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/functors/functor_trait.h
+	<sigc++/type_traits.h>
+	<sigc++/type_traits.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/functors/ptr_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/functors/mem_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/limit_reference.h>
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/limit_reference.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/limit_reference.h
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/deduce_result_type.h
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/functor_trait.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/functors/slot_base.h
+	<sigc++config.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++config.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/functor_trait.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/enums.h
+	<cairo.h>
+	<cairo.h>
+
+1360581541 /usr/include/cairo/cairo.h
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+
+1360581541 /usr/include/cairo/cairo-version.h
+
+1360581541 /usr/include/cairo/cairo-features.h
+
+1360581541 /usr/include/cairo/cairo-deprecated.h
+
+1349108320 /usr/include/cairomm-1.0/cairomm/exception.h
+	<cairomm/enums.h>
+	<stdexcept>
+	<cairomm/enums.h>
+	<stdexcept>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/device.h
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/types.h
+	<cairo.h>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/refptr.h
+
+1349108320 /usr/include/cairomm-1.0/cairomm/fontoptions.h
+	<cairomm/enums.h>
+	<string>
+	<cairo-ft.h>
+	<cairomm/enums.h>
+	<string>
+	<cairo-ft.h>
+
+1360581541 /usr/include/cairo/cairo-ft.h
+	"cairo.h"
+	<ft2build.h>
+	<fontconfig/fontconfig.h>
+	"cairo.h"
+	<ft2build.h>
+	<fontconfig/fontconfig.h>
+
+1360326437 /usr/include/ft2build.h
+	<freetype/config/ftheader.h>
+	<freetype/config/ftheader.h>
+
+1360326437 /usr/include/freetype2/freetype/config/ftheader.h
+
+1362554385 /usr/include/fontconfig/fontconfig.h
+	<sys/types.h>
+	<sys/stat.h>
+	<stdarg.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<stdarg.h>
+
+1360581541 /usr/include/cairo/cairo-pdf.h
+	"cairo.h"
+	"cairo.h"
+
+1360581541 /usr/include/cairo/cairo-ps.h
+	"cairo.h"
+	<stdio.h>
+	"cairo.h"
+	<stdio.h>
+
+1360581541 /usr/include/cairo/cairo-svg.h
+	"cairo.h"
+	"cairo.h"
+
+1349108320 /usr/include/cairomm-1.0/cairomm/fontface.h
+	<string>
+	<vector>
+	<cairomm/enums.h>
+	<cairomm/types.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairo-ft.h>
+	<string>
+	<vector>
+	<cairomm/enums.h>
+	<cairomm/types.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairo-ft.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/matrix.h
+	<cairo.h>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/pattern.h
+	<cairomm/surface.h>
+	<cairomm/enums.h>
+	<cairo.h>
+	<cairomm/surface.h>
+	<cairomm/enums.h>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/path.h
+	<cairomm/enums.h>
+	<string>
+	<cairo.h>
+	<cairomm/enums.h>
+	<string>
+	<cairo.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/scaledfont.h
+	<cairomm/refptr.h>
+	<cairomm/fontoptions.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/types.h>
+	<vector>
+	<cairo-ft.h>
+	<cairomm/refptr.h>
+	<cairomm/fontoptions.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/types.h>
+	<vector>
+	<cairo-ft.h>
+
+1349108320 /usr/include/cairomm-1.0/cairomm/cairomm.h
+	<cairommconfig.h>
+	<cairomm/context.h>
+	<cairomm/device.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontface.h>
+	<cairomm/fontoptions.h>
+	<cairomm/matrix.h>
+	<cairomm/path.h>
+	<cairomm/pattern.h>
+	<cairomm/region.h>
+	<cairomm/scaledfont.h>
+	<cairomm/surface.h>
+	<cairommconfig.h>
+	<cairomm/context.h>
+	<cairomm/device.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontface.h>
+	<cairomm/fontoptions.h>
+	<cairomm/matrix.h>
+	<cairomm/path.h>
+	<cairomm/pattern.h>
+	<cairomm/region.h>
+	<cairomm/scaledfont.h>
+	<cairomm/surface.h>
+
+1349108321 /usr/lib/i386-linux-gnu/cairomm-1.0/include/cairommconfig.h
+
+1349108320 /usr/include/cairomm-1.0/cairomm/region.h
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<vector>
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<vector>
+
+1340926262 /usr/lib/i386-linux-gnu/sigc++-2.0/include//sigc++config.h
+
+1369806970 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/bezierdefinition.cpp
+	"bezierdefinition.h"
+	"bezierdefinition.h"
+
+1369560908 /home/paul/Programming/MyPattern/source/mypattern-base/include/bezierdefinition.h
+	<curvedefinition.h>
+	<beziercomplex.h>
+	<bezier.h>
+	<list>
+	<array>
+	"glibmm/ustring.h"
+	<curvedefinition.h>
+	<beziercomplex.h>
+	<bezier.h>
+	<list>
+	<array>
+	"glibmm/ustring.h"
+
+1340926261 /usr/include/sigc++-2.0/sigc++/sigc++.h
+	<sigc++/signal.h>
+	<sigc++/connection.h>
+	<sigc++/trackable.h>
+	<sigc++/adaptors/adaptors.h>
+	<sigc++/functors/functors.h>
+	<sigc++/signal.h>
+	<sigc++/connection.h>
+	<sigc++/trackable.h>
+	<sigc++/adaptors/adaptors.h>
+	<sigc++/functors/functors.h>
+
+1289346010 nctors/functors.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/signal.h
+	<list>
+	<sigc++/signal_base.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+	<list>
+	<sigc++/signal_base.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+
+1289346010 nctors/mem_fun.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/signal_base.h
+	<cstddef>
+	<list>
+	<sigc++config.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+	<cstddef>
+	<list>
+	<sigc++config.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/connection.h
+	<sigc++config.h>
+	<sigc++/signal.h>
+	<sigc++config.h>
+	<sigc++/signal.h>
+
+1289346010 gnal.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/adaptors/adaptors.h
+	<sigc++/adaptors/bind.h>
+	<sigc++/adaptors/bind_return.h>
+	<sigc++/adaptors/hide.h>
+	<sigc++/adaptors/retype_return.h>
+	<sigc++/adaptors/retype.h>
+	<sigc++/adaptors/compose.h>
+	<sigc++/adaptors/exception_catch.h>
+	<sigc++/adaptors/lambda/lambda.h>
+	<sigc++/adaptors/bind.h>
+	<sigc++/adaptors/bind_return.h>
+	<sigc++/adaptors/hide.h>
+	<sigc++/adaptors/retype_return.h>
+	<sigc++/adaptors/retype.h>
+	<sigc++/adaptors/compose.h>
+	<sigc++/adaptors/exception_catch.h>
+	<sigc++/adaptors/lambda/lambda.h>
+
+1289346008 aptors/lambda/lambda.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/bind.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+
+1289346008 aptors/bound_argument.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/adaptors/bound_argument.h
+	<sigc++/limit_reference.h>
+	<sigc++/reference_wrapper.h>
+	<sigc++/limit_reference.h>
+	<sigc++/reference_wrapper.h>
+
+1289346008 ference_wrapper.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/reference_wrapper.h
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/bind_return.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/hide.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/adaptor_trait.h>
+
+1289346008 aptors/adaptor_trait.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/retype_return.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/adaptor_trait.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/retype.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/functors/slot.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/functors/slot.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/compose.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/adaptor_trait.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/exception_catch.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/adaptor_trait.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/adaptors/lambda/lambda.h
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/select.h>
+	<sigc++/adaptors/lambda/operator.h>
+	<sigc++/adaptors/lambda/group.h>
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/select.h>
+	<sigc++/adaptors/lambda/operator.h>
+	<sigc++/adaptors/lambda/group.h>
+
+1289346010 aptors/lambda/group.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/lambda/base.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/reference_wrapper.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/reference_wrapper.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/lambda/select.h
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/base.h>
+
+1289346008 aptors/lambda/base.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/lambda/operator.h
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/base.h>
+
+1340926262 /usr/include/sigc++-2.0/sigc++/adaptors/lambda/group.h
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/base.h>
+
+1340926261 /usr/include/sigc++-2.0/sigc++/functors/functors.h
+	<sigc++/functors/slot.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+
+1369512668 /home/paul/Programming/MyPattern/source/mypattern-base/include/errorcode.h
+
+1369674211 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\bezier.cpp
+	"bezier.h"
+
+1369674981 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\bezier.h
+	"cairomm/context.h"
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+	<memory>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\context.h
+	<vector>
+	<utility>
+	<cairomm/surface.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/pattern.h>
+	<cairomm/path.h>
+	<cairomm/scaledfont.h>
+	<cairomm/types.h>
+	<valarray>
+	<vector>
+	<cairo.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\surface.h
+	<string>
+	<vector>
+	<sigc++/slot.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontoptions.h>
+	<cairomm/refptr.h>
+	<cairo-pdf.h>
+	<cairo-ps.h>
+	<cairo-svg.h>
+	<cairo-glitz.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\slot.h
+	<sigc++/functors/slot.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\slot.h
+	<sigc++/trackable.h>
+	<sigc++/visit_each.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/slot_base.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\trackable.h
+	<list>
+	<sigc++config.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\visit_each.h
+	<sigc++/type_traits.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\type_traits.h
+	<sigc++config.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\adaptor_trait.h
+	<sigc++config.h>
+	<sigc++/visit_each.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/adaptors/deduce_result_type.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\functor_trait.h
+	<sigc++/type_traits.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\ptr_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\mem_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/limit_reference.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\limit_reference.h
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\deduce_result_type.h
+	<sigc++/functors/functor_trait.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\slot_base.h
+	<sigc++config.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/functor_trait.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\enums.h
+	<cairo.h>
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo.h
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-version.h
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-features.h
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-deprecated.h
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\exception.h
+	<cairomm/enums.h>
+	<stdexcept>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\fontoptions.h
+	<cairomm/enums.h>
+	<string>
+	<cairo-ft.h>
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-ft.h
+	"cairo.h"
+	<ft2build.h>
+	<fontconfig/fontconfig.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\ft2build.h
+	<freetype/config/ftheader.h>
+
+1289346122 c:\users\dell\programming\gtkmm\include\freetype2\freetype\config\ftheader.h
+
+1289346122 c:\users\dell\programming\gtkmm\include\fontconfig\fontconfig.h
+	<sys/types.h>
+	<sys/stat.h>
+	<stdarg.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\refptr.h
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-pdf.h
+	"cairo.h"
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-ps.h
+	"cairo.h"
+	<stdio.h>
+
+1289346122 c:\users\dell\programming\gtkmm\include\cairo\cairo-svg.h
+	"cairo.h"
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\fontface.h
+	<string>
+	<vector>
+	<cairomm/enums.h>
+	<cairomm/types.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairo-ft.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\types.h
+	<cairo.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\matrix.h
+	<cairo.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\pattern.h
+	<cairomm/surface.h>
+	<cairomm/enums.h>
+	<cairo.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\path.h
+	<cairomm/enums.h>
+	<string>
+	<cairo.h>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\scaledfont.h
+	<cairomm/refptr.h>
+	<cairomm/fontoptions.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/types.h>
+	<vector>
+	<cairo-ft.h>
+
+1369678721 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\point.h
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	<memory>
+
+1289346002 c:\users\dell\programming\gtkmm\include\glibmm-2.4\glibmm\ustring.h
+	<glibmmconfig.h>
+	<glibmm/unicode.h>
+	<glib.h>
+	<iosfwd>
+	<iterator>
+	<sstream>
+	<string>
+	<cstddef>
+
+1289345690 c:\users\dell\programming\gtkmm\lib\glibmm-2.4\include\glibmmconfig.h
+
+1289346002 c:\users\dell\programming\gtkmm\include\glibmm-2.4\glibmm\unicode.h
+	<glib.h>
+	<cctype>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib.h
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gcache.h>
+	<glib/gchecksum.h>
+	<glib/gcompletion.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdatetime.h>
+	<glib/gdir.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ghash.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/grel.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtimezone.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gwin32.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\galloca.h
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gtypes.h
+	<glibconfig.h>
+	<glib/gmacros.h>
+
+1289346012 c:\users\dell\programming\gtkmm\lib\glib-2.0\include\glibconfig.h
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmacros.h
+	<stddef.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\garray.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gasyncqueue.h
+	<glib/gthread.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gthread.h
+	<glib/gerror.h>
+	<glib/gutils.h>
+	<glib/gatomic.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gerror.h
+	<stdarg.h>
+	<glib/gquark.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gquark.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gutils.h
+	<glib/gtypes.h>
+	<stdarg.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gatomic.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gbacktrace.h
+	<glib/gtypes.h>
+	<signal.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gbase64.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gbitlock.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gbookmarkfile.h
+	<glib/gerror.h>
+	<time.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gcache.h
+	<glib/glist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\glist.h
+	<glib/gmem.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmem.h
+	<glib/gslice.h>
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gslice.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gchecksum.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gcompletion.h
+	<glib/glist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gconvert.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gdataset.h
+	<glib/gquark.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gdate.h
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gdatetime.h
+	<glib/gtimezone.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gtimezone.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gdir.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gfileutils.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\ghash.h
+	<glib/gtypes.h>
+	<glib/glist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\ghook.h
+	<glib/gmem.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\ghostutils.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\giochannel.h
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmain.h
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gpoll.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gslist.h
+	<glib/gmem.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gstring.h
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gutils.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gunicode.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gkeyfile.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmappedfile.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmarkup.h
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gmessages.h
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gnode.h
+	<glib/gmem.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\goption.h
+	<glib/gerror.h>
+	<glib/gquark.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gpattern.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gprimes.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gqsort.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gqueue.h
+	<glib/glist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\grand.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\grel.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gregex.h
+	<glib/gerror.h>
+	<glib/gstring.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gscanner.h
+	<glib/gdataset.h>
+	<glib/ghash.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gsequence.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gshell.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gspawn.h
+	<glib/gerror.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gstrfuncs.h
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gtestutils.h
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gthreadpool.h
+	<glib/gthread.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gtimer.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gtree.h
+	<glib/gnode.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gurifuncs.h
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gvarianttype.h
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gvariant.h
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+
+1289346124 c:\users\dell\programming\gtkmm\include\glib-2.0\glib\gwin32.h
+	<glib/gtypes.h>
+
+1369678244 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\beziercomplex.cpp
+	"beziercomplex.h"
+	<list>
+
+1369677903 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\beziercomplex.h
+	"point.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	"bezier.h"
+	"drawoptions.h"
+	<memory>
+
+1289345996 c:\users\dell\programming\gtkmm\include\cairomm-1.0\cairomm\cairomm.h
+	<cairommconfig.h>
+	<cairomm/context.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontface.h>
+	<cairomm/fontoptions.h>
+	<cairomm/matrix.h>
+	<cairomm/path.h>
+	<cairomm/pattern.h>
+	<cairomm/scaledfont.h>
+	<cairomm/surface.h>
+
+1289345690 c:\users\dell\programming\gtkmm\lib\cairomm-1.0\include\cairommconfig.h
+
+1369675593 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\drawoptions.h
+	"papersettings.h"
+	"patternobject.h"
+	<memory>
+
+1369675781 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\papersettings.h
+	"units.h"
+	<array>
+
+1349278136 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\units.h
+
+1369199848 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternobject.h
+	"glibmm/ustring.h"
+	"objecttype.h"
+
+1349277948 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\objecttype.h
+
+1369114686 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\bezierdefinition.cpp
+	"bezierdefinition.h"
+
+1369560906 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\bezierdefinition.h
+	<curvedefinition.h>
+	<beziercomplex.h>
+	<bezier.h>
+	<list>
+	<array>
+	"glibmm/ustring.h"
+
+1369560833 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\curvedefinition.h
+	"landmark.h"
+	"beziercomplex.h"
+	"glibmm/ustring.h"
+	<list>
+
+1369324082 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\landmark.h
+	"point.h"
+	"measures.h"
+	"beziercomplex.h"
+	"patternparametervalue.h"
+	<list>
+	"glibmm/ustring.h"
+	"objecttype.h"
+	"sigc++/sigc++.h"
+	"sigc++/signal.h"
+
+1369559152 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\measures.h
+	"measurevalue.h"
+	<memory>
+	<list>
+	"Glibmm/ustring.h"
+
+1369114624 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternparametervalue.h
+	"glibmm/ustring.h"
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\sigc++.h
+	<sigc++/signal.h>
+	<sigc++/connection.h>
+	<sigc++/trackable.h>
+	<sigc++/adaptors/adaptors.h>
+	<sigc++/functors/functors.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\signal.h
+	<list>
+	<sigc++/signal_base.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\signal_base.h
+	<list>
+	<sigc++config.h>
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/slot.h>
+	<sigc++/functors/mem_fun.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\connection.h
+	<sigc++config.h>
+	<sigc++/signal.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\adaptors.h
+	<sigc++/adaptors/bind.h>
+	<sigc++/adaptors/bind_return.h>
+	<sigc++/adaptors/hide.h>
+	<sigc++/adaptors/retype_return.h>
+	<sigc++/adaptors/retype.h>
+	<sigc++/adaptors/compose.h>
+	<sigc++/adaptors/exception_catch.h>
+	<sigc++/adaptors/lambda/lambda.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\bind.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\bound_argument.h
+	<sigc++/limit_reference.h>
+	<sigc++/reference_wrapper.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\reference_wrapper.h
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\bind_return.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/adaptors/bound_argument.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\hide.h
+	<sigc++/adaptors/adaptor_trait.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\retype_return.h
+	<sigc++/adaptors/adaptor_trait.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\retype.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/functors/slot.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\compose.h
+	<sigc++/adaptors/adaptor_trait.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\exception_catch.h
+	<sigc++/adaptors/adaptor_trait.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\lambda\lambda.h
+	<sigc++/adaptors/lambda/base.h>
+	<sigc++/adaptors/lambda/select.h>
+	<sigc++/adaptors/lambda/operator.h>
+	<sigc++/adaptors/lambda/group.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\lambda\base.h
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/reference_wrapper.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\lambda\select.h
+	<sigc++/adaptors/lambda/base.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\lambda\operator.h
+	<sigc++/adaptors/lambda/base.h>
+
+1289346008 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\adaptors\lambda\group.h
+	<sigc++/adaptors/lambda/base.h>
+
+1289346010 c:\users\dell\programming\gtkmm\include\sigc++-2.0\sigc++\functors\functors.h
+	<sigc++/functors/slot.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+
+1369508349 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\curvedefinition.cpp
+	"curvedefinition.h"
+
+1369678780 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\drawoptions.cpp
+	"drawoptions.h"
+
+1346327076 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\floatpatternparameter.cpp
+	"floatpatternparameter.h"
+
+1346325654 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\floatpatternparameter.h
+	"valuerangetype.h"
+	"glibmm/ustring.h"
+	"valuerangetype.h"
+	<patternparameter.h>
+	<list>
+	"math.h"
+
+1345106010 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\valuerangetype.h
+
+1346266302 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternparameter.h
+	"glibmm/ustring.h"
+
+1346270700 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\intpatternparameter.cpp
+	"intpatternparameter.h"
+
+1346269308 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\intpatternparameter.h
+	"glibmm/ustring.h"
+	<list>
+	<patternparameter.h>
+	<valuerangetype.h>
+
+1345018476 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\landmark.cpp
+	"landmark.h"
+
+1369559154 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\measures.cpp
+	"measures.h"
+
+1345018652 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\papersettings.cpp
+	"papersettings.h"
+
+1352447312 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\part.cpp
+	"part.h"
+
+1369678791 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\part.h
+	<list>
+	<memory>
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	"point.h"
+	"beziercomplex.h"
+	"size.h"
+
+1369156367 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\size.h
+
+1369560014 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\partdefinition.cpp
+	"partdefinition.h"
+
+1369323726 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\partdefinition.h
+	"part.h"
+	"measures.h"
+	"patternparametervalue.h"
+	"patternerror.h"
+	"landmark.h"
+	"curvedefinition.h"
+	"glibmm/ustring.h"
+	<memory>
+
+1369237552 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patternerror.h
+	"objecttype.h"
+	"glibmm/ustring.h"
+	"errorcode.h"
+
+1369512666 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\errorcode.h
+
+1345018542 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\pattern.cpp
+	"pattern.h"
+
+1345018542 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\pattern.h
+
+1345018178 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patterndefinition.cpp
+	"patterndefinition.h"
+
+1369114759 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patterndefinition.h
+	"pattern.h"
+	"measures.h"
+	"patternparameter.h"
+	"patternparametervalue.h"
+	"partdefinition.h"
+	"patterntype.h"
+	"glibmm/ustring.h"
+	"patternerror.h"
+	"user.h"
+	<list>
+
+1345026554 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\patterntype.h
+
+1369114772 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\user.h
+	"glibmm/ustring.h"
+
+1369560058 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternerror.cpp
+	"patternerror.h"
+
+1352447388 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternobject.cpp
+	"patternobject.h"
+
+1351096494 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternparameter.cpp
+	"patternparameter.h"
+	"constants.h"
+	"floatpatternparameter.h"
+	"intpatternparameter.h"
+
+1345105496 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\constants.h
+
+1345018384 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\patternparametervalue.cpp
+	"patternparametervalue.h"
+
+1369201279 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\point.cpp
+	"point.h"
+
+1369150546 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\size.cpp
+	"size.h"
+
+1345021790 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\user.cpp
+	"user.h"
+
+1289345692 c:\users\dell\programming\gtkmm\lib\sigc++-2.0\include\sigc++config.h
+
+1369558265 c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\include\measurevalue.h
+	"Glibmm/ustring.h"
+
+1369559972 source:c:\users\dell\dropbox\projekte\programmieren\mypattern\source\mypattern-base\src\measurevalue.cpp
+	"measurevalue.h"
+
+1369559972 lue.h"
+
+1369806503 /home/paul/Programming/MyPattern/source/mypattern-base/include/measurevalue.h
+	"glibmm/ustring.h"
+
+1369559974 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/measurevalue.cpp
+	"measurevalue.h"
+
+1366286875 /usr/include/stdc-predef.h
+	<bits/predefs.h>
+
+1372349571 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/xmlparameter.cpp
+	"xmlparameter.h"
+
+1372348175 /home/paul/Programming/MyPattern/source/mypattern-base/include/xmlparameter.h
+	"glibmm/ustring.h"
+
+1372349481 source:/home/paul/Programming/MyPattern/source/mypattern-base/src/xmlnode.cpp
+	"xmlnode.h"
+	<sstream>
+
+1372349362 /home/paul/Programming/MyPattern/source/mypattern-base/include/xmlnode.h
+	"xmlparameter.h"
+	"glibmm/ustring.h"
+	<list>
+	<memory>
+	<sstream>
+
+1371225426 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\landmark.cpp
+	"landmark.h"
+	<sstream>
+
+1371225744 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\landmark.h
+	"point.h"
+	"measures.h"
+	"beziercomplex.h"
+	"patternparametervalue.h"
+	<list>
+	"glibmm/ustring.h"
+	"objecttype.h"
+	"sigc++/sigc++.h"
+	"sigc++/signal.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\point.h
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	<memory>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\measures.h
+	"measurevalue.h"
+	<memory>
+	<list>
+	"glibmm/ustring.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\measurevalue.h
+	"glibmm/ustring.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\beziercomplex.h
+	"point.h"
+	"bezier.h"
+	"drawoptions.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	<memory>
+	<limits>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\bezier.h
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+	<memory>
+	"cairomm/cairomm.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\drawoptions.h
+	"papersettings.h"
+	"patternobject.h"
+	<memory>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\papersettings.h
+	"units.h"
+	<array>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\units.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patternobject.h
+	"glibmm/ustring.h"
+	"objecttype.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\objecttype.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patternparametervalue.h
+	"glibmm/ustring.h"
+
+1371446252 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\partdefinition.cpp
+	"partdefinition.h"
+	<sstream>
+
+1370629199 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\partdefinition.h
+	"part.h"
+	"measures.h"
+	"patternparametervalue.h"
+	"patternerror.h"
+	"landmark.h"
+	"curvedefinition.h"
+	"glibmm/ustring.h"
+	<memory>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\part.h
+	<list>
+	<memory>
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	"point.h"
+	"beziercomplex.h"
+	"size.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\size.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patternerror.h
+	"objecttype.h"
+	"glibmm/ustring.h"
+	"errorcode.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\errorcode.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\curvedefinition.h
+	"landmark.h"
+	"beziercomplex.h"
+	"glibmm/ustring.h"
+	<list>
+
+1372349571 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\xmlparameter.cpp
+	"xmlparameter.h"
+
+1372348175 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\xmlparameter.h
+	"glibmm/ustring.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\bezier.cpp
+	"bezier.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\beziercomplex.cpp
+	"beziercomplex.h"
+	<list>
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\bezierdefinition.cpp
+	"bezierdefinition.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\bezierdefinition.h
+	<curvedefinition.h>
+	<beziercomplex.h>
+	<bezier.h>
+	<list>
+	<array>
+	"glibmm/ustring.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\curvedefinition.cpp
+	"curvedefinition.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\drawoptions.cpp
+	"drawoptions.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\floatpatternparameter.cpp
+	"floatpatternparameter.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\floatpatternparameter.h
+	"valuerangetype.h"
+	"glibmm/ustring.h"
+	"valuerangetype.h"
+	<patternparameter.h>
+	<list>
+	"math.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\valuerangetype.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patternparameter.h
+	"glibmm/ustring.h"
+	<memory>
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\intpatternparameter.cpp
+	"intpatternparameter.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\intpatternparameter.h
+	"glibmm/ustring.h"
+	<list>
+	<patternparameter.h>
+	<valuerangetype.h>
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\measures.cpp
+	"measures.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\measurevalue.cpp
+	"measurevalue.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\papersettings.cpp
+	"papersettings.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\part.cpp
+	"part.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\pattern.cpp
+	"pattern.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\pattern.h
+	"part.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\patterndefinition.cpp
+	"patterndefinition.h"
+	"patternerror.h"
+	<iostream>
+	<fstream>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patterndefinition.h
+	"pattern.h"
+	"measures.h"
+	"patternparameter.h"
+	"patternparametervalue.h"
+	"partdefinition.h"
+	"patterntype.h"
+	"glibmm/ustring.h"
+	"patternerror.h"
+	"user.h"
+	<list>
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\patterntype.h
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\user.h
+	"glibmm/ustring.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\patternerror.cpp
+	"patternerror.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\patternobject.cpp
+	"patternobject.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\patternparameter.cpp
+	"patternparameter.h"
+	"constants.h"
+	"floatpatternparameter.h"
+	"intpatternparameter.h"
+
+1372972299 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\constants.h
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\patternparametervalue.cpp
+	"patternparametervalue.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\point.cpp
+	"point.h"
+	<cmath>
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\size.cpp
+	"size.h"
+
+1372972299 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\user.cpp
+	"user.h"
+
+1373401038 source:c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\src\xmlnode.cpp
+	"xmlnode.h"
+	<sstream>
+
+1372349362 c:\users\dell\documents\programmieren\mypattern\source\mypattern-base\include\xmlnode.h
+	"xmlparameter.h"
+	"glibmm/ustring.h"
+	<list>
+	<memory>
+	<sstream>
+
+=======
+# depslib dependency file v1.0
+>>>>>>> .r5

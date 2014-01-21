@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="mypattern-base" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="d_mypattern-base" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="mypattern-base" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Debug Linux">
+				<Option output="d_mypattern-base" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="/usr/include/glibmm-2.4" />
+					<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
+					<Add directory="/usr/include/glib-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
+					<Add directory="/usr/include/cairomm-1.0" />
+					<Add directory="/usr/include/cairo" />
+					<Add directory="/usr/include/sigc++-2.0" />
+					<Add directory="/usr/include" />
+					<Add directory="/usr/include/freetype2" />
+					<Add directory="/usr/lib/i386-linux-gnu/cairomm-1.0/include" />
+					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
+				</Compiler>
+			</Target>
+			<Target title="Release Linux">
+				<Option output="mypattern-base" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add directory="include" />
+					<Add directory="/usr/include/glibmm-2.4" />
+					<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
+					<Add directory="/usr/include/glib-2.0" />
+					<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
+					<Add directory="/usr/include/cairomm-1.0" />
+					<Add directory="/usr/include/cairo" />
+					<Add directory="/usr/include/sigc++-2.0" />
+					<Add directory="/usr/include" />
+					<Add directory="/usr/include/freetype2" />
+					<Add directory="/usr/lib/i386-linux-gnu/cairomm-1.0/include" />
+					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++0x" />
+			<Add directory="include" />
+			<Add directory="$(GTK_BASEPATH)/include/glibmm-2.4" />
+			<Add directory="$(GTK_BASEPATH)/lib/glibmm-2.4/include" />
+			<Add directory="$(GTK_BASEPATH)/include/glib-2.0" />
+			<Add directory="$(GTK_BASEPATH)/lib/glib-2.0/include" />
+			<Add directory="$(GTK_BASEPATH)/include/cairomm-1.0" />
+			<Add directory="$(GTK_BASEPATH)/include/cairo" />
+			<Add directory="$(GTK_BASEPATH)/include/sigc++-2.0" />
+			<Add directory="$(GTK_BASEPATH)/include" />
+			<Add directory="$(GTK_BASEPATH)/include/freetype2" />
+			<Add directory="$(GTK_BASEPATH)/lib/cairomm-1.0/include" />
+			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
+		</Compiler>
+		<Unit filename="include/bezier.h" />
+		<Unit filename="include/beziercomplex.h" />
+		<Unit filename="include/bezierdefinition.h" />
+		<Unit filename="include/constants.h" />
+		<Unit filename="include/curvedefinition.h" />
+		<Unit filename="include/errorcode.h" />
+		<Unit filename="include/evaluationtreenode.h" />
+		<Unit filename="include/floatpatternparameter.h" />
+		<Unit filename="include/intpatternparameter.h" />
+		<Unit filename="include/landmark.h" />
+		<Unit filename="include/measures.h" />
+		<Unit filename="include/measurevalue.h" />
+		<Unit filename="include/objecttype.h" />
+		<Unit filename="include/part.h" />
+		<Unit filename="include/partdefinition.h" />
+		<Unit filename="include/pattern.h" />
+		<Unit filename="include/patterndefinition.h" />
+		<Unit filename="include/patternerror.h" />
+		<Unit filename="include/patternobject.h" />
+		<Unit filename="include/patternparameter.h" />
+		<Unit filename="include/patternparametervalue.h" />
+		<Unit filename="include/patterntype.h" />
+		<Unit filename="include/point.h" />
+		<Unit filename="include/user.h" />
+		<Unit filename="include/valuerangetype.h" />
+		<Unit filename="src/bezier.cpp" />
+		<Unit filename="src/beziercomplex.cpp" />
+		<Unit filename="src/bezierdefinition.cpp" />
+		<Unit filename="src/curvedefinition.cpp" />
+		<Unit filename="src/evaluationtreenode.cpp" />
+		<Unit filename="src/floatpatternparameter.cpp" />
+		<Unit filename="src/intpatternparameter.cpp" />
+		<Unit filename="src/landmark.cpp" />
+		<Unit filename="src/measures.cpp" />
+		<Unit filename="src/measurevalue.cpp" />
+		<Unit filename="src/part.cpp" />
+		<Unit filename="src/partdefinition.cpp" />
+		<Unit filename="src/pattern.cpp" />
+		<Unit filename="src/patterndefinition.cpp" />
+		<Unit filename="src/patternerror.cpp" />
+		<Unit filename="src/patternobject.cpp" />
+		<Unit filename="src/patternparameter.cpp" />
+		<Unit filename="src/patternparametervalue.cpp" />
+		<Unit filename="src/point.cpp" />
+		<Unit filename="src/user.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
