@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1390235555 source:/home/paul/Programming/mypattern/mypattern-data-test/main.cpp
+	<iostream>
+	"UnitTest++.h"
+
+1188366510 /home/paul/Programming/UnitTest++/src/UnitTest++.h
+	"Config.h"
+	"Test.h"
+	"TestList.h"
+	"TestSuite.h"
+	"TestResults.h"
+	"TestMacros.h"
+	"CheckMacros.h"
+	"TestRunner.h"
+	"TimeConstraint.h"
+
+1225377516 /home/paul/Programming/UnitTest++/src/Config.h
+
+1225291088 /home/paul/Programming/UnitTest++/src/Test.h
+	"TestDetails.h"
+
+1174318456 /home/paul/Programming/UnitTest++/src/TestDetails.h
+
+1180467758 /home/paul/Programming/UnitTest++/src/TestList.h
+
+1174318456 /home/paul/Programming/UnitTest++/src/TestSuite.h
+
+1174318456 /home/paul/Programming/UnitTest++/src/TestResults.h
+
+1225394826 /home/paul/Programming/UnitTest++/src/TestMacros.h
+	"Config.h"
+	"ExecuteTest.h"
+	"AssertException.h"
+	"TestDetails.h"
+	"MemoryOutStream.h"
+	"Posix/SignalTranslator.h"
+
+1225291088 /home/paul/Programming/UnitTest++/src/ExecuteTest.h
+	"TestDetails.h"
+	"MemoryOutStream.h"
+	"AssertException.h"
+	"CurrentTest.h"
+	"Posix/SignalTranslator.h"
+
+1174318456 /home/paul/Programming/UnitTest++/src/MemoryOutStream.h
+	"Config.h"
+	<sstream>
+	<cstddef>
+
+1174318456 /home/paul/Programming/UnitTest++/src/AssertException.h
+	<exception>
+
+1225291088 /home/paul/Programming/UnitTest++/src/CurrentTest.h
+
+1224683802 /home/paul/Programming/UnitTest++/src/Posix/SignalTranslator.h
+	<setjmp.h>
+	<signal.h>
+
+1225291088 /home/paul/Programming/UnitTest++/src/CheckMacros.h
+	"Checks.h"
+	"AssertException.h"
+	"MemoryOutStream.h"
+	"TestDetails.h"
+	"CurrentTest.h"
+
+1225376862 /home/paul/Programming/UnitTest++/src/Checks.h
+	"Config.h"
+	"TestResults.h"
+	"MemoryOutStream.h"
+
+1225291088 /home/paul/Programming/UnitTest++/src/TestRunner.h
+	"Test.h"
+	"TestList.h"
+	"CurrentTest.h"
+
+1225291088 /home/paul/Programming/UnitTest++/src/TimeConstraint.h
+	"TimeHelpers.h"
+
+1174318456 /home/paul/Programming/UnitTest++/src/TimeHelpers.h
+	"Config.h"
+	"Posix/TimeHelpers.h"
+	"Win32/TimeHelpers.h"
+
+1174318456 /home/paul/Programming/UnitTest++/src/Posix/TimeHelpers.h
+	<sys/time.h>
+
+1225377516 /home/paul/Programming/UnitTest++/src/Win32/TimeHelpers.h
+	"../Config.h"
+
