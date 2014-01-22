@@ -23,6 +23,8 @@ namespace MyPattern
         {
             public:
                 XmlNode();
+
+                XmlNode(Glib::ustring name);
                 /*! \brief Creates a deep copy of an existing XmlNode.
                 */
                 XmlNode(const XmlNode& base);

@@ -103,6 +103,7 @@
 		<Unit filename="include/curvedefinition.h" />
 		<Unit filename="include/errorcode.h" />
 		<Unit filename="include/evaluationtreenode.h" />
+		<Unit filename="include/exception.h" />
 		<Unit filename="include/floatpatternparameter.h" />
 		<Unit filename="include/intpatternparameter.h" />
 		<Unit filename="include/landmark.h" />
@@ -126,6 +127,7 @@
 		<Unit filename="src/bezierdefinition.cpp" />
 		<Unit filename="src/curvedefinition.cpp" />
 		<Unit filename="src/evaluationtreenode.cpp" />
+		<Unit filename="src/exception.cpp" />
 		<Unit filename="src/floatpatternparameter.cpp" />
 		<Unit filename="src/intpatternparameter.cpp" />
 		<Unit filename="src/landmark.cpp" />

@@ -9,6 +9,11 @@ XmlNode::XmlNode()
     //ctor
 }
 
+XmlNode::XmlNode(Glib::ustring name)
+{
+    m_name = name;
+}
+
 XmlNode::XmlNode(const XmlNode& base)
 {
     m_name = base.m_name;
@@ -32,8 +37,13 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     int start_tag_index = schema.find_first_of('<');
     Glib::ustring tag = get_tag(schema, start_tag_index);
 
+    int firstSpaceIndex = schema.find_first_of(' ');
+    int closingBracket = schema.find('>', start_tag_index);
+
+
+
     Glib::ustring tag_name = schema.substr(start_tag_index + 1,
-                                           schema.find_first_of(' ') - start_tag_index - 1);
+                                           (firstSpaceIndex < 0 || firstSpaceIndex>closingBracket ? closingBracket :  firstSpaceIndex) - start_tag_index - 1);
 
     result->m_name = tag_name;
     ///\todo parse key value pairs
@@ -77,7 +87,19 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
 
     while(node_begin >= 0 && node_begin < (int)subschema.length())
     {
-        int node_name_end = subschema.find(' ', node_begin);
+        int node_name_end = -1;
+
+        int first_space_index = subschema.find(' ', node_begin);
+        int closing_bracket_index = subschema.find('>', node_begin);
+
+        if(first_space_index < 0 || closing_bracket_index < first_space_index)
+        {
+            node_name_end = closing_bracket_index;
+        }
+        else
+        {
+            node_name_end = first_space_index;
+        }
 
         if(node_name_end < 0)
         {
@@ -107,7 +129,7 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
 
             int node_end_index = subschema.find(end_tag.str(), node_begin) + end_tag.str().length();
             nodes.push_back(subschema.substr(node_begin, node_end_index - node_begin));
-            node_begin = subschema.find('<', node_end_index + 1);
+            node_begin = subschema.find('<', node_end_index);
         }
     }
 
