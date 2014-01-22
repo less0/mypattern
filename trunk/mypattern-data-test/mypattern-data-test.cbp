@@ -18,11 +18,10 @@
 				<Linker>
 					<Add library="d_mypattern-base" />
 					<Add library="d_mypattern-data" />
-					<Add directory="../../UnitTest++/bin/Debug" />
+					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="bin/Debug/mypattern-data-test" />
-					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Release Linux">
@@ -38,7 +37,7 @@
 					<Add option="-s" />
 					<Add library="mypattern-base" />
 					<Add library="mypattern-data" />
-					<Add directory="../../UnitTest++/bin/Release" />
+					<Add directory="../UnitTest++/bin/Release" />
 				</Linker>
 			</Target>
 		</Build>
@@ -47,7 +46,7 @@
 			<Add option="-fexceptions" />
 			<Add directory="../mypattern-base/include" />
 			<Add directory="../mypattern-data/include" />
-			<Add directory="../../UnitTest++/src" />
+			<Add directory="../UnitTest++/src" />
 			<Add directory="/usr/include/glibmm-2.4" />
 			<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
 			<Add directory="/usr/include/glib-2.0" />
@@ -57,6 +56,8 @@
 		</Compiler>
 		<Linker>
 			<Add library="UnitTest++" />
+			<Add library="glibmm-2.4" />
+			<Add library="glib-2.0" />
 			<Add directory="../mypattern-data" />
 			<Add directory="../mypattern-base" />
 		</Linker>
