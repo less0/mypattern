@@ -1,8 +1,10 @@
 #include "xmlnode.h"
 
 #include <sstream>
+#include <exception.h>
 
 using namespace MyPattern::Data;
+using namespace MyPattern::Exceptions;
 
 XmlNode::XmlNode()
 {
@@ -76,6 +78,154 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 
 
     return result;
+}
+
+list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::ustring parent_node_name, int start_index, int& end_index)
+{
+    //Notizen:
+    //The present function is quite lengthy, with many
+
+    list<shared_ptr<XmlNode>> parsedNodes;
+
+    bool inNode = false;
+    bool inElement = false;
+    bool inElementName = false;
+    bool inAttribute = false;
+    bool inAttributeValue = false;
+
+    Glib::ustring currentNodeName = "";
+    Glib::ustring currentElementName = "";
+    bool isEndElement = false;
+
+    int elementStartIndex = 0;
+    int slashIndex = 0;
+
+    bool finishedParsing = false;
+    int currentIndex = 0;
+
+    while(!finishedParsing && currentIndex < schema.length())
+    {
+        if(schema[currentIndex] == '<')
+        {
+            if(!inAttributeValue && !inElement)
+            {
+                inElement = true;
+                inElementName = true;
+                elementStartIndex = currentIndex;
+            }
+            else if(inElement)
+            {
+                throw MyPattern::Exceptions::Exception();
+                //Exception("Unexpected character '<' in element");
+            }
+
+        }
+        else if(schema[currentIndex] == '"')
+        {
+            if(inAttribute && !inAttributeValue)
+            {
+                inAttributeValue = true;
+            }
+            else if(inAttributeValue)
+            {
+                inAttributeValue = false;
+            }
+            else if(!inElement)
+            {
+                throw MyPattern::Exceptions::Exception("");
+            }
+        }
+        else if(schema[currentIndex] == '>')
+        {
+            if(!inAttributeValue)
+            {
+                //bracket is within an attribute value and thus ignored
+            }
+            else if(inElement)
+            {
+                inElement = false;
+                inElementName = false;
+                inAttribute = false;
+
+                //there has been a slash within the current element
+                if(slashIndex > elementStartIndex)
+                {
+                    if(slashIndex == elementStartIndex + 1)
+                    {
+                        //element is end element
+
+
+                        //compare name with node name
+
+                        //if the name mateches the current node name
+                    }
+                    else if(slashIndex == elementStartIndex - 1)
+                    {
+                        //element is self ended
+                    }
+                    else
+                    {
+                        //the slash has been placed neither at the begging, nor
+                        // at the end of the element. This is an unexpected
+                        //form, therefor an Exception will be thrown
+                    }
+                }
+                else
+                {
+                    //there hab been no slash
+
+                    //if there is a current node start subnodes now
+
+                    //else create new current node
+                }
+
+                /*! \todo implement logic */
+
+
+            }
+        }
+        else if(schema[currentIndex] == '/')
+        {
+            if(inElement)
+            {
+                slashIndex = currentIndex;
+            }
+        }
+        else if(schema[currentIndex] == ' ')
+        {
+            if(inElementName)
+            {
+                inElementName = false;
+            }
+            else if(inAttribute)
+            {
+                inAttribute = false;
+            }
+        }
+        else if(schema[currentIndex] == ' ')
+        {
+        }
+        else
+        {
+            if(inElementName)
+            {
+                //check for valid characters for element names here
+
+                //else throw exception
+            }
+            else if(inElement &&  !inAttributeValue)
+            {
+
+            }
+
+        }
+
+        currentIndex++;
+    }
+
+    end_index = currentIndex;
+
+    return parsedNodes;
 }
 
 ///\brief splits a string by XML nodes

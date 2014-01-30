@@ -2,6 +2,7 @@
 #define XMLNODE_H
 
 #include "xmlparameter.h"
+#include "xmlelement.h"
 #include "glibmm/ustring.h"
 #include <list>
 #include <memory>
@@ -63,6 +64,15 @@ namespace MyPattern
             protected:
             private:
                 static list<Glib::ustring> split_nodes(Glib::ustring);
+                /*! \brief Gets a list of subnodes of the current node
+                *
+                * It turned out, that the split_nodes function was not
+                * sufficient to parse complex XML-statements, thus, a new
+                * recursive parsing approach is implemented, that reads and
+                * parses the nodes all at once.
+                */
+                static list<shared_ptr<XmlNode>> parse_subnodes(Glib::ustring schema, Glib::ustring parentNodeName, int start_index, int& end_index);
+                static shared_ptr<XmlElement> parse_element(Glib::ustring schema, int start_index);
                 static Glib::ustring get_tag(Glib::ustring schema, int index);
                 static int find_end_tag(Glib::ustring schema,Glib::ustring tag_name);
                 static bool tag_is_terminated(Glib::ustring tag);
