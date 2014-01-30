@@ -177,8 +177,8 @@
 	<memory>
 	<list>
 
-1390578969 /home/paul/Programming/mypattern/mypattern-data/include/xmlnode.h
-	"xmlparameter.h"
+1391063657 /home/paul/Programming/mypattern/mypattern-data/include/xmlnode.h
+	"xmlattribute.h"
 	"xmlelement.h"
 	"glibmm/ustring.h"
 	<list>
@@ -897,10 +897,10 @@
 	<glibmmconfig.h>
 	<glib.h>
 
-1391013879 /home/paul/Programming/mypattern/mypattern-data/include/xmlelement.h
+1391063657 /home/paul/Programming/mypattern/mypattern-data/include/xmlelement.h
 	"exception.h"
 	"glibmm/ustring.h"
-	"xmlparameter.h"
+	"xmlattribute.h"
 	<memory>
 	<list>
 
@@ -919,4 +919,9 @@
 
 1390805298 /home/paul/Programming/mypattern/mypattern-data/include/xmlexception.h
 	<exception.h>
+
+1391063657 /home/paul/Programming/mypattern/mypattern-data/include/xmlattribute.h
+	"glibmm/ustring.h"
+	"glibmm/regex.h"
+	<list>
 

@@ -3,7 +3,7 @@
 
 #include "exception.h"
 #include "glibmm/ustring.h"
-#include "xmlparameter.h"
+#include "xmlattribute.h"
 #include <memory>
 #include <list>
 
@@ -20,7 +20,7 @@ class XmlElement
         /** Default constructor */
         XmlElement();
 
-        XmlElement(Glib::ustring name, list<XmlParameter> attributes, bool isEmpty, bool isEndElement);
+        XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement);
         /** Default destructor */
         virtual ~XmlElement();
         /** Copy constructor
@@ -35,9 +35,9 @@ class XmlElement
         /** Access m_Attributes;
          * \return The current value of m_Attributes;
          */
-        list<MyPattern::Data::XmlParameter> GetAttributes() { return m_Attributes; }
+        list<MyPattern::Data::XmlAttribute> GetAttributes() { return m_Attributes; }
 
-        void AddAttribute(XmlParameter attribute);
+        void AddAttribute(XmlAttribute attribute);
         /** Access m_isEmpty
          * \return The current value of m_isEmpty
          */
@@ -54,7 +54,7 @@ class XmlElement
         static XmlElement parse_element(Glib::ustring schema, int start_index, int& end_index);
     protected:
     private:
-        list<XmlParameter> m_Attributes; //!< Member variable "m_Attributes;"
+        list<XmlAttribute> m_Attributes; //!< Member variable "m_Attributes;"
         bool m_isEmpty; //!< Member variable "m_isEmpty"
         bool m_isEndElement;
         Glib::ustring m_name;

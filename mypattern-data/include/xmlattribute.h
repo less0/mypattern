@@ -20,12 +20,12 @@ namespace MyPattern
          * parameters, each with a name and a value. This class parses a tags
          * parameter and stores it.
          */
-        class XmlParameter
+        class XmlAttribute
         {
             public:
-                XmlParameter();
-                XmlParameter(Glib::ustring name, Glib::ustring value);
-                XmlParameter(const XmlParameter& parameter);
+                XmlAttribute();
+                XmlAttribute(Glib::ustring name, Glib::ustring value);
+                XmlAttribute(const XmlAttribute& parameter);
                 /** \brief Gets the name of the parameter
                 *
                 */
@@ -33,7 +33,7 @@ namespace MyPattern
                 void set_name(Glib::ustring);
                 Glib::ustring get_value();
                 void set_value(Glib::ustring);
-                /** \brief Parses a list of XmlParameter objects from a valid
+                /** \brief Parses a list of XmlAttribute objects from a valid
                 * XML-Tag.
                 *
                 * This function takes an XML-tag and searches key-value-pairs
@@ -45,14 +45,14 @@ namespace MyPattern
                 * expected key-value-pair format
                 *
                 */
-                static list<XmlParameter> parse_from_tag(Glib::ustring tag);
+                static list<XmlAttribute> parse_from_tag(Glib::ustring tag);
                 /** \brief Parses a key-value-pair as given in the XML-tag.
                 *
                 * This function takes a key-value-pair in the form key="value"
-                * and creates a new XmlParameter with the corresponding key and
+                * and creates a new XmlAttribute with the corresponding key and
                 * value.
                 */
-                static XmlParameter parse(Glib::ustring key_value_pair);
+                static XmlAttribute parse(Glib::ustring key_value_pair);
             protected:
             private:
                 Glib::ustring m_key;

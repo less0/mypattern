@@ -27,8 +27,8 @@ int main()
 //
 //    node_out(xmlNode, 0);
 //
-////    list<XmlParameter> listOfParameters = xmlNode->get_parameters();
-////    list<XmlParameter>::iterator it = listOfParameters.begin();
+////    list<XmlAttribute> listOfParameters = xmlNode->get_parameters();
+////    list<XmlAttribute>::iterator it = listOfParameters.begin();
 ////
 ////    //cout << it->get_name() <<  ":" << it->get_value() << std::endl;
 ////
@@ -54,8 +54,8 @@ int main()
 //
 //    std::cout << indent << node->get_name() << std::endl;
 //
-//    list<XmlParameter> listOfParameters = node->get_parameters();
-//    list<XmlParameter>::iterator it_parameters = listOfParameters.begin();
+//    list<XmlAttribute> listOfParameters = node->get_parameters();
+//    list<XmlAttribute>::iterator it_parameters = listOfParameters.begin();
 //
 //    while(it_parameters != listOfParameters.end())
 //    {
