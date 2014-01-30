@@ -16,8 +16,8 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="d_mypattern-base" />
 					<Add library="d_mypattern-data" />
+					<Add library="d_mypattern-base" />
 					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
 				<ExtraCommands>
@@ -62,7 +62,9 @@
 			<Add directory="../mypattern-base" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="xmlelementtest.cpp" />
 		<Unit filename="xmlnodetest.cpp" />
+		<Unit filename="xmlparametertest.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

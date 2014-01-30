@@ -171,20 +171,21 @@
 1225377516 /home/paul/Programming/mypattern/UnitTest++/src/Win32/TimeHelpers.h
 	"../Config.h"
 
-1390379834 source:/home/paul/Programming/mypattern/mypattern-data-test/xmlnodetest.cpp
+1390805488 source:/home/paul/Programming/mypattern/mypattern-data-test/xmlnodetest.cpp
 	"UnitTest++.h"
 	"xmlnode.h"
 	<memory>
 	<list>
 
-1390321093 /home/paul/Programming/mypattern/mypattern-data/include/xmlnode.h
+1390578969 /home/paul/Programming/mypattern/mypattern-data/include/xmlnode.h
 	"xmlparameter.h"
+	"xmlelement.h"
 	"glibmm/ustring.h"
 	<list>
 	<memory>
 	<sstream>
 
-1390286481 /home/paul/Programming/mypattern/mypattern-data/include/xmlparameter.h
+1390804117 /home/paul/Programming/mypattern/mypattern-data/include/xmlparameter.h
 	"glibmm/ustring.h"
 	"glibmm/regex.h"
 	<list>
@@ -895,4 +896,27 @@
 1375291725 /usr/include/glibmm-2.4/glibmm/debug.h
 	<glibmmconfig.h>
 	<glib.h>
+
+1391013879 /home/paul/Programming/mypattern/mypattern-data/include/xmlelement.h
+	"exception.h"
+	"glibmm/ustring.h"
+	"xmlparameter.h"
+	<memory>
+	<list>
+
+1390841497 /home/paul/Programming/mypattern/mypattern-base/include/exception.h
+	"glibmm/ustring.h"
+
+1390841423 source:/home/paul/Programming/mypattern/mypattern-data-test/xmlparametertest.cpp
+	"xmlparameter.h"
+	"UnitTest++.h"
+
+1391014663 source:/home/paul/Programming/mypattern/mypattern-data-test/xmlelementtest.cpp
+	"UnitTest++.h"
+	"xmlelement.h"
+	"xmlexception.h"
+	<list>
+
+1390805298 /home/paul/Programming/mypattern/mypattern-data/include/xmlexception.h
+	<exception.h>
 
