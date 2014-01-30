@@ -11,7 +11,7 @@ namespace MyPattern {
             //ctor
         }
 
-        XmlElement::XmlElement(Glib::ustring name, list<XmlParameter> attributes, bool isEmpty, bool isEndElement)
+        XmlElement::XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement)
         {
             m_name = name;
             m_Attributes = attributes;
@@ -66,7 +66,7 @@ namespace MyPattern {
 
                 end_index = start_index + full_match.length() - 1;
 
-                list<XmlParameter> attributes = XmlParameter::parse_from_tag(remainder.substr(0, full_match.length()));
+                list<XmlAttribute> attributes = XmlAttribute::parse_from_tag(remainder.substr(0, full_match.length()));
                 bool isEndElement = full_match[1] == '/';
                 bool isEmpty = full_match[full_match.length() - 2] == '/';
 
@@ -90,7 +90,7 @@ namespace MyPattern {
 //            bool isContentStart = true;
 //
 //            int current_index = start_index+1;
-//            XmlParameter currentAttribute();
+//            XmlAttribute currentAttribute();
 //
 //            Glib::ustring name = "";
 //            bool isEmpty = false;

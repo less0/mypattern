@@ -21,8 +21,8 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
 
     if(rootNode->get_name() == "pattern")
     {
-        list<XmlParameter> parameters = rootNode->get_parameters();
-        list<XmlParameter>::iterator it_params = parameters.begin();
+        list<XmlAttribute> parameters = rootNode->get_parameters();
+        list<XmlAttribute>::iterator it_params = parameters.begin();
 
         if(it_params != parameters.end())
         {

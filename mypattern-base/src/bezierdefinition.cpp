@@ -54,8 +54,8 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
 //    shared_ptr<XmlNode> output(new XmlNode());
 //
 //    output->set_name("curve");
-//    output->add_parameter(XmlParameter("type", "bezier"));
-//    output->add_parameter(XmlParameter("name", this->get_name()));
+//    output->add_parameter(XmlAttribute("type", "bezier"));
+//    output->add_parameter(XmlAttribute("name", this->get_name()));
 //
 //
 ////    std::stringstream out_stream;
