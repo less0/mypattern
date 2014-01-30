@@ -20,7 +20,7 @@ XmlNode::XmlNode(const XmlNode& base)
 {
     m_name = base.m_name;
 
-    list<XmlParameter>::const_iterator it = base.m_parameters.begin();
+    list<XmlAttribute>::const_iterator it = base.m_parameters.begin();
 
     while(it != base.m_parameters.end())
     {
@@ -49,7 +49,7 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 
     result->m_name = tag_name;
     ///\todo parse key value pairs
-    result->m_parameters = XmlParameter::parse_from_tag(tag);
+    result->m_parameters = XmlAttribute::parse_from_tag(tag);
 
     if(tag_is_terminated(Glib::ustring(tag)))
     {
@@ -319,14 +319,14 @@ list<shared_ptr<XmlNode>> XmlNode::get_nodes()
     return this->m_subnodes;
 }
 
-list<XmlParameter> XmlNode::get_parameters()
+list<XmlAttribute> XmlNode::get_parameters()
 {
     return this->m_parameters;
 }
 
-bool XmlNode::add_parameter(XmlParameter param)
+bool XmlNode::add_parameter(XmlAttribute param)
 {
-    list<XmlParameter>::iterator it = this->m_parameters.begin();
+    list<XmlAttribute>::iterator it = this->m_parameters.begin();
 
     while(it != this->m_parameters.end())
     {
@@ -338,18 +338,18 @@ bool XmlNode::add_parameter(XmlParameter param)
         it++;
     }
 
-    this->m_parameters.push_back(XmlParameter(param));
+    this->m_parameters.push_back(XmlAttribute(param));
     return true;
 }
 
-bool XmlNode::remove_parameter(XmlParameter param)
+bool XmlNode::remove_parameter(XmlAttribute param)
 {
     return this->remove_parameter(param.get_name());
 }
 
 bool XmlNode::remove_parameter(Glib::ustring name)
 {
-    list<XmlParameter>::iterator it = this->m_parameters.begin();
+    list<XmlAttribute>::iterator it = this->m_parameters.begin();
 
     while(it != this->m_parameters.end())
     {

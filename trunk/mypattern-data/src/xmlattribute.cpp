@@ -1,42 +1,42 @@
-#include "xmlparameter.h"
+#include "xmlattribute.h"
 
 using namespace MyPattern::Data;
 
-XmlParameter::XmlParameter()
+XmlAttribute::XmlAttribute()
 {
     //ctor
 }
 
-XmlParameter::XmlParameter(Glib::ustring name, Glib::ustring value)
+XmlAttribute::XmlAttribute(Glib::ustring name, Glib::ustring value)
 {
     this->m_key = name;
     this->m_value = value;
 }
 
-XmlParameter::XmlParameter(const XmlParameter& base)
+XmlAttribute::XmlAttribute(const XmlAttribute& base)
 {
     this->m_key = base.m_key;
     this->m_value = base.m_value;
 }
 
-Glib::ustring XmlParameter::get_name()
+Glib::ustring XmlAttribute::get_name()
 {
     return Glib::ustring(this->m_key);
 }
 
-Glib::ustring XmlParameter::get_value()
+Glib::ustring XmlAttribute::get_value()
 {
     return this->m_value;
 }
 
-XmlParameter XmlParameter::parse(Glib::ustring key_value_pair)
+XmlAttribute XmlAttribute::parse(Glib::ustring key_value_pair)
 {
-    XmlParameter result;
+    XmlAttribute result;
     int equalSignIndex = key_value_pair.find("=");
 
     if(equalSignIndex < 0)
     {
-        return XmlParameter();
+        return XmlAttribute();
     }
 
     //TODO: Check if the value is placed between "s
@@ -48,14 +48,14 @@ XmlParameter XmlParameter::parse(Glib::ustring key_value_pair)
     result.m_key = Glib::ustring(key);
     result.m_value = Glib::ustring(value);
 
-    return XmlParameter(result);
+    return XmlAttribute(result);
 }
 
 
-list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
+list<XmlAttribute> XmlAttribute::parse_from_tag(Glib::ustring tag)
 {
     Glib::ustring tag_remainder = tag;
-    list<XmlParameter> parsed_parameters;
+    list<XmlAttribute> parsed_parameters;
 
     //trim of trailing spaces. There might be a better way to achieve this, but
     //at the moment this should do
@@ -82,7 +82,7 @@ list<XmlParameter> XmlParameter::parse_from_tag(Glib::ustring tag)
             Glib::ustring match = tag_remainder.substr(checkPatternIndex,
                                                        endQuoteIndex - checkPatternIndex + 1);
 
-            XmlParameter parsed_parameter = XmlParameter::parse(match);
+            XmlAttribute parsed_parameter = XmlAttribute::parse(match);
             parsed_parameters.push_back(parsed_parameter);
 
             checkPatternIndex = endQuoteIndex + 1;

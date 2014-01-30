@@ -30,7 +30,7 @@ namespace
         CHECK_EQUAL(false, element.isEmpty());
         CHECK_EQUAL("test", element.GetName());
 
-        list<MyPattern::Data::XmlParameter> parameters = element.GetAttributes();
+        list<MyPattern::Data::XmlAttribute> parameters = element.GetAttributes();
         CHECK_EQUAL(2, parameters.size());
     }
 

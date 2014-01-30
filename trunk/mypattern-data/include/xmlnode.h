@@ -1,7 +1,7 @@
 #ifndef XMLNODE_H
 #define XMLNODE_H
 
-#include "xmlparameter.h"
+#include "xmlattribute.h"
 #include "xmlelement.h"
 #include "glibmm/ustring.h"
 #include <list>
@@ -18,7 +18,7 @@ namespace MyPattern
         *
         * This class provides the functionality to parse nodes from an XML tree and
         * represent them hierarchically. Besides subnodes, nodes may contain parameters
-        * represented by objects of the XmlParameter class.
+        * represented by objects of the XmlAttribute class.
         */
         class XmlNode
         {
@@ -39,12 +39,12 @@ namespace MyPattern
 
                 /*! \brief Gets a list of all parameters of the current node
                 */
-                list<XmlParameter> get_parameters();
+                list<XmlAttribute> get_parameters();
                 /*! \brief Adds a new parameter to the XmlNode
                 */
-                bool add_parameter(XmlParameter);
+                bool add_parameter(XmlAttribute);
 
-                bool remove_parameter(XmlParameter);
+                bool remove_parameter(XmlAttribute);
                 bool remove_parameter(Glib::ustring);
 
                 /*! \brief Gets a list of all subnodes */
@@ -78,7 +78,7 @@ namespace MyPattern
                 static bool tag_is_terminated(Glib::ustring tag);
 
                 Glib::ustring m_name;
-                list<XmlParameter> m_parameters;
+                list<XmlAttribute> m_parameters;
                 list<shared_ptr<XmlNode>> m_subnodes;
         };
     }
