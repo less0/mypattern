@@ -56,17 +56,17 @@
 			<Add directory="../mypattern-base/include" />
 		</Compiler>
 		<Unit filename="include/filereader.h" />
+		<Unit filename="include/xmlattribute.h" />
 		<Unit filename="include/xmlelement.h" />
 		<Unit filename="include/xmlexception.h" />
 		<Unit filename="include/xmlfilereader.h" />
 		<Unit filename="include/xmlnode.h" />
-		<Unit filename="include/xmlparameter.h" />
 		<Unit filename="src/filereader.cpp" />
+		<Unit filename="src/xmlattribute.cpp" />
 		<Unit filename="src/xmlelement.cpp" />
 		<Unit filename="src/xmlexception.cpp" />
 		<Unit filename="src/xmlfilereader.cpp" />
 		<Unit filename="src/xmlnode.cpp" />
-		<Unit filename="src/xmlparameter.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -103,16 +103,16 @@ namespace
 
     TEST(ParseMultipleLevelsOfSubnodesWithSameName)
     {
-//        UNITTEST_TIME_CONSTRAINT(20);
-//
-//        shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><bar></bar></bar></foo>");
-//        list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-//        CHECK_EQUAL(1, subnodes.size());
-//        list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
-//        CHECK_EQUAL("bar", (*it)->get_name());
-//        list<shared_ptr<XmlNode>> subSubnodes = (*it)->get_nodes();
-//        CHECK_EQUAL(1, subSubnodes.size());
-//        list<shared_ptr<XmlNode>>::iterator it2 = subSubnodes.begin();
-//        CHECK_EQUAL("bar", (*it2)->get_name());
+        //UNITTEST_TIME_CONSTRAINT(20);
+
+        shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><bar></bar></bar></foo>");
+        list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
+        CHECK_EQUAL(1, subnodes.size());
+        list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+        CHECK_EQUAL("bar", (*it)->get_name());
+        list<shared_ptr<XmlNode>> subSubnodes = (*it)->get_nodes();
+        CHECK_EQUAL(1, subSubnodes.size());
+        list<shared_ptr<XmlNode>>::iterator it2 = subSubnodes.begin();
+        CHECK_EQUAL("bar", (*it2)->get_name());
     }
 }
