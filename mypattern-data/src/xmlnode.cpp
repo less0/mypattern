@@ -2,6 +2,8 @@
 
 #include <sstream>
 #include <exception.h>
+#include <xmlelement.h>
+#include <xmlexception.h>
 
 using namespace MyPattern::Data;
 using namespace MyPattern::Exceptions;
@@ -34,47 +36,47 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     shared_ptr<XmlNode> result(new XmlNode());
     //int subschema_index = 0;
     Glib::ustring subschema = "";
-    list<Glib::ustring> ls_nodes;
+    list<shared_ptr<XmlNode>> ls_nodes;
 
     int start_tag_index = schema.find_first_of('<');
-    Glib::ustring tag = get_tag(schema, start_tag_index);
-
-    int firstSpaceIndex = schema.find_first_of(' ');
-    int closingBracket = schema.find('>', start_tag_index);
+    int end_element_index = 0;
+    XmlElement start_element = XmlElement::parse_element(schema, start_tag_index, end_element_index);
 
 
+    //Glib::ustring tag = get_tag(schema, start_tag_index);
 
-    Glib::ustring tag_name = schema.substr(start_tag_index + 1,
-                                           (firstSpaceIndex < 0 || firstSpaceIndex>closingBracket ? closingBracket :  firstSpaceIndex) - start_tag_index - 1);
+//    int firstSpaceIndex = schema.find_first_of(' ');
+//    int closingBracket = schema.find('>', start_tag_index);
 
-    result->m_name = tag_name;
-    ///\todo parse key value pairs
-    result->m_parameters = XmlAttribute::parse_from_tag(tag);
 
-    if(tag_is_terminated(Glib::ustring(tag)))
+
+//    Glib::ustring tag_name = schema.substr(start_tag_index + 1,
+//                                           (firstSpaceIndex < 0 || firstSpaceIndex>closingBracket ? closingBracket :  firstSpaceIndex) - start_tag_index - 1);
+
+    result->m_name = start_element.GetName();
+    result->m_parameters = start_element.GetAttributes();
+
+    if(start_element.isEmpty())
     {
         return result;
     }
 
-    stringstream end_tag_builder;
-    end_tag_builder << "</"
-        << tag_name
-        << ">";
+//    stringstream end_tag_builder;
+//    end_tag_builder << "</"
+//        << tag_name
+//        << ">";
+//
+//    int end_tag_index = schema.find(end_tag_builder.str(), start_tag_index);
 
-    int end_tag_index = schema.find(end_tag_builder.str(), start_tag_index);
+//    subschema = schema.substr(start_tag_index + tag.length(),
+//                              end_tag_index - start_tag_index - tag.length());
 
-    subschema = schema.substr(start_tag_index + tag.length(),
-                              end_tag_index - start_tag_index - tag.length());
+    int end_subnodes = 0;
+    ls_nodes = parse_subnodes(schema, start_element.GetName(), end_element_index+1, end_subnodes);
 
-    ls_nodes = split_nodes(subschema);
+//    list<Glib::ustring>::iterator it = ls_nodes.begin();
 
-    list<Glib::ustring>::iterator it = ls_nodes.begin();
-
-    while(it != ls_nodes.end())
-    {
-        result->m_subnodes.push_back(XmlNode::parse(*it));
-        it++;
-    }
+    result->m_subnodes = ls_nodes;
 
 
     return result;
@@ -82,149 +84,218 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 
 list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::ustring parent_node_name, int start_index, int& end_index)
 {
-    //Notizen:
-    //The present function is quite lengthy, with many
 
     list<shared_ptr<XmlNode>> parsedNodes;
-
+    shared_ptr<XmlNode> current_node;
+    int current_index = start_index;
     bool inNode = false;
-    bool inElement = false;
-    bool inElementName = false;
-    bool inAttribute = false;
-    bool inAttributeValue = false;
+    bool run = true; // states
 
-    Glib::ustring currentNodeName = "";
-    Glib::ustring currentElementName = "";
-    bool isEndElement = false;
-
-    int elementStartIndex = 0;
-    int slashIndex = 0;
-
-    bool finishedParsing = false;
-    int currentIndex = 0;
-
-    while(!finishedParsing && currentIndex < schema.length())
+    while(run)
     {
-        if(schema[currentIndex] == '<')
-        {
-            if(!inAttributeValue && !inElement)
-            {
-                inElement = true;
-                inElementName = true;
-                elementStartIndex = currentIndex;
-            }
-            else if(inElement)
-            {
-                throw MyPattern::Exceptions::Exception();
-                //Exception("Unexpected character '<' in element");
-            }
+        int next_index = current_index + 1;
 
-        }
-        else if(schema[currentIndex] == '"')
+        if(schema[current_index] == '<')
         {
-            if(inAttribute && !inAttributeValue)
-            {
-                inAttributeValue = true;
-            }
-            else if(inAttributeValue)
-            {
-                inAttributeValue = false;
-            }
-            else if(!inElement)
-            {
-                throw MyPattern::Exceptions::Exception("");
-            }
-        }
-        else if(schema[currentIndex] == '>')
-        {
-            if(!inAttributeValue)
-            {
-                //bracket is within an attribute value and thus ignored
-            }
-            else if(inElement)
-            {
-                inElement = false;
-                inElementName = false;
-                inAttribute = false;
+            XmlElement element = XmlElement::parse_element(schema, current_index, next_index);
 
-                //there has been a slash within the current element
-                if(slashIndex > elementStartIndex)
+            if(element.isEndElement())
+            {
+                if(inNode && current_node->get_name() == element.GetName())
                 {
-                    if(slashIndex == elementStartIndex + 1)
-                    {
-                        //element is end element
-
-
-                        //compare name with node name
-
-                        //if the name mateches the current node name
-                    }
-                    else if(slashIndex == elementStartIndex - 1)
-                    {
-                        //element is self ended
-                    }
-                    else
-                    {
-                        //the slash has been placed neither at the begging, nor
-                        // at the end of the element. This is an unexpected
-                        //form, therefor an Exception will be thrown
-                    }
+                    parsedNodes.push_back(current_node);
+                    inNode = false;
+                }
+                else if(inNode && current_node->get_name() != element.GetName())
+                {
+                    throw XmlException("Unexpected end-tag");
+                }
+                else if(!inNode && parent_node_name == element.GetName())
+                {
+                    end_index = current_index - 1;
+                    run=false;
+                }
+                else if(!inNode && parent_node_name != element.GetName())
+                {
+                    throw XmlException("Unexpected end-tag");
+                }
+            }
+            else if(element.isEmpty())
+            {
+                if(inNode)
+                {
+                    current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
                 }
                 else
                 {
-                    //there hab been no slash
 
-                    //if there is a current node start subnodes now
-
-                    //else create new current node
                 }
-
-                /*! \todo implement logic */
-
-
             }
-        }
-        else if(schema[currentIndex] == '/')
-        {
-            if(inElement)
+            else //element is start element
             {
-                slashIndex = currentIndex;
+                if(inNode)
+                {
+                    current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
+                }
+                else
+                {
+                    inNode = true;
+                    current_node = shared_ptr<XmlNode>(new XmlNode(element.GetName()));
+                    current_node->m_parameters = element.GetAttributes();
+
+                }
             }
-        }
-        else if(schema[currentIndex] == ' ')
-        {
-            if(inElementName)
-            {
-                inElementName = false;
-            }
-            else if(inAttribute)
-            {
-                inAttribute = false;
-            }
-        }
-        else if(schema[currentIndex] == ' ')
-        {
+
+            current_index = next_index + 1;
         }
         else
         {
-            if(inElementName)
+            if(inNode)
             {
-                //check for valid characters for element names here
-
-                //else throw exception
+                current_node->m_text = current_node->m_text + schema[current_index];
             }
-            else if(inElement &&  !inAttributeValue)
-            {
-
-            }
-
         }
-
-        currentIndex++;
     }
 
-    end_index = currentIndex;
 
+//    bool inNode = false;
+//    bool inElement = false;
+//    bool inElementName = false;
+//    bool inAttribute = false;
+//    bool inAttributeValue = false;
+//
+//    Glib::ustring currentNodeName = "";
+//    Glib::ustring currentElementName = "";
+//    bool isEndElement = false;
+//
+//    int elementStartIndex = 0;
+//    int slashIndex = 0;
+//
+//    bool finishedParsing = false;
+//    int currentIndex = 0;
+//
+//    while(!finishedParsing && currentIndex < schema.length())
+//    {
+//        if(schema[currentIndex] == '<')
+//        {
+//            if(!inAttributeValue && !inElement)
+//            {
+//                inElement = true;
+//                inElementName = true;
+//                elementStartIndex = currentIndex;
+//            }
+//            else if(inElement)
+//            {
+//                throw MyPattern::Exceptions::Exception();
+//                //Exception("Unexpected character '<' in element");
+//            }
+//
+//        }
+//        else if(schema[currentIndex] == '"')
+//        {
+//            if(inAttribute && !inAttributeValue)
+//            {
+//                inAttributeValue = true;
+//            }
+//            else if(inAttributeValue)
+//            {
+//                inAttributeValue = false;
+//            }
+//            else if(!inElement)
+//            {
+//                throw MyPattern::Exceptions::Exception("");
+//            }
+//        }
+//        else if(schema[currentIndex] == '>')
+//        {
+//            if(!inAttributeValue)
+//            {
+//                //bracket is within an attribute value and thus ignored
+//            }
+//            else if(inElement)
+//            {
+//                inElement = false;
+//                inElementName = false;
+//                inAttribute = false;
+//
+//                //there has been a slash within the current element
+//                if(slashIndex > elementStartIndex)
+//                {
+//                    if(slashIndex == elementStartIndex + 1)
+//                    {
+//                        //element is end element
+//
+//
+//                        //compare name with node name
+//
+//                        //if the name mateches the current node name
+//                    }
+//                    else if(slashIndex == elementStartIndex - 1)
+//                    {
+//                        //element is self ended
+//                    }
+//                    else
+//                    {
+//                        //the slash has been placed neither at the begging, nor
+//                        // at the end of the element. This is an unexpected
+//                        //form, therefor an Exception will be thrown
+//                    }
+//                }
+//                else
+//                {
+//                    //there hab been no slash
+//
+//                    //if there is a current node start subnodes now
+//
+//                    //else create new current node
+//                }
+//
+//                /*! \todo implement logic */
+//
+//
+//            }
+//        }
+//        else if(schema[currentIndex] == '/')
+//        {
+//            if(inElement)
+//            {
+//                slashIndex = currentIndex;
+//            }
+//        }
+//        else if(schema[currentIndex] == ' ')
+//        {
+//            if(inElementName)
+//            {
+//                inElementName = false;
+//            }
+//            else if(inAttribute)
+//            {
+//                inAttribute = false;
+//            }
+//        }
+//        else if(schema[currentIndex] == ' ')
+//        {
+//        }
+//        else
+//        {
+//            if(inElementName)
+//            {
+//                //check for valid characters for element names here
+//
+//                //else throw exception
+//            }
+//            else if(inElement &&  !inAttributeValue)
+//            {
+//
+//            }
+//
+//        }
+//
+//        currentIndex++;
+//    }
+//
+//    end_index = currentIndex;
+//
     return parsedNodes;
 }
 

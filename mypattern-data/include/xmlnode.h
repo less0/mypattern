@@ -78,6 +78,7 @@ namespace MyPattern
                 static bool tag_is_terminated(Glib::ustring tag);
 
                 Glib::ustring m_name;
+                Glib::ustring m_text;
                 list<XmlAttribute> m_parameters;
                 list<shared_ptr<XmlNode>> m_subnodes;
         };
