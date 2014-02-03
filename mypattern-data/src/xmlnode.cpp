@@ -1,7 +1,7 @@
 #include "xmlnode.h"
 
 #include <sstream>
-#include <exception.h>
+#include <exceptions/exception.h>
 #include <xmlelement.h>
 #include <xmlexception.h>
 

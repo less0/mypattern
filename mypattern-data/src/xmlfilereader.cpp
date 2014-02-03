@@ -1,4 +1,5 @@
 #include "xmlfilereader.h"
+#include "xmlexception.h"
 #include <fstream>
 #include <sstream>
 
@@ -11,7 +12,6 @@ XmlFileReader::XmlFileReader()
 shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
 {
     shared_ptr<PatternDefinition> result(new PatternDefinition());
-
 
     Glib::ustring data = read_file(m_filename);
 
@@ -31,8 +31,6 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
                 result->set_name(it_params->get_value());
             }
 
-
-
             it_params++;
         }
 
@@ -50,6 +48,11 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
             }
             else if(subnode_name == "user")
             {
+                // get the user whu created the pattern from XML-tree
+            }
+            else if(subnode_name == "measures")
+            {
+                //restore custom measures from XML-tree
             }
 
 
@@ -58,8 +61,7 @@ shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
     }
     else
     {
-        ///\todo Throw exception
-        return shared_ptr<PatternDefinition>((PatternDefinition*)NULL);
+        throw XmlException("Pattern files must contain a \"pattern\"-root-node");
     }
 
     return result;
@@ -95,6 +97,19 @@ Glib::ustring XmlFileReader::read_file(Glib::ustring filename)
 
 shared_ptr<PartDefinition> get_part(shared_ptr<XmlNode> node, shared_ptr<PatternDefinition> pattern)
 {
+    shared_ptr<PartDefinition> result = shared_ptr<PartDefinition>(new PartDefinition());
+
+    list<XmlAttribute> attributes = node->get_parameters();
+    list<XmlAttribute>::iterator it_attributes = attributes.begin();
+
+    while(it_attributes != attributes.end())
+    {
+        switch((*it_attributes).get_name() == "name")
+        {
+            result->set_name((*it_attributes).get_value());
+        }
+    }
+
     return shared_ptr<PartDefinition>((PartDefinition*)NULL);
 }
 

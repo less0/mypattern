@@ -1,7 +1,7 @@
 #ifndef MYPATTERN_DATA_XMLELEMENT_H
 #define MYPATTERN_DATA_XMLELEMENT_H
 
-#include "exception.h"
+#include "exceptions/exception.h"
 #include "glibmm/ustring.h"
 #include "xmlattribute.h"
 #include <memory>
