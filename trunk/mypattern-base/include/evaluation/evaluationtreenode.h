@@ -5,7 +5,8 @@
 *
 * For reasons of efficiency, all objects to be evaluated are organized in a tree
 * and whenever an object changes, it notifies an observer (i.e. the
-* EvaluationTreeNode) about the changes. The node in turn notifies the
+* EvaluationTreeNode) about the changes. The node in turn notifies the the subsequent
+* objects
 */
 class EvaluationTreeNode
 {
