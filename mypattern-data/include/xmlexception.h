@@ -1,7 +1,7 @@
 #ifndef XMLEXCEPTION_H
 #define XMLEXCEPTION_H
 
-#include <exception.h>
+#include <exceptions/exception.h>
 
 namespace MyPattern {
 namespace Data {
