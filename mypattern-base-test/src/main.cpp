@@ -2,7 +2,7 @@
 #include <limits>
 
 #include <landmark.h>
-
+#include "UnitTest++.h"
 //#include "xmlnode.h"
 
 //void node_out(shared_ptr<XmlNode>, int);
@@ -10,15 +10,17 @@ using namespace MyPattern::Base;
 
 int main()
 {
-    Landmark* l= new Landmark();
-    l->set_definition_x("$ad.X*#test*$bd.X");
-    l->set_definition_y("$bd.Y*#blabla");
-    list<Glib::ustring> dependencies = l->depends_on();
+    return UnitTest::RunAllTests();
 
-    for(list<Glib::ustring>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
+//    Landmark* l= new Landmark();
+//    l->set_definition_x("$ad.X*#test*$bd.X");
+//    l->set_definition_y("$bd.Y*#blabla");
+//    list<Glib::ustring> dependencies = l->depends_on();
+//
+//    for(list<Glib::ustring>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+//    {
+//        std::cout << *it << std::endl;
+//    }
 
 
 
@@ -40,7 +42,7 @@ int main()
 //
 //    delete l;
 
-     std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+//     std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 }
 
 //void node_out(shared_ptr<XmlNode> node, int level)

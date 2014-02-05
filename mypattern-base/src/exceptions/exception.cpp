@@ -1,4 +1,4 @@
-#include "exception.h"
+#include "exceptions/exception.h"
 
 using namespace MyPattern::Exceptions;
 
