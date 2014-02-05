@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="mypattern-base-test" prefix_auto="1" extension_auto="1" />
+				<Option output="mypattern-base-test" prefix_auto="0" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -40,7 +40,7 @@
 				</Linker>
 			</Target>
 			<Target title="Debug Linux">
-				<Option output="liblibmypattern-base-test" prefix_auto="1" extension_auto="1" />
+				<Option output="mypattern-base-test" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -64,11 +64,16 @@
 				<Linker>
 					<Add library="d_mypattern-base" />
 					<Add library="sigc-2.0" />
+					<Add library="../mypattern-base/libd_mypattern-base.a" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
+					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="./mypattern-base-test" />
+				</ExtraCommands>
 			</Target>
 			<Target title="Release Linux">
-				<Option output="libliblibmypattern-base-test" prefix_auto="1" extension_auto="1" />
+				<Option output="mypattern-base-test" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -109,15 +114,18 @@
 			<Add directory="$(GTK_BASEPATH)/lib/cairomm-1.0/include" />
 			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
 			<Add directory="../mypattern-base/include" />
+			<Add directory="../UnitTest++/src" />
 		</Compiler>
 		<Linker>
 			<Add library="glibmm-2.4" />
 			<Add library="glib-2.0" />
 			<Add library="gtkmm-2.4" />
 			<Add library="sigc-2.0" />
+			<Add library="UnitTest++" />
 			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
 		</Linker>
+		<Unit filename="src/FormulaTest.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
