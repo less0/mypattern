@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="Workspace">
+		<Project filename="mypattern-data/mypattern-data.cbp" />
 		<Project filename="mypattern-base-test/mypattern-base-test.cbp">
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
 		</Project>
-		<Project filename="mypattern-data/mypattern-data.cbp" />
 		<Project filename="mypattern-base/mypattern-base.cbp" />
 		<Project filename="mypattern-cad/mypattern-cad.cbp">
 			<Depends filename="mypattern-data/mypattern-data.cbp" />

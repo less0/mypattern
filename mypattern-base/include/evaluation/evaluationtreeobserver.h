@@ -8,10 +8,7 @@ namespace Evaluation {
 class EvaluationTreeObserver
 {
     public:
-        /** Default constructor */
-        EvaluationTreeObserver();
-        /** Default destructor */
-        virtual ~EvaluationTreeObserver();
+        virtual void notify_update() = 0;
     protected:
     private:
 };
