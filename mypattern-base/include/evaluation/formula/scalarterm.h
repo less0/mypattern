@@ -2,10 +2,12 @@
 #define MYPATTERN_BASE_EVALUATION_FORMULA_SCALARTERM_H
 
 #include <evaluation/formula/term.h>
+#include <exceptions/formulaevaluationexception.h>
 #include <list>
 #include <string>
 
 using namespace std;
+using namespace Glib;
 
 namespace MyPattern {
 namespace Base {
@@ -21,7 +23,7 @@ class ScalarTerm : public MyPattern::Base::Evaluation::Formula::Term
             m_symbol = symbol;
         }
         /** Default destructor */
-        virtual ~ScalarTerm();
+        virtual ~ScalarTerm() {}
         /** Copy constructor
          *  \param other Object to copy from
          */
@@ -32,11 +34,19 @@ class ScalarTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ScalarTerm& operator=(const ScalarTerm& other);
 
-        double evaluate(map<Glib::ustring,double> values);
-
-        list<string> get_names()
+        double evaluate(map<Glib::ustring,double> values)
         {
-            list<string> result;
+            if(values.count(m_symbol) == 0)
+            {
+                throw MyPattern::Exceptions::FormulaEvaluationException("Symbol not found");
+            }
+
+            return values[m_symbol];
+        }
+
+        list<ustring> get_symbol_names()
+        {
+            list<ustring> result;
             result.push_back(m_symbol);
             return result;
         }

@@ -125,7 +125,10 @@
 			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
 		</Linker>
+		<Unit filename="src/ConstantTermTest.cpp" />
 		<Unit filename="src/FormulaTest.cpp" />
+		<Unit filename="src/QuotientTermTest.cpp" />
+		<Unit filename="src/ScalarTermTest.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
