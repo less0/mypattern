@@ -16,9 +16,9 @@ class ConstantTerm : public MyPattern::Base::Evaluation::Formula::Term
 {
     public:
         /** Default constructor */
-        ConstantTerm()
+        ConstantTerm(double value)
         {
-            m_value = .0;
+            m_value = value;
         }
         /** Default destructor */
         virtual ~ConstantTerm();
