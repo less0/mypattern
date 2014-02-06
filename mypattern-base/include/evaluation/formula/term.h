@@ -8,6 +8,7 @@
 #include <glibmm/ustring.h>
 
 using namespace std;
+using namespace Glib;
 
 namespace MyPattern {
 namespace Base {
@@ -26,13 +27,24 @@ class Term
         ~Term()
         {}
 
-        virtual double evaluate(map<Glib::ustring,double> values) = 0;
+        virtual double evaluate(map<ustring,double> values) = 0;
         virtual list<Glib::ustring> get_symbol_names() = 0;
 
-        static shared_ptr<Term> parse(Glib::ustring formula);
+        static shared_ptr<Term> parse(ustring formula);
     protected:
     private:
+        static ustring s_operators;
+        static ustring s_valid_symbol;
+        static ustring s_valid_number;
+        static const char s_substituion_marker = '?';
+
+        static shared_ptr<Term> get_left_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index)
+        { return shared_ptr<Term>();}
+        static shared_ptr<Term> get_right_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index)
+        { return shared_ptr<Term>();}
 };
+
+
 
 } // namespace Formula
 } // namespace Evaluation
