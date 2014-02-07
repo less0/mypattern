@@ -70,6 +70,7 @@
 				</Linker>
 				<ExtraCommands>
 					<Add after="./mypattern-base-test" />
+					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Release Linux">
@@ -130,6 +131,7 @@
 		<Unit filename="src/QuotientTermTest.cpp" />
 		<Unit filename="src/ScalarTermTest.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/producttermtest.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
