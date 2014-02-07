@@ -30,6 +30,7 @@ list<ustring> QuotientTerm::get_symbol_names()
     while(it != divident_symbols.end())
     {
         result.push_back(*it);
+        it++;
     }
 
     return result;
