@@ -106,6 +106,7 @@
 		<Unit filename="include/evaluation/evaluationtreenode.h" />
 		<Unit filename="include/evaluation/evaluationtreeobserver.h" />
 		<Unit filename="include/evaluation/formula/constantterm.h" />
+		<Unit filename="include/evaluation/formula/productterm.h" />
 		<Unit filename="include/evaluation/formula/quotientterm.h" />
 		<Unit filename="include/evaluation/formula/scalarterm.h" />
 		<Unit filename="include/evaluation/formula/term.h" />
@@ -137,6 +138,7 @@
 		<Unit filename="src/evaluation/evaluationtreenode.cpp" />
 		<Unit filename="src/evaluation/evaluationtreeobserver.cpp" />
 		<Unit filename="src/evaluation/formula/constantterm.cpp" />
+		<Unit filename="src/evaluation/formula/productterm.cpp" />
 		<Unit filename="src/evaluation/formula/quotientterm.cpp" />
 		<Unit filename="src/evaluation/formula/scalarterm.cpp" />
 		<Unit filename="src/evaluation/formula/term.cpp" />

@@ -94,7 +94,7 @@ namespace
         CHECK_EQUAL(.5, t->evaluate(values));
     }
 
-    TEST(TestDevisionWithSamllerValue)
+    TEST(TestDevisionWithSmallerValue)
     {
         shared_ptr<Term> t = Term::parse("#foo/#bar");
         map<Glib::ustring,double> values;
