@@ -12,7 +12,7 @@ class Exception
 {
     public:
         /** Default constructor */
-        Exception() : Exception(""){}
+        Exception() {}
         /*! Constructor with a custom message */
         Exception(Glib::ustring);
         /** Default destructor */
