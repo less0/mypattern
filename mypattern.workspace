@@ -4,6 +4,7 @@
 		<Project filename="mypattern-data/mypattern-data.cbp" />
 		<Project filename="mypattern-base-test/mypattern-base-test.cbp">
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
+			<Depends filename="UnitTest++/UnitTest++.cbp" />
 		</Project>
 		<Project filename="mypattern-base/mypattern-base.cbp" />
 		<Project filename="mypattern-cad/mypattern-cad.cbp">
