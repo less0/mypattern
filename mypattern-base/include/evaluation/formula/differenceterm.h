@@ -2,6 +2,12 @@
 #define MYPATTERN_BASE_EVALUATION_FORMULA_DIFFERENCETERM_H
 
 #include <evaluation/formula/term.h>
+#include <memory>
+#include <map>
+#include <glibmm/ustring.h>
+
+using namespace std;
+using namespace Glib;
 
 namespace MyPattern {
 namespace Base {
@@ -12,20 +18,15 @@ class DifferenceTerm : public MyPattern::Base::Evaluation::Formula::Term
 {
     public:
         /** Default constructor */
-        DifferenceTerm();
+        DifferenceTerm(shared_ptr<Term>,shared_ptr<Term>);
         /** Default destructor */
-        virtual ~DifferenceTerm();
-        /** Copy constructor
-         *  \param other Object to copy from
-         */
-        DifferenceTerm(const DifferenceTerm& other);
-        /** Assignment operator
-         *  \param other Object to assign from
-         *  \return A reference to this
-         */
-        DifferenceTerm& operator=(const DifferenceTerm& other);
+        virtual ~DifferenceTerm() {};
+        double evaluate(map<ustring, double>);
+        list<ustring> get_symbol_names();
     protected:
     private:
+        shared_ptr<Term> m_subtrahend;
+        shared_ptr<Term> m_minuent;
 };
 
 } // namespace Formula

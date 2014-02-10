@@ -38,6 +38,8 @@ shared_ptr<Term> Term::parse(Glib::ustring formula)
     int start_index = 0;
     int end_index = 0;
 
+    ///\todo remove all whitespaces, etc.
+
     return shared_ptr<Term>(new ConstantTerm(.0));
 
     while((operator_index = formula.find('/')) > 0)
@@ -64,6 +66,21 @@ shared_ptr<Term> Term::parse(Glib::ustring formula)
 
 
     return result;
+}
+
+shared_ptr<Term> Term::get_left_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index)
+{
+    int current_index = index - 1;
+    ustring subterm;
+
+    while(current_index>=0 && s_operators.find(formula[current_index]) < 0)
+    { current_index--; }
+
+    start_index = current_index + 1;
+
+    subterm = formula.substr(current_index+1, (index - (current_index+1)));
+
+
 }
 
 } // namespace Formula
