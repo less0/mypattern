@@ -1,30 +1,38 @@
 #include "evaluation/formula/differenceterm.h"
+#include <list>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Base {
 namespace Evaluation {
 namespace Formula {
 
-DifferenceTerm::DifferenceTerm()
+DifferenceTerm::DifferenceTerm(shared_ptr<Term> first, shared_ptr<Term> second)
 {
-    //ctor
+    m_minuent =  first;
+    m_subtrahend = second;
 }
 
-DifferenceTerm::~DifferenceTerm()
+
+double DifferenceTerm::evaluate(map<ustring,double> values)
 {
-    //dtor
+    return m_minuent->evaluate(values) - m_subtrahend->evaluate(values);
 }
 
-DifferenceTerm::DifferenceTerm(const DifferenceTerm& other)
+list<ustring> DifferenceTerm::get_symbol_names()
 {
-    //copy ctor
-}
+    list<ustring> result = m_subtrahend->get_symbol_names();
+    list<ustring> minuent_symbols = m_minuent->get_symbol_names();
+    list<ustring>::iterator it = minuent_symbols.begin();
+    while(it != minuent_symbols.end())
+    {
+        result.push_back(*it);
 
-DifferenceTerm& DifferenceTerm::operator=(const DifferenceTerm& rhs)
-{
-    if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
-    return *this;
+        it++;
+    }
+
+    return result;
 }
 
 } // namespace Formula

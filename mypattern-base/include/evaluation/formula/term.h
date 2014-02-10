@@ -38,8 +38,7 @@ class Term
         static ustring s_valid_number;
         static const char s_substituion_marker = '?';
 
-        static shared_ptr<Term> get_left_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index)
-        { return shared_ptr<Term>();}
+        static shared_ptr<Term> get_left_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index);
         static shared_ptr<Term> get_right_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index)
         { return shared_ptr<Term>();}
 };
