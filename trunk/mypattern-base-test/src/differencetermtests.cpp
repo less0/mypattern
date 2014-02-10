@@ -2,7 +2,9 @@
 
 #include "evaluation/formula/constantterm.h"
 #include "evaluation/formula/differenceterm.h"
+#include "evaluation/formula/scalarterm.h"
 #include <map>
+#include <memory>
 #include <glibmm/ustring.h>
 
 using namespace std;
@@ -16,7 +18,7 @@ namespace
         DifferenceTerm term(shared_ptr<Term>(new ConstantTerm(4.321)), shared_ptr<Term>(new ConstantTerm(1.234)));
         map<ustring,double> values;
 
-        CHECK_CLOSE(3087.0, term.evaluate(values), 1e-12);
+        CHECK_CLOSE(3.0870, term.evaluate(values), 1e-12);
     }
 
     TEST(TestDifferenceWithScalarValues)
@@ -26,7 +28,7 @@ namespace
         values.insert(pair<ustring, double>("#fooBar", 12.34));
         values.insert(pair<ustring, double>("#barFoo", 43.21));
 
-        CHECK_NEAR(-29.13, term.evaluate(values), 1e-12);
+        CHECK_CLOSE(-30.87, term.evaluate(values), 1e-12);
     }
 
     TEST(TestDifferenceWithSameValue)
@@ -35,7 +37,7 @@ namespace
         map<ustring,double> values;
         values.insert(pair<ustring, double>("#fooBar", 12.34));
 
-        CHECK_NEAR(.0, term.evaluate(values), 1e-12);
+        CHECK_CLOSE(.0, term.evaluate(values), 1e-12);
     }
 
     TEST(TestNestedDifferenceTerms)
