@@ -15,10 +15,13 @@ namespace Base {
 namespace Evaluation {
 namespace Formula {
 
+/*! \brief Abstract base class that represents evaluatable atomic or compound
+* terms
+*/
 class Term
 {
     public:
-        /** Assignment operator
+        /*! Assignment operator
          *  \param other Object to assign from
          *  \return A reference to this
          */
@@ -27,10 +30,17 @@ class Term
         ~Term()
         {}
 
+        /*! \brief Evaluates the term given a list of named values
+        */
         virtual double evaluate(map<ustring,double> values) = 0;
+        /*! \brief Gets all symbol names of the term
+        */
         virtual list<Glib::ustring> get_symbol_names() = 0;
 
-        static shared_ptr<Term> parse(ustring formula);
+        /*! \brief Parses a formula and returns a ptr to a Term object
+        * representing the formula
+        */
+        static shared_ptr<Term> parse(const ustring &formula);
     protected:
     private:
         static ustring s_operators;
@@ -38,9 +48,10 @@ class Term
         static ustring s_valid_number;
         static const char s_substituion_marker = '?';
 
-        static shared_ptr<Term> get_left_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index);
-        static shared_ptr<Term> get_right_atomic(const ustring &formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index)
-        { return shared_ptr<Term>();}
+        static shared_ptr<Term> get_left_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index);
+        static shared_ptr<Term> get_right_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index);
+
+        static shared_ptr<Term> parse_atomic(ustring term, const map<ustring, shared_ptr<Term>> &substitutions);
 };
 
 

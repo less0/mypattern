@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-std=c++0x" />
 					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
@@ -34,6 +35,7 @@
 				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
 					<Add option="-Wall" />
 				</Compiler>
 				<Linker>
@@ -50,6 +52,7 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="include" />
@@ -68,7 +71,7 @@
 				<Linker>
 					<Add library="d_mypattern-base" />
 					<Add library="sigc-2.0" />
-					<Add library="..\mypattern-base\libd_mypattern-base.a" />
+					<Add library="../mypattern-base/libd_mypattern-base.a" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
@@ -84,6 +87,7 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-Wall" />
 					<Add directory="include" />
 					<Add directory="/usr/include/glibmm-2.4" />
