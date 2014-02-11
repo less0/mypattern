@@ -80,7 +80,7 @@ shared_ptr<Term> Term::get_left_atomic(ustring formula, int index, const map<ust
     ustring subterm;
 
     while(current_index>=0 &&
-        s_operators.find(formula[current_index]) < 0)
+        s_operators.find(formula[current_index]) == ustring::npos)
     { current_index--; }
 
     start_index = current_index + 1;
@@ -97,7 +97,7 @@ shared_ptr<Term> Term::get_right_atomic(ustring formula, int index, const map<us
 
     for(current_index = index + 1;
         current_index < formula.length() &&
-            s_operators.find(formula[current_index]) < 0;
+            s_operators.find(formula[current_index]) == ustring::npos;
         current_index++);
 
     end_index = current_index - 1;
