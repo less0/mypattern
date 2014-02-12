@@ -127,6 +127,25 @@ namespace
         CHECK_EQUAL(617, t->evaluate(values));
     }
 
-
-
+	TEST(TestLiteralFormulaWithParentheses1)
+	{
+		shared_ptr<Term> t = Term::parse("123.0*(1+2)");
+		map<ustring,double> values;
+		CHECK_CLOSE(123.0*3, t->evaluate(values), 1e-6);
+	}
+	
+	TEST(TestLiteralFormulaWithParenteses2)
+	{
+		shared_ptr<Term> t = Term::parse("22/(2+2)");
+		map<ustring,double> values;
+		CHECK_CLOSE(5.5, t->evaluate(values), 1e-6);
+	}
+	
+	TEST(TestLiteralFormulaWithNestedDivisions)
+	{
+		shared_ptr<Term> t = Term::parse("1/(1/2)");
+		map<ustring,double> values;
+		
+		CHECK_CLOSE(2.0, t->evaluate(values), 1e-6);
+	}
 }
