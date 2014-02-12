@@ -3,6 +3,9 @@
 #include "evaluation/formula/constantterm.h"
 #include "evaluation/formula/scalarterm.h"
 #include "evaluation/formula/quotientterm.h"
+#include "evaluation/formula/productterm.h"
+#include "evaluation/formula/differenceterm.h"
+#include "evaluation/formula/sumterm.h"
 #include "exceptions/formulaevaluationexception.h"
 
 #include <map>
@@ -18,8 +21,10 @@ namespace Evaluation {
 namespace Formula {
 
 ustring Term::s_operators = "/*-+";
-ustring Term::s_valid_symbol = "^[@$#?]{1,1}[A-Za-z0-9](\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
-ustring Term::s_valid_number = "^([0-9]+|[0-9]{0,}\.[0-9]{1,}$";
+//ustring Term::s_valid_symbol = "^[@$#\?]{1,1}[A-Za-z0-9]+(\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
+ustring Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|\\[0\\]){0,1}$";
+
+ustring Term::s_valid_number = "^[0-9]+$|^[0-9]{0,}\\.[0-9]{1,}$";
 
 Term& Term::operator=(const Term& rhs)
 {
@@ -58,18 +63,59 @@ shared_ptr<Term> Term::parse(const Glib::ustring &f)
         stringstream s;
         s << s_substituion_marker <<  substitution_index++;
 
-        formula.erase(start_index, (end_index - start_index));
+        formula.erase(start_index, (end_index - start_index) + 1);
         formula.insert(start_index, s.str());
 
         substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
-//    while(formula.find('*'))
-//    {
-//
-//    }
+    while((operator_index = formula.find('*')) > 0)
+    {
+        shared_ptr<Term> left_atomic = Term::get_left_atomic(formula, operator_index, substitutions, start_index);
+        shared_ptr<Term> right_atomic = Term::get_right_atomic(formula, operator_index, substitutions, end_index);
 
+        shared_ptr<Term> substituted_term = shared_ptr<Term>(new ProductTerm(left_atomic, right_atomic));
 
+        stringstream s;
+        s << s_substituion_marker <<  substitution_index++;
+
+        formula.erase(start_index, (end_index - start_index) + 1);
+        formula.insert(start_index, s.str());
+
+        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+    }
+
+    while((operator_index = formula.find('-')) > 0)
+    {
+        shared_ptr<Term> left_atomic = Term::get_left_atomic(formula, operator_index, substitutions, start_index);
+        shared_ptr<Term> right_atomic = Term::get_right_atomic(formula, operator_index, substitutions, end_index);
+
+        shared_ptr<Term> substituted_term = shared_ptr<Term>(new DifferenceTerm(left_atomic, right_atomic));
+
+        stringstream s;
+        s << s_substituion_marker <<  substitution_index++;
+
+        formula.erase(start_index, (end_index - start_index) + 1);
+        formula.insert(start_index, s.str());
+
+        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+    }
+
+    while((operator_index = formula.find('+')) > 0)
+    {
+        shared_ptr<Term> left_atomic = Term::get_left_atomic(formula, operator_index, substitutions, start_index);
+        shared_ptr<Term> right_atomic = Term::get_right_atomic(formula, operator_index, substitutions, end_index);
+
+        shared_ptr<Term> substituted_term = shared_ptr<Term>(new MyPattern::Base::Evaluation::Formula::SumTerm(left_atomic, right_atomic));
+
+        stringstream s;
+        s << s_substituion_marker <<  substitution_index++;
+
+        formula.erase(start_index, (end_index - start_index) + 1);
+        formula.insert(start_index, s.str());
+
+        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+    }
 
     return substitutions.at(formula);
 }
@@ -92,7 +138,7 @@ shared_ptr<Term> Term::get_left_atomic(ustring formula, int index, const map<ust
 
 shared_ptr<Term> Term::get_right_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index)
 {
-    int current_index;
+    unsigned int current_index;
     ustring subterm;
 
     for(current_index = index + 1;
@@ -108,8 +154,10 @@ shared_ptr<Term> Term::get_right_atomic(ustring formula, int index, const map<us
 
 shared_ptr<Term> Term::parse_atomic(ustring term, const map<ustring, shared_ptr<Term>> &substitutions)
 {
-    Glib::RefPtr<Regex> regex_number = Regex::create(Term::s_valid_number);
-    Glib::RefPtr<Regex> regex_symbol = Regex::create(Term::s_valid_symbol);
+
+//    Glib::RefPtr<Regex> regex_number = Regex::create(Term::s_valid_number);
+    Glib::RefPtr<Regex> regex_number = Regex::create(s_valid_number);
+    Glib::RefPtr<Regex> regex_symbol = Regex::create(s_valid_symbol);
 
     if(regex_number->match(term))
     {
@@ -133,6 +181,7 @@ shared_ptr<Term> Term::parse_atomic(ustring term, const map<ustring, shared_ptr<
     {
         throw FormulaEvaluationException("");
     }
+
 }
 
 } // namespace Formula

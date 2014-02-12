@@ -143,6 +143,7 @@
 		<Unit filename="src/evaluation/formula/productterm.cpp" />
 		<Unit filename="src/evaluation/formula/quotientterm.cpp" />
 		<Unit filename="src/evaluation/formula/scalarterm.cpp" />
+		<Unit filename="src/evaluation/formula/sumterm.cpp" />
 		<Unit filename="src/evaluation/formula/term.cpp" />
 		<Unit filename="src/exceptions/exception.cpp" />
 		<Unit filename="src/exceptions/formulaevaluationexception.cpp" />
