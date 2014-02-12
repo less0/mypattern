@@ -33,25 +33,52 @@ Term& Term::operator=(const Term& rhs)
     return *this;
 }
 
-shared_ptr<Term> Term::parse(const Glib::ustring &f)
+shared_ptr<Term> Term::parse(const Glib::ustring &formula)
 {
-    ustring formula = f;
 
-    shared_ptr<Term> result = shared_ptr<Term>(new ConstantTerm(.0));
     map<ustring, shared_ptr<Term>> substitutions;
-    int substitution_index = 0;
+    int substitutions_index = 0;
 
-    Glib::ustring measuresPattern = "^#[A-Za-z]{1,1}[A-Za-z0-9]*";
-    Glib::ustring landmarkPattern = "^$[A-Za-z]{1,1}";
-
-    int operator_index = 0;
-    int start_index = 0;
-    int end_index = 0;
 
     ///\todo remove all whitespaces, etc.
 
 
-    //return shared_ptr<Term>(new ConstantTerm(.0));
+    return parse_internal(formula, substitutions, substitutions_index);
+
+}
+
+shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<Term>> &substitutions, int &substitution_index)
+{
+    int operator_index = 0;
+    int start_index = 0;
+    int end_index = 0;
+
+    ustring parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
+    RefPtr<Regex> parentheses_regex = Regex::create(parentheses_pattern);
+
+    MatchInfo match_info;
+
+    while(parentheses_regex->match(formula, match_info))
+    {
+        ustring subformula = match_info.fetch(0);
+
+        subformula = subformula.substr(1, subformula.length()-2);
+
+        shared_ptr<Term> parentheses_term = parse_internal(subformula, substitutions, substitution_index);
+
+        stringstream s;
+        s << s_substituion_marker <<  substitution_index++;
+
+        unsigned int subformula_index = formula.find(subformula);
+
+        formula.erase(subformula_index-1, subformula.length()+2);
+        formula.insert(subformula_index-1, s.str());
+
+        substitutions.insert(pair<ustring, shared_ptr<Term>>(s.str(), parentheses_term));
+
+        //return shared_ptr<Term>(new ConstantTerm(0));
+    }
+
 
     while((operator_index = formula.find('/')) > 0)
     {
