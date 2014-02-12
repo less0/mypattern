@@ -48,6 +48,8 @@ class Term
         static ustring s_valid_number;
         static const char s_substituion_marker = '?';
 
+        static shared_ptr<Term> parse_internal(ustring formula, map<ustring, shared_ptr<Term>> &substitutions, int& substitutions_index);
+
         static shared_ptr<Term> get_left_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index);
         static shared_ptr<Term> get_right_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index);
 
