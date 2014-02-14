@@ -39,11 +39,6 @@
 			<Cursor1 position="3149" topLine="102" />
 		</Cursor>
 	</File>
-	<File name="src/undocommandqueue.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="62" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="include/program.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1119" topLine="13" />
@@ -52,6 +47,11 @@
 	<File name="include/patterncolumnrecord.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="237" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/undocommandqueue.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="62" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/undocommandqueue.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

@@ -1,7 +1,10 @@
 #include "landmark.h"
+#include "evaluation/formula/term.h"
+#include "exceptions/formulaevaluationexception.h"
 
 #include <sstream>
 #include <glibmm/regex.h>
+
 
 using namespace MyPattern::Base;
 
@@ -52,11 +55,22 @@ Glib::ustring Landmark::get_name()
 
 bool Landmark::set_definition_x(Glib::ustring definition)
 {
+    shared_ptr<Term> parsed_term;
+
+    try
+    {
+        parsed_term = Term::parse(definition);
+    }
+    catch(FormulaEvaluationException e)
+    {
+        return false;
+    }
+
 //    if(validate_definition(definition))
 //    {
         this->m_x_definition = definition;
+        this->m_x_term = term;
 
-        //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
         //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 
         return true;
