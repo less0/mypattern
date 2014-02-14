@@ -112,7 +112,20 @@ namespace MyPattern
                 Glib::ustring m_x_definition;
                 Glib::ustring m_y_definition;
 
+                /*!\brief Requests a name change
+                 *
+                 * Landmark names are unique, thus the landmark has to request a name change.
+                 * Furthermore the pattern has to update all the objects the landmark depends
+                 * on.
+                 */
                 sigc::signal2<bool,Glib::ustring,ObjectType> m_signal_name_change_request;
+                /*!\brief Requests a change of the landmark given the new dependencies
+                 *
+                 * The pattern has to check weather the objects the landmark depends on given
+                 * a change of the formula are valid. Thus, Landmark emits a signal with a list
+                 * of the new dependencies for the pattern to validate 'em.
+                 */
+                sigc::signal2<bool,shared_ptr<Landmark>,list<ustring>> m_signal_change_request;
                 sigc::signal1<void,shared_ptr<Landmark>> m_signal_changed;
                 sigc::signal2<void,shared_ptr<Landmark>, Glib::ustring> m_signal_name_changed;
 

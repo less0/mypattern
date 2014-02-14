@@ -8,6 +8,7 @@
 #include "glibmm/ustring.h"
 
 using namespace std;
+using namespace Glib;
 
 namespace MyPattern
 {
@@ -20,7 +21,11 @@ namespace MyPattern
                 virtual ~Measures();
 
                 shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment);
+                bool remove(ustring name);
+                bool remove(shared_ptr<MeasureValue>);
+
                 list<shared_ptr<MeasureValue>> get_measure_values();
+
 
             protected:
             private:
