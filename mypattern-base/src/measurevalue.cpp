@@ -14,7 +14,6 @@ MeasureValue::MeasureValue(const MeasureValue& valueToCopy)
     this->m_name = valueToCopy.m_name;
     this->m_description = valueToCopy.m_description;
     this->m_value = valueToCopy.m_value;
-
 }
 
 MeasureValue::~MeasureValue()
@@ -40,6 +39,8 @@ double MeasureValue::get_value()
 void MeasureValue::set_value(double value)
 {
     this->m_value = value;
+
+    m_signal_changed.emit(shared_ptr<MeasureValue>(this));
 }
 
 
