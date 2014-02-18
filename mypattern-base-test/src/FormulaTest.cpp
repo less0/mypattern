@@ -7,10 +7,26 @@
 #include "glibmm/ustring.h"
 
 using namespace std;
+using namespace Glib;
 using namespace MyPattern::Base::Evaluation::Formula;
 
 namespace
 {
+    TEST(TestSingleConstantTerm)
+    {
+        shared_ptr<Term> t = Term::parse("3.14159");
+        map<ustring,double> values;
+        CHECK_EQUAL(3.14159, t->evaluate(values));
+    }
+
+    TEST(TestSingleScalarTerm)
+    {
+        shared_ptr<Term> t = Term::parse("#foobar");
+        map<ustring, double> values;
+        values.insert(pair<ustring,double>("#foobar", 123.45));
+        CHECK_EQUAL(123.45, t->evaluate(values));
+    }
+
     TEST(TestSimpleAddition)
     {
         shared_ptr<Term> t = Term::parse("#foo+#bar");

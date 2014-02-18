@@ -5,7 +5,7 @@ namespace MyPattern
 {
     namespace Base
     {
-        enum ObjectType { PARTTYPE_UNKNOWN, PARTTYPE_LANDMARK, PARTTYPE_CURVE };
+        enum ObjectType { OBJECTTYPE_UNKNOWN, OBJECTTYPE_LANDMARK, OBJECTTYPE_CURVE, OBJECTTYPE_MEASURE, OBJECTTYPE_PARAMETER };
     }
 }
 

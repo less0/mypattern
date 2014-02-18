@@ -11,32 +11,35 @@ namespace MyPattern
         class PatternObject
         {
             public:
-                PatternObject(ObjectType type, Glib::ustring name);
                 PatternObject(const PatternObject&);
                 virtual ~PatternObject();
 
-                /** \brief Sets the type of the object
-                *
-                * \param objectType Type of the object
-                */
-                void set_object_type(ObjectType objectType);
+//                /** \brief Sets the type of the object
+//                *
+//                * \param objectType Type of the object
+//                */
+//                void set_object_type(ObjectType objectType);
                 /** \brief Gets the type of the object
                 *
                 */
-                ObjectType get_object_type();
+                ObjectType get_object_type()
+                {
+                    return m_type;
+                }
 
-                /** \brief Sets the name of the object
-                *
-                * Sets the name, to identify the selected object
-                */
-                void set_object_name(Glib::ustring name);
+//                /** \brief Sets the name of the object
+//                *
+//                * Sets the name, to identify the selected object
+//                */
+//                void set_object_name(Glib::ustring name);
                 /** \brief Gets the name of the object
                 */
-                Glib::ustring get_object_name();
+                virtual Glib::ustring get_object_name() = 0;
             protected:
-            private:
-                Glib::ustring m_name;
+                PatternObject(ObjectType type);
                 ObjectType m_type;
+            private:
+
         };
     }
 }

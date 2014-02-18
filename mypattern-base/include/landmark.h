@@ -10,8 +10,11 @@
 #include "objecttype.h"
 #include "sigc++/sigc++.h"
 #include "sigc++/signal.h"
+#include "evaluation/formula/term.h"
+#include "patternobject.h"
 
 using namespace std;
+using namespace MyPattern::Base::Evaluation::Formula;
 
 namespace MyPattern
 {
@@ -21,7 +24,7 @@ namespace MyPattern
         *
         *
         */
-        class Landmark
+        class Landmark : public PatternObject
         {
             public:
                 Landmark();
@@ -111,6 +114,9 @@ namespace MyPattern
                 Glib::ustring m_name;
                 Glib::ustring m_x_definition;
                 Glib::ustring m_y_definition;
+
+                shared_ptr<Term> m_x_term;
+                shared_ptr<Term> m_y_term;
 
                 /*!\brief Requests a name change
                  *
