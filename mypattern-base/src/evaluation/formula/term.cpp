@@ -58,7 +58,27 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula = "0" + formula;
     }
 
-    RefPtr<Regex> constant_regex = Regex::create(s_valid_symbol);
+    Glib::RefPtr<Regex> regex_number = Regex::create(s_valid_number);
+    Glib::RefPtr<Regex> regex_symbol = Regex::create(s_valid_symbol);
+
+    if(regex_number->match(formula))
+    {
+		//parse number and return ConstantTerm
+        stringstream s(formula);
+        double value;
+        s >> value;
+        return shared_ptr<Term>(new ConstantTerm(value));
+    }
+    else if(regex_symbol->match(formula))
+    {
+        //return substitution or ScalarTerm
+        if(substitutions.count(formula) > 0)
+        {
+            return substitutions.at(formula);
+        }
+
+        return shared_ptr<Term>(new ScalarTerm(formula));
+    }
 
     ustring parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
     RefPtr<Regex> parentheses_regex = Regex::create(parentheses_pattern);
