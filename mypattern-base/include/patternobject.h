@@ -11,8 +11,9 @@ namespace MyPattern
         class PatternObject
         {
             public:
+                PatternObject() {}
                 PatternObject(const PatternObject&);
-                virtual ~PatternObject();
+                virtual ~PatternObject() {}
 
 //                /** \brief Sets the type of the object
 //                *
@@ -34,7 +35,7 @@ namespace MyPattern
 //                void set_object_name(Glib::ustring name);
                 /** \brief Gets the name of the object
                 */
-                virtual Glib::ustring get_object_name() = 0;
+                virtual Glib::ustring get_name() = 0;
             protected:
                 PatternObject(ObjectType type);
                 ObjectType m_type;

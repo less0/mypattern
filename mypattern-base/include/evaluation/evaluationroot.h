@@ -28,6 +28,8 @@ class EvaluationRoot
          */
         bool add_node(shared_ptr<EvaluationTreeNode>);
         bool remove_node(shared_ptr<EvaluationTreeNode>);
+
+        shared_ptr<EvaluationTreeNode> add_object(shared_ptr<PatternObject>);
     protected:
     private:
         list<shared_ptr<EvaluationTreeNode>> m_tree_nodes;
