@@ -9,7 +9,7 @@ Glib::ustring CurveDefinition::get_name()
 
 bool CurveDefinition::set_name(Glib::ustring name)
 {
-    if(request_name_change.emit(name, PARTTYPE_CURVE))
+    if(request_name_change.emit(name, OBJECTTYPE_CURVE))
     {
         Glib::ustring old_name = m_name;
 

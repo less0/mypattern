@@ -47,7 +47,7 @@ class EvaluationTreeNode : EvaluationTreeObserver
         EvaluationTreeNode();
         virtual ~EvaluationTreeNode();
 
-        void add_observer(shared_ptr<EvaluationTreeObsserver>);
+        void add_observer(shared_ptr<EvaluationTreeObserver>);
         void remove_observer(shared_ptr<EvaluationTreeObserver>);
 
         void notify_update();
