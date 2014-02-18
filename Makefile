@@ -5,7 +5,7 @@ all: mypattern-base
 test: mypattern-base-test
 
 mypattern-base: force-update
-	cd mypattern-base; make
+	cd mypattern-base; make clean; make
 
 UnitTest: force-update
 	cd UnitTest++; make
