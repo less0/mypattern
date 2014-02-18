@@ -15,4 +15,4 @@ mypattern-base-test:
 	gcc -p -Wall -std=c++0x -I../FLAT/include -I../UnitTest++/src  -g -c $<
 
 clean:
-	rm *.o
+	rm ./mypattern-base-test
