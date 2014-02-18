@@ -4,23 +4,26 @@ OBJ=./src/patternerror.o ./src/user.o ./src/point.o ./src/measurevalue.o ./src/c
 
 INCLUDES=-I./include -I/usr/include/glibmm-2.4/ -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/lib/i386-linux-gnu/glibmm-2.4/include/ -I/usr/include/glib-2.0/ -I/usr/lib/x86_64-linux-gnu/glib-2.0/include/ -I/usr/lib/i386-linux-gnu/glib-2.0/include/ -I/usr/include/cairomm-1.0/ -I/usr/include/sigc++-2.0/ -I/usr/lib/i386-linux-gnu/sigc++-2.0/include/ -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include/ -I/usr/include/cairo/ -I/usr/include/freetype2/ -I/usr/lib/i386-linux-gnu/cairomm-1.0/include/ -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include/
 
+LIB=libmypattern-base.a
+CC=gcc -p -Wall -std=c++0x
+
 libmypattern-base: $(OBJ)
-	ar rcs libmypattern-base.a $(OBJ)
+	ar rcs $(LIB) $(OBJ)
 
 ./src/exceptions/%.o: ./src/exceptions/%.cpp
-	gcc -p -Wall -std=c++0x $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(INCLUDES) -o $@  -g -c $<
 
 ./src/%.o: ./src/%.cpp
-	gcc -p -Wall -std=c++0x $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/%.o: ./src/evaluation/%.cpp
-	gcc -p -Wall -std=c++0x $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/formula/%.o: ./src/evaluation/formula/%.cpp
-	gcc -p -Wall -std=c++0x $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(INCLUDES) -o $@  -g -c $<
 
 #%.o: ./src/%.cpp ./src/exceptions/%.cpp ./src/evaluation/%.cpp ./src/evaluation/formula/%.cpp
 #	gcc -p -Wall -std=c++0x -I./include -g -c $<
 
 clean:
-	rm *.o
+	rm $(OBJ) 
