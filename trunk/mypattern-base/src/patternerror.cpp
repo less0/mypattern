@@ -27,7 +27,7 @@ PatternError::PatternError()
     this->m_error_message = "";
     this->m_object_name = "";
     this->m_part_name = "";
-    this->m_object_type = ObjectType::PARTTYPE_UNKNOWN;
+    this->m_object_type = ObjectType::OBJECTTYPE_UNKNOWN;
 }
 
 PatternError::~PatternError()

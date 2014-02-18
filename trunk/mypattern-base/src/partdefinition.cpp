@@ -23,85 +23,85 @@ Part PartDefinition::get_part(Measures measures, list<PatternParameterValue> par
     return Part(this->get_name(), points, curves);
 }
 
-PatternError PartDefinition::evaluate_landmark(Glib::ustring landmark_name,
-                                               shared_ptr<list<PatternObject>> object_stack,
-                                               shared_ptr<list<Point>> points,
-                                               shared_ptr<list<BezierComplex>> curves,
-                                               Measures measures,
-                                               list<PatternParameterValue> parameters)
-{
-    shared_ptr<Landmark> current_landmark = this->get_landmark(landmark_name);
-
-    list<Point>::iterator it = points->begin();
-
-    while(!(it == points->end()))
-    {
-        if(it->get_landmark_name() == current_landmark->get_name())
-        {
-            return PatternError();
-        }
-
-        it++;
-    }
-
-    list<PatternObject>::iterator it_object_stack = object_stack->begin();
-
-    while(!(it_object_stack == object_stack->end()))
-    {
-        if(it_object_stack->get_object_type() == PARTTYPE_LANDMARK &&
-           it_object_stack->get_object_name() == current_landmark->get_name())
-           {
-                return PatternError(this->get_name(), current_landmark->get_name(), PARTTYPE_LANDMARK, ERR_CIRCULAR_DEPENDENCY);
-           }
-    }
-
-    object_stack->push_back(PatternObject(PARTTYPE_LANDMARK, current_landmark->get_name()));
-
-    //evaluate landmarks, the current alandmark is depending on
-
-    //evaluate curvedefinitions the current landmark is depending on
-
-    //evaluate current landmark
-
-    return PatternError();
-}
-
-PatternError PartDefinition::evaluate_curve(Glib::ustring curve_name, shared_ptr<list<PatternObject>> object_stack, shared_ptr<list<Point>> points, shared_ptr<list<BezierComplex>> curves, Measures measures, list<PatternParameterValue> parameters)
-{
-    shared_ptr<CurveDefinition> current_curve_definition = this->get_curve_definition(curve_name);
-
-    list<BezierComplex>::iterator it = curves->begin();
-
-    while(it != curves->end())
-    {
-        if(it->get_name() == current_curve_definition->get_name())
-        {
-            return PatternError();
-        }
-
-        it++;
-    }
-
-    list<PatternObject>::iterator it_object_stack = object_stack->begin();
-
-    while(it_object_stack != object_stack->end())
-    {
-        if(it_object_stack->get_object_type() == PARTTYPE_CURVE &&
-           it_object_stack->get_object_name() == current_curve_definition->get_name())
-        {
-            return PatternError(this->get_name(), current_curve_definition->get_name(), PARTTYPE_CURVE, ERR_CIRCULAR_DEPENDENCY);
-        }
-
-        it_object_stack++;
-    }
-
-    object_stack->push_back(PatternObject(PARTTYPE_CURVE, current_curve_definition->get_name()));
-
-    return PatternError(this->get_name(),
-                        current_curve_definition->get_name(),
-                        PARTTYPE_CURVE,
-                        "evaluate_curve is not implemented yet");
-}
+//PatternError PartDefinition::evaluate_landmark(Glib::ustring landmark_name,
+//                                               shared_ptr<list<PatternObject>> object_stack,
+//                                               shared_ptr<list<Point>> points,
+//                                               shared_ptr<list<BezierComplex>> curves,
+//                                               Measures measures,
+//                                               list<PatternParameterValue> parameters)
+//{
+//    shared_ptr<Landmark> current_landmark = this->get_landmark(landmark_name);
+//
+//    list<Point>::iterator it = points->begin();
+//
+//    while(!(it == points->end()))
+//    {
+//        if(it->get_landmark_name() == current_landmark->get_name())
+//        {
+//            return PatternError();
+//        }
+//
+//        it++;
+//    }
+//
+//    list<PatternObject>::iterator it_object_stack = object_stack->begin();
+//
+//    while(!(it_object_stack == object_stack->end()))
+//    {
+//        if(it_object_stack->get_object_type() == OBJECTTYPE_LANDMARK &&
+//           it_object_stack->get_object_name() == current_landmark->get_name())
+//           {
+//                return PatternError(this->get_name(), current_landmark->get_name(), OBJECTTYPE_LANDMARK, ERR_CIRCULAR_DEPENDENCY);
+//           }
+//    }
+//
+//    object_stack->push_back(PatternObject(OBJECTTYPE_CURVE, current_landmark->get_name()));
+//
+//    evaluate landmarks, the current alandmark is depending on
+//
+//    evaluate curvedefinitions the current landmark is depending on
+//
+//    evaluate current landmark
+//
+//    return PatternError();
+//}
+//
+//PatternError PartDefinition::evaluate_curve(Glib::ustring curve_name, shared_ptr<list<PatternObject>> object_stack, shared_ptr<list<Point>> points, shared_ptr<list<BezierComplex>> curves, Measures measures, list<PatternParameterValue> parameters)
+//{
+//    shared_ptr<CurveDefinition> current_curve_definition = this->get_curve_definition(curve_name);
+//
+//    list<BezierComplex>::iterator it = curves->begin();
+//
+//    while(it != curves->end())
+//    {
+//        if(it->get_name() == current_curve_definition->get_name())
+//        {
+//            return PatternError();
+//        }
+//
+//        it++;
+//    }
+//
+//    list<PatternObject>::iterator it_object_stack = object_stack->begin();
+//
+//    while(it_object_stack != object_stack->end())
+//    {
+//        if(it_object_stack->get_object_type() == OBJECTTYPE_CURVE &&
+//           it_object_stack->get_object_name() == current_curve_definition->get_name())
+//        {
+//            return PatternError(this->get_name(), current_curve_definition->get_name(), OBJECTTYPE_CURVE, ERR_CIRCULAR_DEPENDENCY);
+//        }
+//
+//        it_object_stack++;
+//    }
+//
+//    object_stack->push_back(PatternObject(PARTTYPE_CURVE, current_curve_definition->get_name()));
+//
+//    return PatternError(this->get_name(),
+//                        current_curve_definition->get_name(),
+//                        PARTTYPE_CURVE,
+//                        "evaluate_curve is not implemented yet");
+//}
 
 shared_ptr<Landmark> PartDefinition::get_landmark(Glib::ustring name)
 {

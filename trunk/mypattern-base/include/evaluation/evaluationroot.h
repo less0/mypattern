@@ -14,7 +14,7 @@ class EvaluationRoot
         /*! \brief Default constructor */
         EvaluationRoot();
 
-        public Pattern get_pattern();
+        Pattern get_pattern();
         /*! \brief Adds a node to the evaluation tree.
          *
          * If the node is in the tree afterwards the functions runs successful,
@@ -26,8 +26,8 @@ class EvaluationRoot
          * \return true if the node has not been in the tree before false if it
          * has been.
          */
-        public bool add_node(shared_ptr<EvaluationTreeNode>);
-        public bool remove_node(shared_ptr<EvaluationTreeNode>);
+        bool add_node(shared_ptr<EvaluationTreeNode>);
+        bool remove_node(shared_ptr<EvaluationTreeNode>);
     protected:
     private:
         list<shared_ptr<EvaluationTreeNode>> m_tree_nodes;

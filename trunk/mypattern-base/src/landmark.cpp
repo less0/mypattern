@@ -2,13 +2,16 @@
 #include "evaluation/formula/term.h"
 #include "exceptions/formulaevaluationexception.h"
 
+
 #include <sstream>
 #include <glibmm/regex.h>
 
 
 using namespace MyPattern::Base;
+using namespace MyPattern::Base::Evaluation::Formula;
+using namespace MyPattern::Exceptions;
 
-Landmark::Landmark()
+Landmark::Landmark() : PatternObject(OBJECTTYPE_LANDMARK)
 {
     m_name = "";
     m_x_definition = "";
@@ -38,7 +41,7 @@ bool Landmark::set_name(Glib::ustring name)
 
     Glib::ustring old_name = this->m_name;
 
-    if(!has_slots || this->m_signal_name_change_request.emit(name, ObjectType::PARTTYPE_LANDMARK))
+    if(!has_slots || this->m_signal_name_change_request.emit(name, ObjectType::OBJECTTYPE_LANDMARK))
     {
         this->m_name = name;
         this->m_signal_name_changed.emit(shared_ptr<Landmark>(this), old_name);
@@ -69,7 +72,7 @@ bool Landmark::set_definition_x(Glib::ustring definition)
 //    if(validate_definition(definition))
 //    {
         this->m_x_definition = definition;
-        this->m_x_term = term;
+        this->m_x_term = parsed_term;
 
         //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 

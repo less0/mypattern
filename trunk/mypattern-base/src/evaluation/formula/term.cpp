@@ -58,6 +58,8 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula = "0" + formula;
     }
 
+    RefPtr<Regex> constant_regex = Regex::create(s_valid_symbol);
+
     ustring parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
     RefPtr<Regex> parentheses_regex = Regex::create(parentheses_pattern);
 

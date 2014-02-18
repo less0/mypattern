@@ -136,6 +136,7 @@
 			<Add directory="../UnitTest++/bin/Debug" />
 		</Linker>
 		<Unit filename="src/ConstantTermTest.cpp" />
+		<Unit filename="src/EvaluationTreeTest.cpp" />
 		<Unit filename="src/FormulaTest.cpp" />
 		<Unit filename="src/QuotientTermTest.cpp" />
 		<Unit filename="src/ScalarTermTest.cpp" />
