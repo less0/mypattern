@@ -135,14 +135,17 @@
 			<Add directory="../mypattern-base" />
 			<Add directory="../UnitTest++/bin/Debug" />
 		</Linker>
+		<Unit filename="Makefile" />
 		<Unit filename="src/ConstantTermTest.cpp" />
 		<Unit filename="src/EvaluationTreeTest.cpp" />
 		<Unit filename="src/FormulaTest.cpp" />
 		<Unit filename="src/QuotientTermTest.cpp" />
 		<Unit filename="src/ScalarTermTest.cpp" />
 		<Unit filename="src/differencetermtests.cpp" />
+		<Unit filename="src/lanndmarktest.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/producttermtest.cpp" />
+		<Unit filename="src/sumtermtest.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
