@@ -15,11 +15,6 @@ namespace MyPattern
                 PatternObject(const PatternObject&);
                 virtual ~PatternObject() {}
 
-//                /** \brief Sets the type of the object
-//                *
-//                * \param objectType Type of the object
-//                */
-//                void set_object_type(ObjectType objectType);
                 /** \brief Gets the type of the object
                 *
                 */
@@ -28,14 +23,11 @@ namespace MyPattern
                     return m_type;
                 }
 
-//                /** \brief Sets the name of the object
-//                *
-//                * Sets the name, to identify the selected object
-//                */
-//                void set_object_name(Glib::ustring name);
                 /** \brief Gets the name of the object
                 */
                 virtual Glib::ustring get_name() = 0;
+
+                static char get_object_prefix(ObjectType);
             protected:
                 PatternObject(ObjectType type);
                 ObjectType m_type;

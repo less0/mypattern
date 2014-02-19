@@ -14,8 +14,8 @@ using namespace MyPattern::Exceptions;
 Landmark::Landmark() : PatternObject(OBJECTTYPE_LANDMARK)
 {
     m_name = "";
-    m_x_definition = "";
-    m_y_definition = "";
+    m_x_definition = "0";
+    m_y_definition = "0";
 }
 
 Landmark::~Landmark()
@@ -28,23 +28,19 @@ bool Landmark::set_name(Glib::ustring name)
 {
     sigc::signal2<bool, Glib::ustring,ObjectType>::slot_list_type slots =
         this->m_signal_name_change_request.slots();
-    sigc::signal2<bool, Glib::ustring, ObjectType>::slot_list_type::iterator it =
-        slots.begin();
 
-    bool has_slots = false;
 
-    while(it != slots.end())
-    {
-        has_slots = true;
-        it++;
-    }
+    bool has_slots = slots.begin() != slots.end();
+
 
     Glib::ustring old_name = this->m_name;
 
     if(!has_slots || this->m_signal_name_change_request.emit(name, ObjectType::OBJECTTYPE_LANDMARK))
     {
         this->m_name = name;
-        this->m_signal_name_changed.emit(shared_ptr<Landmark>(this), old_name);
+
+        //this->m_signal_name_changed.emit(shared_ptr<Landmark>(this), old_name);
+
         return true;
     }
 
@@ -53,7 +49,7 @@ bool Landmark::set_name(Glib::ustring name)
 
 Glib::ustring Landmark::get_name()
 {
-    return this->m_name;
+    return m_name;
 }
 
 bool Landmark::set_definition_x(Glib::ustring definition)

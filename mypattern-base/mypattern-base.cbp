@@ -96,6 +96,7 @@
 			<Add directory="$(GTK_BASEPATH)/lib/cairomm-1.0/include" />
 			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
 		</Compiler>
+		<Unit filename="Makefile" />
 		<Unit filename="include/bezier.h" />
 		<Unit filename="include/beziercomplex.h" />
 		<Unit filename="include/bezierdefinition.h" />
@@ -112,8 +113,12 @@
 		<Unit filename="include/evaluation/formula/quotientterm.h" />
 		<Unit filename="include/evaluation/formula/scalarterm.h" />
 		<Unit filename="include/evaluation/formula/term.h" />
+		<Unit filename="include/evaluation/landmarkevaluationtreenode.h" />
+		<Unit filename="include/exceptions/argumentnullexception.h" />
+		<Unit filename="include/exceptions/evaluationexception.h" />
 		<Unit filename="include/exceptions/exception.h" />
 		<Unit filename="include/exceptions/formulaevaluationexception.h" />
+		<Unit filename="include/exceptions/objectnametakenevaluationexception.h" />
 		<Unit filename="include/floatpatternparameter.h" />
 		<Unit filename="include/intpatternparameter.h" />
 		<Unit filename="include/landmark.h" />
@@ -147,8 +152,12 @@
 		<Unit filename="src/evaluation/formula/scalarterm.cpp" />
 		<Unit filename="src/evaluation/formula/sumterm.cpp" />
 		<Unit filename="src/evaluation/formula/term.cpp" />
+		<Unit filename="src/evaluation/landmarkevaluationtreenode.cpp" />
+		<Unit filename="src/exceptions/argumentnullexception.cpp" />
+		<Unit filename="src/exceptions/evaluationexception.cpp" />
 		<Unit filename="src/exceptions/exception.cpp" />
 		<Unit filename="src/exceptions/formulaevaluationexception.cpp" />
+		<Unit filename="src/exceptions/objectnametakenevaluationexception.cpp" />
 		<Unit filename="src/floatpatternparameter.cpp" />
 		<Unit filename="src/intpatternparameter.cpp" />
 		<Unit filename="src/landmark.cpp" />
