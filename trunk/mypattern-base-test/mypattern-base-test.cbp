@@ -142,7 +142,7 @@
 		<Unit filename="src/QuotientTermTest.cpp" />
 		<Unit filename="src/ScalarTermTest.cpp" />
 		<Unit filename="src/differencetermtests.cpp" />
-		<Unit filename="src/lanndmarktest.cpp" />
+		<Unit filename="src/landmarktest.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/producttermtest.cpp" />
 		<Unit filename="src/sumtermtest.cpp" />

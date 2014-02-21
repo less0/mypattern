@@ -12,9 +12,11 @@
 #include "sigc++/signal.h"
 #include "evaluation/formula/term.h"
 #include "patternobject.h"
+#include "evaluation/evaluationtreeobserver.h"
 
 using namespace std;
 using namespace MyPattern::Base::Evaluation::Formula;
+using namespace MyPattern::Base::Evaluation;
 
 namespace MyPattern
 {
@@ -95,6 +97,9 @@ namespace MyPattern
                 */
                 bool set_name(Glib::ustring name);
 
+                void add_observer(shared_ptr<EvaluationTreeObserver>);
+                void remove_observer(shared_ptr<EvaluationTreeObserver>);
+
                 /*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
@@ -117,6 +122,8 @@ namespace MyPattern
 
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
+
+                list<shared_ptr<EvaluationTreeObserver>> m_observers;
 
                 /*!\brief Requests a name change
                  *

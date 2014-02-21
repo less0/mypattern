@@ -24,4 +24,21 @@ namespace
         CHECK_EQUAL("0", landmark->get_definition_x());
         CHECK_EQUAL("0", landmark->get_definition_y());
     }
+
+    TEST(LandmarkGetDependencies)
+    {
+        shared_ptr<Landmark> landmark = shared_ptr<Landmark>(new Landmark());
+        landmark->set_name("lm1");
+        landmark->set_definition_x("$lm2[X]*2");
+        landmark->set_definition_y("$lm2[Y]*2");
+
+        list<ustring> dependencies = landmark->depends_on();
+
+        CHECK_EQUAL(1, dependencies.size());
+
+        list<ustring>::iterator it = dependencies.begin();
+        CHECK_EQUAL("$lm2", *it);
+    }
+
+
 }
