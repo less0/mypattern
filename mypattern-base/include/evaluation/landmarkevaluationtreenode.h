@@ -2,6 +2,7 @@
 #define MYPATTERN_BASE_EVALUATION_LANDMARKEVALUATIONTREENODE_H
 
 #include <evaluation/evaluationtreenode.h>
+#include <landmark.h>
 
 namespace MyPattern {
 namespace Base {
@@ -12,14 +13,26 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
     public:
         /** Default constructor */
         LandmarkEvaluationTreeNode();
+
+        LandmarkEvaluationTreeNode(shared_ptr<Landmark> landmark)
+        {
+            m_base_landmark = landmark;
+        }
+
         ~LandmarkEvaluationTreeNode()
         {}
 
         void notify_update() {}
 
         list<ustring> depends_on() {}
+
+        shared_ptr<Landmark> get_landmark()
+        {
+            return m_base_landmark;
+        }
     protected:
     private:
+        shared_ptr<Landmark> m_base_landmark;
 };
 
 } // namespace Evaluation
