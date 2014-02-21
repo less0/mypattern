@@ -65,15 +65,15 @@ bool Landmark::set_definition_x(Glib::ustring definition)
         return false;
     }
 
-//    if(validate_definition(definition))
-//    {
+    if(validate_definition(definition))
+    {
         this->m_x_definition = definition;
         this->m_x_term = parsed_term;
 
         //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 
         return true;
-//    }
+    }
 
     return false;
 }
@@ -88,6 +88,7 @@ bool Landmark::set_definition_y(Glib::ustring definition)
     if(validate_definition(definition))
     {
         this->m_y_definition = definition;
+        this->m_y_term = Term::parse(definition);
 
         //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 
@@ -111,79 +112,95 @@ Glib::ustring Landmark::get_definition_y()
 
 list<Glib::ustring> Landmark::depends_on()
 {
-    list<Glib::ustring> dependencies;
+    list<ustring> dependencies;
+    list<ustring> dependencies_x = m_x_term->get_symbol_names();
+    list<ustring> dependencies_y = m_y_term->get_symbol_names();
 
-    Glib::ustring pattern_landmark = "\\$[A-Za-z]{1,}\\.[XYxy]{1,1}";
-    Glib::ustring pattern_measure = "#[A-Za-z]{1,}";
-    Glib::ustring pattern_parameter = "@[A-Za-z]{1,}";
+    list<ustring>::iterator it;
 
-    Glib::RefPtr<Glib::Regex> landmark_regex = Glib::Regex::create(pattern_landmark,
-                                                                   (Glib::RegexCompileFlags)0,
-                                                                   (Glib::RegexMatchFlags)0);
-    Glib::RefPtr<Glib::Regex> measure_regex = Glib::Regex::create(pattern_measure,
-                                                                    Glib::RegexCompileFlags(0),
-                                                                    (Glib::RegexMatchFlags)0);
-    Glib::RefPtr<Glib::Regex> parameter_regex = Glib::Regex::create(pattern_parameter,
-                                                                    (Glib::RegexCompileFlags)0,
-                                                                    (Glib::RegexMatchFlags)0);
-
-    Glib::MatchInfo matchInfo;
-
-    landmark_regex->match(this->m_x_definition, matchInfo);
-
-    while(matchInfo.matches())
+    for(it = dependencies_x.begin(); it != dependencies_x.end(); it++)
     {
-        dependencies.push_back(matchInfo.fetch(0));
-        matchInfo.next();
+        bool found_in_list = false;
+        ustring current_dependency = *it;
+
+        //strip argument
+        ustring::size_type index_of_bracket;
+
+        if((index_of_bracket = current_dependency.find('[')) != string::npos)
+        {
+            current_dependency = current_dependency.substr(0, index_of_bracket);
+        }
+
+        for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
+        {
+            if(*it2 == current_dependency)
+            {
+                found_in_list = true;
+                break;
+            }
+        }
+
+        if(!found_in_list)
+        {
+            dependencies.push_back(current_dependency);
+        }
     }
 
-    Glib::MatchInfo landmark_match_info_y;
-
-    landmark_regex->match(this->m_y_definition, landmark_match_info_y);
-//
-    while(landmark_match_info_y.matches())
+    for(it = dependencies_y.begin(); it != dependencies_y.end(); it++)
     {
-        dependencies.push_back(landmark_match_info_y.fetch(0));
-        landmark_match_info_y.next();
-    }
+        bool found_in_list = false;
+        ustring current_dependency = *it;
 
-    Glib::MatchInfo measure_match_info_x;
-    measure_regex->match(this->m_x_definition, measure_match_info_x);
+        //strip argument
+        ustring::size_type index_of_bracket;
 
-    while(measure_match_info_x.matches())
-    {
-        dependencies.push_back(measure_match_info_x.fetch(0));
-        measure_match_info_x.next();
-    }
+        if((index_of_bracket = current_dependency.find('[')) != string::npos)
+        {
+            current_dependency = current_dependency.substr(0, index_of_bracket);
+        }
 
-    Glib::MatchInfo measure_match_info_y;
-    measure_regex->match(this->m_y_definition, measure_match_info_y);
+        for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
+        {
+            if(*it2 == current_dependency)
+            {
+                found_in_list = true;
+                break;
+            }
+        }
 
-    while(measure_match_info_y.matches())
-    {
-        dependencies.push_back(measure_match_info_y.fetch(0));
-        measure_match_info_y.next();
-    }
-
-    Glib::MatchInfo parameter_match_info_x;
-    parameter_regex->match(this->m_x_definition, parameter_match_info_x);
-
-    while(parameter_match_info_x.matches())
-    {
-        dependencies.push_back(parameter_match_info_x.fetch(0));
-        parameter_match_info_x.next();
-    }
-
-    Glib::MatchInfo parameter_match_info_y;
-    parameter_regex->match(this->m_y_definition, parameter_match_info_y);
-
-    while(parameter_match_info_y.matches())
-    {
-        dependencies.push_back(parameter_match_info_y.fetch(0));
-        parameter_match_info_y.next();
+        if(!found_in_list)
+        {
+            dependencies.push_back(current_dependency);
+        }
     }
 
     return dependencies;
+}
+
+void Landmark::add_observer(shared_ptr<EvaluationTreeObserver> observer)
+{
+    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
+    {
+        if(observer == *it)
+        {
+            return;
+        }
+    }
+
+    m_observers.push_back(observer);
+}
+
+void Landmark::remove_observer(shared_ptr<EvaluationTreeObserver> observer)
+{
+    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
+    {
+        if(observer == *it)
+        {
+            m_observers.remove(*it);
+
+            return;
+        }
+    }
 }
 
 sigc::signal1<void, shared_ptr<Landmark>> Landmark::signal_changed()

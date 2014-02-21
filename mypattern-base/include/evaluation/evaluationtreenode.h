@@ -44,16 +44,20 @@ namespace Evaluation
 class EvaluationTreeNode : EvaluationTreeObserver
 {
     public:
+        void add_observer(shared_ptr<EvaluationTreeObserver>);
+        void remove_observer(shared_ptr<EvaluationTreeObserver>);
 
-        void add_observer(shared_ptr<EvaluationTreeObserver>) {}
-        void remove_observer(shared_ptr<EvaluationTreeObserver>) {}
+        void add_dependency(shared_ptr<EvaluationTreeNode>);
+        void remove_dependency(shared_ptr<EvaluationTreeNode>);
 
         virtual void notify_update() = 0;
 
         virtual list<ustring> depends_on() = 0;
     protected:
         list<shared_ptr<EvaluationTreeObserver>> m_observers;
+        list<shared_ptr<EvaluationTreeNode>> m_nodes;
     private:
+
 };
 }
 }
