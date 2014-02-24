@@ -119,6 +119,7 @@
 		<Unit filename="include/exceptions/exception.h" />
 		<Unit filename="include/exceptions/formulaevaluationexception.h" />
 		<Unit filename="include/exceptions/objectnametakenevaluationexception.h" />
+		<Unit filename="include/exceptions/unmetdependenciesevaluationexception.h" />
 		<Unit filename="include/floatpatternparameter.h" />
 		<Unit filename="include/intpatternparameter.h" />
 		<Unit filename="include/landmark.h" />
@@ -158,6 +159,7 @@
 		<Unit filename="src/exceptions/exception.cpp" />
 		<Unit filename="src/exceptions/formulaevaluationexception.cpp" />
 		<Unit filename="src/exceptions/objectnametakenevaluationexception.cpp" />
+		<Unit filename="src/exceptions/unmetdependenciesevaluationexception.cpp" />
 		<Unit filename="src/floatpatternparameter.cpp" />
 		<Unit filename="src/intpatternparameter.cpp" />
 		<Unit filename="src/landmark.cpp" />
