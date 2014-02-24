@@ -14,8 +14,8 @@ using namespace MyPattern::Exceptions;
 Landmark::Landmark() : PatternObject(OBJECTTYPE_LANDMARK)
 {
     m_name = "";
-    m_x_definition = "0";
-    m_y_definition = "0";
+    set_definition_x("0");
+    set_definition_y("0");
 }
 
 Landmark::~Landmark()
