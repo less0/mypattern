@@ -2,6 +2,7 @@
 #include "landmark.h"
 #include "evaluation/landmarkevaluationtreenode.h"
 #include "exceptions/objectnametakenevaluationexception.h"
+#include "exceptions/unmetdependenciesevaluationexception.h"
 
 using namespace MyPattern::Exceptions;
 
@@ -63,11 +64,33 @@ namespace Evaluation {
     list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
     {
         list<shared_ptr<EvaluationTreeNode>> result;
+        list<ustring> unmet_dependencies;
 
         list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
+
+
         for(list<ustring>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
         {
+            bool resolved_current_dependency = false;
 
+            for(it_objects = m_tree_nodes.begin(); it_objects != m_tree_nodes.end(); it_objects++)
+            {
+                if((*it_objects)->get_prefixed_name() == *it_deps)
+                {
+                    resolved_current_dependency = true;
+                }
+            }
+
+            if(!resolved_current_dependency)
+            {
+                unmet_dependencies.push_back(*it_deps);
+            }
+        }
+
+        if(unmet_dependencies.begin() != unmet_dependencies.end())
+        {
+            throw MyPattern::Exceptions::UnmetDependenciesEvaluationException(unmet_dependencies);
+//            throw UnmetDependenciesEvaluationException(unmet_dependencies);
         }
 
 
