@@ -59,4 +59,31 @@ namespace
 
         CHECK_THROW(root.add_object(landmark), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
     }
+
+    TEST(CheckLandmarksNodes)
+    {
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+        landmark1->set_name("landmark1");
+
+        shared_ptr<EvaluationTreeNode> landmark1_node = root.add_object(landmark1);
+
+        shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+        landmark2->set_name("landmark2");
+        landmark2->set_definition_x("@landmark1[X]+2");
+        landmark2->set_definition_y("@landmark1[Y]+2");
+
+        shared_ptr<EvaluationTreeNode> landmark2_node = root.add_object(landmark2);
+
+        list<shared_ptr<EvaluationTreeNode>> landmark2_deps = landmark2_node->get_nodes();
+
+        CHECK_EQUAL(1, landmark2_deps.size());
+
+        list<shared_ptr<EvaluationTreeNode>>::iterator it_deps = landmark2_deps.begin();
+
+        CHECK_EQUAL(*it_deps, landmark1_node);
+
+
+    }
 }

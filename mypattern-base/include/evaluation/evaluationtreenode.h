@@ -53,6 +53,7 @@ class EvaluationTreeNode : EvaluationTreeObserver
         virtual void notify_update() = 0;
 
         virtual list<ustring> depends_on() = 0;
+        list<shared_ptr<EvaluationTreeNode>> get_nodes();
 
         virtual ustring get_prefixed_name() = 0;
     protected:
