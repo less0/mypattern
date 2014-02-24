@@ -2,6 +2,9 @@
 #define MYPATTERN_EXCEPTIONS_UNMETDEPENDENCIESEVALUATIONEXCEPTION_H
 
 #include <exceptions/evaluationexception.h>
+#include <list>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Exceptions {
@@ -20,7 +23,7 @@ class UnmetDependenciesEvaluationException : public MyPattern::Exceptions::Evalu
 
         /*! \brief Constructor that takes a list of unmet dependencies
          */
-        UnmetDependenciesEvaluationExcepttion(list<ustring> dependencies);
+        UnmetDependenciesEvaluationException(list<ustring> dependencies);
         /** Default destructor */
         virtual ~UnmetDependenciesEvaluationException();
         /** Copy constructor
