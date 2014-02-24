@@ -4,6 +4,7 @@
 #include "patternobject.h"
 #include "landmark.h"
 #include "exceptions/objectnametakenevaluationexception.h"
+#include "exceptions/unmetdependenciesevaluationexception.h"
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Base::Evaluation;
@@ -46,5 +47,16 @@ namespace
 
         root.add_object(landmark1);
         CHECK_THROW(root.add_object(landmark2), MyPattern::Exceptions::ObjectNameTakenEvaluationException);
+    }
+
+    TEST(AddLandmarkWithUnmetDependencies)
+    {
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<Landmark> landmark = shared_ptr<Landmark>(new Landmark());
+        landmark->set_name("landmark");
+        landmark->set_definition_x("@landmark2[X]");
+
+        CHECK_THROW(root.add_object(landmark), MyPattern::Exceptions::UnmetDependenciesEvaluationException)
     }
 }
