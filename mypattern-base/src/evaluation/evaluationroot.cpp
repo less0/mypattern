@@ -16,11 +16,7 @@ namespace Evaluation {
 
     shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(shared_ptr<PatternObject> object)
     {
-
-
-
         shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
-
 
         if(p_landmark != NULL)
         {
@@ -41,6 +37,20 @@ namespace Evaluation {
 
             shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new LandmarkEvaluationTreeNode(p_landmark));
 
+            //resolve dependencies
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
+
+            //check for circular dependencies
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+            {
+                //
+            }
+
+            //add dependencies to list of
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+            {
+                newNode->add_dependency(*it);
+            }
 
             m_tree_nodes.push_back(newNode);
 
@@ -48,6 +58,20 @@ namespace Evaluation {
         }
 
         return shared_ptr<EvaluationTreeNode>(NULL);
+    }
+
+    list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
+    {
+        list<shared_ptr<EvaluationTreeNode>> result;
+
+        list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
+        for(list<ustring> it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
+        {
+
+        }
+
+
+        return result;
     }
 
 } // namespace Evaluation

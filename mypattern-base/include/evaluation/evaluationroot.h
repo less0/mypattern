@@ -30,6 +30,7 @@ class EvaluationRoot
         bool remove_node(shared_ptr<EvaluationTreeNode>);
 
         shared_ptr<EvaluationTreeNode> add_object(shared_ptr<PatternObject>);
+        list<shared_ptr<EvaluationTreeNode>> resolve_dependencies(list<ustring> dependency_names);
     protected:
     private:
         list<shared_ptr<EvaluationTreeNode>> m_tree_nodes;

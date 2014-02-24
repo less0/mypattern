@@ -24,12 +24,14 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
 
         void notify_update() {}
 
-        list<ustring> depends_on() {}
+        list<ustring> depends_on() { return m_base_landmark->depends_on(); }
 
         shared_ptr<Landmark> get_landmark()
         {
             return m_base_landmark;
         }
+
+        ustring get_prefixed_name();
     protected:
     private:
         shared_ptr<Landmark> m_base_landmark;
