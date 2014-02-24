@@ -61,6 +61,19 @@ namespace Evaluation
         }
     }
 
+    bool EvaluationTreeNode::depends_on(ustring name)
+    {
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_nodes.begin(); it != m_nodes.end(); it++)
+        {
+            if((*it)->get_prefixed_name() == name || (*it)->depends_on(name))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     list<shared_ptr<EvaluationTreeNode>> EvaluationTreeNode::get_nodes()
     {
         return m_nodes;

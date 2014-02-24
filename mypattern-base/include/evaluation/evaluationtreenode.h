@@ -50,6 +50,8 @@ class EvaluationTreeNode : EvaluationTreeObserver
         void add_dependency(shared_ptr<EvaluationTreeNode>);
         void remove_dependency(shared_ptr<EvaluationTreeNode>);
 
+        bool depends_on(ustring);
+
         virtual void notify_update() = 0;
 
         virtual list<ustring> depends_on() = 0;
