@@ -3,6 +3,7 @@
 #include "evaluation/landmarkevaluationtreenode.h"
 #include "exceptions/objectnametakenevaluationexception.h"
 #include "exceptions/unmetdependenciesevaluationexception.h"
+#include "exceptions/circulardependencyevaluationexception.h"
 
 using namespace MyPattern::Exceptions;
 
@@ -44,7 +45,10 @@ namespace Evaluation {
             //check for circular dependencies
             for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
             {
-
+                if((*it)->get_prefixed_name() == newNode->get_prefixed_name() || (*it)->depends_on(newNode->get_prefixed_name()))
+                {
+                    throw CircularDependencyEvaluationException();
+                }
             }
 
             //add dependencies to list of
