@@ -1,9 +1,9 @@
 #ifndef MYPATTERN_BASE_H
-
 #define MYPATTERN_BASE_H
 
 #include "measurevalue.h"
 #include "beziercomplex.h"
+#include "mypattern-base.h"
 #include "patternparameter.h"
 #include "patternerror.h"
 #include "measures.h"
@@ -38,6 +38,7 @@
 #include "exceptions/unmetdependenciesevaluationexception.h"
 #include "exceptions/evaluationexception.h"
 #include "exceptions/objectnametakenevaluationexception.h"
+#include "exceptions/circulardependencyevaluationexception.h"
 #include "exceptions/argumentnullexception.h"
 #include "exceptions/exception.h"
 #include "drawoptions.h"
