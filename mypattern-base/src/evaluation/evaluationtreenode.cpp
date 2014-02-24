@@ -60,6 +60,11 @@ namespace Evaluation
             }
         }
     }
+
+    list<shared_ptr<EvaluationTreeNode>> EvaluationTreeNode::get_nodes()
+    {
+        return m_nodes;
+    }
 }
 }
 }

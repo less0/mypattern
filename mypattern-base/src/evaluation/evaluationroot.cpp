@@ -44,7 +44,7 @@ namespace Evaluation {
             //check for circular dependencies
             for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
             {
-                //
+
             }
 
             //add dependencies to list of
@@ -78,6 +78,8 @@ namespace Evaluation {
                 if((*it_objects)->get_prefixed_name() == *it_deps)
                 {
                     resolved_current_dependency = true;
+                    result.push_back(*it_objects);
+                    break;
                 }
             }
 
@@ -85,6 +87,7 @@ namespace Evaluation {
             {
                 unmet_dependencies.push_back(*it_deps);
             }
+
         }
 
         if(unmet_dependencies.begin() != unmet_dependencies.end())
