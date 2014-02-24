@@ -65,7 +65,7 @@ namespace Evaluation {
         list<shared_ptr<EvaluationTreeNode>> result;
 
         list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
-        for(list<ustring> it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
+        for(list<ustring>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
         {
 
         }
