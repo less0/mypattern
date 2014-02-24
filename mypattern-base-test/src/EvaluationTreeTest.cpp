@@ -57,6 +57,6 @@ namespace
         landmark->set_name("landmark");
         landmark->set_definition_x("@landmark2[X]");
 
-        CHECK_THROW(root.add_object(landmark), MyPattern::Exceptions::UnmetDependenciesEvaluationException)
+        CHECK_THROW(root.add_object(landmark), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
     }
 }
