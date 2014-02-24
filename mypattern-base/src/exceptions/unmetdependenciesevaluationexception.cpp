@@ -8,6 +8,12 @@ UnmetDependenciesEvaluationException::UnmetDependenciesEvaluationException()
     //ctor
 }
 
+UnmetDependenciesEvaluationException::UnmetDependenciesEvaluationException(list<ustring> deps)
+{
+	m_unmet_dependencies = deps;
+}
+
+
 UnmetDependenciesEvaluationException::~UnmetDependenciesEvaluationException()
 {
     //dtor
