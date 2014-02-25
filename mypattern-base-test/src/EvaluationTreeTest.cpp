@@ -1,10 +1,5 @@
 #include "UnitTest++.h"
-#include "evaluation/evaluationroot.h"
-#include "evaluation/landmarkevaluationtreenode.h"
-#include "patternobject.h"
-#include "landmark.h"
-#include "exceptions/objectnametakenevaluationexception.h"
-#include "exceptions/unmetdependenciesevaluationexception.h"
+#include "mypattern-base.h"
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Base::Evaluation;
@@ -60,6 +55,16 @@ namespace
         CHECK_THROW(root.add_object(landmark), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
     }
 
+    TEST(CheckSelfReferringLandmark)
+    {
+        EvaluationRoot root = EvaluationRoot();
+        shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+        landmark1->set_name("lm1");
+        landmark1->set_definition_x("@lm1[X]");
+
+        CHECK_THROW(root.add_object(landmark1), MyPattern::Exceptions::CircularDependencyEvaluationException);
+    }
+
     TEST(CheckLandmarksNodes)
     {
         EvaluationRoot root = EvaluationRoot();
@@ -83,7 +88,52 @@ namespace
         list<shared_ptr<EvaluationTreeNode>>::iterator it_deps = landmark2_deps.begin();
 
         CHECK_EQUAL(*it_deps, landmark1_node);
+    }
 
+    TEST(CheckLandmarkObservers)
+    {
+        EvaluationRoot root = EvaluationRoot();
 
+        shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
+        shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
+
+        lm1->set_name("lm1");
+
+        lm2->set_name("lm2");
+        lm2->set_definition_y("@lm1[X]");
+
+        shared_ptr<EvaluationTreeNode> lm1_node = root.add_object(lm1);
+        shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(lm2);
+        list<shared_ptr<EvaluationTreeNode>> lm2_observers = lm2_node->get_observers();
+
+        CHECK_EQUAL(1, lm2_observers.size());
+
+        list<shared_ptr<EvaluationTreeNode>>::iterator it = lm2_observers.begin();
+
+        CHECK_EQUAL(*it, lm1_node);
+    }
+
+    TEST(ChangeLandmarkDefinition)
+    {
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+        shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+
+        landmark1->set_name("lm1");
+
+        landmark2->set_name("lm2");
+        landmark2->set_definition_x("@lm1[X]");
+
+        root.add_object(landmark1);
+        shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
+        list<shared_ptr<EvaluationTreeNode>> lm2_deps = lm2_node->get_nodes();
+
+        CHECK_EQUAL(1, lm2_deps.size());
+
+        landmark2->set_definition_x("0");
+
+        lm2_deps = lm2_node->get_nodes();
+        CHECK_EQUAL(0, lm2_deps.size());
     }
 }
