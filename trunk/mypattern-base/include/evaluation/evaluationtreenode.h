@@ -41,7 +41,7 @@ namespace Evaluation
 * ** notify observers about the updated node
 *
 */
-class EvaluationTreeNode : EvaluationTreeObserver
+class EvaluationTreeNode : public EvaluationTreeObserver
 {
     public:
         void add_observer(shared_ptr<EvaluationTreeObserver>);
