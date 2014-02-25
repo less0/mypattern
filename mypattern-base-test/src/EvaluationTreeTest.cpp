@@ -104,7 +104,7 @@ namespace
 
         shared_ptr<EvaluationTreeNode> lm1_node = root.add_object(lm1);
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(lm2);
-        list<shared_ptr<EvaluationTreeNode>> lm2_observers = lm2_node->get_observers();
+        list<shared_ptr<EvaluationTreeObserver>> lm2_observers = lm2_node->get_observers();
 
         CHECK_EQUAL(1, lm2_observers.size());
 
