@@ -79,7 +79,7 @@ namespace Evaluation
         return m_nodes;
     }
 
-    list<shared_ptr<EvaluationTreeNode>> EvaluationTreeNode::get_observers()
+    list<shared_ptr<EvaluationTreeObserver>> EvaluationTreeNode::get_observers()
     {
 	return m_observers;
     }

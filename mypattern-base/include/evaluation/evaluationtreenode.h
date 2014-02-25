@@ -46,7 +46,7 @@ class EvaluationTreeNode : EvaluationTreeObserver
     public:
         void add_observer(shared_ptr<EvaluationTreeObserver>);
         void remove_observer(shared_ptr<EvaluationTreeObserver>);
-        list<shared_ptr<EvaluationTreeNode>> get_observers();
+        list<shared_ptr<EvaluationTreeObserver>> get_observers();
 
         void add_dependency(shared_ptr<EvaluationTreeNode>);
         void remove_dependency(shared_ptr<EvaluationTreeNode>);

@@ -108,7 +108,7 @@ namespace
 
         CHECK_EQUAL(1, lm2_observers.size());
 
-        list<shared_ptr<EvaluationTreeNode>>::iterator it = lm2_observers.begin();
+        list<shared_ptr<EvaluationTreeObserver>>::iterator it = lm2_observers.begin();
 
         CHECK_EQUAL(*it, lm1_node);
     }
