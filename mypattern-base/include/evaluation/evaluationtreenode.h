@@ -46,16 +46,17 @@ class EvaluationTreeNode : EvaluationTreeObserver
     public:
         void add_observer(shared_ptr<EvaluationTreeObserver>);
         void remove_observer(shared_ptr<EvaluationTreeObserver>);
+        list<shared_ptr<EvaluationTreeNode>> get_observers();
 
         void add_dependency(shared_ptr<EvaluationTreeNode>);
         void remove_dependency(shared_ptr<EvaluationTreeNode>);
+        list<shared_ptr<EvaluationTreeNode>> get_nodes();
 
         bool depends_on(ustring);
 
         virtual void notify_update() = 0;
 
         virtual list<ustring> depends_on() = 0;
-        list<shared_ptr<EvaluationTreeNode>> get_nodes();
 
         virtual ustring get_prefixed_name() = 0;
     protected:

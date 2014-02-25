@@ -41,7 +41,6 @@
 #include "exceptions/circulardependencyevaluationexception.h"
 #include "exceptions/argumentnullexception.h"
 #include "exceptions/exception.h"
-#include "drawoptions.h"
 #include "user.h"
 #include "patterndefinition.h"
 #include "landmark.h"
