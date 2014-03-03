@@ -115,8 +115,15 @@ namespace MyPattern
                 */
                 sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> signal_name_changed;
 
-
-                void connect_change_request(sigc::slot<bool, list<ustring>>);
+                /*! \brief Signal that is emitted when the landmarks definition is to be changed
+                 *
+                 * Changes in a Landmark's definition are only permitted if the changes are valid,
+                 * i.e. when the formulae can be parsed, all dependencies can be resolved and there
+                 * are no cyclic dependencies in the evaluation tree. If a landmarks is tried to be
+                 * changed, it requests the change from the associated LandmarkTreeNode, which
+                 * itself passes the request to EvaluationRoot.
+                 */
+                sigc::signal1<bool, list<ustring>> signal_change_request;
             private:
                 //data
                 Glib::ustring m_name;
@@ -126,7 +133,7 @@ namespace MyPattern
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
 
-                sigc::signal1<bool, list<ustring>> m_signal_change_request;
+
 
 //                list<shared_ptr<EvaluationTreeObserver>> m_observers;
 

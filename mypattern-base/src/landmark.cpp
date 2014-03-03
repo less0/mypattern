@@ -89,11 +89,11 @@ bool Landmark::set_definition_y(Glib::ustring definition)
     list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names());
 
     signal1<bool, list<ustring>>::slot_list_type slots =
-        m_signal_change_request.slots();
+        signal_change_request.slots();
 
     bool has_slots = !(slots.begin() == slots.end());
 
-    if(!has_slots || m_signal_change_request(new_dependencies))
+    if(!has_slots || signal_change_request(new_dependencies))
     {
         this->m_y_definition = definition;
         this->m_y_term = new_y_term;
@@ -111,10 +111,10 @@ bool Landmark::set_definition_y(Glib::ustring definition)
     return false;
 }
 
-void Landmark::connect_change_request(sigc::slot<bool, list<ustring>> slot)
-{
-    Landmark::m_signal_change_request.connect(slot);
-}
+//void Landmark::connect_change_request(sigc::slot<bool, list<ustring>> slot)
+//{
+//    Landmark::m_signal_change_request.connect(slot);
+//}
 
 /*! \todo Implement
 */

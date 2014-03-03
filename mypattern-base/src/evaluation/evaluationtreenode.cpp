@@ -7,6 +7,7 @@ namespace Base
 {
 namespace Evaluation
 {
+
     void EvaluationTreeNode::add_observer(shared_ptr<EvaluationTreeObserver> observer)
     {
         for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it != m_observers.end(); it++)
