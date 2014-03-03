@@ -5,6 +5,8 @@
 #include "exceptions/unmetdependenciesevaluationexception.h"
 #include "exceptions/circulardependencyevaluationexception.h"
 
+#include <iostream>
+
 using namespace MyPattern::Exceptions;
 
 namespace MyPattern {
@@ -16,7 +18,7 @@ namespace Evaluation {
 
     }
 
-    shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(shared_ptr<PatternObject> object)
+    shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<PatternObject> &object)
     {
         shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
 
@@ -39,6 +41,7 @@ namespace Evaluation {
 
             shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new LandmarkEvaluationTreeNode(p_landmark));
 
+
             //resolve dependencies
             list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
 
@@ -55,7 +58,13 @@ namespace Evaluation {
             for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
             {
                 newNode->add_dependency(*it);
+                (*it)->add_observer(newNode);
             }
+
+            shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(newNode);
+
+            landmark_node->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_node_change_request));
+            landmark_node->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_update_dependencies));
 
             m_tree_nodes.push_back(newNode);
 
@@ -102,6 +111,49 @@ namespace Evaluation {
 
 
         return result;
+    }
+
+
+    bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_dependencies)
+    {
+        shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+
+        if(landmark_node != NULL)
+        {
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_dependencies);
+
+            //check for circular dependencies
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+            {
+                if((*it)->get_prefixed_name() == landmark_node->get_prefixed_name() || (*it)->depends_on(landmark_node->get_prefixed_name()))
+                {
+                    throw CircularDependencyEvaluationException();
+                }
+            }
+
+            return true;
+        }
+        else
+        {
+            Exception();
+        }
+    }
+
+    void EvaluationRoot::landmark_update_dependencies(shared_ptr<EvaluationTreeNode> node)
+    {
+        shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+
+        if(landmark_node != NULL)
+        {
+            landmark_node->clear_dependencies();
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(node->depends_on());
+
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+            {
+                landmark_node->add_dependency(*it);
+            }
+
+        }
     }
 
 } // namespace Evaluation

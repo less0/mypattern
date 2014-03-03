@@ -5,6 +5,7 @@
 #include <memory>
 #include <list>
 #include "glibmm/ustring.h"
+#include "sigc++/sigc++.h"
 
 using namespace std;
 using namespace Glib;
@@ -41,15 +42,22 @@ namespace Evaluation
 * ** notify observers about the updated node
 *
 */
-class EvaluationTreeNode : public EvaluationTreeObserver
+class EvaluationTreeNode : public EvaluationTreeObserver, public std::enable_shared_from_this<EvaluationTreeNode>
 {
     public:
+    //!\todo this introduces circular dependencies, maybe we'd be better off, if we used signals here
         void add_observer(shared_ptr<EvaluationTreeObserver>);
         void remove_observer(shared_ptr<EvaluationTreeObserver>);
         list<shared_ptr<EvaluationTreeObserver>> get_observers();
 
+        sigc::signal<void> signal_update()
+        {
+            return m_signal_update;
+        }
+
         void add_dependency(shared_ptr<EvaluationTreeNode>);
         void remove_dependency(shared_ptr<EvaluationTreeNode>);
+        void clear_dependencies();
         list<shared_ptr<EvaluationTreeNode>> get_nodes();
 
         bool depends_on(ustring);
@@ -62,6 +70,8 @@ class EvaluationTreeNode : public EvaluationTreeObserver
     protected:
         list<shared_ptr<EvaluationTreeObserver>> m_observers;
         list<shared_ptr<EvaluationTreeNode>> m_nodes;
+
+        sigc::signal<void> m_signal_update;
     private:
 
 };

@@ -4,6 +4,7 @@
 
 
 #include <sstream>
+#include <iostream>
 #include <glibmm/regex.h>
 
 
@@ -26,16 +27,14 @@ Landmark::~Landmark()
 
 bool Landmark::set_name(Glib::ustring name)
 {
-    sigc::signal2<bool, Glib::ustring,ObjectType>::slot_list_type slots =
-        this->m_signal_name_change_request.slots();
-
+    sigc::signal1<bool, Glib::ustring>::slot_list_type slots =
+        this->signal_name_change_request.slots();
 
     bool has_slots = slots.begin() != slots.end();
 
-
     Glib::ustring old_name = this->m_name;
 
-    if(!has_slots || this->m_signal_name_change_request.emit(name, ObjectType::OBJECTTYPE_LANDMARK))
+    if(!has_slots || this->signal_name_change_request.emit(name))
     {
         this->m_name = name;
 
@@ -85,17 +84,36 @@ Glib::ustring Landmark::get_definition_x()
 
 bool Landmark::set_definition_y(Glib::ustring definition)
 {
-    if(validate_definition(definition))
+    shared_ptr<Term> new_y_term = Term::parse(definition);
+
+    list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names());
+
+    signal1<bool, list<ustring>>::slot_list_type slots =
+        m_signal_change_request.slots();
+
+    bool has_slots = !(slots.begin() == slots.end());
+
+    if(!has_slots || m_signal_change_request(new_dependencies))
     {
         this->m_y_definition = definition;
-        this->m_y_term = Term::parse(definition);
+        this->m_y_term = new_y_term;
 
-        //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
+        signal0<void>::slot_list_type signal_changed_slots = this->signal_changed.slots();
+
+        if(signal_changed_slots.begin() != signal_changed_slots.end())
+        {
+            this->signal_changed();
+        }
 
         return true;
     }
 
     return false;
+}
+
+void Landmark::connect_change_request(sigc::slot<bool, list<ustring>> slot)
+{
+    Landmark::m_signal_change_request.connect(slot);
 }
 
 /*! \todo Implement
@@ -110,12 +128,17 @@ Glib::ustring Landmark::get_definition_y()
     return this->m_y_definition;
 }
 
-list<Glib::ustring> Landmark::depends_on()
+list<ustring> Landmark::depends_on()
 {
-    list<ustring> dependencies;
     list<ustring> dependencies_x = m_x_term->get_symbol_names();
     list<ustring> dependencies_y = m_y_term->get_symbol_names();
 
+    return depends_on(dependencies_x, dependencies_y);
+}
+
+list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustring> dependencies_y)
+{
+    list<ustring> dependencies;
     list<ustring>::iterator it;
 
     for(it = dependencies_x.begin(); it != dependencies_x.end(); it++)
@@ -177,38 +200,38 @@ list<Glib::ustring> Landmark::depends_on()
     return dependencies;
 }
 
-void Landmark::add_observer(shared_ptr<EvaluationTreeObserver> observer)
-{
-    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
-    {
-        if(observer == *it)
-        {
-            return;
-        }
-    }
+//void Landmark::add_observer(shared_ptr<EvaluationTreeObserver> observer)
+//{
+//    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
+//    {
+//        if(observer == *it)
+//        {
+//            return;
+//        }
+//    }
+//
+//    m_observers.push_back(observer);
+//}
+//
+//void Landmark::remove_observer(shared_ptr<EvaluationTreeObserver> observer)
+//{
+//    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
+//    {
+//        if(observer == *it)
+//        {
+//            m_observers.remove(*it);
+//
+//            return;
+//        }
+//    }
+//}
 
-    m_observers.push_back(observer);
-}
-
-void Landmark::remove_observer(shared_ptr<EvaluationTreeObserver> observer)
-{
-    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
-    {
-        if(observer == *it)
-        {
-            m_observers.remove(*it);
-
-            return;
-        }
-    }
-}
-
-sigc::signal1<void, shared_ptr<Landmark>> Landmark::signal_changed()
-{
-    return this->m_signal_changed;
-}
-
-sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> Landmark::signal_name_changed()
-{
-    return this->m_signal_name_changed;
-}
+//sigc::signal1<void, shared_ptr<Landmark>> Landmark::signal_changed()
+//{
+//    return this->m_signal_changed;
+//}
+//
+//sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> Landmark::signal_name_changed()
+//{
+//    return this->m_signal_name_changed;
+//}
