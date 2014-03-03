@@ -97,23 +97,26 @@ namespace MyPattern
                 */
                 bool set_name(Glib::ustring name);
 
-                void add_observer(shared_ptr<EvaluationTreeObserver>);
-                void remove_observer(shared_ptr<EvaluationTreeObserver>);
+//                void add_observer(shared_ptr<EvaluationTreeObserver>);
+//                void remove_observer(shared_ptr<EvaluationTreeObserver>);
 
                 /*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
                 */
-                sigc::signal2<bool,Glib::ustring,ObjectType> signal_name_change_request();
+                sigc::signal1<bool,ustring> signal_name_change_request;
 
                 /*! \brief Gets the signal that is emitted when the Landmark has changed
                 */
-                sigc::signal1<void, shared_ptr<Landmark>> signal_changed();
+                sigc::signal0<void> signal_changed;
 
                 /*! \brief Gets the signal that is emitted when the Landmarks name has changed
                 *
                 */
-                sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> signal_name_changed();
+                sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> signal_name_changed;
+
+
+                void connect_change_request(sigc::slot<bool, list<ustring>>);
             private:
                 //data
                 Glib::ustring m_name;
@@ -123,27 +126,30 @@ namespace MyPattern
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
 
-                list<shared_ptr<EvaluationTreeObserver>> m_observers;
+                sigc::signal1<bool, list<ustring>> m_signal_change_request;
 
-                /*!\brief Requests a name change
-                 *
-                 * Landmark names are unique, thus the landmark has to request a name change.
-                 * Furthermore the pattern has to update all the objects the landmark depends
-                 * on.
-                 */
-                sigc::signal2<bool,Glib::ustring,ObjectType> m_signal_name_change_request;
-                /*!\brief Requests a change of the landmark given the new dependencies
-                 *
-                 * The pattern has to check weather the objects the landmark depends on given
-                 * a change of the formula are valid. Thus, Landmark emits a signal with a list
-                 * of the new dependencies for the pattern to validate 'em.
-                 */
-                sigc::signal2<bool,shared_ptr<Landmark>,list<ustring>> m_signal_change_request;
-                sigc::signal1<void,shared_ptr<Landmark>> m_signal_changed;
-                sigc::signal2<void,shared_ptr<Landmark>, Glib::ustring> m_signal_name_changed;
+//                list<shared_ptr<EvaluationTreeObserver>> m_observers;
+
+//                /*!\brief Requests a name change
+//                 *
+//                 * Landmark names are unique, thus the landmark has to request a name change.
+//                 * Furthermore the pattern has to update all the objects the landmark depends
+//                 * on.
+//                 */
+//                sigc::signal2<bool,Glib::ustring,ObjectType> m_signal_name_change_request;
+//                /*!\brief Requests a change of the landmark given the new dependencies
+//                 *
+//                 * The pattern has to check weather the objects the landmark depends on given
+//                 * a change of the formula are valid. Thus, Landmark emits a signal with a list
+//                 * of the new dependencies for the pattern to validate 'em.
+//                 */
+//                sigc::signal1<bool,list<ustring>> m_signal_change_request;
+//                sigc::signal1<void,shared_ptr<Landmark>> m_signal_changed;
+//                sigc::signal2<void,shared_ptr<Landmark>, Glib::ustring> m_signal_name_changed;
 
                 //methods
                 bool validate_definition(Glib::ustring definition);
+                list<ustring> depends_on(list<ustring>, list<ustring>);
         };
     }
 }
