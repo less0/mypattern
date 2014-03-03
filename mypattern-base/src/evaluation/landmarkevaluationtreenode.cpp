@@ -14,7 +14,7 @@ LandmarkEvaluationTreeNode::LandmarkEvaluationTreeNode(shared_ptr<Landmark> land
 {
     m_base_landmark = landmark;
 
-    m_base_landmark->connect_change_request(sigc::mem_fun(this, &LandmarkEvaluationTreeNode::base_landmark_change_request));
+    m_base_landmark->signal_change_request.connect(sigc::mem_fun(this, &LandmarkEvaluationTreeNode::base_landmark_change_request));
     m_base_landmark->signal_changed.connect(sigc::mem_fun(this, &LandmarkEvaluationTreeNode::base_landmark_changed));
 }
 
