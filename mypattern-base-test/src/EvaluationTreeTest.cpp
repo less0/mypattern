@@ -1,5 +1,6 @@
 #include "UnitTest++.h"
 #include "mypattern-base.h"
+#include <iostream>
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Base::Evaluation;
@@ -62,7 +63,7 @@ namespace
         landmark1->set_name("lm1");
         landmark1->set_definition_x("@lm1[X]");
 
-        CHECK_THROW(root.add_object(landmark1), MyPattern::Exceptions::CircularDependencyEvaluationException);
+        CHECK_THROW(root.add_object(landmark1), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
     }
 
     TEST(CheckLandmarksNodes)
@@ -90,6 +91,7 @@ namespace
         CHECK_EQUAL(*it_deps, landmark1_node);
     }
 
+    //! Obsolete //
     TEST(CheckLandmarkObservers)
     {
         EvaluationRoot root = EvaluationRoot();
@@ -103,17 +105,18 @@ namespace
         lm2->set_definition_y("@lm1[X]");
 
         shared_ptr<EvaluationTreeNode> lm1_node = root.add_object(lm1);
+
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(lm2);
-        list<shared_ptr<EvaluationTreeObserver>> lm2_observers = lm2_node->get_observers();
+        list<shared_ptr<EvaluationTreeObserver>> lm1_observers = lm1_node->get_observers();
 
-        CHECK_EQUAL(1, lm2_observers.size());
+        CHECK_EQUAL(1, lm1_observers.size());
 
-        list<shared_ptr<EvaluationTreeObserver>>::iterator it = lm2_observers.begin();
+        list<shared_ptr<EvaluationTreeObserver>>::iterator it = lm1_observers.begin();
 
-        CHECK_EQUAL(*it, lm1_node);
+        CHECK_EQUAL(*it, lm2_node);
     }
 
-    TEST(ChangeLandmarkDefinition)
+    TEST(ChangeLandmarkDefinitionY)
     {
         EvaluationRoot root = EvaluationRoot();
 
@@ -123,7 +126,7 @@ namespace
         landmark1->set_name("lm1");
 
         landmark2->set_name("lm2");
-        landmark2->set_definition_x("@lm1[X]");
+        landmark2->set_definition_y("@lm1[X]");
 
         root.add_object(landmark1);
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
@@ -131,7 +134,9 @@ namespace
 
         CHECK_EQUAL(1, lm2_deps.size());
 
-        landmark2->set_definition_x("0");
+        std::cerr << landmark2 << std::endl;
+
+        landmark2->set_definition_y("0");
 
         lm2_deps = lm2_node->get_nodes();
         CHECK_EQUAL(0, lm2_deps.size());

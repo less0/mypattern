@@ -29,11 +29,14 @@ class EvaluationRoot
         bool add_node(shared_ptr<EvaluationTreeNode>);
         bool remove_node(shared_ptr<EvaluationTreeNode>);
 
-        shared_ptr<EvaluationTreeNode> add_object(shared_ptr<PatternObject>);
+        shared_ptr<EvaluationTreeNode> add_object(const shared_ptr<PatternObject>&);
         list<shared_ptr<EvaluationTreeNode>> resolve_dependencies(list<ustring> dependency_names);
     protected:
     private:
         list<shared_ptr<EvaluationTreeNode>> m_tree_nodes;
+
+        bool landmark_node_change_request(shared_ptr<EvaluationTreeNode>,list<ustring>);
+        void landmark_update_dependencies(shared_ptr<EvaluationTreeNode>);
 };
 
 } // namespace Evaluation

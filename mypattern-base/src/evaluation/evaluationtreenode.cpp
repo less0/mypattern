@@ -44,6 +44,9 @@ namespace Evaluation
             }
         }
 
+        //shared_ptr<EvaluationTreeObserver> this_as_p_observer = shared_ptr<EvaluationTreeObserver>(this);
+
+        //treeNode->add_observer(this_as_p_observer);
         m_nodes.push_back(treeNode);
     }
 
@@ -59,6 +62,11 @@ namespace Evaluation
                 return;
             }
         }
+    }
+
+    void EvaluationTreeNode::clear_dependencies()
+    {
+        m_nodes.clear();
     }
 
     bool EvaluationTreeNode::depends_on(ustring name)
@@ -83,6 +91,7 @@ namespace Evaluation
     {
 	return m_observers;
     }
+
 }
 }
 }
