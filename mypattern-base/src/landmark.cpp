@@ -15,8 +15,14 @@ using namespace MyPattern::Exceptions;
 Landmark::Landmark() : PatternObject(OBJECTTYPE_LANDMARK)
 {
     m_name = "";
-    set_definition_x("0");
-    set_definition_y("0");
+
+    //initialize definitions to (0,0)
+    Landmark::m_x_definition = "0";
+    Landmark::m_x_term = Term::parse(m_x_definition);
+
+    Landmark::m_y_definition = "0";
+    Landmark::m_y_term = Term::parse(m_y_definition);
+
 }
 
 Landmark::~Landmark()
@@ -51,23 +57,24 @@ Glib::ustring Landmark::get_name()
     return m_name;
 }
 
+
 bool Landmark::set_definition_x(Glib::ustring definition)
 {
-    shared_ptr<Term> parsed_term;
+    shared_ptr<Term> new_x_term;
+    new_x_term = Term::parse(definition);
 
-    try
-    {
-        parsed_term = Term::parse(definition);
-    }
-    catch(FormulaEvaluationException e)
-    {
-        return false;
-    }
 
-    if(validate_definition(definition))
+    list<ustring> new_dependencies = depends_on(new_x_term->get_symbol_names(), m_y_term->get_symbol_names());
+
+    if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
         this->m_x_definition = definition;
-        this->m_x_term = parsed_term;
+        this->m_x_term = new_x_term;
+
+        if(!signal_changed.empty())
+        {
+            signal_changed();
+        }
 
         //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 
@@ -88,19 +95,12 @@ bool Landmark::set_definition_y(Glib::ustring definition)
 
     list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names());
 
-    signal1<bool, list<ustring>>::slot_list_type slots =
-        signal_change_request.slots();
-
-    bool has_slots = !(slots.begin() == slots.end());
-
-    if(!has_slots || signal_change_request(new_dependencies))
+    if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
         this->m_y_definition = definition;
         this->m_y_term = new_y_term;
 
-        signal0<void>::slot_list_type signal_changed_slots = this->signal_changed.slots();
-
-        if(signal_changed_slots.begin() != signal_changed_slots.end())
+        if(!signal_changed.empty())
         {
             this->signal_changed();
         }
@@ -110,11 +110,6 @@ bool Landmark::set_definition_y(Glib::ustring definition)
 
     return false;
 }
-
-//void Landmark::connect_change_request(sigc::slot<bool, list<ustring>> slot)
-//{
-//    Landmark::m_signal_change_request.connect(slot);
-//}
 
 /*! \todo Implement
 */
