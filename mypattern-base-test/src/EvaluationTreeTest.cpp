@@ -141,4 +141,30 @@ namespace
         lm2_deps = lm2_node->get_nodes();
         CHECK_EQUAL(0, lm2_deps.size());
     }
+
+    TEST(ChengedLandmarkDefinitionX)
+    {
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+        shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+
+        landmark1->set_name("lm1");
+
+        landmark2->set_name("lm2");
+        landmark2->set_definition_x("@lm1[X]");
+
+        root.add_object(landmark1);
+        shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
+        list<shared_ptr<EvaluationTreeNode>> lm2_deps = lm2_node->get_nodes();
+
+        CHECK_EQUAL(1, lm2_deps.size());
+
+        std::cerr << landmark2 << std::endl;
+
+        landmark2->set_definition_x("0");
+
+        lm2_deps = lm2_node->get_nodes();
+        CHECK_EQUAL(0, lm2_deps.size());
+    }
 }
