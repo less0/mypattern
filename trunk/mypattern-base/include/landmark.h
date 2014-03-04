@@ -6,6 +6,7 @@
 #include "beziercomplex.h"
 #include "patternparametervalue.h"
 #include <list>
+#include <map>
 #include "glibmm/ustring.h"
 #include "objecttype.h"
 #include "sigc++/sigc++.h"
@@ -17,6 +18,7 @@
 using namespace std;
 using namespace MyPattern::Base::Evaluation::Formula;
 using namespace MyPattern::Base::Evaluation;
+using namespace Glib;
 
 namespace MyPattern
 {
@@ -80,10 +82,7 @@ namespace MyPattern
                 * \param parameterValues List of parameter values the current landmark
                 *        depends on
                 */
-                Point get_point(Measures measures,
-                                list<Point> points,
-                                list<BezierComplex> curves,
-                                list<PatternParameterValue> parameterValues);
+                Point get_point(map<ustring,double> value);
 
 		/*! \brief Gets the name of the Landmark 
 		 */
