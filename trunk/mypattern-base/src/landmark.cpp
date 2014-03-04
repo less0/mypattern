@@ -128,7 +128,7 @@ list<ustring> Landmark::depends_on(bool strip_argument = true)
     list<ustring> dependencies_x = m_x_term->get_symbol_names();
     list<ustring> dependencies_y = m_y_term->get_symbol_names();
 
-    return depends_on(dependencies_x, dependencies_y, strip_params);
+    return depends_on(dependencies_x, dependencies_y, strip_argument);
 }
 
 list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustring> dependencies_y, bool strip_argument)
