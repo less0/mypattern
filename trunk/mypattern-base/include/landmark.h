@@ -64,7 +64,7 @@ namespace MyPattern
 		* removed, e.g. to resolve the dependencies in the evaluation tree. If false
 		* the parameters are maintained, e.g. for actual evaluation. 
                 */
-                list<Glib::ustring> depends_on(bool strip_params);
+                list<Glib::ustring> depends_on(bool strip_params = true);
 
                 /*! \brief Calculates and returns the position of the landmark, given a set of
                 *          Measures, Point objects representing the Landmarks this Landmark
