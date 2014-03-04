@@ -59,11 +59,12 @@ namespace MyPattern
 
                 /*! \brief Gets a list of objects (Landmarks, Curves), Measures, and
                 * PatternParameters the Landmark depends on
-                *
-                * \todo Change template parameter of return value from Glib::ustring to
-                *   PatternObject
+                * 
+		* \param strip_params If true (default), the parameters of symbolic terms are 
+		* removed, e.g. to resolve the dependencies in the evaluation tree. If false
+		* the parameters are maintained, e.g. for actual evaluation. 
                 */
-                list<Glib::ustring> depends_on();
+                list<Glib::ustring> depends_on(bool strip_params);
 
                 /*! \brief Calculates and returns the position of the landmark, given a set of
                 *          Measures, Point objects representing the Landmarks this Landmark
@@ -84,7 +85,8 @@ namespace MyPattern
                                 list<BezierComplex> curves,
                                 list<PatternParameterValue> parameterValues);
 
-
+		/*! \brief Gets the name of the Landmark 
+		 */
                 Glib::ustring get_name();
                 /*! \brief Sets the name of the Landmark
                 *
@@ -122,41 +124,30 @@ namespace MyPattern
                  * are no cyclic dependencies in the evaluation tree. If a landmarks is tried to be
                  * changed, it requests the change from the associated LandmarkTreeNode, which
                  * itself passes the request to EvaluationRoot.
+		 * \see set_definition_x set_definition_y
                  */
                 sigc::signal1<bool, list<ustring>> signal_change_request;
             private:
                 //data
-                Glib::ustring m_name;
-                Glib::ustring m_x_definition;
+                Glib::ustring m_name; /*!<\brief Name of the Landmark */
+                /*! \brief Textual representation of the formula to calculate the x-coordinate of 
+		 * the Landmark
+		 *
+		 */
+		Glib::ustring m_x_definition;
+		/*! \brief Textual representation of the formula to calculate the y-coordinate of 
+		 * the Landmark
+		 */
                 Glib::ustring m_y_definition;
 
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
 
-
-
-//                list<shared_ptr<EvaluationTreeObserver>> m_observers;
-
-//                /*!\brief Requests a name change
-//                 *
-//                 * Landmark names are unique, thus the landmark has to request a name change.
-//                 * Furthermore the pattern has to update all the objects the landmark depends
-//                 * on.
-//                 */
-//                sigc::signal2<bool,Glib::ustring,ObjectType> m_signal_name_change_request;
-//                /*!\brief Requests a change of the landmark given the new dependencies
-//                 *
-//                 * The pattern has to check weather the objects the landmark depends on given
-//                 * a change of the formula are valid. Thus, Landmark emits a signal with a list
-//                 * of the new dependencies for the pattern to validate 'em.
-//                 */
-//                sigc::signal1<bool,list<ustring>> m_signal_change_request;
-//                sigc::signal1<void,shared_ptr<Landmark>> m_signal_changed;
-//                sigc::signal2<void,shared_ptr<Landmark>, Glib::ustring> m_signal_name_changed;
-
-                //methods
-                bool validate_definition(Glib::ustring definition);
-                list<ustring> depends_on(list<ustring>, list<ustring>);
+		/*! \brief Concatenates two lists of dependency symbols and strips the argumenta if
+		 * desired
+		 * \see depends_on
+		 */
+                list<ustring> depends_on(list<ustring>, list<ustring>, bool strip_argument);
         };
     }
 }

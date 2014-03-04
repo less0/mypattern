@@ -64,7 +64,7 @@ bool Landmark::set_definition_x(Glib::ustring definition)
     new_x_term = Term::parse(definition);
 
 
-    list<ustring> new_dependencies = depends_on(new_x_term->get_symbol_names(), m_y_term->get_symbol_names());
+    list<ustring> new_dependencies = depends_on(new_x_term->get_symbol_names(), m_y_term->get_symbol_names(), true);
 
     if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
@@ -93,7 +93,7 @@ bool Landmark::set_definition_y(Glib::ustring definition)
 {
     shared_ptr<Term> new_y_term = Term::parse(definition);
 
-    list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names());
+    list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names(), true);
 
     if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
@@ -123,15 +123,15 @@ Glib::ustring Landmark::get_definition_y()
     return this->m_y_definition;
 }
 
-list<ustring> Landmark::depends_on()
+list<ustring> Landmark::depends_on(bool strip_argument = true)
 {
     list<ustring> dependencies_x = m_x_term->get_symbol_names();
     list<ustring> dependencies_y = m_y_term->get_symbol_names();
 
-    return depends_on(dependencies_x, dependencies_y);
+    return depends_on(dependencies_x, dependencies_y, strip_params);
 }
 
-list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustring> dependencies_y)
+list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustring> dependencies_y, bool strip_argument)
 {
     list<ustring> dependencies;
     list<ustring>::iterator it;
@@ -141,13 +141,17 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
         bool found_in_list = false;
         ustring current_dependency = *it;
 
-        //strip argument
-        ustring::size_type index_of_bracket;
 
-        if((index_of_bracket = current_dependency.find('[')) != string::npos)
-        {
-            current_dependency = current_dependency.substr(0, index_of_bracket);
-        }
+	if(strip_argument)
+	{
+        	//strip argument
+        	ustring::size_type index_of_bracket;
+
+        	if((index_of_bracket = current_dependency.find('[')) != string::npos)
+        	{
+        	    current_dependency = current_dependency.substr(0, index_of_bracket);
+        	}
+	}
 
         for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
         {
