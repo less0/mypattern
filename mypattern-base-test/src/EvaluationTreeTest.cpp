@@ -142,7 +142,7 @@ namespace
         CHECK_EQUAL(0, lm2_deps.size());
     }
 
-    TEST(ChengedLandmarkDefinitionX)
+    TEST(ChangeLandmarkDefinitionX)
     {
         EvaluationRoot root = EvaluationRoot();
 
@@ -167,4 +167,25 @@ namespace
         lm2_deps = lm2_node->get_nodes();
         CHECK_EQUAL(0, lm2_deps.size());
     }
+
+	TEST(EvaluateLandmarkPositionWhenAdded)
+	{
+		EvaluationRoot root = EvaluationRoot();
+		
+		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+
+		landmark1->set_name("lm1");
+		
+		landmark2->set_name("lm2");
+		landmark2->set_definition_x("@lm1[X]+0.5");
+		landmark2->set_definition_y("@lm1[Y]+0.5");
+		
+		root.add_object(landmark1);
+		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
+		Point landmark2_point = landmark2_node->get_value();
+
+		CHECK_NEAR(landmark2_point.get_x(), .5, 1e-12);
+		CHECK_NEAR(landmark2_point.get_y(), .5, 1e-12);
+	}
 }
