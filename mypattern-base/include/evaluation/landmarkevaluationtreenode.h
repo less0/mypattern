@@ -31,6 +31,11 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
 
         ustring get_prefixed_name();
 
+	/*! \brief Gets the last value of the associated landmark given the values of the 
+	 * dependencies
+	 */
+	Point get_value();
+
         /*! \brief Gets the signal that checks the validity of a dependency
          * change */
         sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<ustring>> signal_request_change;
@@ -57,6 +62,13 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
 
         /*! \brief Signal handler for Landmark::signal_change */
         void base_landmark_changed();
+
+	/*! \brief Recalculates the value of the associated Landmark given the values of the 
+	 * dependencies.
+	 *
+	 * \see get_value
+	 */
+	void update_value();
 };
 
 } // namespace Evaluation

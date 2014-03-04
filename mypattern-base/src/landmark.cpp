@@ -193,38 +193,7 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
     return dependencies;
 }
 
-//void Landmark::add_observer(shared_ptr<EvaluationTreeObserver> observer)
-//{
-//    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
-//    {
-//        if(observer == *it)
-//        {
-//            return;
-//        }
-//    }
-//
-//    m_observers.push_back(observer);
-//}
-//
-//void Landmark::remove_observer(shared_ptr<EvaluationTreeObserver> observer)
-//{
-//    for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it!=m_observers.end(); it++)
-//    {
-//        if(observer == *it)
-//        {
-//            m_observers.remove(*it);
-//
-//            return;
-//        }
-//    }
-//}
-
-//sigc::signal1<void, shared_ptr<Landmark>> Landmark::signal_changed()
-//{
-//    return this->m_signal_changed;
-//}
-//
-//sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> Landmark::signal_name_changed()
-//{
-//    return this->m_signal_name_changed;
-//}
+Point get_point(map<ustring,double> values)
+{
+	return Point(m_x_term.evaluate(values), m_y_term.evaluate(values));
+}
