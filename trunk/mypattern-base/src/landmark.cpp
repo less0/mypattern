@@ -111,19 +111,13 @@ bool Landmark::set_definition_y(Glib::ustring definition)
     return false;
 }
 
-/*! \todo Implement
-*/
-bool Landmark::validate_definition(Glib::ustring definition)
-{
-    return  true;
-}
 
 Glib::ustring Landmark::get_definition_y()
 {
     return this->m_y_definition;
 }
 
-list<ustring> Landmark::depends_on(bool strip_argument = true)
+list<ustring> Landmark::depends_on(bool strip_argument)
 {
     list<ustring> dependencies_x = m_x_term->get_symbol_names();
     list<ustring> dependencies_y = m_y_term->get_symbol_names();
