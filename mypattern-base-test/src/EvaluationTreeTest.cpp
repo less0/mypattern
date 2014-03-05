@@ -185,8 +185,8 @@ namespace
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
 		Point landmark2_point = landmark2_node->get_value();
 
-		CHECK_NEAR(.5, landmark2_point.get_x(), 1e-12);
-		CHECK_NEAR(.5, landmark2_point.get_y(), 1e-12);
+		CHECK_CLOSE(.5, landmark2_point.get_x(), 1e-12);
+		CHECK_CLOSE(.5, landmark2_point.get_y(), 1e-12);
 	}
 
 	TEST(EvaluateLandmarkPositionAfterChange)
@@ -204,8 +204,8 @@ namespace
 
 		Point landmark2_point = landmark2_node->get_value();
 			
-		CHECK_NEAR(.0, landmark2_point.get_x(), 1e-12);
-		CHECK_NEAR(.0, landmark2_point.get_y(), 1e-12);
+		CHECK_CLOSE(.0, landmark2_point.get_x(), 1e-12);
+		CHECK_CLOSE(.0, landmark2_point.get_y(), 1e-12);
 
 	
 		landmark2->set_definition_x("@lm1[X]+3.141");
@@ -213,7 +213,7 @@ namespace
 		
 		landmark2_point = landmark2_node->get_value();
 
-		CHECK_NEAR(3.141, landmark2_point.get_x(), 1e-12);
-		CHECK_NEAR(6.282, landmark2_point.get_y(), 1e-12);
+		CHECK_CLOSE(3.141, landmark2_point.get_x(), 1e-12);
+		CHECK_CLOSE(6.282, landmark2_point.get_y(), 1e-12);
 	}
 }
