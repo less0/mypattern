@@ -47,7 +47,7 @@ void LandmarkEvaluationTreeNode::base_landmark_changed()
 
 Point LandmarkEvaluationTreeNode::get_value()
 {
-	return new Point(.0, .0);
+	return Point(.0, .0);
 }
 
 } // namespace Evaluation
