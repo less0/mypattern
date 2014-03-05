@@ -195,5 +195,5 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
 
 Point get_point(map<ustring,double> values)
 {
-	return Point(m_x_term.evaluate(values), m_y_term.evaluate(values));
+	return Point(m_x_term->evaluate(values), m_y_term->evaluate(values));
 }
