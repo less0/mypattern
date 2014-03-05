@@ -185,7 +185,35 @@ namespace
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
 		Point landmark2_point = landmark2_node->get_value();
 
-		CHECK_NEAR(landmark2_point.get_x(), .5, 1e-12);
-		CHECK_NEAR(landmark2_point.get_y(), .5, 1e-12);
+		CHECK_NEAR(.5, landmark2_point.get_x(), 1e-12);
+		CHECK_NEAR(.5, landmark2_point.get_y(), 1e-12);
+	}
+
+	TEST(EvaluateLandmarkPositionAfterChange)
+	{
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+
+		landmark1->set_name("lm1");
+		landmark2->set_name("lm2");
+
+		root.add_object(landmark1);
+		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
+
+		Point landmark2_point = landmark2_node->get_value();
+			
+		CHECK_NEAR(.0, landmark2_point.get_x(), 1e-12);
+		CHECK_NEAR(.0, landmark2_point.get_y(), 1e-12);
+
+	
+		landmark2->set_definition_x("@lm1[X]+3.141");
+		landmark2->set_definition_y("@lm1[Y]+6.282");
+		
+		landmark2_point = landmark2_node->get_value();
+
+		CHECK_NEAR(3.141, landmark2_point.get_x(), 1e-12);
+		CHECK_NEAR(6.282, landmark2_point.get_y(), 1e-12);
 	}
 }
