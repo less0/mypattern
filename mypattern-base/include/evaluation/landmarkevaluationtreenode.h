@@ -4,6 +4,7 @@
 #include <evaluation/evaluationtreenode.h>
 #include <landmark.h>
 #include <sigc++/sigc++.h>
+#include <point.h>
 
 namespace MyPattern {
 namespace Base {
