@@ -12,7 +12,7 @@ Point::Point(float x, float y)
 Point::Point(const Point& pt)
 {
     this->m_x = pt.m_x;
-    this->m_x = pt.m_y;
+    this->m_y = pt.m_y;
     this->m_landmark_name = pt.m_landmark_name;
 }
 
