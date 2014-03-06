@@ -87,6 +87,7 @@ void LandmarkEvaluationTreeNode::update_value()
 			}
 			else
 			{
+				std::cerr << "Did not find closing bracket of parameter" << std::endl;
 				throw MyPattern::Exceptions::EvaluationException();
 			}
 		}
@@ -120,11 +121,13 @@ void LandmarkEvaluationTreeNode::update_value()
 						}
 						else
 						{
+							std::cerr << "Invalid point argument" << std::endl;
 							throw MyPattern::Exceptions::EvaluationException();
 						}
 					}
 					else
 					{
+						std::cerr << "Could not cast EvaluationTreeNode to LandmarkEvaluationTreeNode." << std::endl;
 						throw MyPattern::Exceptions::EvaluationException();
 					} 
 				}
