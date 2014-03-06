@@ -73,11 +73,11 @@ void LandmarkEvaluationTreeNode::update_value()
 		ustring parameter;
 		bool has_parameter;		
 
-		size_type index_of_bracket = 0;
+		ustring::size_type index_of_bracket = 0;
 
 		if((index_of_bracket = current_symbol.find('[')) != ustring::npos)
 		{
-			size_type index_of_closing_bracket;
+			ustring::size_type index_of_closing_bracket;
 			has_parameter = true;
 			
 			if((index_of_closing_bracket = current_symbol.find('[')) != ustring::npos)
@@ -96,11 +96,11 @@ void LandmarkEvaluationTreeNode::update_value()
 		}
 
 		// iterate over all nodes
-		for(list<shared_ptr<EvaluationTreeNode>>::iterator it_nodes = m_nodes.begin(); it_nodes != it_nodes.end(); it_nodes++)
+		for(list<shared_ptr<EvaluationTreeNode>>::iterator it_nodes = m_nodes.begin(); it_nodes != m_nodes.end(); it_nodes++)
 		{
 			if((*it_nodes)->get_prefixed_name() == current_symbol_base)
 			{
-				if(current_symbol_name[0] == '@')
+				if(current_symbol_base[0] == '@')
 				{
 					shared_ptr<LandmarkEvaluationTreeNode> child_landmark = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
 					
@@ -112,11 +112,11 @@ void LandmarkEvaluationTreeNode::update_value()
 						}
 						else if(parameter == "X" || parameter == "x")
 						{
-							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_point().get_x()));
+							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_value().get_x()));
 						}
 						else if(parameter == "Y" || parameter == "y")
 						{
-							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_point().get_y()));
+							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_value().get_y()));
 						}
 						else
 						{
