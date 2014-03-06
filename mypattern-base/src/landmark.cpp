@@ -44,8 +44,6 @@ bool Landmark::set_name(Glib::ustring name)
     {
         this->m_name = name;
 
-        //this->m_signal_name_changed.emit(shared_ptr<Landmark>(this), old_name);
-
         return true;
     }
 
@@ -75,8 +73,6 @@ bool Landmark::set_definition_x(Glib::ustring definition)
         {
             signal_changed();
         }
-
-        //this->m_signal_changed.emit(shared_ptr<Landmark>(this));
 
         return true;
     }

@@ -1,5 +1,7 @@
 #include "evaluation/landmarkevaluationtreenode.h"
+#include <exceptions/evaluationexception.h>
 #include <iostream>
+#include <map>
 
 namespace MyPattern {
 namespace Base {
@@ -43,11 +45,94 @@ void LandmarkEvaluationTreeNode::base_landmark_changed()
     {
         signal_update_dependencies(shared_from_this());
     }
+
+    update_value();
 }
 
 Point LandmarkEvaluationTreeNode::get_value()
 {
-	return Point(.0, .0);
+	return m_cached_value;
+}
+
+void LandmarkEvaluationTreeNode::notify_update()
+{
+	update_value();
+}
+
+void LandmarkEvaluationTreeNode::update_value()
+{
+	list<ustring> formula_symbols = m_base_landmark->depends_on(false);
+	std::map<ustring, double> values;
+	
+	for(list<ustring>::iterator it_symbols = formula_symbols.begin(); it_symbols != formula_symbols.end(); it_symbols++)
+	{
+		//first separate the symbol name and the symbol parameter
+
+		ustring current_symbol = *it_symbols;
+		ustring current_symbol_base;
+		ustring parameter;
+		bool has_parameter;		
+
+		size_type index_of_bracket = 0;
+
+		if((index_of_bracket = current_symbol.find('[')) != ustring::npos)
+		{
+			size_type index_of_closing_bracket;
+			has_parameter = true;
+			
+			if((index_of_closing_bracket = current_symbol.find('[')) != ustring::npos)
+			{
+				current_symbol_base = current_symbol.substr(0, index_of_bracket);
+				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 2);
+			}
+			else
+			{
+				throw MyPattern::Exceptions::EvaluationException();
+			}
+		}
+		else
+		{
+			current_symbol_base = current_symbol;
+		}
+
+		// iterate over all nodes
+		for(list<shared_ptr<EvaluationTreeNode>>::iterator it_nodes = m_nodes.begin(); it_nodes != it_nodes.end(); it_nodes++)
+		{
+			if((*it_nodes)->get_prefixed_name() == current_symbol_base)
+			{
+				if(current_symbol_name[0] == '@')
+				{
+					shared_ptr<LandmarkEvaluationTreeNode> child_landmark = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
+					
+					if(child_landmark != NULL)
+					{
+						if(!has_parameter)
+						{
+							throw MyPattern::Exceptions::EvaluationException();
+						}
+						else if(parameter == "X" || parameter == "x")
+						{
+							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_point().get_x()));
+						}
+						else if(parameter == "Y" || parameter == "y")
+						{
+							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_point().get_y()));
+						}
+						else
+						{
+							throw MyPattern::Exceptions::EvaluationException();
+						}
+					}
+					else
+					{
+						throw MyPattern::Exceptions::EvaluationException();
+					} 
+				}
+				
+			}	
+		}
+	}
+	
 }
 
 } // namespace Evaluation

@@ -97,11 +97,8 @@ namespace MyPattern
                 * \see signal_name_change_request
                 */
                 bool set_name(Glib::ustring name);
-
-//                void add_observer(shared_ptr<EvaluationTreeObserver>);
-//                void remove_observer(shared_ptr<EvaluationTreeObserver>);
-
-                /*! \brief Gets a signal that's emitted to request a name change
+                
+		/*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
                 */

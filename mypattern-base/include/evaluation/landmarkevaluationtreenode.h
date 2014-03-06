@@ -21,7 +21,7 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
         ~LandmarkEvaluationTreeNode()
         {}
 
-        void notify_update() {}
+        void notify_update(); 
 
         list<ustring> depends_on() { return m_base_landmark->depends_on(); }
 
@@ -44,19 +44,11 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
         /*! \brief Returns the signal that is emitted when the object has been
          * updated and the dependencies are to be updated by the EvaluationRoot */
         sigc::signal1<void, shared_ptr<EvaluationTreeNode>> signal_update_dependencies;
+
     protected:
     private:
         shared_ptr<Landmark> m_base_landmark;
-//        /*! \brief Requests a dependency change
-//        *
-//        * Whenever the definition of a landmark changes, the objects it depends
-//        * on change. Before the landmark is allowed to change, it has to
-//        * request the change.
-//        */
-//        sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<ustring>> m_signal_request_change;
-//
-//        /*! \brief Requests the dependencies to be updated */
-//        sigc::signal1<void, shared_ptr<EvaluationTreeNode>> m_signal_update_dependencies;
+	Point m_cached_value;
 
         /*! \brief Signal handler for Landmark::signal_request_change */
         bool base_landmark_change_request(list<ustring> new_dependencies);
