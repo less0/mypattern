@@ -80,7 +80,7 @@ void LandmarkEvaluationTreeNode::update_value()
 			ustring::size_type index_of_closing_bracket;
 			has_parameter = true;
 			
-			if((index_of_closing_bracket = current_symbol.find('[')) != ustring::npos)
+			if((index_of_closing_bracket = current_symbol.find(']')) != ustring::npos)
 			{
 				current_symbol_base = current_symbol.substr(0, index_of_bracket);
 				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1);
