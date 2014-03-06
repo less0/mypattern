@@ -61,6 +61,8 @@ namespace Evaluation {
                 (*it)->add_observer(newNode);
             }
 
+            newNode->notify_update();
+
             shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(newNode);
 
             landmark_node->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_node_change_request));
