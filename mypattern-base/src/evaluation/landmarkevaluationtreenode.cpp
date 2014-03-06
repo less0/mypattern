@@ -141,6 +141,7 @@ void LandmarkEvaluationTreeNode::update_value()
 		}
 	}
 	
+	m_cached_value = m_base_lanmark->get_point(values);
 }
 
 } // namespace Evaluation
