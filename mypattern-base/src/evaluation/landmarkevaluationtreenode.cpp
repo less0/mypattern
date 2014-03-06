@@ -121,7 +121,7 @@ void LandmarkEvaluationTreeNode::update_value()
 						}
 						else
 						{
-							std::cerr << "Invalid point argument" << std::endl;
+							std::cerr << "Invalid point argument: " << parameter << std::endl;
 							throw MyPattern::Exceptions::EvaluationException();
 						}
 					}
