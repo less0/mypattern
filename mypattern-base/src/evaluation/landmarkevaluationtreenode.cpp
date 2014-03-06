@@ -66,6 +66,9 @@ void LandmarkEvaluationTreeNode::update_value()
 	
 	for(list<ustring>::iterator it_symbols = formula_symbols.begin(); it_symbols != formula_symbols.end(); it_symbols++)
 	{
+		//Debug output
+		std::cerr << *it_symbols << std::endl;
+	
 		//first separate the symbol name and the symbol parameter
 
 		ustring current_symbol = *it_symbols;
