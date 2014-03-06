@@ -163,13 +163,16 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
         bool found_in_list = false;
         ustring current_dependency = *it;
 
-        //strip argument
-        ustring::size_type index_of_bracket;
+		if(strip_argument)
+		{
+			//strip argument
+			ustring::size_type index_of_bracket;
 
-        if((index_of_bracket = current_dependency.find('[')) != string::npos)
-        {
-            current_dependency = current_dependency.substr(0, index_of_bracket);
-        }
+			if((index_of_bracket = current_dependency.find('[')) != string::npos)
+			{
+				current_dependency = current_dependency.substr(0, index_of_bracket);
+			}
+		}
 
         for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
         {
