@@ -83,7 +83,9 @@ void LandmarkEvaluationTreeNode::update_value()
 			if((index_of_closing_bracket = current_symbol.find('[')) != ustring::npos)
 			{
 				current_symbol_base = current_symbol.substr(0, index_of_bracket);
-				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 3);
+				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1);
+				
+				std::cerr << parameter << std::endl;
 			}
 			else
 			{
