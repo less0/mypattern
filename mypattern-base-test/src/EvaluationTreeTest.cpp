@@ -213,7 +213,7 @@ namespace
 		
 		landmark2_point = landmark2_node->get_value();
 
-		CHECK_CLOSE(3.141, landmark2_point.get_x(), 1e-12);
-		CHECK_CLOSE(6.282, landmark2_point.get_y(), 1e-12);
+		CHECK_CLOSE(3.141, landmark2_point.get_x(), 1e-9);
+		CHECK_CLOSE(6.282, landmark2_point.get_y(), 1e-9);
 	}
 }
