@@ -46,11 +46,6 @@ namespace Evaluation
 class EvaluationTreeNode : public std::enable_shared_from_this<EvaluationTreeNode>
 {
     public:
-        //!\todo this introduces circular dependencies, maybe we'd be better off, if we used signals here
-        void add_observer(shared_ptr<EvaluationTreeObserver>);
-        void remove_observer(shared_ptr<EvaluationTreeObserver>);
-        list<shared_ptr<EvaluationTreeObserver>> get_observers();
-
         sigc::signal<void> signal_update()
         {
             return m_signal_update;
