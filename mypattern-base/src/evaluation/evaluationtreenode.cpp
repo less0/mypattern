@@ -1,5 +1,4 @@
 #include "evaluation/evaluationtreenode.h"
-#include "evaluation/evaluationtreeobserver.h"
 
 namespace MyPattern
 {
@@ -7,34 +6,6 @@ namespace Base
 {
 namespace Evaluation
 {
-
-    void EvaluationTreeNode::add_observer(shared_ptr<EvaluationTreeObserver> observer)
-    {
-        for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it != m_observers.end(); it++)
-        {
-            if(*it == observer)
-            {
-                return;
-            }
-        }
-
-        m_observers.push_back(observer);
-    }
-
-    void EvaluationTreeNode::remove_observer(shared_ptr<EvaluationTreeObserver> observer)
-    {
-        for(list<shared_ptr<EvaluationTreeObserver>>::iterator it = m_observers.begin(); it != m_observers.end(); it++)
-        {
-            if(*it == observer)
-            {
-                m_observers.remove(*it);
-
-                return;
-            }
-        }
-
-    }
-
     void EvaluationTreeNode::add_dependency(shared_ptr<EvaluationTreeNode> treeNode)
     {
         for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_nodes.begin(); it != m_nodes.end(); it++)
@@ -45,9 +16,10 @@ namespace Evaluation
             }
         }
 
-        //shared_ptr<EvaluationTreeObserver> this_as_p_observer = shared_ptr<EvaluationTreeObserver>(this);
+        sigc::connection connection = treeNode->m_signal_update.connect(sigc::mem_fun(this, &EvaluationTreeNode::update_value));
 
-        //treeNode->add_observer(this_as_p_observer);
+        m_signal_connections.insert(std::pair<long,sigc::connection>(long(&*treeNode), connection));
+
         m_nodes.push_back(treeNode);
     }
 
@@ -58,6 +30,12 @@ namespace Evaluation
         {
             if(*it == treeNode)
             {
+                if(m_signal_connections.count(long(&*treeNode)) > 0)
+                {
+                    m_signal_connections[long(&*treeNode)].disconnect();
+                    m_signal_connections.erase(long(&*treeNode));
+                }
+
                 m_nodes.remove(*it);
 
                 return;
@@ -67,6 +45,9 @@ namespace Evaluation
 
     void EvaluationTreeNode::clear_dependencies()
     {
+
+
+        m_signal_connections.clear();
         m_nodes.clear();
     }
 
@@ -88,10 +69,6 @@ namespace Evaluation
         return m_nodes;
     }
 
-    list<shared_ptr<EvaluationTreeObserver>> EvaluationTreeNode::get_observers()
-    {
-	return m_observers;
-    }
 
 }
 }

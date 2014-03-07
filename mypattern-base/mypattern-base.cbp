@@ -104,6 +104,7 @@
 		<Unit filename="include/curvedefinition.h" />
 		<Unit filename="include/drawoptions.h" />
 		<Unit filename="include/errorcode.h" />
+		<Unit filename="include/evaluation/curveevaluationtreenode.h" />
 		<Unit filename="include/evaluation/evaluationroot.h" />
 		<Unit filename="include/evaluation/evaluationtreenode.h" />
 		<Unit filename="include/evaluation/evaluationtreeobserver.h" />
@@ -144,6 +145,7 @@
 		<Unit filename="src/beziercomplex.cpp" />
 		<Unit filename="src/bezierdefinition.cpp" />
 		<Unit filename="src/curvedefinition.cpp" />
+		<Unit filename="src/evaluation/curveevaluationtreenode.cpp" />
 		<Unit filename="src/evaluation/evaluationroot.cpp" />
 		<Unit filename="src/evaluation/evaluationtreenode.cpp" />
 		<Unit filename="src/evaluation/evaluationtreeobserver.cpp" />
