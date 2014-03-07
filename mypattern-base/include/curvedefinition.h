@@ -18,7 +18,7 @@ namespace MyPattern
         *
         * \todo Define and implement member functions
         */
-        class CurveDefinition
+        class CurveDefinition : public PatternObject
         {
             public:
                 //ctors and dtors
@@ -90,16 +90,16 @@ namespace MyPattern
                 * if there was no landmark with the given name
                 */
                 bool remove_landmark(ustring name);
+
                 /** \brief Gets a signal to add a function to to request a name
                 * change
                 */
-                sigc::signal2<bool,Glib::ustring,ObjectType> signal_name_change_request();
-                sigc::signal2<void, shared_ptr<CurveDefinition>, Glib::ustring> signal_name_changed();
-                sigc::signal1<void, shared_ptr<CurveDefinition>> signal_changed();
+                sigc::signal1<bool, Glib::ustring> signal_name_change_request;
+                sigc::signal0<void> signal_name_changed;
+
+                sigc::signal1<bool, list<ustring>> signal_request_change;
+                sigc::signal0<void> signal_changed;
             protected:
-                sigc::signal2<void, shared_ptr<CurveDefinition>, Glib::ustring> m_signal_name_changed;
-                sigc::signal1<void, shared_ptr<CurveDefinition>> m_signal_changed;
-                list<shared_ptr<Landmark>> m_landmarks;
             private:
                 ustring m_name;
                 sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;

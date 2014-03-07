@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug Linux" />
-	<File name="src/xmlnode.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/xmlelement.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1217" topLine="14" />
-		</Cursor>
-	</File>
-	<File name="include/xmlfilereader.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1615" topLine="29" />
+			<Cursor1 position="95" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/filereader.h" open="0" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -16,19 +11,19 @@
 			<Cursor1 position="452" topLine="1" />
 		</Cursor>
 	</File>
+	<File name="src/xmlelement.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1657" topLine="39" />
+		</Cursor>
+	</File>
+	<File name="src/xmlnode.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1217" topLine="14" />
+		</Cursor>
+	</File>
 	<File name="src/xmlfilereader.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2694" topLine="87" />
-		</Cursor>
-	</File>
-	<File name="include/xmlelement.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="95" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/xmlattribute.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2230" topLine="15" />
 		</Cursor>
 	</File>
 	<File name="include/xmlexception.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -41,14 +36,19 @@
 			<Cursor1 position="2546" topLine="45" />
 		</Cursor>
 	</File>
-	<File name="src/xmlelement.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1657" topLine="39" />
-		</Cursor>
-	</File>
 	<File name="include/xmlnode.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="582" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="include/xmlattribute.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2230" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="include/xmlfilereader.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1615" topLine="29" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
