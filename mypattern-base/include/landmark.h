@@ -44,6 +44,7 @@ namespace MyPattern
                 * Pattern is created from a PatternDefinition, these definitions are
                 */
                 Glib::ustring get_definition_x();
+
                 /*! \brief Sets the definition for the X-coordinate of the landmark,
                 * i.e. the dependency of the X-coordinate on other pattern objects
                 * and parameters
@@ -62,9 +63,9 @@ namespace MyPattern
                 /*! \brief Gets a list of objects (Landmarks, Curves), Measures, and
                 * PatternParameters the Landmark depends on
                 *
-		* \param strip_params If true (default), the parameters of symbolic terms are
-		* removed, e.g. to resolve the dependencies in the evaluation tree. If false
-		* the parameters are maintained, e.g. for actual evaluation.
+                * \param strip_params If true (default), the parameters of symbolic terms are
+                * removed, e.g. to resolve the dependencies in the evaluation tree. If false
+                * the parameters are maintained, e.g. for actual evaluation.
                 */
                 list<Glib::ustring> depends_on(bool strip_params = true);
 
@@ -84,8 +85,8 @@ namespace MyPattern
                 */
                 Point get_point(map<ustring,double> value);
 
-		/*! \brief Gets the name of the Landmark
-		 */
+                /*! \brief Gets the name of the Landmark
+                 */
                 Glib::ustring get_name();
                 /*! \brief Sets the name of the Landmark
                 *
@@ -98,15 +99,11 @@ namespace MyPattern
                 */
                 bool set_name(Glib::ustring name);
 
-		/*! \brief Gets a signal that's emitted to request a name change
+                /*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
                 */
                 sigc::signal1<bool,ustring> signal_name_change_request;
-
-                /*! \brief Gets the signal that is emitted when the Landmark has changed
-                */
-                sigc::signal0<void> signal_changed;
 
                 /*! \brief Gets the signal that is emitted when the Landmarks name has changed
                 *
@@ -123,26 +120,34 @@ namespace MyPattern
                  * \see set_definition_x set_definition_y
                  */
                 sigc::signal1<bool, list<ustring>> signal_change_request;
+
+                /*! \brief Gets the signal that is emitted when the Landmark has changed
+                 *
+                 * This will usually cause the associated EvaluationTreeNode  to request an
+                 * update of its dependencies and then - if the update was successful - notify
+                 * all dependent EvaluationTreeNode objects
+                */
+                sigc::signal0<void> signal_changed;
             private:
                 //data
                 Glib::ustring m_name; /*!<\brief Name of the Landmark */
                 /*! \brief Textual representation of the formula to calculate the x-coordinate of
-		 * the Landmark
-		 *
-		 */
-		Glib::ustring m_x_definition;
-		/*! \brief Textual representation of the formula to calculate the y-coordinate of
-		 * the Landmark
-		 */
+                 * the Landmark
+                 *
+                 */
+                Glib::ustring m_x_definition;
+                /*! \brief Textual representation of the formula to calculate the y-coordinate of
+                * the Landmark
+                */
                 Glib::ustring m_y_definition;
 
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
 
-		/*! \brief Concatenates two lists of dependency symbols and strips the argumenta if
-		 * desired
-		 * \see depends_on
-		 */
+                /*! \brief Concatenates two lists of dependency symbols and strips the argumenta if
+                 * desired
+                 * \see depends_on
+                 */
                 list<ustring> depends_on(list<ustring>, list<ustring>, bool strip_argument);
         };
     }

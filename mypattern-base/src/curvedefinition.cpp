@@ -15,7 +15,10 @@ bool CurveDefinition::set_name(Glib::ustring name)
 
         m_name = name;
 
-        this->m_signal_name_changed.emit(shared_ptr<CurveDefinition>(this), old_name);
+        if(!signal_name_changed.empty())
+        {
+            this->signal_name_changed.emit();
+        }
 
         return true;
     }
