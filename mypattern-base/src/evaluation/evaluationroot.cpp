@@ -58,7 +58,6 @@ namespace Evaluation {
             for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
             {
                 newNode->add_dependency(*it);
-                (*it)->add_observer(newNode);
             }
 
             newNode->notify_update();
