@@ -61,10 +61,10 @@ namespace MyPattern
 
                 /*! \brief Gets a list of objects (Landmarks, Curves), Measures, and
                 * PatternParameters the Landmark depends on
-                * 
-		* \param strip_params If true (default), the parameters of symbolic terms are 
+                *
+		* \param strip_params If true (default), the parameters of symbolic terms are
 		* removed, e.g. to resolve the dependencies in the evaluation tree. If false
-		* the parameters are maintained, e.g. for actual evaluation. 
+		* the parameters are maintained, e.g. for actual evaluation.
                 */
                 list<Glib::ustring> depends_on(bool strip_params = true);
 
@@ -84,7 +84,7 @@ namespace MyPattern
                 */
                 Point get_point(map<ustring,double> value);
 
-		/*! \brief Gets the name of the Landmark 
+		/*! \brief Gets the name of the Landmark
 		 */
                 Glib::ustring get_name();
                 /*! \brief Sets the name of the Landmark
@@ -97,7 +97,7 @@ namespace MyPattern
                 * \see signal_name_change_request
                 */
                 bool set_name(Glib::ustring name);
-                
+
 		/*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
@@ -120,18 +120,18 @@ namespace MyPattern
                  * are no cyclic dependencies in the evaluation tree. If a landmarks is tried to be
                  * changed, it requests the change from the associated LandmarkTreeNode, which
                  * itself passes the request to EvaluationRoot.
-		 * \see set_definition_x set_definition_y
+                 * \see set_definition_x set_definition_y
                  */
                 sigc::signal1<bool, list<ustring>> signal_change_request;
             private:
                 //data
                 Glib::ustring m_name; /*!<\brief Name of the Landmark */
-                /*! \brief Textual representation of the formula to calculate the x-coordinate of 
+                /*! \brief Textual representation of the formula to calculate the x-coordinate of
 		 * the Landmark
 		 *
 		 */
 		Glib::ustring m_x_definition;
-		/*! \brief Textual representation of the formula to calculate the y-coordinate of 
+		/*! \brief Textual representation of the formula to calculate the y-coordinate of
 		 * the Landmark
 		 */
                 Glib::ustring m_y_definition;

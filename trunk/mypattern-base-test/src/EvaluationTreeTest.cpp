@@ -91,30 +91,7 @@ namespace
         CHECK_EQUAL(*it_deps, landmark1_node);
     }
 
-    //! Obsolete //
-    TEST(CheckLandmarkObservers)
-    {
-        EvaluationRoot root = EvaluationRoot();
 
-        shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
-        shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
-
-        lm1->set_name("lm1");
-
-        lm2->set_name("lm2");
-        lm2->set_definition_y("@lm1[X]");
-
-        shared_ptr<EvaluationTreeNode> lm1_node = root.add_object(lm1);
-
-        shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(lm2);
-        list<shared_ptr<EvaluationTreeObserver>> lm1_observers = lm1_node->get_observers();
-
-        CHECK_EQUAL(1, lm1_observers.size());
-
-        list<shared_ptr<EvaluationTreeObserver>>::iterator it = lm1_observers.begin();
-
-        CHECK_EQUAL(*it, lm2_node);
-    }
 
     TEST(ChangeLandmarkDefinitionY)
     {
@@ -171,16 +148,16 @@ namespace
 	TEST(EvaluateLandmarkPositionWhenAdded)
 	{
 		EvaluationRoot root = EvaluationRoot();
-		
+
 		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
 		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
 
 		landmark1->set_name("lm1");
-		
+
 		landmark2->set_name("lm2");
 		landmark2->set_definition_x("@lm1[X]+0.5");
 		landmark2->set_definition_y("@lm1[Y]+0.5");
-		
+
 		root.add_object(landmark1);
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
 		Point landmark2_point = landmark2_node->get_value();
@@ -203,17 +180,52 @@ namespace
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
 
 		Point landmark2_point = landmark2_node->get_value();
-			
+
 		CHECK_CLOSE(.0, landmark2_point.get_x(), 1e-12);
 		CHECK_CLOSE(.0, landmark2_point.get_y(), 1e-12);
 
-	
+
 		landmark2->set_definition_x("@lm1[X]+3.141");
 		landmark2->set_definition_y("@lm1[Y]+6.282");
-		
+
 		landmark2_point = landmark2_node->get_value();
 
 		CHECK_CLOSE(3.141, landmark2_point.get_x(), 1e-6);
 		CHECK_CLOSE(6.282, landmark2_point.get_y(), 1e-6);
+	}
+
+	TEST(EvaluateDependentLandmark)
+	{
+        EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
+		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
+
+		landmark1->set_name("lm1");
+
+		landmark2->set_name("lm2");
+		landmark2->set_definition_x("@lm1[X]+0.5");
+		landmark2->set_definition_y("@lm1[Y]+0.5");
+
+		shared_ptr<LandmarkEvaluationTreeNode> landmark1_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark1));
+		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
+		Point landmark2_point = landmark2_node->get_value();
+
+		CHECK_CLOSE(.5, landmark2_point.get_x(), 1e-12);
+		CHECK_CLOSE(.5, landmark2_point.get_y(), 1e-12);
+
+		landmark1->set_definition_x("1.0");
+		landmark1->set_definition_y("1.0");
+
+		Point landmark1_point = landmark1_node->get_value();
+
+		CHECK_CLOSE(1.0, landmark1_point.get_x(), 1e-12);
+		CHECK_CLOSE(1.0, landmark1_point.get_y(), 1e-12);
+
+		landmark2_point = landmark2_node->get_value();
+
+		CHECK_CLOSE(1.5, landmark2_point.get_x(), 1e-9);
+		CHECK_CLOSE(1.5, landmark2_point.get_y(), 1e-9);
+
 	}
 }
