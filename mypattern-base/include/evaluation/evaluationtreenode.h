@@ -4,6 +4,7 @@
 #include "evaluation/evaluationtreeobserver.h"
 #include <memory>
 #include <list>
+#include <map>
 #include "glibmm/ustring.h"
 #include "sigc++/sigc++.h"
 
@@ -42,10 +43,10 @@ namespace Evaluation
 * ** notify observers about the updated node
 *
 */
-class EvaluationTreeNode : public EvaluationTreeObserver, public std::enable_shared_from_this<EvaluationTreeNode>
+class EvaluationTreeNode : public std::enable_shared_from_this<EvaluationTreeNode>
 {
     public:
-    //!\todo this introduces circular dependencies, maybe we'd be better off, if we used signals here
+        //!\todo this introduces circular dependencies, maybe we'd be better off, if we used signals here
         void add_observer(shared_ptr<EvaluationTreeObserver>);
         void remove_observer(shared_ptr<EvaluationTreeObserver>);
         list<shared_ptr<EvaluationTreeObserver>> get_observers();
@@ -68,10 +69,14 @@ class EvaluationTreeNode : public EvaluationTreeObserver, public std::enable_sha
 
         virtual ustring get_prefixed_name() = 0;
     protected:
-        list<shared_ptr<EvaluationTreeObserver>> m_observers;
         list<shared_ptr<EvaluationTreeNode>> m_nodes;
+        std::map<long,sigc::connection> m_signal_connections;
 
         sigc::signal<void> m_signal_update;
+
+        /*! \brief Updates the value of the node's object
+         */
+        virtual void update_value() = 0;
     private:
 
 };

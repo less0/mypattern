@@ -63,18 +63,14 @@ void LandmarkEvaluationTreeNode::update_value()
 {
 	list<ustring> formula_symbols = m_base_landmark->depends_on(false);
 	std::map<ustring, double> values;
-	
+
 	for(list<ustring>::iterator it_symbols = formula_symbols.begin(); it_symbols != formula_symbols.end(); it_symbols++)
 	{
-		//Debug output
-		std::cerr << *it_symbols << std::endl;
-	
 		//first separate the symbol name and the symbol parameter
-
 		ustring current_symbol = *it_symbols;
 		ustring current_symbol_base;
 		ustring parameter;
-		bool has_parameter;		
+		bool has_parameter;
 
 		ustring::size_type index_of_bracket = 0;
 
@@ -82,12 +78,12 @@ void LandmarkEvaluationTreeNode::update_value()
 		{
 			ustring::size_type index_of_closing_bracket;
 			has_parameter = true;
-			
+
 			if((index_of_closing_bracket = current_symbol.find(']')) != ustring::npos)
 			{
 				current_symbol_base = current_symbol.substr(0, index_of_bracket);
 				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1);
-				
+
 				std::cerr << parameter << std::endl;
 			}
 			else
@@ -109,7 +105,7 @@ void LandmarkEvaluationTreeNode::update_value()
 				if(current_symbol_base[0] == '@')
 				{
 					shared_ptr<LandmarkEvaluationTreeNode> child_landmark = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
-					
+
 					if(child_landmark != NULL)
 					{
 						if(!has_parameter)
@@ -134,14 +130,19 @@ void LandmarkEvaluationTreeNode::update_value()
 					{
 						std::cerr << "Could not cast EvaluationTreeNode to LandmarkEvaluationTreeNode." << std::endl;
 						throw MyPattern::Exceptions::EvaluationException();
-					} 
+					}
 				}
-				
-			}	
+
+			}
 		}
 	}
-	
+
 	m_cached_value = m_base_landmark->get_point(values);
+
+	if(!m_signal_update.empty())
+	{
+        m_signal_update();
+	}
 }
 
 } // namespace Evaluation
