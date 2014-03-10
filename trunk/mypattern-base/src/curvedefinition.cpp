@@ -49,7 +49,8 @@ bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
     {
         this->m_landmarks.push_back(landmark);
 
-        this->m_signal_changed.emit(shared_ptr<CurveDefinition>(this));
+        if(!this->signal_changed.empty())
+            this->signal_changed.emit();
 
         return true;
     }
@@ -71,7 +72,7 @@ bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark, ustring after)
             {
                 m_landmarks.insert(++it, landmark);
 
-                this->m_signal_changed(shared_ptr<CurveDefinition>(this));
+                this->signal_changed();
 
                 return true;
             }

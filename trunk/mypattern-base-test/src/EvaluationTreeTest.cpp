@@ -111,8 +111,6 @@ namespace
 
         CHECK_EQUAL(1, lm2_deps.size());
 
-        std::cerr << landmark2 << std::endl;
-
         landmark2->set_definition_y("0");
 
         lm2_deps = lm2_node->get_nodes();
@@ -136,8 +134,6 @@ namespace
         list<shared_ptr<EvaluationTreeNode>> lm2_deps = lm2_node->get_nodes();
 
         CHECK_EQUAL(1, lm2_deps.size());
-
-        std::cerr << landmark2 << std::endl;
 
         landmark2->set_definition_x("0");
 
