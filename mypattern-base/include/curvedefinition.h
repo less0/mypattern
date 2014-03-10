@@ -102,6 +102,7 @@ namespace MyPattern
             protected:
             private:
                 ustring m_name;
+                list<shared_ptr<Landmark>> m_landmarks;
                 sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;
 
         };

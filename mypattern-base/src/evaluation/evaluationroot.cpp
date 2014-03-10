@@ -136,7 +136,7 @@ namespace Evaluation {
         }
         else
         {
-            Exception();
+            throw Exception();
         }
     }
 
