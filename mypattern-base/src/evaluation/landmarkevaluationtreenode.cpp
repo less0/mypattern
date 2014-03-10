@@ -83,8 +83,6 @@ void LandmarkEvaluationTreeNode::update_value()
 			{
 				current_symbol_base = current_symbol.substr(0, index_of_bracket);
 				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1);
-
-				std::cerr << parameter << std::endl;
 			}
 			else
 			{
