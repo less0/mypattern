@@ -9,7 +9,7 @@ Glib::ustring CurveDefinition::get_name()
 
 bool CurveDefinition::set_name(Glib::ustring name)
 {
-    if(request_name_change.emit(name, OBJECTTYPE_CURVE))
+    if(request_name_change.empty() || request_name_change(name, OBJECTTYPE_CURVE))
     {
         Glib::ustring old_name = m_name;
 
@@ -29,75 +29,71 @@ bool CurveDefinition::set_name(Glib::ustring name)
 
 }
 
-list<ustring> CurveDefinition::get_landmark_names()
+list<ustring> CurveDefinition::get_landmarks()
 {
-    list<ustring> landmark_names(0);
-    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
-
-    while(it != m_landmarks.end())
-    {
-        landmark_names.push_back((*it)->get_name());
-        it++;
-    }
-
-    return landmark_names;
+    return m_landmarks;
 }
 
-bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
+void CurveDefinition::set_landmarks(list<ustring> landmarks)
 {
-    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
-    {
-        this->m_landmarks.push_back(landmark);
-
-        if(!this->signal_changed.empty())
-            this->signal_changed.emit();
-
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    m_landmarks = landmarks;
 }
 
-bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark, ustring after)
-{
-    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
-
-    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
-    {
-        while(it != m_landmarks.end())
-        {
-            if((*it)->get_name() == after)
-            {
-                m_landmarks.insert(++it, landmark);
-
-                this->signal_changed();
-
-                return true;
-            }
-        }
-        return false;
-    }
-    return false;
-}
-
-
-bool CurveDefinition::remove_landmark(Glib::ustring name)
-{
-    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
-
-    while(it != m_landmarks.end())
-    {
-        if((*it)->get_name() == name)
-        {
-            m_landmarks.erase(it);
-
-            return true;
-        }
-
-        it++;
-    }
-
-    return false;
-}
+//bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
+//{
+//    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
+//    {
+//        this->m_landmarks.push_back(landmark);
+//
+//        if(!this->signal_changed.empty())
+//            this->signal_changed.emit();
+//
+//        return true;
+//    }
+//    else
+//    {
+//        return false;
+//    }
+//}
+//
+//bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark, ustring after)
+//{
+//    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
+//
+//    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
+//    {
+//        while(it != m_landmarks.end())
+//        {
+//            if((*it)->get_name() == after)
+//            {
+//                m_landmarks.insert(++it, landmark);
+//
+//                this->signal_changed();
+//
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//    return false;
+//}
+//
+//
+//bool CurveDefinition::remove_landmark(Glib::ustring name)
+//{
+//    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
+//
+//    while(it != m_landmarks.end())
+//    {
+//        if((*it)->get_name() == name)
+//        {
+//            m_landmarks.erase(it);
+//
+//            return true;
+//        }
+//
+//        it++;
+//    }
+//
+//    return false;
+//}

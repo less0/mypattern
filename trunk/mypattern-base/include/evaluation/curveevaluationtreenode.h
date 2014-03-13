@@ -2,6 +2,7 @@
 #define MYPATTERN_BASE_EVALUATION_CURVEEVALUATIONTREENODE_H
 
 #include <evaluation/evaluationtreenode.h>
+#include <curvedefinition.h>
 
 namespace MyPattern {
 namespace Base {
@@ -11,11 +12,17 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
 {
     public:
         /** Default constructor */
-        CurveEvaluationTreeNode();
-        /** Default destructor */
-        ~CurveEvaluationTreeNode();
+        CurveEvaluationTreeNode(shared_ptr<CurveDefinition>);
+
+        void notify_update(){}
+
+        list<ustring> depends_on() { return list<ustring>();}
+
+        ustring get_prefixed_name();
     protected:
+        void update_value() {}
     private:
+        shared_ptr<CurveDefinition> m_base_curve_definition;
 };
 
 } // namespace Evaluation

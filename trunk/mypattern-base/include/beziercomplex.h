@@ -37,7 +37,7 @@ namespace MyPattern
                 *
                 *
                 */
-                float get_length();
+                double get_length();
                 /** \brief Gets a point on the curve given a fraction of the
                 * curve
                 *
@@ -49,7 +49,7 @@ namespace MyPattern
                 * [.0 1.0]) and equals the t parameter for a single Bézier
                 * \return The coordinate on the curve
                 */
-                Point get_coordinate(float rel_length);
+                Point get_coordinate(double rel_length);
 
                 /** \brief Gets the name of the BezierComplex object
                 *
@@ -73,7 +73,7 @@ namespace MyPattern
                 /** \brief Gets the shortest distance of a Point to the
                 * BezierComplex
                 */
-                float get_distance(Point);
+                double get_distance(Point);
             protected:
             private:
                 list<Bezier> m_bezier_curves;

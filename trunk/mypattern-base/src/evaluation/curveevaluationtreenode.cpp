@@ -4,14 +4,14 @@ namespace MyPattern {
 namespace Base {
 namespace Evaluation {
 
-CurveEvaluationTreeNode::CurveEvaluationTreeNode()
+CurveEvaluationTreeNode::CurveEvaluationTreeNode(shared_ptr<CurveDefinition> base_curve_definition)
 {
-    //ctor
+    m_base_curve_definition = base_curve_definition;
 }
 
-CurveEvaluationTreeNode::~CurveEvaluationTreeNode()
+Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
 {
-    //dtor
+    return "$" + m_base_curve_definition->get_name();
 }
 
 } // namespace Evaluation

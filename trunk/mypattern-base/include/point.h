@@ -18,7 +18,7 @@ namespace MyPattern
             public:
                 /*! \brief Creates a new Point with given values for the x- and y-component
                 */
-                Point(float x, float y);
+                Point(double x, double y);
                 /*! \brief Creates a copy of an existing Point object
                 */
                 Point(const Point& pt);
@@ -27,16 +27,16 @@ namespace MyPattern
                 Point();
                 /*! \brief Sets the x-coordinate of the point
                 */
-                void set_x(float x);
+                void set_x(double x);
                 /*! \brief Gets the x-coordinate of the point
                 */
-                float get_x();
+                double get_x();
                 /*! \brief Sets the y-coordinate of the point
                 */
-                void set_y(float y);
+                void set_y(double y);
                 /*! \brief Gets the y-coordinate of the point
                 */
-                float get_y();
+                double get_y();
 
                 /*! \brief Gets the name of the Landmark object the point was derived from
                 */
@@ -48,15 +48,15 @@ namespace MyPattern
 
                 /*! \brief Gets the absolute value (distrance from (0,0)) of the point
                 */
-                float abs();
+                double abs();
 
                 Point operator-(const Point& subtrahend);
                 Point operator+(const Point& summand);
-                Point operator*(const float&);
-                Point operator/(const float&);
+                Point operator*(const double&);
+                Point operator/(const double&);
             protected:
             private:
-                float m_x, m_y;
+                double m_x, m_y;
                 Glib::ustring m_landmark_name;
         };
     }

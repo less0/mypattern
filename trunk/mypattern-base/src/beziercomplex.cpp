@@ -49,10 +49,10 @@ void BezierComplex::draw(shared_ptr<Cairo::Context> context, bool selected)
     context->stroke();
 }
 
-float BezierComplex::get_length()
+double BezierComplex::get_length()
 {
     list<Bezier>::iterator it = m_bezier_curves.begin();
-    float sum = .0f;
+    double sum = .0f;
 
     while(it != m_bezier_curves.end())
     {
@@ -63,21 +63,21 @@ float BezierComplex::get_length()
     return sum;
 }
 
-Point BezierComplex::get_coordinate(float rel_length)
+Point BezierComplex::get_coordinate(double rel_length)
 {
-    float length = this->get_length();
+    double length = this->get_length();
 
-    float sum = .0f;
+    double sum = .0d;
     list<Bezier>::iterator it = m_bezier_curves.begin();
 
     while(it != m_bezier_curves.end())
     {
-        float current_bezier_length = (*it).get_length();
+        double current_bezier_length = (*it).get_length();
 
         //check if the given point llies within the current Bézier
         if((sum + current_bezier_length)/length > rel_length)
         {
-            float rel_length_bezier = (rel_length * length - sum)/current_bezier_length;
+            double rel_length_bezier = (rel_length * length - sum)/current_bezier_length;
             return (*it).get_coordinate(rel_length_bezier);
         }
 
@@ -85,7 +85,7 @@ Point BezierComplex::get_coordinate(float rel_length)
         it++;
     }
 
-    return Point(.0f, .0f);
+    return Point(.0d, .0d);
 }
 
 
@@ -104,9 +104,9 @@ void BezierComplex::add_bezier(Bezier curve_to_add)
     this->m_bezier_curves.push_back(curve_to_add);
 }
 
-float BezierComplex::get_distance(Point click)
+double BezierComplex::get_distance(Point click)
 {
-    float min_distance = std::numeric_limits<float>::max();
+    double min_distance = std::numeric_limits<double>::max();
 
     std::list<Bezier>::iterator it = this->m_bezier_curves.begin();
 
