@@ -1,6 +1,7 @@
 #include "bezierdefinition.h"
 
 #include <sstream>
+#include <iostream>
 
 using namespace MyPattern::Base;
 

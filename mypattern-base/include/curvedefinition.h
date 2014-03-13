@@ -22,7 +22,8 @@ namespace MyPattern
         {
             public:
                 //ctors and dtors
-                virtual ~CurveDefinition();
+                virtual ~CurveDefinition()
+                {}
 
                 //pure virtual functions
                 //these functions are overwritten in the actual implementations of curves
@@ -34,7 +35,6 @@ namespace MyPattern
                     assembled from single Bézier curves
                 */
                 virtual BezierComplex get_bezier(list<Point>) = 0;
-
 
                 ustring get_name();
                 /*! \brief Sets the name of the CurveDefinition
@@ -53,46 +53,49 @@ namespace MyPattern
                 */
                 bool set_name(ustring);
 
-                /*! \brief Adds a Landmark to the end of the list of landmarks
-                * in the CurveDefinition
-                *
-                * This function adds a Landmark too the list of Landmark objects
-                * in the CurveDefinifion. The Landmark is added after the last
-                * landmark
-                * \return true if the landmark was added successfull, false if the
-                * maximum number of landmarks is reached
-                */
-                bool add_landmark(shared_ptr<Landmark>);
-                /*! \brief Adds a Landmark to list of landmarks in the
-                * CurveDefinition
-                *
-                * This function adds a Landmark too the list of Landmark objects
-                * in the CurveDeinifion. The Landmark is added after a Landmark
-                * with a given name.
-                * \param landmark Pointer to a Landmark object to add.
-                * \param after Name of the landmark to add the new object after
-                * \return true if the landmark was added successfully, false if
-                * the maximum number of landmarks in the curevedefinition is
-                * reached or was no landmark with the given name
-                */
-                bool add_landmark(shared_ptr<Landmark> landmark, ustring after);
-                /*! \brief Gets the names of Landmarks in the current
-                * CurveDefinition
+//                /*! \brief Adds a Landmark to the end of the list of landmarks
+//                * in the CurveDefinition
+//                *
+//                * This function adds a Landmark too the list of Landmark objects
+//                * in the CurveDefinifion. The Landmark is added after the last
+//                * landmark
+//                * \return true if the landmark was added successfull, false if the
+//                * maximum number of landmarks is reached
+//                */
+//                bool add_landmark(shared_ptr<Landmark>);
+//                /*! \brief Adds a Landmark to list of landmarks in the
+//                * CurveDefinition
+//                *
+//                * This function adds a Landmark too the list of Landmark objects
+//                * in the CurveDeinifion. The Landmark is added after a Landmark
+//                * with a given name.
+//                * \param landmark Pointer to a Landmark object to add.
+//                * \param after Name of the landmark to add the new object after
+//                * \return true if the landmark was added successfully, false if
+//                * the maximum number of landmarks in the curevedefinition is
+//                * reached or was no landmark with the given name
+//                */
+//                bool add_landmark(shared_ptr<Landmark> landmark, ustring after);
+
+                /*! \brief Sets the names of the Landmarks of the current CurveDefinition
+                 */
+                void set_landmarks(list<ustring>);
+
+                /*! \brief Gets the names of Landmarks in the current CurveDefinition
                 *
                 * \return A list with all Landmark names in the CurveDefinition
                 * in the correct order
                 */
-                list<ustring> get_landmark_names();
-                /*! \brief Removes a landmark from the list of Landmark objects
-                *
-                * \param name Name of the Landmark to remove
-                * \return true if the landmark was successfully removed, false
-                * if there was no landmark with the given name
-                */
-                bool remove_landmark(ustring name);
+                list<ustring> get_landmarks();
+//                /*! \brief Removes a landmark from the list of Landmark objects
+//                *
+//                * \param name Name of the Landmark to remove
+//                * \return true if the landmark was successfully removed, false
+//                * if there was no landmark with the given name
+//                */
+//                bool remove_landmark(ustring name);
 
-                /** \brief Gets a signal to add a function to to request a name
-                * change
+                /** \brief Gets a signal to add a function to to request a name change
                 */
                 sigc::signal1<bool, Glib::ustring> signal_name_change_request;
                 sigc::signal0<void> signal_name_changed;
@@ -102,7 +105,7 @@ namespace MyPattern
             protected:
             private:
                 ustring m_name;
-                list<shared_ptr<Landmark>> m_landmarks;
+                list<Glib::ustring> m_landmarks;
                 sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;
 
         };

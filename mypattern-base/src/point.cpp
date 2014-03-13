@@ -3,7 +3,7 @@
 
 using namespace MyPattern::Base;
 
-Point::Point(float x, float y)
+Point::Point(double x, double y)
 {
     m_x = x;
     m_y = y;
@@ -22,27 +22,27 @@ Point::Point()
     m_y = .0f;
 }
 
-void Point::set_x(float x)
+void Point::set_x(double x)
 {
     m_x = x;
 }
 
-void Point::set_y(float y)
+void Point::set_y(double y)
 {
     m_y = y;
 }
 
-float Point::get_x()
+double Point::get_x()
 {
     return m_x;
 }
 
-float Point::get_y()
+double Point::get_y()
 {
     return m_y;
 }
 
-float Point::abs()
+double Point::abs()
 {
     return sqrtf(this->m_x*this->m_x + this->m_y * this->m_y);
 }
@@ -68,12 +68,12 @@ Point Point::operator-(const Point& subtrahend)
     return p;
 }
 
-Point Point::operator*(const float& factor)
+Point Point::operator*(const double& factor)
 {
     return Point(this->m_x * factor, this->m_y * factor);
 }
 
-Point Point::operator/(const float& divisor)
+Point Point::operator/(const double& divisor)
 {
     return Point(this->m_x/divisor, this->m_y/divisor);
 }

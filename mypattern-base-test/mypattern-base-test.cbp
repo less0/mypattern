@@ -72,6 +72,7 @@
 					<Add library="d_mypattern-base" />
 					<Add library="sigc-2.0" />
 					<Add library="../mypattern-base/libd_mypattern-base.a" />
+					<Add library="cairomm-1.0" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
@@ -131,6 +132,7 @@
 			<Add library="gtkmm-3.0" />
 			<Add library="sigc-2.0" />
 			<Add library="UnitTest++" />
+			<Add library="cairomm-1.0" />
 			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
 			<Add directory="../UnitTest++/bin/Debug" />
@@ -141,11 +143,14 @@
 		<Unit filename="src/FormulaTest.cpp" />
 		<Unit filename="src/QuotientTermTest.cpp" />
 		<Unit filename="src/ScalarTermTest.cpp" />
+		<Unit filename="src/beziertest.cpp" />
+		<Unit filename="src/curvetest.cpp" />
 		<Unit filename="src/differencetermtests.cpp" />
 		<Unit filename="src/landmarktest.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/producttermtest.cpp" />
 		<Unit filename="src/sumtermtest.cpp" />
+		<Unit filename="src/testpoint.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

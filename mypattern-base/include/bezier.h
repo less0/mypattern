@@ -36,7 +36,7 @@ namespace MyPattern
 
                 /*! \brief Approximates the length of the Bezier
                 */
-                float get_length();
+                double get_length();
                 /*! \brief This function approximates the distance of a point to the Bezier
                 *
                 * This gives an approximation of the distance of a point to the Bezier. The point is
@@ -44,22 +44,24 @@ namespace MyPattern
                 * \todo Implement solution based on analytical considerations, e.g.
                 * http://jazzros.blogspot.de/2011/03/projecting-point-on-bezier-curve.html
                 */
-                float get_distance(Point click);
+                double get_distance(Point click);
                 /** \brief Gets a coordinate on the Bezier curve given a fraction of the curve
                 *
                 */
-                Point get_coordinate(float);
+                Point get_coordinate(double);
+
+                /*! Brief gets the value of the Bernstein-Polynomial B_{i,n}(t)
+                */
+                static double bernstein(double t, int i, int n);
+                /*! \brief Gets the binomial coefficient (n over k)
+                *
+                */
+                static double binom(int n,int k);
             protected:
             private:
                 array<Point,4> m_points;
 
-                /*! Brief gets the value of the Bernstein-Polynomial B_{i,n}(t)
-                */
-                float bernstein(float t, int i, int n);
-                /*! \brief Gets the binomial coefficient (n over k)
-                *
-                */
-                float binom(int n,int k);
+
         };
 
     }
