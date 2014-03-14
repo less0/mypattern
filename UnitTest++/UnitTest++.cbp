@@ -124,69 +124,70 @@
 		<VirtualTargets>
 			<Add alias="All" targets="Debug;Release;Debug Linux;Release Linux;" />
 		</VirtualTargets>
-		<Unit filename="./src/AssertException.cpp" />
-		<Unit filename="./src/AssertException.h" />
-		<Unit filename="./src/CheckMacros.h" />
-		<Unit filename="./src/Checks.cpp" />
-		<Unit filename="./src/Checks.h" />
-		<Unit filename="./src/Config.h" />
-		<Unit filename="./src/CurrentTest.cpp" />
-		<Unit filename="./src/CurrentTest.h" />
-		<Unit filename="./src/DeferredTestReporter.cpp" />
-		<Unit filename="./src/DeferredTestReporter.h" />
-		<Unit filename="./src/DeferredTestResult.cpp" />
-		<Unit filename="./src/DeferredTestResult.h" />
-		<Unit filename="./src/ExecuteTest.h" />
-		<Unit filename="./src/MemoryOutStream.cpp" />
-		<Unit filename="./src/MemoryOutStream.h" />
-		<Unit filename="./src/Posix/SignalTranslator.cpp">
+		<Unit filename="Makefile" />
+		<Unit filename="src/AssertException.cpp" />
+		<Unit filename="src/AssertException.h" />
+		<Unit filename="src/CheckMacros.h" />
+		<Unit filename="src/Checks.cpp" />
+		<Unit filename="src/Checks.h" />
+		<Unit filename="src/Config.h" />
+		<Unit filename="src/CurrentTest.cpp" />
+		<Unit filename="src/CurrentTest.h" />
+		<Unit filename="src/DeferredTestReporter.cpp" />
+		<Unit filename="src/DeferredTestReporter.h" />
+		<Unit filename="src/DeferredTestResult.cpp" />
+		<Unit filename="src/DeferredTestResult.h" />
+		<Unit filename="src/ExecuteTest.h" />
+		<Unit filename="src/MemoryOutStream.cpp" />
+		<Unit filename="src/MemoryOutStream.h" />
+		<Unit filename="src/Posix/SignalTranslator.cpp">
 			<Option target="Debug Linux" />
 			<Option target="Release Linux" />
 		</Unit>
-		<Unit filename="./src/Posix/SignalTranslator.h">
+		<Unit filename="src/Posix/SignalTranslator.h">
 			<Option target="Debug Linux" />
 			<Option target="Release Linux" />
 		</Unit>
-		<Unit filename="./src/Posix/TimeHelpers.cpp">
+		<Unit filename="src/Posix/TimeHelpers.cpp">
 			<Option target="Debug Linux" />
 			<Option target="Release Linux" />
 		</Unit>
-		<Unit filename="./src/Posix/TimeHelpers.h">
+		<Unit filename="src/Posix/TimeHelpers.h">
 			<Option target="Debug Linux" />
 			<Option target="Release Linux" />
 		</Unit>
-		<Unit filename="./src/ReportAssert.cpp" />
-		<Unit filename="./src/ReportAssert.h" />
-		<Unit filename="./src/Test.cpp" />
-		<Unit filename="./src/Test.h" />
-		<Unit filename="./src/TestDetails.cpp" />
-		<Unit filename="./src/TestDetails.h" />
-		<Unit filename="./src/TestList.cpp" />
-		<Unit filename="./src/TestList.h" />
-		<Unit filename="./src/TestMacros.h" />
-		<Unit filename="./src/TestReporter.cpp" />
-		<Unit filename="./src/TestReporter.h" />
-		<Unit filename="./src/TestReporterStdout.cpp" />
-		<Unit filename="./src/TestReporterStdout.h" />
-		<Unit filename="./src/TestResults.cpp" />
-		<Unit filename="./src/TestResults.h" />
-		<Unit filename="./src/TestRunner.cpp" />
-		<Unit filename="./src/TestRunner.h" />
-		<Unit filename="./src/TestSuite.h" />
-		<Unit filename="./src/TimeConstraint.cpp" />
-		<Unit filename="./src/TimeConstraint.h" />
-		<Unit filename="./src/TimeHelpers.h" />
-		<Unit filename="./src/UnitTest++.h" />
-		<Unit filename="./src/Win32/TimeHelpers.cpp">
+		<Unit filename="src/ReportAssert.cpp" />
+		<Unit filename="src/ReportAssert.h" />
+		<Unit filename="src/Test.cpp" />
+		<Unit filename="src/Test.h" />
+		<Unit filename="src/TestDetails.cpp" />
+		<Unit filename="src/TestDetails.h" />
+		<Unit filename="src/TestList.cpp" />
+		<Unit filename="src/TestList.h" />
+		<Unit filename="src/TestMacros.h" />
+		<Unit filename="src/TestReporter.cpp" />
+		<Unit filename="src/TestReporter.h" />
+		<Unit filename="src/TestReporterStdout.cpp" />
+		<Unit filename="src/TestReporterStdout.h" />
+		<Unit filename="src/TestResults.cpp" />
+		<Unit filename="src/TestResults.h" />
+		<Unit filename="src/TestRunner.cpp" />
+		<Unit filename="src/TestRunner.h" />
+		<Unit filename="src/TestSuite.h" />
+		<Unit filename="src/TimeConstraint.cpp" />
+		<Unit filename="src/TimeConstraint.h" />
+		<Unit filename="src/TimeHelpers.h" />
+		<Unit filename="src/UnitTest++.h" />
+		<Unit filename="src/Win32/TimeHelpers.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="./src/Win32/TimeHelpers.h">
+		<Unit filename="src/Win32/TimeHelpers.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="./src/XmlTestReporter.cpp" />
-		<Unit filename="./src/XmlTestReporter.h" />
+		<Unit filename="src/XmlTestReporter.cpp" />
+		<Unit filename="src/XmlTestReporter.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />
