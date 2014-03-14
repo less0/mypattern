@@ -44,7 +44,7 @@ double Point::get_y()
 
 double Point::abs()
 {
-    return sqrtf(this->m_x*this->m_x + this->m_y * this->m_y);
+    return sqrtf(this->m_x * this->m_x + this->m_y * this->m_y);
 }
 
 Point Point::operator+(const Point& summand)

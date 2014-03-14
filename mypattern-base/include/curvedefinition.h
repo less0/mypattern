@@ -53,30 +53,6 @@ namespace MyPattern
                 */
                 bool set_name(ustring);
 
-//                /*! \brief Adds a Landmark to the end of the list of landmarks
-//                * in the CurveDefinition
-//                *
-//                * This function adds a Landmark too the list of Landmark objects
-//                * in the CurveDefinifion. The Landmark is added after the last
-//                * landmark
-//                * \return true if the landmark was added successfull, false if the
-//                * maximum number of landmarks is reached
-//                */
-//                bool add_landmark(shared_ptr<Landmark>);
-//                /*! \brief Adds a Landmark to list of landmarks in the
-//                * CurveDefinition
-//                *
-//                * This function adds a Landmark too the list of Landmark objects
-//                * in the CurveDeinifion. The Landmark is added after a Landmark
-//                * with a given name.
-//                * \param landmark Pointer to a Landmark object to add.
-//                * \param after Name of the landmark to add the new object after
-//                * \return true if the landmark was added successfully, false if
-//                * the maximum number of landmarks in the curevedefinition is
-//                * reached or was no landmark with the given name
-//                */
-//                bool add_landmark(shared_ptr<Landmark> landmark, ustring after);
-
                 /*! \brief Sets the names of the Landmarks of the current CurveDefinition
                  */
                 void set_landmarks(list<ustring>);
@@ -87,13 +63,6 @@ namespace MyPattern
                 * in the correct order
                 */
                 list<ustring> get_landmarks();
-//                /*! \brief Removes a landmark from the list of Landmark objects
-//                *
-//                * \param name Name of the Landmark to remove
-//                * \return true if the landmark was successfully removed, false
-//                * if there was no landmark with the given name
-//                */
-//                bool remove_landmark(ustring name);
 
                 /** \brief Gets a signal to add a function to to request a name change
                 */

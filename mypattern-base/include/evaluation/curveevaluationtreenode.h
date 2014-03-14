@@ -16,7 +16,7 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
 
         void notify_update(){}
 
-        list<ustring> depends_on() { return list<ustring>();}
+        list<ustring> depends_on();
 
         ustring get_prefixed_name();
     protected:

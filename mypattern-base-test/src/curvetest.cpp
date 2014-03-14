@@ -73,6 +73,33 @@ namespace
         CHECK_CLOSE(.5, bezier_evaluated_at_mid_point.get_y(), 1e-9);
 
         CHECK_CLOSE(base_bezier.get_length(), evaluated_bezier.get_length(), 1e-6);
+    }
 
+    TEST(GetCurveTreeNodeDependencies)
+    {
+        std::list<ustring> landmark_names;
+        landmark_names.push_back("foo");
+        landmark_names.push_back("bar");
+        landmark_names.push_back("baz");
+        landmark_names.push_back("qux");
+
+        shared_ptr<MyPattern::Base::BezierDefinition> bezier = shared_ptr<MyPattern::Base::BezierDefinition>(new MyPattern::Base::BezierDefinition());
+        bezier->set_name("bezier");
+        bezier->set_landmarks(landmark_names);
+
+        MyPattern::Base::Evaluation::CurveEvaluationTreeNode node = MyPattern::Base::Evaluation::CurveEvaluationTreeNode(bezier);
+
+        list<ustring> dependencies = node.depends_on();
+        CHECK_EQUAL(4, dependencies.size());
+
+        list<ustring>::iterator it = dependencies.begin();
+
+        CHECK_EQUAL("@foo", *it);
+        it++;
+        CHECK_EQUAL("@bar", *it);
+        it++;
+        CHECK_EQUAL("@baz", *it);
+        it++;
+        CHECK_EQUAL("@qux", *it);
     }
 }
