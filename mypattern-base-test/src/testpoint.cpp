@@ -50,6 +50,6 @@ namespace
         p = MyPattern::Base::Point(.3, .3);
         CHECK_CLOSE(std::sqrt(.3*.3+.3*.3), p.abs(), 1e-8);
         p = MyPattern::Base::Point(-1, -1);
-        CHECK_CLOSE(std::sqrt(2), p.abs(), 1e-8);
+        CHECK_CLOSE(std::sqrt(2), p.abs(), 1e-7);
     }
 }
