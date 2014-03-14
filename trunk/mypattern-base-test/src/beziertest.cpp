@@ -1,6 +1,7 @@
 #include "UnitTest++.h"
 #include "bezier.h"
 #include <array>
+#include <iostream>
 
 namespace
 {
@@ -79,5 +80,43 @@ namespace
         CHECK_CLOSE(0, bezier.get_coordinate(0).get_y(), 1e-12);
         CHECK_CLOSE(1, bezier.get_coordinate(1).get_x(), 1e-12);
         CHECK_CLOSE(1, bezier.get_coordinate(1).get_y(), 1e-12);
+    }
+
+    TEST(TestBezierLength)
+    {
+        array<MyPattern::Base::Point,4> a_points;
+        a_points[0] = MyPattern::Base::Point(.0, .0);
+        a_points[1] = MyPattern::Base::Point(1.0, 1.0);
+        a_points[2] = MyPattern::Base::Point(0.0, 0.0);
+        a_points[3] = MyPattern::Base::Point(1.0, 1.0);
+
+        MyPattern::Base::Bezier bezier(a_points);
+
+        CHECK_CLOSE(std::sqrt(2.0), bezier.get_length(), 1e-5);
+    }
+
+    TEST(GetDistanceToBezier)
+    {
+        array<MyPattern::Base::Point,4> a_points;
+        a_points[0] = MyPattern::Base::Point(.0, .0);
+        a_points[1] = MyPattern::Base::Point(1.0, 1.0);
+        a_points[2] = MyPattern::Base::Point(0.0, 0.0);
+        a_points[3] = MyPattern::Base::Point(1.0, 1.0);
+
+        MyPattern::Base::Bezier bezier(a_points);
+
+        // the distance of the bezier is estimated and is only used to determine the users clicks
+        // thus the fairly coarse accuracy is sufficient here
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(0,0)), 1e-9);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.1,.1)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.2,.2)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.3,.3)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.4,.4)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.5,.5)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.6,.6)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.7,.7)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.8,.8)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(.9,.9)), 1e-2);
+        CHECK_CLOSE(0, bezier.get_distance(MyPattern::Base::Point(1.0,1.0)), 1e-2);
     }
 }
