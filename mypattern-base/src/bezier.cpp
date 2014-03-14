@@ -30,10 +30,15 @@ void Bezier::draw(shared_ptr<Cairo::Context> context)
 
 double Bezier::get_distance(Point click)
 {
+    double d = .001;
+    int d_inv = int(1/d);;
+
     double candidate = std::numeric_limits<double>::max();
 
-    for(double f=0.0; f<=1.0; f+=.05)
+    for(double f=0.0; f<=1.0; f+=.001)
     {
+        f = std::round(f * d_inv) / d_inv;
+
         Point p = this->get_coordinate(f);
 
         double dist = (p-click).abs();
@@ -59,17 +64,23 @@ Point Bezier::get_coordinate(double t)
 
 double Bezier::get_length()
 {
+    double d = .001d;
+    int d_inv = int(1/d);
+
     Point last = this->get_coordinate(.0d);
     Point next;
     double dist;
     double sum = 0;
 
-    for(double t=.05d; t<=1.0d; t += .05d)
+    for(double t=d; t<=1.0d; t += d)
     {
+        t = std::round(t * d_inv) / d_inv;
+
         next = this->get_coordinate(t);
 
         dist = (next - last).abs();
 
+        last = next;
         sum += dist;
     }
 
