@@ -3,6 +3,7 @@
 
 #include <landmark.h>
 #include "UnitTest++.h"
+#include "XmlTestReporter.h"
 //#include "xmlnode.h"
 
 //void node_out(shared_ptr<XmlNode>, int);
