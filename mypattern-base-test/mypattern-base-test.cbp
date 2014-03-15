@@ -23,7 +23,7 @@
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="./mypattern-base-test" />
+					<Add after="./mypattern-base-test junit" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
