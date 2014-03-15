@@ -15,11 +15,11 @@ UnitTest: force-update
 
 mypattern-base-test: mypattern-base UnitTest force-update
 	cd mypattern-base-test; make clean; make
-	./mypattern-base-test/mypattern-base-test
+	cd mypattern-base-test; ./mypattern-base-test junit
 
 mypattern-data-test: mypattern-base mypattern-data force-update
 	cd mypattern-data-test; make clean; make
-	./mypattern-data-test/mypattern-data-test
+	cd mypattern-data-test; ./mypattern-data-test junit
 
 force-update:
 	true
