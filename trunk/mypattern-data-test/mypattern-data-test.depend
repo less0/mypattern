@@ -152,7 +152,7 @@
 	"TestResults.h"
 	"MemoryOutStream.h"
 
-1225291088 /home/paul/Programming/mypattern/UnitTest++/src/TestRunner.h
+1394836850 /home/paul/Programming/mypattern/UnitTest++/src/TestRunner.h
 	"Test.h"
 	"TestList.h"
 	"CurrentTest.h"
@@ -897,8 +897,8 @@
 	<glibmmconfig.h>
 	<glib.h>
 
-1391063657 /home/paul/Programming/mypattern/mypattern-data/include/xmlelement.h
-	"exception.h"
+1391408969 /home/paul/Programming/mypattern/mypattern-data/include/xmlelement.h
+	"exceptions/exception.h"
 	"glibmm/ustring.h"
 	"xmlattribute.h"
 	<memory>
@@ -917,11 +917,14 @@
 	"xmlexception.h"
 	<list>
 
-1390805298 /home/paul/Programming/mypattern/mypattern-data/include/xmlexception.h
-	<exception.h>
+1391408977 /home/paul/Programming/mypattern/mypattern-data/include/xmlexception.h
+	<exceptions/exception.h>
 
 1391063657 /home/paul/Programming/mypattern/mypattern-data/include/xmlattribute.h
 	"glibmm/ustring.h"
 	"glibmm/regex.h"
 	<list>
+
+1391977388 /home/paul/Programming/mypattern/mypattern-base/include/exceptions/exception.h
+	"glibmm/ustring.h"
 
