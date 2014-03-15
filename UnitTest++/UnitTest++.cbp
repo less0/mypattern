@@ -138,6 +138,8 @@
 		<Unit filename="src/DeferredTestResult.cpp" />
 		<Unit filename="src/DeferredTestResult.h" />
 		<Unit filename="src/ExecuteTest.h" />
+		<Unit filename="src/JUnitStyleReporter.cpp" />
+		<Unit filename="src/JUnitStyleReporter.h" />
 		<Unit filename="src/MemoryOutStream.cpp" />
 		<Unit filename="src/MemoryOutStream.h" />
 		<Unit filename="src/Posix/SignalTranslator.cpp">
