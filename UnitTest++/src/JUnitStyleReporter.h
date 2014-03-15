@@ -3,8 +3,17 @@
 
 #include "TestReporter.h"
 #include <string>
+#include <iostream>
+
+namespace {
+
+std::string XmlEscape(std::string const& value);
+}
 
 namespace UnitTest {
+
+
+class TestDetails;
 
 struct TestSuite
 {
@@ -12,14 +21,14 @@ struct TestSuite
     std::string name;
     int testsRun;
     int testsFailed;
-
+    float secondsElapsed;
 };
 
 class JUnitStyleReporter : public UnitTest::TestReporter
 {
     public:
         /** Default constructor */
-        JUnitStyleReporter();
+        JUnitStyleReporter(std::ostream&);
         /** Default destructor */
         ~JUnitStyleReporter();
 
@@ -29,6 +38,19 @@ class JUnitStyleReporter : public UnitTest::TestReporter
         void ReportSummary(int totalTestCount, int failedTestCount, int failureCount, float secondsElapsed);
     protected:
     private:
+        void AddXmlElement(std::ostream&, char const*);
+        void AddStartTag(std::ostream&);
+        void AddTestSuite(std::ostream&, TestSuite);
+        void AddEndTag(std::ostream&);
+
+        TestSuite* get_suite(const char *name);
+
+        bool m_current_failed;
+
+        int m_num_test_suites;
+        TestSuite *m_test_suites;
+        TestSuite *m_current_suite;
+        std::ostream &m_os;
 };
 
 } // namespace UnitTest
