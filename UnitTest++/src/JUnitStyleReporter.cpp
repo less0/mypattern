@@ -72,7 +72,7 @@ JUnitStyleReporter::~JUnitStyleReporter()
 void JUnitStyleReporter::ReportTestStart(TestDetails const& details)
 {
 	std::string packageName(details.filename);
-	size_t pos_of_last_slash = packageName.find_las_of('/');
+	size_t pos_of_last_slash = packageName.find_last_of('/');
 	
 	if(pos_of_last_slash < packageName.length())
 	{
