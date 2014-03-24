@@ -71,10 +71,25 @@ JUnitStyleReporter::~JUnitStyleReporter()
 
 void JUnitStyleReporter::ReportTestStart(TestDetails const& details)
 {
+	std::string packageName(details.filename);
+	size_t pos_of_last_slash = packageName.find_las_of('/');
+	
+	if(pos_of_last_slash < packageName.length())
+	{
+		packageName = packageName.substr(pos_of_last_slash + 1);
+	}
+	
+	size_t pos_of_last_dot = packageName.find_last_of('.');
+	
+	if(pos_of_last_dot < packageName.length())
+	{
+		packageName = packageName.substr(0, pos_of_last_dot);
+	}
+
     m_current_suite = get_suite(details.suiteName);
     m_current_suite->testsRun++;
 
-    m_current_suite->tests = m_current_suite->tests + "<testcase name=\"" + std::string(details.testName) + "\" classname=\"" + std::string(details.filename) + "\"";
+    m_current_suite->tests = m_current_suite->tests + "<testcase name=\"" + std::string(details.testName) + "\" classname=\"" + packageName + "\"";
 
     m_current_failed = false;
 }
