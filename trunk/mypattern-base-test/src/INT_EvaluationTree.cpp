@@ -238,5 +238,51 @@ namespace
 		CHECK_EQUAL(true, bezier_node == NULL);
 	}
 
+	TEST(AddBezierCurveToEvaluationRootAndGetName)
+	{	
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
+		
+		bezier->set_name("bezier1");
+		
+		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
+
+		CHECK_EQUAL("$bezier1", bezier_node->get_prefixed_name());
 	
+	}
+
+	TEST(AddBezierCurveToEvaluationRootAndGetDependencyNames)
+	{
+		
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
+		
+		bezier->set_name("bezier1");
+	
+		list<ustring> dependency_names;
+		dependency_names.push_back("foo");
+		dependency_names.push_back("bar");
+		dependency_names.push_back("baz");
+		dependency_names.push_back("qux");
+		
+		bezier->set_landmarks(dependency_names);
+
+		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
+	
+		list<ustring> deps_from_node = bezier_node->depends_on();
+
+		CHECK_EQUAL(4, deps_from_node.size());
+
+		list<ustring>::iterator it = deps_from_node.begin(); 
+
+		CHECK_EQUAL("foo", *it);
+		it++; 
+		CHECK_EQUAL("bar", *it);
+		it++; 
+		CHECK_EQUAL("baz", *it); 
+		it++;
+		CHECK_EQUAL("qux", *it); 
+	}
 }
