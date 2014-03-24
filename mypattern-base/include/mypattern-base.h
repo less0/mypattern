@@ -15,6 +15,7 @@
 #include "partdefinition.h"
 #include "valuerangetype.h"
 #include "patternobject.h"
+#include "evaluation/curveevaluationtreenode.h"
 #include "evaluation/landmarkevaluationtreenode.h"
 #include "evaluation/evaluationtreeobserver.h"
 #include "evaluation/evaluationtreenode.h"

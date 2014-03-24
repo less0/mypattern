@@ -14,7 +14,8 @@ int main(int argc, const char* argv[])
 
         UnitTest::JUnitStyleReporter reporter(os);
         UnitTest::TestRunner runner(reporter);
-        return runner.RunTestsIf(UnitTest::Test::GetTestList(), NULL, UnitTest::True(), 0);
+        runner.RunTestsIf(UnitTest::Test::GetTestList(), NULL, UnitTest::True(), 0);
+	return 0;
     }
 
     return UnitTest::RunAllTests();

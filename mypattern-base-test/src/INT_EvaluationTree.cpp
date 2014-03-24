@@ -192,7 +192,7 @@ namespace
 
 	TEST(EvaluateDependentLandmark)
 	{
-        EvaluationRoot root = EvaluationRoot();
+		EvaluationRoot root = EvaluationRoot();
 
 		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
 		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
@@ -224,4 +224,19 @@ namespace
 		CHECK_CLOSE(1.5, landmark2_point.get_y(), 1e-9);
 
 	}
+
+	TEST(AddCurveToEvaluationRoot)
+	{
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
+		
+		bezier->set_name("bezier1");
+		
+		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
+
+		CHECK_EQUAL(true, bezier_node == NULL);
+	}
+
+	
 }
