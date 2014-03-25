@@ -27,6 +27,11 @@ std::list<Glib::ustring> CurveEvaluationTreeNode::depends_on()
     return dependencies;
 }
 
+BezierComplex CurveEvaluationTreeNode::get_value()
+{
+	return BezierComplex(list<Bezier>(), "");
+}
+
 } // namespace Evaluation
 } // namespace Base
 } // namespace MyPattern
