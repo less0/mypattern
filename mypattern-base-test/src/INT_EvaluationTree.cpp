@@ -396,7 +396,8 @@ namespace
 		bezier2->set_landmarks(dependency_names);
 
 		root.add_object(bezier1);
-		root.add_object(bezier2);
+		CHECK_THROW(root.add_object(bezier2), MyPattern::Exceptions::ObjectNameTakenEvaluationException);
 	
+		
 	}
 }
