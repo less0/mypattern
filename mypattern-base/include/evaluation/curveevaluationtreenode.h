@@ -19,6 +19,11 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
         list<ustring> depends_on();
 
         ustring get_prefixed_name();
+
+	/*! \brief Gets the last evaluated value of the associated CurveDefinition
+	 * given the values of the dependencies
+	 */
+	BezierComplex get_value();
     protected:
         void update_value() {}
     private:
