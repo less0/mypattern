@@ -396,7 +396,7 @@ namespace
 		bezier2->set_landmarks(dependency_names);
 
 		root.add_object(bezier1);
-		root.add_object(bezier22);
+		root.add_object(bezier2);
 	
 	}
 }
