@@ -1,6 +1,8 @@
 #include "evaluation/evaluationroot.h"
 #include "landmark.h"
+#include "curvedefinition.h"
 #include "evaluation/landmarkevaluationtreenode.h"
+#include "evaluation/curveevaluationtreenode.h"
 #include "exceptions/objectnametakenevaluationexception.h"
 #include "exceptions/unmetdependenciesevaluationexception.h"
 #include "exceptions/circulardependencyevaluationexception.h"
@@ -21,6 +23,7 @@ namespace Evaluation {
     shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<PatternObject> &object)
     {
         shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
+        shared_ptr<CurveDefinition> p_curve = dynamic_pointer_cast<CurveDefinition>(object);
 
         if(p_landmark != NULL)
         {
@@ -71,6 +74,12 @@ namespace Evaluation {
 
             return newNode;
         }
+	else if(p_curve != NULL)
+	{
+		shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new CurveEvaluationTreeNode(p_curve));
+
+		return newNode;
+	}
 
         return shared_ptr<EvaluationTreeNode>(NULL);
     }
