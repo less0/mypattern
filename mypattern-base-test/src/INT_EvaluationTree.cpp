@@ -60,8 +60,8 @@ namespace
     {
         EvaluationRoot root = EvaluationRoot();
         shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
-        landmark1->set_name("lm3");
-        landmark1->set_definition_x("@lm3[X]");
+        landmark1->set_name("lm1");
+        landmark1->set_definition_x("@lm1[X]");
 
         CHECK_THROW(root.add_object(landmark1), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
     }
@@ -100,10 +100,10 @@ namespace
         shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
         shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
 
-        landmark1->set_name("lm3");
+        landmark1->set_name("lm1");
 
-        landmark2->set_name("lm3");
-        landmark2->set_definition_y("@lm3[X]");
+        landmark2->set_name("lm2");
+        landmark2->set_definition_y("@lm1[X]");
 
         root.add_object(landmark1);
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
@@ -148,11 +148,11 @@ namespace
 		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
 		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
 
-		landmark1->set_name("lm3");
+		landmark1->set_name("lm1");
 
-		landmark2->set_name("lm3");
-		landmark2->set_definition_x("@lm3[X]+0.5");
-		landmark2->set_definition_y("@lm3[Y]+0.5");
+		landmark2->set_name("lm2");
+		landmark2->set_definition_x("@lm1[X]+0.5");
+		landmark2->set_definition_y("@lm1[Y]+0.5");
 
 		root.add_object(landmark1);
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
@@ -169,8 +169,8 @@ namespace
 		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
 		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
 
-		landmark1->set_name("lm3");
-		landmark2->set_name("lm3");
+		landmark1->set_name("lm1");
+		landmark2->set_name("lm2");
 
 		root.add_object(landmark1);
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
@@ -181,8 +181,8 @@ namespace
 		CHECK_CLOSE(.0, landmark2_point.get_y(), 1e-12);
 
 
-		landmark2->set_definition_x("@lm3[X]+3.141");
-		landmark2->set_definition_y("@lm3[Y]+6.282");
+		landmark2->set_definition_x("@lm1[X]+3.141");
+		landmark2->set_definition_y("@lm1[Y]+6.282");
 
 		landmark2_point = landmark2_node->get_value();
 
@@ -197,11 +197,11 @@ namespace
 		shared_ptr<Landmark> landmark1 = shared_ptr<Landmark>(new Landmark());
 		shared_ptr<Landmark> landmark2 = shared_ptr<Landmark>(new Landmark());
 
-		landmark1->set_name("lm3");
+		landmark1->set_name("lm1");
 
-		landmark2->set_name("lm3");
-		landmark2->set_definition_x("@lm3[X]+0.5");
-		landmark2->set_definition_y("@lm3[Y]+0.5");
+		landmark2->set_name("lm2");
+		landmark2->set_definition_x("@lm1[X]+0.5");
+		landmark2->set_definition_y("@lm1[Y]+0.5");
 
 		shared_ptr<LandmarkEvaluationTreeNode> landmark1_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark1));
 		shared_ptr<LandmarkEvaluationTreeNode> landmark2_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark2));
