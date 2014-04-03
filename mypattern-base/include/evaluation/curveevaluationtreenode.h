@@ -28,13 +28,6 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
         void update_value() {}
     private:
         shared_ptr<CurveDefinition> m_base_curve_definition;
-
-	
-        /*! \brief Signal handler for Landmark::signal_request_change */
-        bool base_curve_change_request(list<ustring> new_dependencies);
-
-        /*! \brief Signal handler for Landmark::signal_change */
-        void base_curve_changed();
 };
 
 } // namespace Evaluation
