@@ -37,13 +37,7 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
          */
         Point get_value();
 
-        /*! \brief Gets the signal that checks the validity of a dependency
-         * change */
-        sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<ustring>> signal_request_change;
 
-        /*! \brief Returns the signal that is emitted when the object has been
-         * updated and the dependencies are to be updated by the EvaluationRoot */
-        sigc::signal1<void, shared_ptr<EvaluationTreeNode>> signal_update_dependencies;
 
     protected:
     private:
