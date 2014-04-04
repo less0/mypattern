@@ -38,6 +38,23 @@ BezierComplex CurveEvaluationTreeNode::get_value()
 	//return BezierComplex(list<Bezier>(), "");
 }
 
+void CurveEvaluationTreeNode::base_curve_changed()
+{
+	if(!signal_update_dependencies.empty())
+	{
+		signal_update_dependencies();
+	}
+}
+
+bool CurveEvaluationTreeNode::base_curve_change_request(list<ustring>)
+{
+	if(!signal_request_change.empty())
+	{
+		return signal_request_change();
+	}
+	return true;
+}
+
 } // namespace Evaluation
 } // namespace Base
 } // namespace MyPattern
