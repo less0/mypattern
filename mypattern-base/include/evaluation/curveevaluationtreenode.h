@@ -36,6 +36,9 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
         void update_value() {}
     private:
         shared_ptr<CurveDefinition> m_base_curve_definition;
+
+	void base_curve_changed();
+	bool base_curve_change_request(list<ustring>);
 };
 
 } // namespace Evaluation
