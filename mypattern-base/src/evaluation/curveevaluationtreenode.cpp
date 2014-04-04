@@ -42,15 +42,15 @@ void CurveEvaluationTreeNode::base_curve_changed()
 {
 	if(!signal_update_dependencies.empty())
 	{
-		signal_update_dependencies();
+		signal_update_dependencies(shared_from_this());
 	}
 }
 
-bool CurveEvaluationTreeNode::base_curve_change_request(list<ustring>)
+bool CurveEvaluationTreeNode::base_curve_change_request(list<ustring> new_landmarks)
 {
 	if(!signal_request_change.empty())
 	{
-		return signal_request_change();
+		return signal_request_change(shared_from_this(),new_landmarks);
 	}
 	return true;
 }
