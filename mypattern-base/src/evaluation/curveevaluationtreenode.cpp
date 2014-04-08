@@ -1,4 +1,5 @@
 #include "evaluation/curveevaluationtreenode.h"
+#include "evaluation/landmarkevaluationtreenode.h"
 
 namespace MyPattern {
 namespace Base {
@@ -31,7 +32,18 @@ BezierComplex CurveEvaluationTreeNode::get_value()
 {
 	std::list<Point> points;
 
+	for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_nodes.begin();
+		it != m_nodes.end();
+		it++)
+	{
+		shared_ptr<LandmarkEvaluationTreeNode> lm_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
 
+		if(lm_node != NULL)
+		{
+			points.push_back(lm_node->get_value());
+		}
+	}
+		
 
 	return m_base_curve_definition->get_bezier(points);
 	

@@ -74,12 +74,41 @@ namespace Evaluation {
 
             return newNode;
         }
-	else if(p_curve != NULL)
-	{
-		shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new CurveEvaluationTreeNode(p_curve));
+        else if(p_curve != NULL)
+        {
 
-		return newNode;
-	}
+            shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new CurveEvaluationTreeNode(p_curve));
+
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_tree_nodes.begin();
+                it != m_tree_nodes.end();
+                it++)
+            {
+                shared_ptr<CurveEvaluationTreeNode> existing_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
+
+                if(existing_node != NULL &&
+                    existing_node->get_prefixed_name() == newNode->get_prefixed_name())
+                {
+                    throw ObjectNameTakenEvaluationException();
+                }
+            }
+
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
+
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
+                it != dependencies.end();
+                it++)
+            {
+                newNode->add_dependency(*it);
+            }
+
+            newNode->notify_update();
+
+            ///\todo connect signals
+
+            m_tree_nodes.push_back(newNode);
+
+            return newNode;
+        }
 
         return shared_ptr<EvaluationTreeNode>(NULL);
     }
