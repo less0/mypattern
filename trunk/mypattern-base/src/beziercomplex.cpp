@@ -52,7 +52,7 @@ void BezierComplex::draw(shared_ptr<Cairo::Context> context, bool selected)
 double BezierComplex::get_length()
 {
     list<Bezier>::iterator it = m_bezier_curves.begin();
-    double sum = .0f;
+    double sum = .0d;
 
     while(it != m_bezier_curves.end())
     {
@@ -74,8 +74,8 @@ Point BezierComplex::get_coordinate(double rel_length)
     {
         double current_bezier_length = (*it).get_length();
 
-        //check if the given point llies within the current Bézier
-        if((sum + current_bezier_length)/length > rel_length)
+        //check if the given point lies within the current Bézier
+        if((sum + current_bezier_length)/length >= rel_length)
         {
             double rel_length_bezier = (rel_length * length - sum)/current_bezier_length;
             return (*it).get_coordinate(rel_length_bezier);
