@@ -37,6 +37,9 @@ class EvaluationRoot
 
         bool landmark_node_change_request(shared_ptr<EvaluationTreeNode>,list<ustring>);
         void landmark_update_dependencies(shared_ptr<EvaluationTreeNode>);
+
+        bool curve_node_change_request(shared_ptr<EvaluationTreeNode>, list<ustring>);
+        void curve_update_dependencies(shared_ptr<EvaluationTreeNode>);
 };
 
 } // namespace Evaluation
