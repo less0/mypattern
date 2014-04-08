@@ -244,25 +244,25 @@ namespace
 		root.add_object(lm4);
 
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
-		
+
 		list<ustring> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
 		dependency_names.push_back("qux");
-		
+
 		bezier->set_landmarks(dependency_names);
 		bezier->set_name("bezier1");
-		
+
 		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
 
 		CHECK_EQUAL(true, bezier_node != NULL);
 	}
 
 	TEST(AddBezierCurveToEvaluationRootAndGetName)
-	{	
+	{
 		EvaluationRoot root = EvaluationRoot();
-		
+
 		shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
 		lm1->set_name("foo");
 		shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
@@ -276,28 +276,28 @@ namespace
 		root.add_object(lm2);
 		root.add_object(lm3);
 		root.add_object(lm4);
-		
+
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
-		
+
 		list<ustring> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
 		dependency_names.push_back("qux");
-		
+
 		bezier->set_landmarks(dependency_names);
 
 		bezier->set_name("bezier1");
-		
+
 		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
 
 		CHECK_EQUAL("$bezier1", bezier_node->get_prefixed_name());
-	
+
 	}
 
 	TEST(AddBezierCurveToEvaluationRootAndGetDependencyNames)
 	{
-		
+
 		EvaluationRoot root = EvaluationRoot();
 
 		shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
@@ -313,34 +313,34 @@ namespace
 		root.add_object(lm2);
 		root.add_object(lm3);
 		root.add_object(lm4);
-		
+
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
-		
+
 		bezier->set_name("bezier1");
-	
+
 		list<ustring> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
 		dependency_names.push_back("qux");
-		
+
 		bezier->set_landmarks(dependency_names);
 
 		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
-	
+
 		list<ustring> deps_from_node = bezier_node->depends_on();
 
 		CHECK_EQUAL(4, deps_from_node.size());
 
-		list<ustring>::iterator it = deps_from_node.begin(); 
+		list<ustring>::iterator it = deps_from_node.begin();
 
 		CHECK_EQUAL("@foo", *it);
-		it++; 
-		CHECK_EQUAL("@bar", *it);
-		it++; 
-		CHECK_EQUAL("@baz", *it); 
 		it++;
-		CHECK_EQUAL("@qux", *it); 
+		CHECK_EQUAL("@bar", *it);
+		it++;
+		CHECK_EQUAL("@baz", *it);
+		it++;
+		CHECK_EQUAL("@qux", *it);
 	}
 
 	TEST(AddCurveWithUnmetDependencies)
@@ -348,15 +348,15 @@ namespace
 		EvaluationRoot root = EvaluationRoot();
 
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
-		
+
 		bezier->set_name("bezier1");
-	
+
 		list<ustring> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
 		dependency_names.push_back("qux");
-		
+
 		bezier->set_landmarks(dependency_names);
 
 		CHECK_THROW(root.add_object(bezier), MyPattern::Exceptions::UnmetDependenciesEvaluationException);
@@ -379,19 +379,19 @@ namespace
 		root.add_object(lm2);
 		root.add_object(lm3);
 		root.add_object(lm4);
-		
+
 		shared_ptr<BezierDefinition> bezier1 = shared_ptr<BezierDefinition>(new BezierDefinition());
 		shared_ptr<BezierDefinition> bezier2 = shared_ptr<BezierDefinition>(new BezierDefinition());
-		
+
 		bezier1->set_name("bezier1");
 		bezier2->set_name("bezier1");
-	
+
 		list<ustring> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
 		dependency_names.push_back("qux");
-		
+
 		bezier1->set_landmarks(dependency_names);
 		bezier2->set_landmarks(dependency_names);
 
@@ -402,22 +402,22 @@ namespace
 	TEST(GetAddedCurveEvaluatedValue)
 	{
 		EvaluationRoot root = EvaluationRoot();
-		
+
 		shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
 		lm1->set_name("lm1");
 		lm1->set_definition_x("0");
 		lm1->set_definition_y("0");
-		
+
 		shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
 		lm2->set_name("lm2");
 		lm2->set_definition_x("1");
 		lm2->set_definition_y("1");
-		
+
 		shared_ptr<Landmark> lm3 = shared_ptr<Landmark>(new Landmark());
 		lm3->set_name("lm3");
 		lm3->set_definition_x("0");
 		lm3->set_definition_y("0");
-		
+
 		shared_ptr<Landmark> lm4 = shared_ptr<Landmark>(new Landmark());
 		lm4->set_name("lm4");
 		lm4->set_definition_x("1");
@@ -429,10 +429,16 @@ namespace
 		landmark_names.push_back("lm3");
 		landmark_names.push_back("lm4");
 
+		root.add_object(lm1);
+		root.add_object(lm2);
+		root.add_object(lm3);
+		root.add_object(lm4);
+
 		shared_ptr<CurveDefinition> bezier = shared_ptr<CurveDefinition>(new BezierDefinition);
 		bezier->set_name("bezier1");
+		bezier->set_landmarks(landmark_names);
 		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
-		
+
 		BezierComplex evaluated_bezier = bezier_node->get_value();
 		CHECK_CLOSE(.0, evaluated_bezier.get_coordinate(.0).get_x(), 1e-6);
 		CHECK_CLOSE(.0, evaluated_bezier.get_coordinate(.0).get_y(), 1e-6);
