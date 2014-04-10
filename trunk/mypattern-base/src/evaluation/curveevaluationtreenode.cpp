@@ -43,10 +43,10 @@ BezierComplex CurveEvaluationTreeNode::get_value()
 			points.push_back(lm_node->get_value());
 		}
 	}
-		
+
 
 	return m_base_curve_definition->get_bezier(points);
-	
+
 	//return BezierComplex(list<Bezier>(), "");
 }
 
@@ -56,6 +56,7 @@ void CurveEvaluationTreeNode::base_curve_changed()
 	{
 		signal_update_dependencies(shared_from_this());
 	}
+	update_value();
 }
 
 bool CurveEvaluationTreeNode::base_curve_change_request(list<ustring> new_landmarks)
