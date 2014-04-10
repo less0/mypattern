@@ -211,16 +211,16 @@ namespace Evaluation {
         }
     }
 
-    void curve_update_dependencies(shared_ptr<EvaluationTreeNode>)
+    void EvaluationRoot::curve_update_dependencies(shared_ptr<EvaluationTreeNode> node)
     {
         shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
 
         if(curve_node != NULL)
         {
             curve_node->clear_dependencies();
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_landmarks);
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(curve_node->depends_on());
 
-            for(list<shared_ptr<EvaluationTreeNode>::iterator it = dependencies.begin();
+            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
                 it != dependencies.end();
                 it++)
             {
