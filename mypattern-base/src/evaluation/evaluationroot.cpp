@@ -195,6 +195,39 @@ namespace Evaluation {
         }
     }
 
+    bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_landmarks)
+    {
+        shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
+
+        if(curve_node != NULL)
+        {
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_landmarks);
+
+            return true;
+        }
+        else
+        {
+            throw Exception();
+        }
+    }
+
+    void curve_update_dependencies(shared_ptr<EvaluationTreeNode>)
+    {
+        shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
+
+        if(curve_node != NULL)
+        {
+            curve_node->clear_dependencies();
+            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_landmarks);
+
+            for(list<shared_ptr<EvaluationTreeNode>::iterator it = dependencies.begin();
+                it != dependencies.end();
+                it++)
+            {
+                curve_node->add_dependency(*it);
+            }
+        }
+    }
 } // namespace Evaluation
 } // namespace Base
 } // namespace MyPattern

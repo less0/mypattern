@@ -138,19 +138,19 @@
 			<Add directory="../UnitTest++/bin/Debug" />
 		</Linker>
 		<Unit filename="Makefile" />
-		<Unit filename="src/ConstantTermTest.cpp" />
-		<Unit filename="src/EvaluationTreeTest.cpp" />
-		<Unit filename="src/FormulaTest.cpp" />
-		<Unit filename="src/QuotientTermTest.cpp" />
-		<Unit filename="src/ScalarTermTest.cpp" />
-		<Unit filename="src/beziertest.cpp" />
-		<Unit filename="src/curvetest.cpp" />
-		<Unit filename="src/differencetermtests.cpp" />
-		<Unit filename="src/landmarktest.cpp" />
+		<Unit filename="src/INT_EvaluationTree.cpp" />
+		<Unit filename="src/INT_Formulae.cpp" />
+		<Unit filename="src/UNT_Bezier.cpp" />
+		<Unit filename="src/UNT_ConstantTerm.cpp" />
+		<Unit filename="src/UNT_CurveDefinition_BezierDefinition.cpp" />
+		<Unit filename="src/UNT_DifferenceTerm.cpp" />
+		<Unit filename="src/UNT_Landmark.cpp" />
+		<Unit filename="src/UNT_Point.cpp" />
+		<Unit filename="src/UNT_ProductTerm.cpp" />
+		<Unit filename="src/UNT_QuotientTerm.cpp" />
+		<Unit filename="src/UNT_ScalarTerm.cpp" />
+		<Unit filename="src/UNT_SumTerm.cpp" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="src/producttermtest.cpp" />
-		<Unit filename="src/sumtermtest.cpp" />
-		<Unit filename="src/testpoint.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
