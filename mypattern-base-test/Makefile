@@ -12,6 +12,10 @@ LIBRARIES=-lUnitTest++ -lmypattern-base -lglibmm-2.4 -lsigc-2.0 -lcairomm-1.0
 mypattern-base-test: $(OBJ)
 	g++ $(LIBDIRS) $(INCLUDES) -o mypattern-base-test $(OBJ) -std=c++0x $(LIBRARIES)
 
+run_test: mypattern-base-test
+	./mypattern-base-test
+	
+
 ./src/%.o: ./src/%.cpp
 	$(CC) $(INCLUDES) -o $@  -g -c $<
 
