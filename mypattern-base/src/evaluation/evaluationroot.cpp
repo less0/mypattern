@@ -3,6 +3,7 @@
 #include "curvedefinition.h"
 #include "evaluation/landmarkevaluationtreenode.h"
 #include "evaluation/curveevaluationtreenode.h"
+#include "evaluation/measurevalueevaluationtreenode.h"
 #include "exceptions/objectnametakenevaluationexception.h"
 #include "exceptions/unmetdependenciesevaluationexception.h"
 #include "exceptions/circulardependencyevaluationexception.h"
@@ -24,6 +25,7 @@ namespace Evaluation {
     {
         shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
         shared_ptr<CurveDefinition> p_curve = dynamic_pointer_cast<CurveDefinition>(object);
+        shared_ptr<MeasureValue> p_measurevalue = dynamic_pointer_cast<MeasureValue>(object);
 
         if(p_landmark != NULL)
         {
@@ -109,6 +111,10 @@ namespace Evaluation {
             m_tree_nodes.push_back(newNode);
 
             return newNode;
+        }
+        else if(p_measurevalue != NULL)
+        {
+            return shared_ptr<EvaluationTreeNode>(new MeasureValueEvaluationTreeNode(p_measurevalue));
         }
 
         return shared_ptr<EvaluationTreeNode>(NULL);

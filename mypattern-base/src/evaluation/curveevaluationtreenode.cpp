@@ -1,6 +1,8 @@
 #include "evaluation/curveevaluationtreenode.h"
 #include "evaluation/landmarkevaluationtreenode.h"
 
+#include <iostream>
+
 namespace MyPattern {
 namespace Base {
 namespace Evaluation {
@@ -16,6 +18,10 @@ CurveEvaluationTreeNode::CurveEvaluationTreeNode(shared_ptr<CurveDefinition> bas
 
 Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
 {
+    if(m_base_curve_definition == NULL)
+    {
+        std::cerr << "Base curve is NULL" << std::endl;
+    }
     return "$" + m_base_curve_definition->get_name();
 }
 
