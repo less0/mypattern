@@ -611,6 +611,8 @@ namespace
 
         shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("test", "Dummy", 1.234));
 
-        root.add_object(measureValue);
+        shared_ptr<MeasureValueEvaluationTreeNode> added_node = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(root.add_object(measureValue));
+
+        CHECK_EQUAL(true, added_node != NULL);
 	}
 }
