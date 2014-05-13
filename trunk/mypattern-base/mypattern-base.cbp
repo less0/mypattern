@@ -115,6 +115,7 @@
 		<Unit filename="include/evaluation/formula/scalarterm.h" />
 		<Unit filename="include/evaluation/formula/term.h" />
 		<Unit filename="include/evaluation/landmarkevaluationtreenode.h" />
+		<Unit filename="include/evaluation/measurevalueevaluationtreenode.h" />
 		<Unit filename="include/exceptions/argumentnullexception.h" />
 		<Unit filename="include/exceptions/circulardependencyevaluationexception.h" />
 		<Unit filename="include/exceptions/evaluationexception.h" />
@@ -157,6 +158,7 @@
 		<Unit filename="src/evaluation/formula/sumterm.cpp" />
 		<Unit filename="src/evaluation/formula/term.cpp" />
 		<Unit filename="src/evaluation/landmarkevaluationtreenode.cpp" />
+		<Unit filename="src/evaluation/measurevalueevaluationtreenode.cpp" />
 		<Unit filename="src/exceptions/argumentnullexception.cpp" />
 		<Unit filename="src/exceptions/circulardependencyevaluationexception.cpp" />
 		<Unit filename="src/exceptions/evaluationexception.cpp" />
