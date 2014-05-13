@@ -1,4 +1,5 @@
 #include "evaluation/landmarkevaluationtreenode.h"
+#include "evaluation/curveevaluationtreenode.h"
 #include <exceptions/evaluationexception.h>
 #include <iostream>
 #include <map>
@@ -66,23 +67,27 @@ void LandmarkEvaluationTreeNode::update_value()
 
 	for(list<ustring>::iterator it_symbols = formula_symbols.begin(); it_symbols != formula_symbols.end(); it_symbols++)
 	{
-		//first separate the symbol name and the symbol parameter
+		//first separate the symbol name and the symbol parameters
 		ustring current_symbol = *it_symbols;
-		ustring current_symbol_base;
-		ustring parameter;
-		bool has_parameter;
+		ustring current_symbol_base = "";
+		list<ustring> parameters;
+		bool has_parameters = false;
 
 		ustring::size_type index_of_bracket = 0;
 
-		if((index_of_bracket = current_symbol.find('[')) != ustring::npos)
+        //!\todo replace with while loop and find
+		while((index_of_bracket = current_symbol.find('[', index_of_bracket + 1)) != ustring::npos)
 		{
 			ustring::size_type index_of_closing_bracket;
-			has_parameter = true;
+			has_parameters = true;
 
-			if((index_of_closing_bracket = current_symbol.find(']')) != ustring::npos)
+			if((index_of_closing_bracket = current_symbol.find(']', index_of_bracket)) != ustring::npos)
 			{
-				current_symbol_base = current_symbol.substr(0, index_of_bracket);
-				parameter = current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1);
+                if(current_symbol_base == "")
+                {
+                    current_symbol_base = current_symbol.substr(0, index_of_bracket);
+                }
+				parameters.push_back(current_symbol.substr(index_of_bracket + 1, index_of_closing_bracket - index_of_bracket - 1));
 			}
 			else
 			{
@@ -90,7 +95,8 @@ void LandmarkEvaluationTreeNode::update_value()
 				throw MyPattern::Exceptions::EvaluationException();
 			}
 		}
-		else
+
+		if(!has_parameters)
 		{
 			current_symbol_base = current_symbol;
 		}
@@ -100,17 +106,20 @@ void LandmarkEvaluationTreeNode::update_value()
 		{
 			if((*it_nodes)->get_prefixed_name() == current_symbol_base)
 			{
-				if(current_symbol_base[0] == '@')
+				if(current_symbol_base[0] == '@') //the current child node is a landmark
 				{
 					shared_ptr<LandmarkEvaluationTreeNode> child_landmark = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
 
 					if(child_landmark != NULL)
 					{
-						if(!has_parameter)
+						if(!has_parameters || parameters.size() != 1)
 						{
 							throw MyPattern::Exceptions::EvaluationException();
 						}
-						else if(parameter == "X" || parameter == "x")
+
+						Glib::ustring parameter = parameters.front();
+
+						if(parameter == "X" || parameter == "x")
 						{
 							values.insert(std::pair<ustring,double>(current_symbol, child_landmark->get_value().get_x()));
 						}
@@ -130,7 +139,59 @@ void LandmarkEvaluationTreeNode::update_value()
 						throw MyPattern::Exceptions::EvaluationException();
 					}
 				}
+				else if(current_symbol_base[0] == '$') //the current child node is a curve
+				{
+                    shared_ptr<CurveEvaluationTreeNode> child_curve = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it_nodes);
 
+                    if(child_curve != NULL)
+                    {
+                        if(!has_parameters || parameters.size() != 2)
+                        {
+                            throw MyPattern::Exceptions::EvaluationException();
+                        }
+
+                        Glib::ustring parameter_1;
+                        Glib::ustring parameter_2;
+                        double fractionOfCurve = -1.0;
+                        Glib::ustring coordinate = "";
+                        Point positionAtCurve;
+                        list<ustring>::iterator it_parameters= parameters.begin();
+                        BezierComplex evaluatedCurve;
+
+                        parameter_1 = *it_parameters++;
+                        parameter_2 = *it_parameters;
+
+                        coordinate = parameter_2;
+
+                        stringstream sstream(parameter_1);
+                        sstream >> fractionOfCurve;
+
+                        if(fractionOfCurve < .0 || fractionOfCurve > 1.0)
+                        {
+                            throw MyPattern::Exceptions::EvaluationException();
+                        }
+
+                        evaluatedCurve = child_curve->get_value();
+                        positionAtCurve = evaluatedCurve.get_coordinate(fractionOfCurve);
+
+                        if(coordinate == "X" || coordinate == "x")
+                        {
+                            values.insert(std::pair<Glib::ustring, double>(current_symbol, positionAtCurve.get_x()));
+                        }
+                        else if(coordinate == "Y" || coordinate == "y")
+                        {
+                            values.insert(std::pair<Glib::ustring, double>(current_symbol, positionAtCurve.get_y()));
+                        }
+                        else
+                        {
+                            throw MyPattern::Exceptions::EvaluationException();
+                        }
+                    }
+                    else
+                    {
+                        throw MyPattern::Exceptions::EvaluationException();
+                    }
+				}
 			}
 		}
 	}
@@ -139,7 +200,7 @@ void LandmarkEvaluationTreeNode::update_value()
 
 	if(!m_signal_update.empty())
 	{
-        m_signal_update();
+		m_signal_update();
 	}
 }
 

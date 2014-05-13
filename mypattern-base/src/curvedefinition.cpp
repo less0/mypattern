@@ -36,7 +36,15 @@ list<ustring> CurveDefinition::get_landmarks()
 
 void CurveDefinition::set_landmarks(list<ustring> landmarks)
 {
-    m_landmarks = landmarks;
+    if(signal_request_change.empty() || signal_request_change(landmarks))
+    {
+        m_landmarks = landmarks;
+
+        if(!signal_changed.empty())
+        {
+            signal_changed();
+        }
+    }
 }
 
 //bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
