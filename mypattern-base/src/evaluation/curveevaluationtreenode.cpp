@@ -8,6 +8,10 @@ namespace Evaluation {
 CurveEvaluationTreeNode::CurveEvaluationTreeNode(shared_ptr<CurveDefinition> base_curve_definition)
 {
     m_base_curve_definition = base_curve_definition;
+
+    m_base_curve_definition->signal_request_change.connect(sigc::mem_fun(this, &CurveEvaluationTreeNode::base_curve_change_request));
+    m_base_curve_definition->signal_changed.connect(sigc::mem_fun(this, &CurveEvaluationTreeNode::base_curve_changed));
+
 }
 
 Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
@@ -30,6 +34,11 @@ std::list<Glib::ustring> CurveEvaluationTreeNode::depends_on()
 
 BezierComplex CurveEvaluationTreeNode::get_value()
 {
+	return m_last_value;
+}
+
+void CurveEvaluationTreeNode::update_value()
+{
 	std::list<Point> points;
 
 	for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_nodes.begin();
@@ -44,10 +53,18 @@ BezierComplex CurveEvaluationTreeNode::get_value()
 		}
 	}
 
+	m_last_value = m_base_curve_definition->get_bezier(points);
 
-	return m_base_curve_definition->get_bezier(points);
+	if(!m_signal_update.empty())
+	{
+		m_signal_update();
+	}
 
-	//return BezierComplex(list<Bezier>(), "");
+}
+
+void CurveEvaluationTreeNode::notify_update()
+{
+	update_value();
 }
 
 void CurveEvaluationTreeNode::base_curve_changed()

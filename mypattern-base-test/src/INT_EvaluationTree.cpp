@@ -447,7 +447,7 @@ namespace
 		CHECK_CLOSE(1.0, evaluated_bezier.get_coordinate(1.0).get_x(), 1e-6);
 		CHECK_CLOSE(1.0, evaluated_bezier.get_coordinate(1.0).get_y(), 1e-6);
 	}
-	
+
 	// Adds a curve to the evaluation root and changes its landmarks afterwards
 	// the curve is supposed to be updated
 	TEST(GetModifiedCurveEvaluatedValue)
@@ -497,11 +497,120 @@ namespace
 		lm4->set_definition_y(".5");
 
 		BezierComplex evaluated_bezier = bezier_node->get_value();
+
 		CHECK_CLOSE(.0, evaluated_bezier.get_coordinate(.0).get_x(), 1e-6);
 		CHECK_CLOSE(.0, evaluated_bezier.get_coordinate(.0).get_y(), 1e-6);
 		CHECK_CLOSE(.25, evaluated_bezier.get_coordinate(.5).get_x(), 1e-6);
 		CHECK_CLOSE(.25, evaluated_bezier.get_coordinate(.5).get_y(), 1e-6);
 		CHECK_CLOSE(.50, evaluated_bezier.get_coordinate(1.0).get_x(), 1e-6);
 		CHECK_CLOSE(.50, evaluated_bezier.get_coordinate(1.0).get_y(), 1e-6);
+	}
+
+	TEST(SetCurveLandmarkToNonexistingLandmark)
+	{
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
+		lm1->set_name("lm1");
+		lm1->set_definition_x("0");
+		lm1->set_definition_y("0");
+
+		shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
+		lm2->set_name("lm2");
+		lm2->set_definition_x("1");
+		lm2->set_definition_y("1");
+
+		shared_ptr<Landmark> lm3 = shared_ptr<Landmark>(new Landmark());
+		lm3->set_name("lm3");
+		lm3->set_definition_x("0");
+		lm3->set_definition_y("0");
+
+		shared_ptr<Landmark> lm4 = shared_ptr<Landmark>(new Landmark());
+		lm4->set_name("lm4");
+		lm4->set_definition_x("1");
+		lm4->set_definition_y("1");
+
+		list<ustring> landmark_names;
+		landmark_names.push_back("lm1");
+		landmark_names.push_back("lm2");
+		landmark_names.push_back("lm3");
+		landmark_names.push_back("lm4");
+
+		root.add_object(lm1);
+		root.add_object(lm2);
+		root.add_object(lm3);
+		root.add_object(lm4);
+
+		shared_ptr<CurveDefinition> bezier = shared_ptr<CurveDefinition>(new BezierDefinition);
+		bezier->set_name("bezier1");
+		bezier->set_landmarks(landmark_names);
+		shared_ptr<CurveEvaluationTreeNode> bezier_node
+            = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
+
+        landmark_names.pop_back();
+        landmark_names.push_back("fooBar");
+        CHECK_THROW(bezier->set_landmarks(landmark_names),
+            MyPattern::Exceptions::UnmetDependenciesEvaluationException);
+	}
+
+	TEST(CalculateLandmarkRelativeToCurve)
+	{
+		EvaluationRoot root = EvaluationRoot();
+
+		shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
+		lm1->set_name("lm1");
+		lm1->set_definition_x("0");
+		lm1->set_definition_y("0");
+
+		shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
+		lm2->set_name("lm2");
+		lm2->set_definition_x(".5");
+		lm2->set_definition_y(".5");
+
+		shared_ptr<Landmark> lm3 = shared_ptr<Landmark>(new Landmark());
+		lm3->set_name("lm3");
+		lm3->set_definition_x(".5");
+		lm3->set_definition_y(".5");
+
+		shared_ptr<Landmark> lm4 = shared_ptr<Landmark>(new Landmark());
+		lm4->set_name("lm4");
+		lm4->set_definition_x("1");
+		lm4->set_definition_y("1");
+
+		shared_ptr<Landmark> lm_check = shared_ptr<Landmark>(new Landmark());
+		lm_check->set_name("lm_check");
+		lm_check->set_definition_x("$bezier1[.5][X]");
+		lm_check->set_definition_y("$bezier1[.5][Y]");
+
+		list<ustring> landmark_names;
+		landmark_names.push_back("lm1");
+		landmark_names.push_back("lm2");
+		landmark_names.push_back("lm3");
+		landmark_names.push_back("lm4");
+
+		root.add_object(lm1);
+		root.add_object(lm2);
+		root.add_object(lm3);
+		root.add_object(lm4);
+
+		shared_ptr<CurveDefinition> bezier = shared_ptr<CurveDefinition>(new BezierDefinition);
+		bezier->set_name("bezier1");
+		bezier->set_landmarks(landmark_names);
+		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
+		shared_ptr<LandmarkEvaluationTreeNode> lm_check_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(lm_check));
+
+        Point lm_check_node_value = lm_check_node->get_value();
+
+        CHECK_CLOSE(.5, lm_check_node_value.get_x(), 1e-6);
+        CHECK_CLOSE(.5, lm_check_node_value.get_y(), 1e-6);
+	}
+
+	TEST(AddMeasureValue)
+	{
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("test", "Dummy", 1.234));
+
+        root.add_object(measureValue);
 	}
 }

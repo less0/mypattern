@@ -14,18 +14,18 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
         /** Default constructor */
         CurveEvaluationTreeNode(shared_ptr<CurveDefinition>);
 
-        void notify_update(){}
+        void notify_update();
 
         list<ustring> depends_on();
 
         ustring get_prefixed_name();
 
-	/*! \brief Gets the last evaluated value of the associated CurveDefinition
-	 * given the values of the dependencies
-	 */
-	BezierComplex get_value();
-	
-	/*! \brief Gets the signal that checks the validity of a dependency
+        /*! \brief Gets the last evaluated value of the associated CurveDefinition
+         * given the values of the dependencies
+         */
+        BezierComplex get_value();
+
+        /*! \brief Gets the signal that checks the validity of a dependency
          * change */
         sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<ustring>> signal_request_change;
 
@@ -33,9 +33,10 @@ class CurveEvaluationTreeNode : public MyPattern::Base::Evaluation::EvaluationTr
          * updated and the dependencies are to be updated by the EvaluationRoot */
         sigc::signal1<void, shared_ptr<EvaluationTreeNode>> signal_update_dependencies;
     protected:
-        void update_value() {}
+        void update_value();
     private:
         shared_ptr<CurveDefinition> m_base_curve_definition;
+	BezierComplex m_last_value;
 
 	void base_curve_changed();
 	bool base_curve_change_request(list<ustring>);
