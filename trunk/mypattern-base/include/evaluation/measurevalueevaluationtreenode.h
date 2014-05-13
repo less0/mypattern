@@ -25,7 +25,9 @@ class MeasureValueEvaluationTreeNode : public EvaluationTreeNode
         }
         Glib::ustring get_prefixed_name() { return "";}
     protected:
+        void update_value() {}
     private:
+
         shared_ptr<MeasureValue> m_base_measurevalue;
 };
 
