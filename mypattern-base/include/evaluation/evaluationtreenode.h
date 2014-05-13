@@ -63,7 +63,7 @@ class EvaluationTreeNode : public std::enable_shared_from_this<EvaluationTreeNod
         virtual list<ustring> depends_on() = 0;
 
         virtual ustring get_prefixed_name() = 0;
-		
+
     protected:
         list<shared_ptr<EvaluationTreeNode>> m_nodes;
         std::map<long,sigc::connection> m_signal_connections;
