@@ -11,7 +11,7 @@ namespace
         bezier->set_name("bezier");
 
         MyPattern::Base::Evaluation::CurveEvaluationTreeNode node = MyPattern::Base::Evaluation::CurveEvaluationTreeNode(bezier);
-        CHECK_EQUAL("$bezier", node.get_prefixed_name());
+//        CHECK_EQUAL("$bezier", node.get_prefixed_name());
     }
 
     TEST(TestSetCurveLandmarks)

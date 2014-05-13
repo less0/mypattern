@@ -20,6 +20,7 @@
 #include "evaluation/evaluationtreeobserver.h"
 #include "evaluation/evaluationtreenode.h"
 #include "evaluation/evaluationroot.h"
+#include "evaluation/measurevalueevaluationtreenode.h"
 #include "evaluation/formula/differenceterm.h"
 #include "evaluation/formula/quotientterm.h"
 #include "evaluation/formula/constantterm.h"
