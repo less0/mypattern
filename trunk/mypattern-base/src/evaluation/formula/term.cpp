@@ -22,7 +22,7 @@ namespace Formula {
 
 ustring Term::s_operators = "/*-+";
 //ustring Term::s_valid_symbol = "^[@$#\?]{1,1}[A-Za-z0-9]+(\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
-ustring Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|\\[0\\]){0,1}$";
+ustring Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|(\\[0\\]|\\[0?\\.[0-9]*\\])(\\[[XY]\\]){0,1}){0,1}$";
 
 ustring Term::s_valid_number = "^[0-9]+$|^[0-9]{0,}\\.[0-9]{1,}$";
 

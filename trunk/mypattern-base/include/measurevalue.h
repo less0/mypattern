@@ -1,6 +1,7 @@
 #ifndef MEASUREVALUE_H
 #define MEASUREVALUE_H
 
+#include "patternobject.h"
 #include "glibmm/ustring.h"
 #include "sigc++/sigc++.h"
 #include <memory>
@@ -12,10 +13,10 @@ namespace MyPattern
 {
     namespace Base
     {
-        class MeasureValue
+        class MeasureValue : public PatternObject
         {
             public:
-                MeasureValue(Glib::ustring name, Glib::ustring description, double value);
+                MeasureValue(Glib::ustring name, Glib::ustring description, double default_value);
                 MeasureValue(const MeasureValue& valueToCopy);
                 virtual ~MeasureValue();
 
@@ -35,6 +36,11 @@ namespace MyPattern
                 Glib::ustring m_name;
                 Glib::ustring m_description;
                 double m_value;
+                double m_default_value;
+
+                bool m_has_value;
+
+
                 signal1<void, shared_ptr<MeasureValue>> m_signal_changed;
         };
     }

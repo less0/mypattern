@@ -16,6 +16,10 @@ BezierComplex::BezierComplex(list<Bezier> bezier_curves, Glib::ustring curve_nam
     this->m_curve_name = curve_name;
 }
 
+BezierComplex::BezierComplex()
+{
+}
+
 BezierComplex::BezierComplex(const BezierComplex& bezier_complex)
 {
     list<Bezier>::const_iterator it = bezier_complex.m_bezier_curves.begin();

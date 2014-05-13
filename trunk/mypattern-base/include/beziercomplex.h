@@ -30,6 +30,7 @@ namespace MyPattern
             public:
                 BezierComplex(list<Bezier>);
                 BezierComplex(list<Bezier>, Glib::ustring name);
+		BezierComplex();
                 BezierComplex(const BezierComplex& instance_to_copy);
 
                 void draw(shared_ptr<Cairo::Context> context, bool selected);

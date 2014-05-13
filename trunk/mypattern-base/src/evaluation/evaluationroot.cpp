@@ -77,7 +77,7 @@ namespace Evaluation {
         else if(p_curve != NULL)
         {
 
-            shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new CurveEvaluationTreeNode(p_curve));
+            shared_ptr<CurveEvaluationTreeNode> newNode(new CurveEvaluationTreeNode(p_curve));
 
             for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_tree_nodes.begin();
                 it != m_tree_nodes.end();
@@ -103,7 +103,8 @@ namespace Evaluation {
 
             newNode->notify_update();
 
-            ///\todo connect signals
+            newNode->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::curve_node_change_request));
+            newNode->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::curve_update_dependencies));
 
             m_tree_nodes.push_back(newNode);
 
@@ -145,9 +146,7 @@ namespace Evaluation {
         if(unmet_dependencies.begin() != unmet_dependencies.end())
         {
             throw MyPattern::Exceptions::UnmetDependenciesEvaluationException(unmet_dependencies);
-//            throw UnmetDependenciesEvaluationException(unmet_dependencies);
         }
-
 
         return result;
     }
