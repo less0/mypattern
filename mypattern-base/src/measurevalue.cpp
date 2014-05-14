@@ -40,7 +40,8 @@ void MeasureValue::set_value(double value)
 {
     this->m_value = value;
 
-    m_signal_changed.emit(shared_ptr<MeasureValue>(this));
+    if(!m_signal_changed.empty())
+        m_signal_changed.emit(shared_ptr<MeasureValue>(this));
 }
 
 
