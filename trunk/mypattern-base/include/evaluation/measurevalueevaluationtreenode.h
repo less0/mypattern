@@ -23,8 +23,8 @@ class MeasureValueEvaluationTreeNode : public EvaluationTreeNode
         {
             return list<Glib::ustring>();
         }
-        Glib::ustring get_prefixed_name() { return "";}
-        double get_value() { return .0; }
+        Glib::ustring get_prefixed_name();
+        double get_value();
     protected:
         void update_value() {}
     private:
