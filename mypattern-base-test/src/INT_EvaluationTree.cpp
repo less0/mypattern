@@ -615,4 +615,37 @@ namespace
 
         CHECK_EQUAL(true, added_node != NULL);
 	}
+
+	TEST(GetAddedMeasureValuePrefixedName)
+	{
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("test", "Ein einfacher Testwert", 6.485));
+        shared_ptr<MeasureValueEvaluationTreeNode> added_node = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(root.add_object(measureValue));
+
+        CHECK_EQUAL("#test", added_node->get_prefixed_name());
+	}
+
+	TEST(GetAddedMeasureValueDefaultValue)
+	{
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("test", "Blah blah blah", 3.14159));
+        shared_ptr<MeasureValueEvaluationTreeNode> added_node = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(root.add_object(measureValue));
+
+        CHECK_EQUAL(3.14159, added_node->get_value());
+	}
+
+	TEST(GetAddedMeasureValueSetName)
+	{
+        EvaluationRoot root = EvaluationRoot();
+
+        shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("bla", "", 3.14159));
+        shared_ptr<MeasureValueEvaluationTreeNode> added_node = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(root.add_object(measureValue));
+
+        measureValue->set_value(1.2345);
+        CHECK_EQUAL(1.2345, added_node->get_value());
+	}
+
+
 }
