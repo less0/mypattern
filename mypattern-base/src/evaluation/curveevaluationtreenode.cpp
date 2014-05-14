@@ -20,7 +20,7 @@ Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
 {
     if(m_base_curve_definition == NULL)
     {
-        std::cerr << "Base curve is NULL" << std::endl;
+        std::cout << "Base curve is NULL" << std::endl;
     }
     return "$" + m_base_curve_definition->get_name();
 }
