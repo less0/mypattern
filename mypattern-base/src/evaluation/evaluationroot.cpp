@@ -114,7 +114,11 @@ namespace Evaluation {
         }
         else if(p_measurevalue != NULL)
         {
-            return shared_ptr<EvaluationTreeNode>(new MeasureValueEvaluationTreeNode(p_measurevalue));
+            shared_ptr<EvaluationTreeNode> newNode =  shared_ptr<EvaluationTreeNode>(new MeasureValueEvaluationTreeNode(p_measurevalue));
+
+            m_tree_nodes.push_back(newNode);
+
+            return newNode;
         }
 
         return shared_ptr<EvaluationTreeNode>(NULL);
