@@ -647,5 +647,22 @@ namespace
         CHECK_EQUAL(1.2345, added_node->get_value());
 	}
 
+    TEST(AddLandmarkWithReferenceToMeasureValue)
+    {
+        EvaluationRoot root = EvaluationRoot();
 
+        shared_ptr<MeasureValue> measureValue = shared_ptr<MeasureValue>(new MeasureValue("mv", "", 2.718281828));
+        shared_ptr<MeasureValueEvaluationTreeNode> n_measureValue = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(root.add_object(measureValue));
+
+        shared_ptr<Landmark> landmark = shared_ptr<Landmark>(new Landmark());
+        landmark->set_name("lm");
+        landmark->set_definition_x("#mv");
+        landmark->set_definition_y("0");
+
+        shared_ptr<LandmarkEvaluationTreeNode> n_landmark = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(root.add_object(landmark));
+        Point p = n_landmark->get_value();
+
+        CHECK_EQUAL(2.718281828, p.get_x());
+        CHECK_EQUAL(0, p.get_y());
+    }
 }

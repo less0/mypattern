@@ -1,5 +1,6 @@
 #include "evaluation/landmarkevaluationtreenode.h"
 #include "evaluation/curveevaluationtreenode.h"
+#include "evaluation/measurevalueevaluationtreenode.h"
 #include <exceptions/evaluationexception.h>
 #include <iostream>
 #include <map>
@@ -186,6 +187,19 @@ void LandmarkEvaluationTreeNode::update_value()
                         {
                             throw MyPattern::Exceptions::EvaluationException();
                         }
+                    }
+                    else
+                    {
+                        throw MyPattern::Exceptions::EvaluationException();
+                    }
+				}
+				else if(current_symbol[0] == '#')
+				{
+                    shared_ptr<MeasureValueEvaluationTreeNode> child_measure = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(*it_nodes);
+
+                    if(child_measure != NULL)
+                    {
+                        values.insert(std::pair<Glib::ustring,double>(current_symbol_base, child_measure->get_value()));
                     }
                     else
                     {
