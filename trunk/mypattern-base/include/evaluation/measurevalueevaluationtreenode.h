@@ -25,11 +25,24 @@ class MeasureValueEvaluationTreeNode : public EvaluationTreeNode
         }
         Glib::ustring get_prefixed_name();
         double get_value();
+
+        sigc::signal1<void, shared_ptr<MeasureValueEvaluationTreeNode>> signal_changed;
     protected:
-        void update_value() {}
+        void update_value()
+        {
+            if(!m_signal_update.empty())
+            {
+                m_signal_update();
+            }
+        }
     private:
+        void base_measure_value_changed()
+        {
+            update_value();
+        }
 
         shared_ptr<MeasureValue> m_base_measurevalue;
+
 };
 
 } // namespace Evaluation

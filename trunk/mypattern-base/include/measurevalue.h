@@ -26,11 +26,7 @@ namespace MyPattern
                 double get_value();
                 void set_value(double value);
 
-                signal1<void, shared_ptr<MeasureValue>> signal_changed()
-                {
-                    return m_signal_changed;
-                }
-
+                signal0<void> signal_changed;
             protected:
             private:
                 Glib::ustring m_name;
@@ -39,9 +35,6 @@ namespace MyPattern
                 double m_default_value;
 
                 bool m_has_value;
-
-
-                signal1<void, shared_ptr<MeasureValue>> m_signal_changed;
         };
     }
 }
