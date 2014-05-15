@@ -33,15 +33,16 @@ Glib::ustring MeasureValue::get_description()
 
 double MeasureValue::get_value()
 {
-    return this->m_value;
+    return m_has_value ? this->m_value : m_default_value;
 }
 
 void MeasureValue::set_value(double value)
 {
     this->m_value = value;
+    this->m_has_value = true;
 
-    if(!m_signal_changed.empty())
-        m_signal_changed.emit(shared_ptr<MeasureValue>(this));
+    if(!signal_changed.empty())
+        signal_changed.emit();
 }
 
 

@@ -41,9 +41,7 @@ bool LandmarkEvaluationTreeNode::base_landmark_change_request(list<ustring> new_
 
 void LandmarkEvaluationTreeNode::base_landmark_changed()
 {
-    sigc::signal1<void, shared_ptr<EvaluationTreeNode>>::slot_list_type slots = signal_update_dependencies.slots();
-
-    if(slots.begin() != slots.end())
+    if(!signal_update_dependencies.empty())
     {
         signal_update_dependencies(shared_from_this());
     }
