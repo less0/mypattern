@@ -237,6 +237,7 @@ namespace Evaluation {
             }
         }
     }
+
 } // namespace Evaluation
 } // namespace Base
 } // namespace MyPattern

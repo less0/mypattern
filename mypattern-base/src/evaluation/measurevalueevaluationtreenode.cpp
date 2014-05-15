@@ -6,8 +6,8 @@ namespace Evaluation {
 
 MeasureValueEvaluationTreeNode::MeasureValueEvaluationTreeNode(shared_ptr<MyPattern::Base::MeasureValue> base_value)
 {
-    //ctor
     m_base_measurevalue = base_value;
+    m_base_measurevalue->signal_changed.connect(sigc::mem_fun(this, &MeasureValueEvaluationTreeNode::base_measure_value_changed));
 }
 
 Glib::ustring MeasureValueEvaluationTreeNode::get_prefixed_name()
