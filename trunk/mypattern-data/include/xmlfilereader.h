@@ -17,23 +17,11 @@ namespace MyPattern
         {
             public:
                 XmlFileReader();
-                /**\brief Reads a pattern from a file specified with
-                * set_filename
-                *
-                * When a filename has been specified before, this function opens
-                * the specified file, reads the XML-Tree and converts it to a
-                * pattern
-                */
-                shared_ptr<PatternDefinition> read_pattern();
-                /**\brief Sets the name of the file to open
-                *
-                */
-                void set_filename(Glib::ustring filename);
-                /**\brief Gets the file specified with set_filename
-                *
-                */
-                Glib::ustring get_filename();
 
+                shared_ptr<PatternDefinition> read_pattern(Glib::ustring);
+
+
+                shared_ptr<Measures> read_measures(Glib::ustring filename, bool read_personal_values);
             protected:
             private:
                 /** \brief Reads all data from a file
