@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug Linux" />
-	<File name="src/UNT_ScalarTerm.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/INT_EvaluationTree.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1748" topLine="35" />
-		</Cursor>
-	</File>
-	<File name="src/INT_Formulae.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6006" topLine="156" />
-		</Cursor>
-	</File>
-	<File name="src/INT_EvaluationTree.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="21916" topLine="628" />
+			<Cursor1 position="20720" topLine="628" />
 		</Cursor>
 	</File>
 	<File name="Makefile" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -21,14 +11,24 @@
 			<Cursor1 position="74" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="267" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="src/UNT_CurveDefinition_BezierDefinition.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="387" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/INT_Formulae.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6006" topLine="156" />
+		</Cursor>
+	</File>
+	<File name="src/UNT_ScalarTerm.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1748" topLine="35" />
+		</Cursor>
+	</File>
+	<File name="src/main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="267" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

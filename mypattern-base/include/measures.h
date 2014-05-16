@@ -20,7 +20,7 @@ namespace MyPattern
                 Measures();
                 virtual ~Measures();
 
-                shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment);
+                shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment, double default_value);
                 bool remove(ustring name);
                 bool remove(shared_ptr<MeasureValue>);
 
