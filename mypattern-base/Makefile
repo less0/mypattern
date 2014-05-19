@@ -6,21 +6,22 @@ INCLUDES=-I./include -I/usr/include/glibmm-2.4/ -I/usr/lib/x86_64-linux-gnu/glib
 
 LIB=libmypattern-base.a
 CC=gcc -p -Wall -std=c++0x
+CC_OPTIONS=
 
 libmypattern-base: $(OBJ)
 	ar rcs $(LIB) $(OBJ)
 
 ./src/exceptions/%.o: ./src/exceptions/%.cpp
-	$(CC) $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(CC_OPTIONS)  $(INCLUDES) -o $@  -g -c $<
 
 ./src/%.o: ./src/%.cpp
-	$(CC) $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/%.o: ./src/evaluation/%.cpp
-	$(CC) $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/formula/%.o: ./src/evaluation/formula/%.cpp
-	$(CC) $(INCLUDES) -o $@  -g -c $<
+	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 #%.o: ./src/%.cpp ./src/exceptions/%.cpp ./src/evaluation/%.cpp ./src/evaluation/formula/%.cpp
 #	gcc -p -Wall -std=c++0x -I./include -g -c $<
