@@ -32,7 +32,7 @@ Pattern PatternDefinition::get_pattern(Measures measures, list<PatternParameterV
 
     while(it != this->m_part_definitions.end())
     {
-        pattern.add_part((**it).get_part(measures,parameter_values));
+        pattern.add_part((**it).get_part());
 
         it++;
     }
