@@ -1,9 +1,11 @@
-#include "part.h"
+//#include "mypattern-base.h"
 #include "measures.h"
 #include "patternparametervalue.h"
 #include "patternerror.h"
 #include "landmark.h"
 #include "curvedefinition.h"
+#include "part.h"
+#include "evaluation/evaluationroot.h"
 #include "glibmm/ustring.h"
 #include <memory>
 
@@ -24,10 +26,10 @@ namespace MyPattern
 
                 /*! \brief Gets a Part given the Measures and PatternParameterValues
                 *
-                * \param measures Body measures
-                * \param parameterValues Values for pattern parameters
+                *
                 */
-                Part get_part(Measures measures, list<PatternParameterValue> parameterValues);
+                Part get_part();
+
                 /*! \brief Gets a single landmark
                 *
                 * \param name Name of the landmark
@@ -37,6 +39,10 @@ namespace MyPattern
                 /*! \brief Gets a list of pointers to all landmarks in the part
                 */
                 list<shared_ptr<Landmark>> get_landmarks();
+
+                /*! \brief Gets a list of landmark names in the current part
+                */
+                list<Glib::ustring> get_landmark_names();
 
                 /*! \brief Adds a landmark to the part
                 *
@@ -49,12 +55,13 @@ namespace MyPattern
                 * \param name Name of the curve definition
                 */
                 shared_ptr<CurveDefinition> get_curve_definition(Glib::ustring name);
+
                 /*! Adds a curve definition to the current part
                 *
                 * \param definition A curve definition to add
                 */
 
-                /*! \brief Gets a list of pointers to all curve definitionss in the part
+                /*! \brief Gets a list of pointers to all curve definitions in the part
                 */
                 list<shared_ptr<CurveDefinition>> get_curve_definitions();
 
@@ -62,10 +69,15 @@ namespace MyPattern
                 */
                 bool add_curve_definition(shared_ptr<CurveDefinition> definition);
 
+                /*! \brief Sets the currently avalable measures
+                 */
+                bool set_measures(shared_ptr<Measures>);
+
                 /*! \brief Gets the name of the part.
                 *
                 */
                 Glib::ustring get_name();
+
                 /*! \brief Sets the name of the part
                 *
                 * This function requests a name change of the part. Since the parts have to have unique
@@ -94,13 +106,11 @@ namespace MyPattern
             private:
                 sigc::signal1<bool,Glib::ustring> m_signal_name_change_request;
 
-                PatternError evaluate_landmark(Glib::ustring landmark_name, std::shared_ptr<list<PatternObject>> object_stack, std::shared_ptr<list<Point>> points, std::shared_ptr<list<BezierComplex>> curves, Measures measures, list<PatternParameterValue> parameters);
-                PatternError evaluate_curve(Glib::ustring curve_name, shared_ptr<list<PatternObject>> object_stack, shared_ptr<list<Point>> points, shared_ptr<list<BezierComplex>> curves, Measures measures, list<PatternParameterValue> parameters);
-
                 list<shared_ptr<CurveDefinition>> m_curve_definitions;
                 list<shared_ptr<Landmark>> m_landmarks;
 
                 Glib::ustring m_name;
+                MyPattern::Base::Evaluation::EvaluationRoot m_evaluationRoot;
         };
 
     }

@@ -2,7 +2,9 @@
 #define MYPATTERN_BASE_EVALUATION_EVALUATIONROOT_H
 
 #include "evaluation/evaluationtreenode.h"
-#include "pattern.h"
+#include "point.h"
+#include "beziercomplex.h"
+#include "patternobject.h"
 
 namespace MyPattern {
 namespace Base {
@@ -14,7 +16,9 @@ class EvaluationRoot
         /*! \brief Default constructor */
         EvaluationRoot();
 
-        Pattern get_pattern();
+        list<Point> get_points();
+        list<BezierComplex> get_curves();
+
         /*! \brief Adds a node to the evaluation tree.
          *
          * If the node is in the tree afterwards the functions runs successful,
