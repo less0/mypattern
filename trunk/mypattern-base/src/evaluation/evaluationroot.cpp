@@ -124,6 +124,46 @@ namespace Evaluation {
         return shared_ptr<EvaluationTreeNode>(NULL);
     }
 
+    list<BezierComplex> EvaluationRoot::get_curves()
+    {
+        list<shared_ptr<EvaluationTreeNode>>::iterator it;
+        list<BezierComplex> curves;
+
+        for(it=m_tree_nodes.begin(); it!=m_tree_nodes.end(); it++)
+        {
+            shared_ptr<CurveEvaluationTreeNode> p_curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
+
+            if(p_curve_node != NULL)
+            {
+                curves.push_back(p_curve_node->get_value());
+            }
+        }
+
+        return curves;
+    }
+
+    list<Point> EvaluationRoot::get_points()
+    {
+        list<shared_ptr<EvaluationTreeNode>>::iterator it;
+        list<Point> points;
+
+        for(it = m_tree_nodes.begin(); it != m_tree_nodes.end(); it++)
+        {
+            shared_ptr<LandmarkEvaluationTreeNode> p_landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+
+            if(p_landmark_node != NULL)
+            {
+                points.push_back(p_landmark_node->get_value());
+            }
+
+        }
+
+        return points;
+
+        return points;
+
+    }
+
     list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
     {
         list<shared_ptr<EvaluationTreeNode>> result;

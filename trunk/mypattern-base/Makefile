@@ -23,8 +23,5 @@ libmypattern-base: $(OBJ)
 ./src/evaluation/formula/%.o: ./src/evaluation/formula/%.cpp
 	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
-#%.o: ./src/%.cpp ./src/exceptions/%.cpp ./src/evaluation/%.cpp ./src/evaluation/formula/%.cpp
-#	gcc -p -Wall -std=c++0x -I./include -g -c $<
-
 clean:
 	rm $(OBJ)
