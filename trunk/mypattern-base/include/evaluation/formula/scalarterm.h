@@ -18,12 +18,9 @@ class ScalarTerm : public MyPattern::Base::Evaluation::Formula::Term
 {
     public:
         /** Default constructor */
-        ScalarTerm(string symbol)
-        {
-            m_symbol = symbol;
-        }
-        /** Default destructor */
-        virtual ~ScalarTerm() {}
+        ScalarTerm(string symbol);
+        
+	virtual ~ScalarTerm();
         /** Copy constructor
          *  \param other Object to copy from
          */
@@ -34,23 +31,9 @@ class ScalarTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ScalarTerm& operator=(const ScalarTerm& other);
 
-        double evaluate(map<Glib::ustring,double> values)
-        {
-            if(values.count(m_symbol) == 0)
-            {
-                throw MyPattern::Exceptions::FormulaEvaluationException("Symbol not found");
-            }
+        double evaluate(map<Glib::ustring,double> values);
 
-            return values[m_symbol];
-        }
-
-        list<ustring> get_symbol_names()
-        {
-            list<ustring> result;
-            result.push_back(m_symbol);
-            return result;
-        }
-    protected:
+        list<ustring> get_symbol_names();
     private:
         string m_symbol;
 };
