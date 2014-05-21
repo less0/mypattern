@@ -9,63 +9,63 @@ XmlFileReader::XmlFileReader()
 {
 }
 
-shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
-{
-    shared_ptr<PatternDefinition> result(new PatternDefinition());
-
-    Glib::ustring data = read_file(m_filename);
-
-    shared_ptr<XmlNode> rootNode = XmlNode::parse(data);
-
-    ///\todo restore pattern from XML-Tree
-
-    if(rootNode->get_name() == "pattern")
-    {
-        list<XmlAttribute> parameters = rootNode->get_parameters();
-        list<XmlAttribute>::iterator it_params = parameters.begin();
-
-        if(it_params != parameters.end())
-        {
-            if(it_params->get_name() == "name")
-            {
-                result->set_name(it_params->get_value());
-            }
-
-            it_params++;
-        }
-
-
-        list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        list<shared_ptr<XmlNode>>::iterator it_nodes = subnodes.begin();
-
-        while(it_nodes != subnodes.end())
-        {
-            Glib::ustring subnode_name = (*it_nodes)->get_name();
-
-            if(subnode_name == "part")
-            {
-                get_part((*it_nodes), result);
-            }
-            else if(subnode_name == "user")
-            {
-                // get the user whu created the pattern from XML-tree
-            }
-            else if(subnode_name == "measures")
-            {
-                //restore custom measures from XML-tree
-            }
-
-
-            it_nodes++;
-        }
-    }
-    else
-    {
-        throw XmlException("Pattern files must contain a \"pattern\"-root-node");
-    }
-
-    return result;
-}
+//shared_ptr<PatternDefinition> XmlFileReader::read_pattern()
+//{
+//    shared_ptr<PatternDefinition> result(new PatternDefinition());
+//
+//    Glib::ustring data = read_file(m_filename);
+//
+//    shared_ptr<XmlNode> rootNode = XmlNode::parse(data);
+//
+//    ///\todo restore pattern from XML-Tree
+//
+//    if(rootNode->get_name() == "pattern")
+//    {
+//        list<XmlAttribute> parameters = rootNode->get_parameters();
+//        list<XmlAttribute>::iterator it_params = parameters.begin();
+//
+//        if(it_params != parameters.end())
+//        {
+//            if(it_params->get_name() == "name")
+//            {
+//                result->set_name(it_params->get_value());
+//            }
+//
+//            it_params++;
+//        }
+//
+//
+//        list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
+//        list<shared_ptr<XmlNode>>::iterator it_nodes = subnodes.begin();
+//
+//        while(it_nodes != subnodes.end())
+//        {
+//            Glib::ustring subnode_name = (*it_nodes)->get_name();
+//
+//            if(subnode_name == "part")
+//            {
+//                get_part((*it_nodes), result);
+//            }
+//            else if(subnode_name == "user")
+//            {
+//                // get the user whu created the pattern from XML-tree
+//            }
+//            else if(subnode_name == "measures")
+//            {
+//                //restore custom measures from XML-tree
+//            }
+//
+//
+//            it_nodes++;
+//        }
+//    }
+//    else
+//    {
+//        throw XmlException("Pattern files must contain a \"pattern\"-root-node");
+//    }
+//
+//    return result;
+//}
 
 
 Glib::ustring XmlFileReader::read_file(Glib::ustring filename)

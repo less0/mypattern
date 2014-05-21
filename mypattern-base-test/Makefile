@@ -21,4 +21,5 @@ run_test: mypattern-base-test
 	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 clean:
-	rm ./mypattern-base-test
+	-rm ./mypattern-base-test
+	-rm $(OBJ)
