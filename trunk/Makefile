@@ -4,6 +4,16 @@ CC_OPTIONS=
 
 all: mypattern-base
 
+coverage: CC_OPTIONS=--coverage
+coverage: clean test
+	cd mypattern-base;lcov --capture --directoy . --base-directory . --output-file coverage.info;genhtml coverage.info --output-directory /var/www/cov/mypattern-base
+
+clean:
+	-cd mypattern-base; make clean
+	-cd mypattern-data; make clean
+	-cd mypattern-base-test; make clean
+	-cd mypattern-data-test; make clean
+
 test: mypattern-base-test mypattern-data-test
 
 mypattern-base: force-update
