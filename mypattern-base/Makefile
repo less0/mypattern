@@ -8,20 +8,24 @@ LIB=libmypattern-base.a
 CC=gcc -p -Wall -std=c++0x
 CC_OPTIONS=
 
-libmypattern-base: $(OBJ)
-	ar rcs $(LIB) $(OBJ)
+libmypattern-base: message-libmypattern-base $(OBJ)
+	@ar rcs $(LIB) $(OBJ)
+
+message-libmypattern-base:	
+	@echo "\033[31mBuilding mypattern-base\033[0m"
 
 ./src/exceptions/%.o: ./src/exceptions/%.cpp
-	$(CC) $(CC_OPTIONS)  $(INCLUDES) -o $@  -g -c $<
+	@$(CC) $(CC_OPTIONS)  $(INCLUDES) -o $@  -g -c $<
 
 ./src/%.o: ./src/%.cpp
-	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/%.o: ./src/evaluation/%.cpp
-	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 ./src/evaluation/formula/%.o: ./src/evaluation/formula/%.cpp
-	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 clean:
-	rm $(OBJ)
+	@echo "\033[31mCleaning mypattern-base\033[0m"
+	-@rm $(OBJ) 2>/dev/null

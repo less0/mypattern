@@ -8,12 +8,16 @@ INCLUDES=-I./include -I../mypattern-base/include/ -I/usr/include/glibmm-2.4/ -I/
 LIB=libmypattern-data.a
 CC=gcc -p -Wall $(CC_OPTIONS) -std=c++0x
 
-libmypattern-base: $(OBJ)
-	ar rcs $(LIB) $(OBJ)
+libmypattern-data: message $(OBJ)
+	@ar rcs $(LIB) $(OBJ)
+
+message:
+	@echo "\033[31mBuilding mypattern-data\033[0m"
 
 ./src/%.o: ./src/%.cpp
-	$(CC) $(INCLUDES) $(CC_OPTIONS) -o $@  -g -c $<
+	@$(CC) $(INCLUDES) $(CC_OPTIONS) -o $@  -g -c $<
 
 
 clean:
-	rm $(OBJ)
+	@echo "\033[31mCleaning mypattern-data\033[0m"
+	-@rm $(OBJ) 2>/dev/null
