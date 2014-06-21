@@ -9,11 +9,15 @@ INCLUDES=-I../mypattern-base/include -I../mypattern-data/include -I../UnitTest++
 LIBDIRS=-L../mypattern-base/ -L../mypattern-data/ -L../UnitTest++/ -L/usr/lib/x86_64-linux-gnu/ -L/usr/lib/i386-linux-gnu/
 LIBRARIES=-lUnitTest++ -lmypattern-data  -lmypattern-base -lglibmm-2.4 -lsigc-2.0
 
-mypattern-base-test:
-	g++ $(LIBDIRS) $(INCLUDES) $(CC_OPTIONS) -o mypattern-data-test $(CPP) -std=c++0x $(LIBRARIES)
+mypattern-data-test: message-mypattern-data-test
+	@g++ $(LIBDIRS) $(INCLUDES) $(CC_OPTIONS) -o mypattern-data-test $(CPP) -std=c++0x $(LIBRARIES)
+
+message-mypattern-data-test:
+	@echo "\033[31mBuilding mypattern-data-test\033[0m"
 
 %.o: %.cpp
-	gcc -p -Wall -std=c++0x $(CC_OPTIONS)  -I../FLAT/include -I../UnitTest++/src  -g -c $<
+	@gcc -p -Wall -std=c++0x $(CC_OPTIONS)  -I../FLAT/include -I../UnitTest++/src  -g -c $<
 
 clean:
-	rm ./mypattern-base-test
+	@echo "\033[31mCleaning mypattern-data-test\033[0m"
+	-@rm ./mypattern-data-test 2>/dev/null

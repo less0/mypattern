@@ -10,16 +10,21 @@ CC_OPTIONS=
 LIBDIRS=-L../mypattern-base/ -L../UnitTest++/ -L/usr/lib/x86_64-linux-gnu/ -L/usr/lib/i386-linux-gnu/
 LIBRARIES=-lUnitTest++ -lmypattern-base -lglibmm-2.4 -lsigc-2.0 -lcairomm-1.0
 
-mypattern-base-test: $(OBJ)
-	g++ $(LIBDIRS) $(INCLUDES) $(CC_OPTIONS)  -o mypattern-base-test $(OBJ) -std=c++0x $(LIBRARIES)
+mypattern-base-test: message-mypattern-base-test $(OBJ)
+	@g++ $(LIBDIRS) $(INCLUDES) $(CC_OPTIONS)  -o mypattern-base-test $(OBJ) -std=c++0x $(LIBRARIES)
+
+message-mypattern-base-test:
+	@echo "\033[31mBuilding mypattern-base-test\033[0m"
+	
 
 run_test: mypattern-base-test
 	./mypattern-base-test
 
 
 ./src/%.o: ./src/%.cpp
-	$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 clean:
-	-rm ./mypattern-base-test
-	-rm $(OBJ)
+	@echo "\033[31mCleaning mypattern-base-test\033[0m"
+	-@rm ./mypattern-base-test 2>/dev/null
+	-@rm $(OBJ) 2>/dev/null
