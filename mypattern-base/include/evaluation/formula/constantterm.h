@@ -16,10 +16,7 @@ class ConstantTerm : public MyPattern::Base::Evaluation::Formula::Term
 {
     public:
         /** Default constructor */
-        ConstantTerm(double value)
-        {
-            m_value = value;
-        }
+        ConstantTerm(double value);
         /** Default destructor */
         virtual ~ConstantTerm();
         /** Copy constructor
@@ -32,15 +29,9 @@ class ConstantTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ConstantTerm& operator=(const ConstantTerm& other);
 
-        double evaluate(map<Glib::ustring,double>)
-        {
-            return m_value;
-        }
+        double evaluate(map<Glib::ustring,double>);
 
-        list<Glib::ustring> get_symbol_names()
-        {
-            return list<Glib::ustring>();
-        }
+        list<Glib::ustring> get_symbol_names();
     protected:
     private:
         double m_value;
