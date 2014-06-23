@@ -3,7 +3,7 @@
 using namespace MyPattern::Base;
 
 
-CurveDefinition::virtual ~CurveDefinition()
+virtual CurveDefinition::~CurveDefinition()
 {}
 
 Glib::ustring CurveDefinition::get_name()
