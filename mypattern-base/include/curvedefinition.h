@@ -22,8 +22,7 @@ namespace MyPattern
         {
             public:
                 //ctors and dtors
-                virtual ~CurveDefinition()
-                {}
+                virtual ~CurveDefinition();
 
                 //pure virtual functions
                 //these functions are overwritten in the actual implementations of curves
