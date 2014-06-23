@@ -14,6 +14,7 @@ clean:
 	-@cd mypattern-data; make clean
 	-@cd mypattern-base-test; make clean
 	-@cd mypattern-data-test; make clean
+	-@rm -r /var/www/cov/mypattern-base 2>/dev/null
 
 test: mypattern-base-test mypattern-data-test
 
