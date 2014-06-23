@@ -2,6 +2,10 @@
 
 using namespace MyPattern::Base;
 
+
+CurveDefinition::virtual ~CurveDefinition()
+{}
+
 Glib::ustring CurveDefinition::get_name()
 {
     return m_name;
