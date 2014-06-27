@@ -11,9 +11,9 @@ namespace MyPattern
         class PatternObject
         {
             public:
-                PatternObject() {}
+                PatternObject();
                 PatternObject(const PatternObject&);
-                virtual ~PatternObject() {}
+                virtual ~PatternObject();
 
                 /** \brief Gets the type of the object
                 *
