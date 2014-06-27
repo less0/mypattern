@@ -6,6 +6,15 @@ PatternObject::PatternObject(ObjectType type)
 {
     m_type = type;
 }
+
+PatternObject::PatternObject()
+{
+}
+
+PatternObject::~PatternObject()
+{
+}
+
 //
 //PatternObject::PatternObject(const PatternObject& base)
 //{
