@@ -35,8 +35,8 @@ class Exception
          */
         ustring get_stacktrace() { return m_stacktrace; }
     protected:
-    private:
         ustring m_message; //!< Member variable "m_message"
+    private:
         ustring m_stacktrace; //!< Member variable "m_stacktrace"
 };
 
