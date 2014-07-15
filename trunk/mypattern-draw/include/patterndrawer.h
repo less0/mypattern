@@ -4,6 +4,9 @@
 #include <pattern.h>
 #include <papersettings.h>
 #include "size.h"
+#include <memory>
+
+using namespace std;
 
 namespace MyPattern
 {
@@ -12,9 +15,16 @@ namespace MyPattern
         class PatternDrawer
         {
             public:
-                virtual void draw(MyPattern::Base::Part) = 0;
-                virtual void draw_page(MyPattern::Base::Part, int, int) = 0;
-                virtual MyPattern::Draw::Size get_size(MyPattern::Base::Part) = 0;
+                /*! \brief Draws the whole pattern to the current context
+                */
+                virtual void draw(shared_ptr<MyPattern::Base::Part>) = 0;
+                /*! \brief Draws a single page of the pattern to the current context
+                */
+                virtual void draw_page(shared_ptr<MyPattern::Base::Part>, int, int) = 0;
+                /*! \brief Gets the size of a part in the current context
+                */
+                virtual MyPattern::Draw::Size get_size(shared_ptr<MyPattern::Base::Part>) = 0;
+
 
                 void set_paper_settings(const PaperSettings&);
             protected:

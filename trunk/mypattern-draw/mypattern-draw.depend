@@ -1,1 +1,634 @@
 # depslib dependency file v1.0
+1405410761 source:c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\src\exceptions\pageoutofrangeexception.cpp
+	<exceptions/pageoutofrangeexception.h>
+
+1405410743 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\exceptions\pageoutofrangeexception.h
+	<exceptions/exception.h>
+
+1405409824 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\exceptions\exception.h
+	"glibmm/ustring.h"
+
+1354334224 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glibmm-2.4\glibmm\ustring.h
+	<glibmmconfig.h>
+	<glibmm/unicode.h>
+	<glib.h>
+	<iosfwd>
+	<iterator>
+	<sstream>
+	<string>
+	<cstddef>
+
+1354334246 c:\program files (x86)\gtk+-deps-dev-3.6.2\lib\glibmm-2.4\include\glibmmconfig.h
+
+1354334224 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glibmm-2.4\glibmm\unicode.h
+	<glib.h>
+	<cctype>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib.h
+	<glib/galloca.h>
+	<glib/garray.h>
+	<glib/gasyncqueue.h>
+	<glib/gatomic.h>
+	<glib/gbacktrace.h>
+	<glib/gbase64.h>
+	<glib/gbitlock.h>
+	<glib/gbookmarkfile.h>
+	<glib/gbytes.h>
+	<glib/gcharset.h>
+	<glib/gchecksum.h>
+	<glib/gconvert.h>
+	<glib/gdataset.h>
+	<glib/gdate.h>
+	<glib/gdatetime.h>
+	<glib/gdir.h>
+	<glib/genviron.h>
+	<glib/gerror.h>
+	<glib/gfileutils.h>
+	<glib/ggettext.h>
+	<glib/ghash.h>
+	<glib/ghmac.h>
+	<glib/ghook.h>
+	<glib/ghostutils.h>
+	<glib/giochannel.h>
+	<glib/gkeyfile.h>
+	<glib/glist.h>
+	<glib/gmacros.h>
+	<glib/gmain.h>
+	<glib/gmappedfile.h>
+	<glib/gmarkup.h>
+	<glib/gmem.h>
+	<glib/gmessages.h>
+	<glib/gnode.h>
+	<glib/goption.h>
+	<glib/gpattern.h>
+	<glib/gpoll.h>
+	<glib/gprimes.h>
+	<glib/gqsort.h>
+	<glib/gquark.h>
+	<glib/gqueue.h>
+	<glib/grand.h>
+	<glib/gregex.h>
+	<glib/gscanner.h>
+	<glib/gsequence.h>
+	<glib/gshell.h>
+	<glib/gslice.h>
+	<glib/gslist.h>
+	<glib/gspawn.h>
+	<glib/gstrfuncs.h>
+	<glib/gstring.h>
+	<glib/gstringchunk.h>
+	<glib/gtestutils.h>
+	<glib/gthread.h>
+	<glib/gthreadpool.h>
+	<glib/gtimer.h>
+	<glib/gtimezone.h>
+	<glib/gtrashstack.h>
+	<glib/gtree.h>
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gurifuncs.h>
+	<glib/gutils.h>
+	<glib/gvarianttype.h>
+	<glib/gvariant.h>
+	<glib/gversion.h>
+	<glib/gversionmacros.h>
+	<glib/gwin32.h>
+	<glib/deprecated/gallocator.h>
+	<glib/deprecated/gcache.h>
+	<glib/deprecated/gcompletion.h>
+	<glib/deprecated/gmain.h>
+	<glib/deprecated/grel.h>
+	<glib/deprecated/gthread.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\galloca.h
+	<glib/gtypes.h>
+	<alloca.h>
+	<malloc.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtypes.h
+	<glibconfig.h>
+	<glib/gmacros.h>
+	<glib/gversionmacros.h>
+	<time.h>
+
+1354284618 c:\program files (x86)\gtk+-deps-dev-3.6.2\lib\glib-2.0\include\glibconfig.h
+	<glib/gmacros.h>
+	<limits.h>
+	<float.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmacros.h
+	<stddef.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gversionmacros.h
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\garray.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gasyncqueue.h
+	<glib/gthread.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gthread.h
+	<glib/gatomic.h>
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gatomic.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gerror.h
+	<stdarg.h>
+	<glib/gquark.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gquark.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gbacktrace.h
+	<glib/gtypes.h>
+	<signal.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gbase64.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gbitlock.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gbookmarkfile.h
+	<glib/gerror.h>
+	<time.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gbytes.h
+	<glib/gtypes.h>
+	<glib/garray.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gcharset.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gchecksum.h
+	<glib/gtypes.h>
+	<glib/gbytes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gconvert.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gdataset.h
+	<glib/gquark.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gdate.h
+	<time.h>
+	<glib/gtypes.h>
+	<glib/gquark.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gdatetime.h
+	<glib/gtimezone.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtimezone.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gdir.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\genviron.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gfileutils.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\ggettext.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\ghash.h
+	<glib/gtypes.h>
+	<glib/glist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\glist.h
+	<glib/gmem.h>
+	<glib/gnode.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmem.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gnode.h
+	<glib/gmem.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\ghmac.h
+	<glib/gtypes.h>
+	"gchecksum.h"
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\ghook.h
+	<glib/gmem.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\ghostutils.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\giochannel.h
+	<glib/gconvert.h>
+	<glib/gmain.h>
+	<glib/gstring.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmain.h
+	<glib/gpoll.h>
+	<glib/gslist.h>
+	<glib/gthread.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gpoll.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gslist.h
+	<glib/gmem.h>
+	<glib/gnode.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gstring.h
+	<glib/gtypes.h>
+	<glib/gunicode.h>
+	<glib/gbytes.h>
+	<glib/gutils.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gunicode.h
+	<glib/gerror.h>
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gutils.h
+	<glib/gtypes.h>
+	<stdarg.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gkeyfile.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmappedfile.h
+	<glib/gbytes.h>
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmarkup.h
+	<stdarg.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gmessages.h
+	<stdarg.h>
+	<glib/gtypes.h>
+	<glib/gmacros.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\goption.h
+	<glib/gerror.h>
+	<glib/gquark.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gpattern.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gprimes.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gqsort.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gqueue.h
+	<glib/glist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\grand.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gregex.h
+	<glib/gerror.h>
+	<glib/gstring.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gscanner.h
+	<glib/gdataset.h>
+	<glib/ghash.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gsequence.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gshell.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gslice.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gspawn.h
+	<glib/gerror.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gstrfuncs.h
+	<stdarg.h>
+	<glib/gmacros.h>
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gstringchunk.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtestutils.h
+	<glib/gmessages.h>
+	<glib/gstring.h>
+	<glib/gerror.h>
+	<glib/gslist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gthreadpool.h
+	<glib/gthread.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtimer.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtrashstack.h
+	<glib/gutils.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gtree.h
+	<glib/gnode.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gurifuncs.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gvarianttype.h
+	<glib/gmessages.h>
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gvariant.h
+	<glib/gvarianttype.h>
+	<glib/gstring.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gversion.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\gwin32.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\gallocator.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\gcache.h
+	<glib/glist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\gcompletion.h
+	<glib/glist.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\gmain.h
+	<glib/gmain.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\grel.h
+	<glib/gtypes.h>
+
+1354284620 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\glib-2.0\glib\deprecated\gthread.h
+	<glib/gthread.h>
+	<pthread.h>
+
+1391896126 source:c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\src\drawoptions.cpp
+	"drawoptions.h"
+
+1391896127 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\drawoptions.h
+	"papersettings.h"
+	"patternobject.h"
+	<memory>
+
+1391896127 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\papersettings.h
+	"units.h"
+	<array>
+
+1391896127 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\units.h
+
+1404249679 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\patternobject.h
+	"glibmm/ustring.h"
+	"objecttype.h"
+
+1404249679 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\objecttype.h
+
+1391896126 source:c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\src\papersettings.cpp
+	"papersettings.h"
+
+1391896126 source:c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\src\patterndrawer.cpp
+	"patterndrawer.h"
+
+1405411295 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\patterndrawer.h
+	<pattern.h>
+	<papersettings.h>
+	"size.h"
+	<memory>
+
+1391896125 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\pattern.h
+	"part.h"
+
+1405410435 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\part.h
+	<list>
+	<memory>
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	"point.h"
+	"beziercomplex.h"
+	"patternobject.h"
+
+1354330162 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\context.h
+	<vector>
+	<utility>
+	<cairomm/surface.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/pattern.h>
+	<cairomm/path.h>
+	<cairomm/scaledfont.h>
+	<cairomm/types.h>
+	<valarray>
+	<vector>
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\surface.h
+	<string>
+	<vector>
+	<sigc++/slot.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/device.h>
+	<cairomm/fontoptions.h>
+	<cairomm/refptr.h>
+	<cairo-pdf.h>
+	<cairo-ps.h>
+	<cairo-svg.h>
+	<cairo-glitz.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\slot.h
+	<sigc++/functors/slot.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\functors\slot.h
+	<sigc++/trackable.h>
+	<sigc++/visit_each.h>
+	<sigc++/adaptors/adaptor_trait.h>
+	<sigc++/functors/slot_base.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\trackable.h
+	<list>
+	<sigc++config.h>
+
+1354329878 c:\program files (x86)\gtk+-deps-dev-3.6.2\lib\sigc++-2.0\include\sigc++config.h
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\visit_each.h
+	<sigc++/type_traits.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\type_traits.h
+	<sigc++config.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\adaptors\adaptor_trait.h
+	<sigc++config.h>
+	<sigc++/visit_each.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/functors/ptr_fun.h>
+	<sigc++/functors/mem_fun.h>
+	<sigc++/adaptors/deduce_result_type.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\functors\functor_trait.h
+	<sigc++/type_traits.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\functors\ptr_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\functors\mem_fun.h
+	<sigc++/type_traits.h>
+	<sigc++/functors/functor_trait.h>
+	<sigc++/limit_reference.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\limit_reference.h
+	<sigc++/type_traits.h>
+	<sigc++/trackable.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\adaptors\deduce_result_type.h
+	<sigc++/functors/functor_trait.h>
+
+1354329872 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\sigc++-2.0\sigc++\functors\slot_base.h
+	<sigc++config.h>
+	<sigc++/trackable.h>
+	<sigc++/functors/functor_trait.h>
+
+1354330162 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\enums.h
+	<cairo.h>
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo.h
+	"cairo-version.h"
+	"cairo-features.h"
+	"cairo-deprecated.h"
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-version.h
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-features.h
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-deprecated.h
+
+1354330162 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\exception.h
+	<cairomm/enums.h>
+	<stdexcept>
+
+1354330162 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\device.h
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\types.h
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\refptr.h
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\fontoptions.h
+	<cairomm/enums.h>
+	<string>
+	<cairo-ft.h>
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-ft.h
+	"cairo.h"
+	<ft2build.h>
+	<fontconfig/fontconfig.h>
+
+1354231376 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\ft2build.h
+	<freetype/config/ftheader.h>
+
+1354231376 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\freetype2\freetype\config\ftheader.h
+
+1354235132 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\fontconfig\fontconfig.h
+	<sys/types.h>
+	<sys/stat.h>
+	<stdarg.h>
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-pdf.h
+	"cairo.h"
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-ps.h
+	"cairo.h"
+	<stdio.h>
+
+1354306754 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairo\cairo-svg.h
+	"cairo.h"
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\fontface.h
+	<string>
+	<vector>
+	<cairomm/enums.h>
+	<cairomm/types.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<cairo-ft.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\matrix.h
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\pattern.h
+	<cairomm/surface.h>
+	<cairomm/enums.h>
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\path.h
+	<cairomm/enums.h>
+	<string>
+	<cairo.h>
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\scaledfont.h
+	<cairomm/refptr.h>
+	<cairomm/fontoptions.h>
+	<cairomm/fontface.h>
+	<cairomm/matrix.h>
+	<cairomm/types.h>
+	<vector>
+	<cairo-ft.h>
+
+1404249679 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\point.h
+	"glibmm/ustring.h"
+	"cairomm/context.h"
+	<memory>
+
+1404249679 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\beziercomplex.h
+	"point.h"
+	"bezier.h"
+	"glibmm/ustring.h"
+	"cairomm/cairomm.h"
+	<list>
+	<memory>
+	<limits>
+
+1404249679 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-base\include\bezier.h
+	"point.h"
+	<limits>
+	<cmath>
+	<array>
+	<memory>
+	"cairomm/cairomm.h"
+
+1354330162 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\cairomm.h
+	<cairommconfig.h>
+	<cairomm/context.h>
+	<cairomm/device.h>
+	<cairomm/enums.h>
+	<cairomm/exception.h>
+	<cairomm/fontface.h>
+	<cairomm/fontoptions.h>
+	<cairomm/matrix.h>
+	<cairomm/path.h>
+	<cairomm/pattern.h>
+	<cairomm/region.h>
+	<cairomm/scaledfont.h>
+	<cairomm/surface.h>
+
+1354330166 c:\program files (x86)\gtk+-deps-dev-3.6.2\lib\cairomm-1.0\include\cairommconfig.h
+
+1354330164 c:\program files (x86)\gtk+-deps-dev-3.6.2\include\cairomm-1.0\cairomm\region.h
+	<cairomm/types.h>
+	<cairomm/enums.h>
+	<cairomm/refptr.h>
+	<cairo.h>
+	<vector>
+
+1391896127 c:\users\user\documents\programmieren\mypattern\source\trunk\mypattern-draw\include\size.h
+	"units.h"
+

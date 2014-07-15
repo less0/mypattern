@@ -14,7 +14,7 @@ CairoPatternDrawer::~CairoPatternDrawer()
     //dtor
 }
 
-void CairoPatternDrawer::draw(const Part& part)
+void CairoPatternDrawer::draw(shared_ptr<Part> part)
 {
     if(m_cairoContext)
     {
