@@ -12,6 +12,7 @@ coverage: test
 clean:
 	-@cd mypattern-base; make clean
 	-@cd mypattern-data; make clean
+	-@cd mypattern-draw; make clean
 	-@cd mypattern-base-test; make clean
 	-@cd mypattern-data-test; make clean
 	-@rm -r /var/www/cov/mypattern-base 2>/dev/null
@@ -23,6 +24,9 @@ mypattern-base: force-update
 
 mypattern-data: mypattern-base
 	@cd mypattern-data; make CC_OPTIONS=$(CC_OPTIONS)
+
+mypattern-draw: mypattern-base
+	@cd mypattern-draw; make CC_OPTIONS=$(CC_OPTIONS)
 
 UnitTest: force-update
 	@cd UnitTest++; make
