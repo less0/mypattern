@@ -73,4 +73,38 @@ namespace PartDefintionIntegration
         CHECK_EQUAL(2.0+1.0, (*it).get_x());
         CHECK_EQUAL(1.0+3.14159, (*it).get_y());
     }
+
+    TEST_FIXTURE(PartDefinitionFixture, EvaluateCurve)
+    {
+	shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
+	lm1->set_name("lm1");
+	lm1->set_definition_x("0.0");
+	lm1->set_definition_y("0.0");
+	
+	
+	shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
+	lm2->set_name("lm2");
+	lm2->set_definition_x("0.5");
+	lm2->set_definition_y("0.0");
+	
+	shared_ptr<Landmark> lm3 = shared_ptr<Landmark>(new Landmark());
+	lm3->set_name("lm3");
+	lm3->set_definition_x("0.5");
+	lm3->set_definition_y("1.0");
+	
+	shared_ptr<Landmark> lm4 = shared_ptr<Landmark>(new Landmark());
+	lm4->set_name("lm4");
+	lm4->set_definition_x("1.0");
+	lm4->set_definition_y("1.0");
+
+	_partDefinition.add_landmark(lm1);	
+	_partDefinition.add_landmark(lm2);	
+	_partDefinition.add_landmark(lm3);	
+	_partDefinition.add_landmark(lm4);	
+    
+	Part evaluated_part = _partDefinition.get_part();
+	list<BezierComplex> curves = evaluated_part.get_curves();
+
+	CHECK_EQUAL(1, curves.size());
+    }
 }
