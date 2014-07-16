@@ -93,7 +93,8 @@ bool CADMainWindow::init(const Glib::RefPtr<Gtk::Builder>& builder)
     //item->signal_button_release_event().connect(sigc::mem_fun(this, &CADMainWindow::closeButton_clicked));
 
     drawingArea->send_expose(NULL);
-    drawingArea->signal_expose_event().connect(sigc::mem_fun(this, &CADMainWindow::mainDrawingArea_expose));
+    //\todo connect signals
+    //drawingArea->signal_expose_event().connect(sigc::mem_fun(this, &CADMainWindow::mainDrawingArea_expose));
     m_buttonAddPart->signal_clicked().connect(sigc::mem_fun(this, &CADMainWindow::buttonAddPart_clicked));
 //    m_buttonAddPart->signal_clicked().connect(sigc::mem_fun(this, &CADMainWindow::buttonAddPart_clicked));
     m_buttonAddPart->add_events(Gdk::EventMask::ALL_EVENTS_MASK);
