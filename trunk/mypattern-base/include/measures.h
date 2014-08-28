@@ -25,8 +25,6 @@ namespace MyPattern
                 bool remove(shared_ptr<MeasureValue>);
 
                 list<shared_ptr<MeasureValue>> get_measure_values();
-
-
             protected:
             private:
                 list<shared_ptr<MeasureValue>> m_measureValues;
