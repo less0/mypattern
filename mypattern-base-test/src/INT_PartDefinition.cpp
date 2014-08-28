@@ -12,6 +12,16 @@ namespace PartDefintionIntegration
         PartDefinition _partDefinition;
     };
 
+    bool name_change_request_handler(Glib::ustring name)
+    {
+        if(name == "Reserved")
+        {
+            return false;
+        }
+
+	return true;
+    }
+
     TEST_FIXTURE(PartDefinitionFixture, AddLandmarks)
     {
         shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
@@ -25,6 +35,7 @@ namespace PartDefintionIntegration
 
         CHECK_EQUAL(lm1, lm1_retrieved);
     }
+
 
     TEST_FIXTURE(PartDefinitionFixture, EvaluateSingleLandmark)
     {
@@ -97,14 +108,109 @@ namespace PartDefintionIntegration
 	lm4->set_definition_x("1.0");
 	lm4->set_definition_y("1.0");
 
+	shared_ptr<CurveDefinition> bezier = dynamic_pointer_cast<CurveDefinition>(shared_ptr<BezierDefinition>(new BezierDefinition()));
+
+	list<Glib::ustring> landmark_names;
+	landmark_names.push_back("lm1");
+	landmark_names.push_back("lm2");
+	landmark_names.push_back("lm3");
+	landmark_names.push_back("lm4");
+	bezier->set_landmarks(landmark_names);		
+
 	_partDefinition.add_landmark(lm1);	
 	_partDefinition.add_landmark(lm2);	
 	_partDefinition.add_landmark(lm3);	
 	_partDefinition.add_landmark(lm4);	
-    
+	_partDefinition.add_curve_definition(bezier);    
+
 	Part evaluated_part = _partDefinition.get_part();
 	list<BezierComplex> curves = evaluated_part.get_curves();
 
 	CHECK_EQUAL(1, curves.size());
+
+	list<BezierComplex>::iterator it = curves.begin();
+	Point p = it->get_coordinate(0.0);
+		
+	CHECK_CLOSE(.0, p.get_x(), 1e-9);
+	CHECK_CLOSE(.0, p.get_y(), 1e-9);
+
+	p = it->get_coordinate(.5);
+	
+	CHECK_CLOSE(.5, p.get_x(), 1e-9);
+	CHECK_CLOSE(.5, p.get_y(), 1e-9);
+
+	p = it->get_coordinate(1.0);
+
+	CHECK_CLOSE(1.0, p.get_x(), 1e-9);
+	CHECK_CLOSE(1.0, p.get_y(), 1e-9);
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, AddMeasureValues)
+    {
+	shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
+	measures->define("mv1", "", 1.0);
+	measures->define("mv2", "", 2.0); 	
+
+	CHECK_EQUAL(true, _partDefinition.set_measures(measures));
+    
+	shared_ptr<Measures> measures_out = _partDefinition.get_measures();	
+
+	list<shared_ptr<MeasureValue>> measure_values = measures_out->get_measure_values();
+	CHECK_EQUAL(2, measure_values.size());
+	list<shared_ptr<MeasureValue>>::iterator it = measure_values.begin();
+	CHECK_EQUAL("mv1", (*it)->get_name());
+	CHECK_EQUAL(1.0, (*it)->get_value());
+
+	it++;
+
+	CHECK_EQUAL("mv2", (*it)->get_name());
+	CHECK_EQUAL(2.0, (*it)->get_value());
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, ReplaceMeasures)
+    {
+	shared_ptr<Measures> measures1 = shared_ptr<Measures>(new Measures());
+	measures1->define("mv1", "Erstes Set", 1.0);
+	measures1->define("mv2", "Erstes Set", 2.0);
+
+	CHECK_EQUAL(true, _partDefinition.set_measures(measures1));
+	
+	shared_ptr<Measures> measures2 = shared_ptr<Measures>(new Measures());
+	measures2->define("mv1", "Erstes Set", 1.5);
+	measures2->define("mv2", "Erstes Set", 2.5);
+
+	CHECK_EQUAL(true, _partDefinition.set_measures(measures2));
+
+	shared_ptr<Measures> measures_out = _partDefinition.get_measures();	
+
+	list<shared_ptr<MeasureValue>> measure_values = measures_out->get_measure_values();
+	CHECK_EQUAL(2, measure_values.size());
+	list<shared_ptr<MeasureValue>>::iterator it = measure_values.begin();
+	CHECK_EQUAL("mv1", (*it)->get_name());
+	CHECK_EQUAL(1.5, (*it)->get_value());
+
+	it++;
+
+	CHECK_EQUAL("mv2", (*it)->get_name());
+	CHECK_EQUAL(2.5, (*it)->get_value());
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, EvaluateLandmarkRelativeToMeasureValues)
+    {
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, ReplaceMeasuresWithDependingLandmarks)
+    {
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, TryRemoveMeasuresWithDependingLandmarks)
+    {
+    }
+
+    TEST_FIXTURE(PartDefinitionFixture, ChangeNameSuccessful)
+    {
+        _partDefinition.signal_name_change_request().connect(ptr_fun1<Glib::ustring,bool>(&name_change_request_handler));       
+	_partDefinition.set_name("Test3141");
+	CHECK_EQUAL("Test3141", _partDefinition.get_name());
     }
 }

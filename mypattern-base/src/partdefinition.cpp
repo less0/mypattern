@@ -102,6 +102,16 @@ bool PartDefinition::set_name(Glib::ustring name)
     return false;
 }
 
+bool PartDefinition::set_measures(shared_ptr<Measures> measures)
+{
+	m_measures = measures;
+	return true;
+}
+
+shared_ptr<Measures> PartDefinition::get_measures()
+{
+	return m_measures;
+}
 
 sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
 {
