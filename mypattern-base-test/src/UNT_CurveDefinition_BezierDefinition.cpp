@@ -9,9 +9,7 @@ namespace
     {
         shared_ptr<MyPattern::Base::BezierDefinition> bezier = shared_ptr<MyPattern::Base::BezierDefinition>(new MyPattern::Base::BezierDefinition());
         bezier->set_name("bezier");
-        std::cout << "Set name" << std::endl;
         MyPattern::Base::Evaluation::CurveEvaluationTreeNode node = MyPattern::Base::Evaluation::CurveEvaluationTreeNode(bezier);
-        std::cout << "Getting prefixed name" << std::endl;
         CHECK_EQUAL("$bezier", node.get_prefixed_name());
     }
 

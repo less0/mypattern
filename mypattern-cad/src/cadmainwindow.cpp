@@ -55,7 +55,7 @@ void CADMainWindow::selectNameWindow_addPattern_hide()
 
 bool CADMainWindow::mainDrawingArea_expose(GdkEventExpose* e)
 {
-    int i = 0;
+    //int i = 0;
     Cairo::RefPtr<Cairo::Context> cairo = m_mainDrawingArea->get_window()->create_cairo_context();
 
     cairo->move_to(0,0);
@@ -134,5 +134,5 @@ void CADMainWindow::update()
         win->invalidate_rect(r, true);
     }
 
-    int i=0;
+    //int i=0;
 }

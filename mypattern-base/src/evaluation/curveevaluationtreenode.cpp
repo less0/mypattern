@@ -18,10 +18,9 @@ CurveEvaluationTreeNode::CurveEvaluationTreeNode(shared_ptr<CurveDefinition> bas
 
 Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
 {
-    std::cout << "Trying getting name" << std::endl;
     if(m_base_curve_definition == NULL)
     {
-        std::cout << "Base curve is NULL" << std::endl;
+	///\todo throw exception 
     }
     return "$" + m_base_curve_definition->get_name();
 }
