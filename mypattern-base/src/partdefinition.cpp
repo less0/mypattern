@@ -105,6 +105,15 @@ bool PartDefinition::set_name(Glib::ustring name)
 bool PartDefinition::set_measures(shared_ptr<Measures> measures)
 {
 	m_measures = measures;
+    list<shared_ptr<MeasureValue>> measure_values = measures->get_measure_values();
+
+    for(list<shared_ptr<MeasureValue>>::iterator it = measure_values.begin();
+        it != measure_values.end();
+        it++)
+    {
+        this->m_evaluationRoot.add_object(*it);
+    }
+
 	return true;
 }
 

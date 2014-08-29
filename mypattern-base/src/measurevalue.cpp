@@ -6,7 +6,8 @@ MeasureValue::MeasureValue(Glib::ustring name, Glib::ustring description, double
 {
     this->m_name = name;
     this->m_description = description;
-    this->m_value = value;
+    this->m_default_value = value;
+    this->m_has_value = false;
 }
 
 MeasureValue::MeasureValue(const MeasureValue& valueToCopy)
@@ -14,6 +15,8 @@ MeasureValue::MeasureValue(const MeasureValue& valueToCopy)
     this->m_name = valueToCopy.m_name;
     this->m_description = valueToCopy.m_description;
     this->m_value = valueToCopy.m_value;
+    this->m_default_value = valueToCopy.m_default_value;
+    this->m_has_value = valueToCopy.m_has_value;
 }
 
 MeasureValue::~MeasureValue()
