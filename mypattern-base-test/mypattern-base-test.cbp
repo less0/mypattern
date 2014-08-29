@@ -146,6 +146,8 @@
 		<Unit filename="src/UNT_CurveDefinition_BezierDefinition.cpp" />
 		<Unit filename="src/UNT_DifferenceTerm.cpp" />
 		<Unit filename="src/UNT_Landmark.cpp" />
+		<Unit filename="src/UNT_MeasureValue.cpp" />
+		<Unit filename="src/UNT_Measures.cpp" />
 		<Unit filename="src/UNT_Point.cpp" />
 		<Unit filename="src/UNT_ProductTerm.cpp" />
 		<Unit filename="src/UNT_QuotientTerm.cpp" />
