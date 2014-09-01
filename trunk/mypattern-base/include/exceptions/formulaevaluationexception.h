@@ -14,6 +14,7 @@ class FormulaEvaluationException : public Exception
     public:
         /** Default constructor */
         FormulaEvaluationException(ustring message);
+
         /** Default destructor */
         virtual ~FormulaEvaluationException();
         /** Copy constructor
@@ -25,6 +26,7 @@ class FormulaEvaluationException : public Exception
          *  \return A reference to this
          */
         FormulaEvaluationException& operator=(const FormulaEvaluationException& other);
+
     protected:
     private:
 };
