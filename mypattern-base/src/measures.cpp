@@ -23,3 +23,27 @@ list<shared_ptr<MeasureValue>> Measures::get_measure_values()
 {
     return m_measureValues;
 }
+
+bool Measures::remove(ustring name)
+{
+    bool result = false;
+
+    for(list<shared_ptr<MeasureValue>>::iterator it = m_measureValues.begin();
+        it != m_measureValues.end();
+        it++)
+    {
+        if((*it)->get_name() == name)
+        {
+            m_measureValues.remove(*it);
+            result = true;
+            break;
+        }
+    }
+
+    return result;
+}
+
+bool Measures::remove(shared_ptr<MeasureValue> valueToRemove)
+{
+    return true;
+}
