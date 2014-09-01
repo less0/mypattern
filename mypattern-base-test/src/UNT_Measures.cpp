@@ -105,4 +105,36 @@ namespace
         CHECK_EQUAL(2.718, (*it)->get_value());
     }
 
+    TEST_FIXTURE(MeasuresFixture, TestRemoveValueByValueNonexisting)
+    {
+        list<shared_ptr<MeasureValue>> values;
+        list<shared_ptr<MeasureValue>>::iterator it;
+        shared_ptr<MeasureValue> value;
+
+        values = _measures.get_measure_values();
+        CHECK_EQUAL(3, values.size());
+        value = shared_ptr<MeasureValue>(new MeasureValue("mv1",
+                                                          "Messwert1",
+                                                          1.234));
+        CHECK_EQUAL(false, _measures.remove(value));
+        values = _measures.get_measure_values();
+
+        CHECK_EQUAL(3, values.size());
+
+        it = values.begin();
+
+        CHECK_EQUAL("mv1", (*it)->get_name());
+        CHECK_EQUAL("Messwert1", (*it)->get_description());
+        CHECK_EQUAL(1.234, (*it)->get_value());
+        it++;
+
+        CHECK_EQUAL("mv2", (*it)->get_name());
+        CHECK_EQUAL("Messwert2", (*it)->get_description());
+        CHECK_EQUAL(3.141, (*it)->get_value());
+        it++;
+
+        CHECK_EQUAL("mv3", (*it)->get_name());
+        CHECK_EQUAL("Messwert3", (*it)->get_description());
+        CHECK_EQUAL(2.718, (*it)->get_value());
+    }
 }
