@@ -104,4 +104,5 @@ namespace
         CHECK_EQUAL("Messwert3", (*it)->get_description());
         CHECK_EQUAL(2.718, (*it)->get_value());
     }
+
 }
