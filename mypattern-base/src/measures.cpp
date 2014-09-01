@@ -45,5 +45,18 @@ bool Measures::remove(ustring name)
 
 bool Measures::remove(shared_ptr<MeasureValue> valueToRemove)
 {
-    return true;
+    bool found = false;
+
+    for(list<shared_ptr<MeasureValue>>::iterator it = m_measureValues.begin();
+        ! found && it != m_measureValues.end();
+        it++)
+    {
+        if(*it == valueToRemove)
+        {
+            m_measureValues.remove(*it);
+            found = true;
+        }
+    }
+
+    return found;
 }
