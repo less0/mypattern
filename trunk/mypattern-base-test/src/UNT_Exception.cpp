@@ -17,7 +17,9 @@ namespace
     TEST(AssignExeption)
     {
         Exception e("Hallo Welt!");
-        Exception e1 = e;
+        Exception e1("Test");
+        
+        e1=e;
 
         CHECK_EQUAL("Hallo Welt!", e1.get_message());
     }
