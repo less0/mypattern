@@ -12,271 +12,310 @@
 
 using namespace MyPattern::Exceptions;
 
-namespace MyPattern {
-namespace Base {
-namespace Evaluation {
+namespace MyPattern
+{
+namespace Base
+{
+namespace Evaluation
+{
 
-    EvaluationRoot::EvaluationRoot()
+EvaluationRoot::EvaluationRoot()
+{
+
+}
+
+shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<PatternObject> &object)
+{
+    shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
+    shared_ptr<CurveDefinition> p_curve = dynamic_pointer_cast<CurveDefinition>(object);
+    shared_ptr<MeasureValue> p_measurevalue = dynamic_pointer_cast<MeasureValue>(object);
+
+    if(p_landmark != NULL)
     {
+        list<shared_ptr<EvaluationTreeNode>>::iterator it_nodes = m_tree_nodes.begin();
 
-    }
-
-    shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<PatternObject> &object)
-    {
-        shared_ptr<Landmark> p_landmark = dynamic_pointer_cast<Landmark>(object);
-        shared_ptr<CurveDefinition> p_curve = dynamic_pointer_cast<CurveDefinition>(object);
-        shared_ptr<MeasureValue> p_measurevalue = dynamic_pointer_cast<MeasureValue>(object);
-
-        if(p_landmark != NULL)
+        while(it_nodes != m_tree_nodes.end())
         {
-            list<shared_ptr<EvaluationTreeNode>>::iterator it_nodes = m_tree_nodes.begin();
+            shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
 
-            while(it_nodes != m_tree_nodes.end())
-            {
-                shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it_nodes);
-
-                if(landmark_node != NULL &&
+            if(landmark_node != NULL &&
                     landmark_node->get_landmark()->get_name() == p_landmark->get_name())
-                {
-                    throw ObjectNameTakenEvaluationException();
-                }
-
-                it_nodes++;
-            }
-
-            shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new LandmarkEvaluationTreeNode(p_landmark));
-
-
-            //resolve dependencies
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
-
-            //check for circular dependencies
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
             {
-                if((*it)->get_prefixed_name() == newNode->get_prefixed_name() || (*it)->depends_on(newNode->get_prefixed_name()))
-                {
-                    throw CircularDependencyEvaluationException();
-                }
+                std::cout << "Fehler: " << p_landmark->get_name() << std::endl;
+                throw ObjectNameTakenEvaluationException();
             }
 
-            //add dependencies to list of
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
-            {
-                newNode->add_dependency(*it);
-            }
-
-            newNode->notify_update();
-
-            shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(newNode);
-
-            landmark_node->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_node_change_request));
-            landmark_node->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_update_dependencies));
-
-            m_tree_nodes.push_back(newNode);
-
-            return newNode;
+            it_nodes++;
         }
-        else if(p_curve != NULL)
+
+        shared_ptr<EvaluationTreeNode> newNode = shared_ptr<EvaluationTreeNode>(new LandmarkEvaluationTreeNode(p_landmark));
+
+
+        //resolve dependencies
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
+
+        //check for circular dependencies
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
         {
+            if((*it)->get_prefixed_name() == newNode->get_prefixed_name() || (*it)->depends_on(newNode->get_prefixed_name()))
+            {
+                throw CircularDependencyEvaluationException();
+            }
+        }
 
-            shared_ptr<CurveEvaluationTreeNode> newNode(new CurveEvaluationTreeNode(p_curve));
+        //add dependencies to list of
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+        {
+            newNode->add_dependency(*it);
+        }
 
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_tree_nodes.begin();
+        newNode->notify_update();
+
+        shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(newNode);
+
+        landmark_node->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_node_change_request));
+        landmark_node->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::landmark_update_dependencies));
+
+        m_tree_nodes.push_back(newNode);
+
+        return newNode;
+    }
+    else if(p_curve != NULL)
+    {
+
+        shared_ptr<CurveEvaluationTreeNode> newNode(new CurveEvaluationTreeNode(p_curve));
+
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_tree_nodes.begin();
                 it != m_tree_nodes.end();
                 it++)
-            {
-                shared_ptr<CurveEvaluationTreeNode> existing_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
+        {
+            shared_ptr<CurveEvaluationTreeNode> existing_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
 
-                if(existing_node != NULL &&
+            if(existing_node != NULL &&
                     existing_node->get_prefixed_name() == newNode->get_prefixed_name())
-                {
-                    throw ObjectNameTakenEvaluationException();
-                }
+            {
+                throw ObjectNameTakenEvaluationException();
             }
+        }
 
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(newNode->depends_on());
 
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
                 it != dependencies.end();
                 it++)
-            {
-                newNode->add_dependency(*it);
-            }
-
-            newNode->notify_update();
-
-            newNode->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::curve_node_change_request));
-            newNode->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::curve_update_dependencies));
-
-            m_tree_nodes.push_back(newNode);
-
-            return newNode;
-        }
-        else if(p_measurevalue != NULL)
         {
-            shared_ptr<EvaluationTreeNode> newNode =  shared_ptr<EvaluationTreeNode>(new MeasureValueEvaluationTreeNode(p_measurevalue));
-
-            m_tree_nodes.push_back(newNode);
-
-            return newNode;
+            newNode->add_dependency(*it);
         }
 
-        return shared_ptr<EvaluationTreeNode>(NULL);
+        newNode->notify_update();
+
+        newNode->signal_request_change.connect(sigc::mem_fun(this, &EvaluationRoot::curve_node_change_request));
+        newNode->signal_update_dependencies.connect(sigc::mem_fun(this, &EvaluationRoot::curve_update_dependencies));
+
+        m_tree_nodes.push_back(newNode);
+
+        return newNode;
+    }
+    else if(p_measurevalue != NULL)
+    {
+        shared_ptr<EvaluationTreeNode> newNode =  shared_ptr<EvaluationTreeNode>(new MeasureValueEvaluationTreeNode(p_measurevalue));
+
+        m_tree_nodes.push_back(newNode);
+
+        return newNode;
     }
 
-    list<BezierComplex> EvaluationRoot::get_curves()
+    return shared_ptr<EvaluationTreeNode>(NULL);
+}
+
+list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::add_objects(list<shared_ptr<PatternObject>> objects)
+{
+    list<shared_ptr<EvaluationTreeNode>> added_nodes;
+
+    bool unresolvable = false;
+    list<shared_ptr<PatternObject>> unresolved;
+
+    while(objects.size() > 0 && !unresolvable)
     {
-        list<shared_ptr<EvaluationTreeNode>>::iterator it;
-        list<BezierComplex> curves;
+        unresolvable = true;
 
-        for(it=m_tree_nodes.begin(); it!=m_tree_nodes.end(); it++)
+        for(list<shared_ptr<PatternObject>>::iterator it = objects.begin();
+                it != objects.end();
+                it++)
         {
-            shared_ptr<CurveEvaluationTreeNode> p_curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
-
-            if(p_curve_node != NULL)
+            try
             {
-                curves.push_back(p_curve_node->get_value());
+                added_nodes.push_back(add_object(*it));
+
+                std::cout << "Raus: " << (*it)->get_name() << std::endl;
+
+                unresolvable = false;
+            }
+            catch(UnmetDependenciesEvaluationException e)
+            {
+                std::cout << "Behalten: " << (*it)->get_name() << std::endl;
+                unresolved.push_back(*it);
             }
         }
 
-        return curves;
-    }
-
-    list<Point> EvaluationRoot::get_points()
-    {
-        list<shared_ptr<EvaluationTreeNode>>::iterator it;
-        list<Point> points;
-
-        for(it = m_tree_nodes.begin(); it != m_tree_nodes.end(); it++)
-        {
-            shared_ptr<LandmarkEvaluationTreeNode> p_landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
-
-            if(p_landmark_node != NULL)
-            {
-                points.push_back(p_landmark_node->get_value());
-            }
-
-        }
-
-        return points;
-
-        return points;
-
-    }
-
-    list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
-    {
-        list<shared_ptr<EvaluationTreeNode>> result;
-        list<ustring> unmet_dependencies;
-
-        list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
-
-
-        for(list<ustring>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
-        {
-            bool resolved_current_dependency = false;
-
-            for(it_objects = m_tree_nodes.begin(); it_objects != m_tree_nodes.end(); it_objects++)
-            {
-                if((*it_objects)->get_prefixed_name() == *it_deps)
-                {
-                    resolved_current_dependency = true;
-                    result.push_back(*it_objects);
-                    break;
-                }
-            }
-
-            if(!resolved_current_dependency)
-            {
-                unmet_dependencies.push_back(*it_deps);
-            }
-
-        }
-
-        if(unmet_dependencies.begin() != unmet_dependencies.end())
-        {
-            throw MyPattern::Exceptions::UnmetDependenciesEvaluationException(unmet_dependencies);
-        }
-
-        return result;
+        objects = unresolved;
+        unresolved.clear();
     }
 
 
-    bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_dependencies)
+    return added_nodes;
+}
+
+list<BezierComplex> EvaluationRoot::get_curves()
+{
+    list<shared_ptr<EvaluationTreeNode>>::iterator it;
+    list<BezierComplex> curves;
+
+    for(it=m_tree_nodes.begin(); it!=m_tree_nodes.end(); it++)
     {
-        shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+        shared_ptr<CurveEvaluationTreeNode> p_curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
 
-        if(landmark_node != NULL)
+        if(p_curve_node != NULL)
         {
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_dependencies);
+            curves.push_back(p_curve_node->get_value());
+        }
+    }
 
-            //check for circular dependencies
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+    return curves;
+}
+
+list<Point> EvaluationRoot::get_points()
+{
+    list<shared_ptr<EvaluationTreeNode>>::iterator it;
+    list<Point> points;
+
+    for(it = m_tree_nodes.begin(); it != m_tree_nodes.end(); it++)
+    {
+        shared_ptr<LandmarkEvaluationTreeNode> p_landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+
+        if(p_landmark_node != NULL)
+        {
+            points.push_back(p_landmark_node->get_value());
+        }
+
+    }
+
+    return points;
+}
+
+list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
+{
+    list<shared_ptr<EvaluationTreeNode>> result;
+    list<ustring> unmet_dependencies;
+
+    list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
+
+
+    for(list<ustring>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
+    {
+        bool resolved_current_dependency = false;
+
+        for(it_objects = m_tree_nodes.begin(); it_objects != m_tree_nodes.end(); it_objects++)
+        {
+            if((*it_objects)->get_prefixed_name() == *it_deps)
             {
-                if((*it)->get_prefixed_name() == landmark_node->get_prefixed_name() || (*it)->depends_on(landmark_node->get_prefixed_name()))
-                {
-                    throw CircularDependencyEvaluationException();
-                }
+                resolved_current_dependency = true;
+                result.push_back(*it_objects);
+                break;
             }
+        }
 
-            return true;
-        }
-        else
+        if(!resolved_current_dependency)
         {
-            throw Exception();
+            unmet_dependencies.push_back(*it_deps);
         }
+
     }
 
-    void EvaluationRoot::landmark_update_dependencies(shared_ptr<EvaluationTreeNode> node)
+    if(unmet_dependencies.begin() != unmet_dependencies.end())
     {
-        shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+        throw MyPattern::Exceptions::UnmetDependenciesEvaluationException(unmet_dependencies);
+    }
 
-        if(landmark_node != NULL)
+    return result;
+}
+
+
+bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_dependencies)
+{
+    shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+
+    if(landmark_node != NULL)
+    {
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_dependencies);
+
+        //check for circular dependencies
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
         {
-            landmark_node->clear_dependencies();
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(node->depends_on());
-
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
+            if((*it)->get_prefixed_name() == landmark_node->get_prefixed_name() || (*it)->depends_on(landmark_node->get_prefixed_name()))
             {
-                landmark_node->add_dependency(*it);
+                throw CircularDependencyEvaluationException();
             }
-
         }
+
+        return true;
     }
-
-    bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_landmarks)
+    else
     {
-        shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
-
-        if(curve_node != NULL)
-        {
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_landmarks);
-
-            return true;
-        }
-        else
-        {
-            throw Exception();
-        }
+        throw Exception();
     }
+}
 
-    void EvaluationRoot::curve_update_dependencies(shared_ptr<EvaluationTreeNode> node)
+void EvaluationRoot::landmark_update_dependencies(shared_ptr<EvaluationTreeNode> node)
+{
+    shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
+
+    if(landmark_node != NULL)
     {
-        shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
+        landmark_node->clear_dependencies();
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(node->depends_on());
 
-        if(curve_node != NULL)
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin(); it != dependencies.end(); it++)
         {
-            curve_node->clear_dependencies();
-            list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(curve_node->depends_on());
+            landmark_node->add_dependency(*it);
+        }
 
-            for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
+    }
+}
+
+bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_landmarks)
+{
+    shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
+
+    if(curve_node != NULL)
+    {
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(new_landmarks);
+
+        return true;
+    }
+    else
+    {
+        throw Exception();
+    }
+}
+
+void EvaluationRoot::curve_update_dependencies(shared_ptr<EvaluationTreeNode> node)
+{
+    shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
+
+    if(curve_node != NULL)
+    {
+        curve_node->clear_dependencies();
+        list<shared_ptr<EvaluationTreeNode>> dependencies = resolve_dependencies(curve_node->depends_on());
+
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = dependencies.begin();
                 it != dependencies.end();
                 it++)
-            {
-                curve_node->add_dependency(*it);
-            }
+        {
+            curve_node->add_dependency(*it);
         }
     }
+}
 
 } // namespace Evaluation
 } // namespace Base

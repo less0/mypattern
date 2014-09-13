@@ -687,4 +687,117 @@ namespace
         CHECK_EQUAL(6.0485, p.get_x());
         CHECK_EQUAL(0, p.get_y());
     }
+
+    TEST(AddListToEvaluationTree)
+    {
+        EvaluationRoot root = EvaluationRoot();
+
+        list<shared_ptr<PatternObject>> patternObjects;
+
+        shared_ptr<CurveDefinition> curve1 = shared_ptr<CurveDefinition>(new BezierDefinition());
+        list<ustring> curve1_landmarks;
+
+        curve1_landmarks.push_back("lm1");
+        curve1_landmarks.push_back("lm2");
+        curve1_landmarks.push_back("lm3");
+        curve1_landmarks.push_back("lm4");
+
+        curve1->set_landmarks(curve1_landmarks);
+        curve1->set_name("c1");
+        patternObjects.push_back(curve1);
+
+        shared_ptr<Landmark> lm1 = shared_ptr<Landmark>(new Landmark());
+        lm1->set_definition_x("0");
+        lm1->set_definition_y("0");
+        lm1->set_name("lm1");
+        patternObjects.push_back(lm1);
+
+        shared_ptr<Landmark> lm2 = shared_ptr<Landmark>(new Landmark());
+        lm2->set_definition_x(".5");
+        lm2->set_definition_y("0");
+        lm2->set_name("lm2");
+        patternObjects.push_back(lm2);
+
+        shared_ptr<Landmark> lm3 = shared_ptr<Landmark>(new Landmark());
+        lm3->set_definition_x(".5");
+        lm3->set_definition_y("1");
+        lm3->set_name("lm3");
+        patternObjects.push_back(lm3);
+
+        shared_ptr<Landmark> lm4 = shared_ptr<Landmark>(new Landmark());
+        lm4->set_definition_x("#mv1");
+        lm4->set_definition_y("#mv1");
+        lm4->set_name("lm4");
+        patternObjects.push_back(lm4);
+
+        shared_ptr<MeasureValue> mv = shared_ptr<MeasureValue>(new MeasureValue("mv1", "", 1.0));
+        patternObjects.push_back(mv);
+
+        list<shared_ptr<EvaluationTreeNode>> nodes = root.add_objects(patternObjects);
+
+        CHECK_EQUAL(6, nodes.size());
+
+        for(list<shared_ptr<EvaluationTreeNode>>::iterator it = nodes.begin();
+            it != nodes.end();
+            it++)
+        {
+            if((*it)->get_prefixed_name() == "@lm1")
+            {
+                shared_ptr<LandmarkEvaluationTreeNode> lm = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+                Point pt = lm->get_value();
+
+                CHECK_EQUAL(.0, pt.get_x());
+                CHECK_EQUAL(.0, pt.get_y());
+            }
+            else if((*it)->get_prefixed_name() == "@lm2")
+            {
+                shared_ptr<LandmarkEvaluationTreeNode> lm = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+                Point pt = lm->get_value();
+
+                CHECK_EQUAL(.5, pt.get_x());
+                CHECK_EQUAL(.0, pt.get_y());
+            }
+            else if((*it)->get_prefixed_name() == "@lm3")
+            {
+                shared_ptr<LandmarkEvaluationTreeNode> lm = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+                Point pt = lm->get_value();
+
+                CHECK_EQUAL(.5, pt.get_x());
+                CHECK_EQUAL(1, pt.get_y());
+            }
+            else if((*it)->get_prefixed_name() == "@lm4")
+            {
+                shared_ptr<LandmarkEvaluationTreeNode> lm = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(*it);
+                Point pt = lm->get_value();
+
+                CHECK_EQUAL(1, pt.get_x());
+                CHECK_EQUAL(1, pt.get_y());
+            }
+            else if((*it)->get_prefixed_name() == "#mv1")
+            {
+                shared_ptr<MeasureValueEvaluationTreeNode> node = dynamic_pointer_cast<MeasureValueEvaluationTreeNode>(*it);
+
+                double value = node->get_value();
+
+                CHECK_EQUAL(1.0, value);
+            }
+            else if((*it)->get_prefixed_name() == "$c1")
+            {
+                shared_ptr<CurveEvaluationTreeNode> node = dynamic_pointer_cast<CurveEvaluationTreeNode>(*it);
+
+                BezierComplex value = node->get_value();
+
+                CHECK_CLOSE(.0, value.get_coordinate(.0).get_x(), 1e-12);
+                CHECK_CLOSE(.0, value.get_coordinate(.0).get_y(), 1e-12);
+                CHECK_CLOSE(.5, value.get_coordinate(.5).get_x(), 1e-12);
+                CHECK_CLOSE(.5, value.get_coordinate(.5).get_y(), 1e-12);
+                CHECK_CLOSE(1, value.get_coordinate(1.0).get_x(), 1e-12);
+                CHECK_CLOSE(1, value.get_coordinate(1.0).get_y(), 1e-12);
+            }
+            else
+            {
+                throw "Fehler!";
+            }
+        }
+    }
 }
