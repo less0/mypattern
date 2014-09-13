@@ -145,6 +145,8 @@
 		<Unit filename="src/UNT_ConstantTerm.cpp" />
 		<Unit filename="src/UNT_CurveDefinition_BezierDefinition.cpp" />
 		<Unit filename="src/UNT_DifferenceTerm.cpp" />
+		<Unit filename="src/UNT_Exception.cpp" />
+		<Unit filename="src/UNT_FormulaEvaluationException.cpp" />
 		<Unit filename="src/UNT_Landmark.cpp" />
 		<Unit filename="src/UNT_MeasureValue.cpp" />
 		<Unit filename="src/UNT_Measures.cpp" />
