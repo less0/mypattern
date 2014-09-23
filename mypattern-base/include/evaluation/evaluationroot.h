@@ -16,6 +16,7 @@ class EvaluationRoot
         /*! \brief Default constructor */
         EvaluationRoot();
 
+
         list<Point> get_points();
         list<BezierComplex> get_curves();
 
@@ -31,8 +32,31 @@ class EvaluationRoot
          * has been.
          */
         bool add_node(shared_ptr<EvaluationTreeNode>);
+
+        /*! \brief Removes a node from the evaluation tree
+         *
+         * This method tries to remove a node from the evaluation tree.
+         * \return false if the node has not been a node in the current tree,
+         * true, if it's been successfully removed.
+         * \throw UnmetDependenciesEvaluationException If there are nodes
+         * depending on the node to be removed.
+         */
         bool remove_node(shared_ptr<EvaluationTreeNode>);
 
+        /*! \brief Tries to create a new EvaluationTreeNode for the
+         * PatternObject to be added
+         *
+         * If the EvaluationTreeNode is created successfully a
+         * shared_ptr<EvaluationTreeNode> pointing to this node is returned.
+         * If the object exists the respective node will be returned. If the
+         * object name is already taken or there are unmet dependencies the
+         * respective exceptions are thrown.
+         * \throw UnmetDependenciesEvaluationException If the object to be
+         * added depends on objects that cannot be resolved
+         * \throw ObjectNameTakenEvaluationException If there already is an
+         * object with the very name
+         * \return Smart pointer to the EvaluationTreeNode for the object
+         */
         shared_ptr<EvaluationTreeNode> add_object(const shared_ptr<PatternObject>&);
         list<shared_ptr<EvaluationTreeNode>> add_objects(list<shared_ptr<PatternObject>>);
         list<shared_ptr<EvaluationTreeNode>> resolve_dependencies(list<ustring> dependency_names);

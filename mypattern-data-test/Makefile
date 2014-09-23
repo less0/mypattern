@@ -2,15 +2,15 @@
 
 CPP=./xmlnodetest.cpp ./xmlelementtest.cpp ./main.cpp ./xmlparametertest.cpp
 
-CC_OPTIONS=
+CC_OPTIONS=`pkg-config --cflags --libs gtkmm-3.0`
 
-INCLUDES=-I../mypattern-base/include -I../mypattern-data/include -I../UnitTest++/src -I./include -I/usr/include/glibmm-2.4/ -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/lib/i386-linux-gnu/glibmm-2.4/include/ -I/usr/include/glib-2.0/ -I/usr/lib/x86_64-linux-gnu/glib-2.0/include/ -I/usr/lib/i386-linux-gnu/glib-2.0/include/ -I/usr/include/cairomm-1.0/ -I/usr/include/sigc++-2.0/ -I/usr/lib/i386-linux-gnu/sigc++-2.0/include/ -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include/ -I/usr/include/cairo/ -I/usr/include/freetype2/ -I/usr/lib/i386-linux-gnu/cairomm-1.0/include/ -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include/
+INCLUDES=-I../mypattern-base/include -I../mypattern-data/include -I../UnitTest++/src -I./include -I../mypattern-exceptions/include
 
-LIBDIRS=-L../mypattern-base/ -L../mypattern-data/ -L../UnitTest++/ -L/usr/lib/x86_64-linux-gnu/ -L/usr/lib/i386-linux-gnu/
-LIBRARIES=-lUnitTest++ -lmypattern-data  -lmypattern-base -lglibmm-2.4 -lsigc-2.0
+LIBDIRS=-L../mypattern-base/ -L../mypattern-data/ -L../UnitTest++/ -L../mypattern-exceptions
+LIBRARIES=-lUnitTest++ -lmypattern-data  -lmypattern-base -lmypattern-exceptions -lglibmm-2.4 -lsigc-2.0
 
 mypattern-data-test: message-mypattern-data-test
-	@g++ $(LIBDIRS) $(INCLUDES) $(CC_OPTIONS) -o mypattern-data-test $(CPP) -std=c++0x $(LIBRARIES)
+	@g++ $(LIBDIRS) $(INCLUDES) -o mypattern-data-test $(CPP) -std=c++0x  $(LIBRARIES) $(CC_OPTIONS)
 
 message-mypattern-data-test:
 	@echo "\033[31mBuilding mypattern-data-test\033[0m"

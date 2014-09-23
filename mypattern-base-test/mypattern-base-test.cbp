@@ -18,7 +18,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="d_mypattern-base" />
+					<Add library="dmypattern-base" />
 					<Add library="glibmm-2.4" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
@@ -69,9 +69,8 @@
 					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
 				</Compiler>
 				<Linker>
-					<Add library="d_mypattern-base" />
+					<Add library="dmypattern-base" />
 					<Add library="sigc-2.0" />
-					<Add library="../mypattern-base/libd_mypattern-base.a" />
 					<Add library="cairomm-1.0" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 					<Add directory="../UnitTest++/bin/Debug" />
@@ -125,6 +124,8 @@
 			<Add directory="$(GTK_BASEPATH)/lib/sigc++-2.0/include" />
 			<Add directory="../mypattern-base/include" />
 			<Add directory="../UnitTest++/src" />
+			<Add directory="../mypattern-exceptions/include" />
+			<Add directory="../mypattern-data/include" />
 		</Compiler>
 		<Linker>
 			<Add library="glibmm-2.4" />
@@ -143,6 +144,7 @@
 		<Unit filename="src/INT_PartDefinition.cpp" />
 		<Unit filename="src/UNT_Bezier.cpp" />
 		<Unit filename="src/UNT_ConstantTerm.cpp" />
+		<Unit filename="src/UNT_CurveDefinition.cpp" />
 		<Unit filename="src/UNT_CurveDefinition_BezierDefinition.cpp" />
 		<Unit filename="src/UNT_DifferenceTerm.cpp" />
 		<Unit filename="src/UNT_Exception.cpp" />

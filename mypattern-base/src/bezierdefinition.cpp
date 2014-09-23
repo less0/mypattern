@@ -49,6 +49,27 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
     return bezier_complex;
 }
 
+Glib::ustring BezierDefinition::get_class_name()
+{
+    return "Bezier";
+}
+
+shared_ptr<CurveDefinition> BezierDefinition::deserialize_from_xml(XmlNode node)
+{
+    if(node.get_name() != "curve")
+    {
+
+    }
+
+    return shared_ptr<CurveDefinition>(NULL);
+
+}
+
+XmlNode BezierDefinition::serialize_to_xml()
+{
+    return XmlNode();
+}
+
 //shared_ptr<XmlNode> BezierDefinition::get_xml()
 //{
 //

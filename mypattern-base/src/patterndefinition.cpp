@@ -40,25 +40,15 @@ Pattern PatternDefinition::get_pattern(Measures measures, list<PatternParameterV
     return pattern;
 }
 
-//shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename)
-//{
-//    shared_ptr<PatternDefinition> pattern_definition(new PatternDefinition());
-//    std::ifstream input_stream;
-//
-//    input_stream.open(filename);
-//
-//    if(!input_stream.is_open())
-//    {
-//        ///\todo change to exception model instead of just returning NULL
-//        return shared_ptr<PatternDefinition>((PatternDefinition*)NULL);
-//    }
-//
-//    ///\todo Read XML here and then parse it
-//
-//    input_stream.close();
-//
-//    return pattern_definition;
-//}
+shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename)
+{
+    XmlFileReader filereader = XmlFileReader();
+
+    filereader.read(filename);
+    shared_ptr<XmlNode> root_node = filereader.get_root_node();
+
+    return shared_ptr<PatternDefinition>(NULL);
+}
 
 //bool PatternDefinition::write_xml(Glib::ustring filename)
 //{

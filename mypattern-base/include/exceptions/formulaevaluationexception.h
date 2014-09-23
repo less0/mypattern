@@ -1,7 +1,7 @@
 #ifndef MYPATTERN_BASE_EXCEPTIONS_FORMULAEVALUATIONEXCEPTION_H
 #define MYPATTERN_BASE_EXCEPTIONS_FORMULAEVALUATIONEXCEPTION_H
 
-#include <exceptions/exception.h>
+#include <exception.h>
 #include <glibmm/ustring.h>
 
 using namespace Glib;

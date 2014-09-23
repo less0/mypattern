@@ -29,6 +29,11 @@ namespace MyPattern
                 */
                 BezierComplex get_bezier(list<Point>);
 
+                shared_ptr<CurveDefinition> deserialize_from_xml(XmlNode);
+                XmlNode serialize_to_xml();
+
+                Glib::ustring get_class_name();
+
                 BezierDefinition();
                 virtual ~BezierDefinition();
             protected:

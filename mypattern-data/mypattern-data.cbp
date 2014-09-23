@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug Linux">
-				<Option output="d_mypattern-data" prefix_auto="1" extension_auto="1" />
+				<Option output="dmypattern-data" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
 				<Option type="2" />
@@ -26,6 +26,7 @@
 					<Add directory="/usr/include/cairomm-1.0" />
 					<Add directory="/usr/include/cairo" />
 					<Add directory="/usr/include/freetype2" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release Linux">
@@ -44,6 +45,7 @@
 					<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
 					<Add directory="/usr/include/sigc++-2.0" />
 					<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include/" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,14 +55,17 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add directory="include" />
-			<Add directory="../mypattern-base/include" />
+			<Add directory="../mypattern-exceptions/include" />
 		</Compiler>
+		<Unit filename="include/exceptions/filenotfoundexception.h" />
 		<Unit filename="include/filereader.h" />
+		<Unit filename="include/mypattern-data.h" />
 		<Unit filename="include/xmlattribute.h" />
 		<Unit filename="include/xmlelement.h" />
 		<Unit filename="include/xmlexception.h" />
 		<Unit filename="include/xmlfilereader.h" />
 		<Unit filename="include/xmlnode.h" />
+		<Unit filename="src/exceptions/filenotfoundexception.cpp" />
 		<Unit filename="src/filereader.cpp" />
 		<Unit filename="src/xmlattribute.cpp" />
 		<Unit filename="src/xmlelement.cpp" />

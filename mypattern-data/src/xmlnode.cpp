@@ -1,7 +1,7 @@
 #include "xmlnode.h"
 
 #include <sstream>
-#include <exceptions/exception.h>
+#include <exception.h>
 #include <xmlelement.h>
 #include <xmlexception.h>
 
@@ -390,12 +390,12 @@ list<shared_ptr<XmlNode>> XmlNode::get_nodes()
     return this->m_subnodes;
 }
 
-list<XmlAttribute> XmlNode::get_parameters()
+list<XmlAttribute> XmlNode::get_attributes()
 {
     return this->m_parameters;
 }
 
-bool XmlNode::add_parameter(XmlAttribute param)
+bool XmlNode::add_attribute(XmlAttribute param)
 {
     list<XmlAttribute>::iterator it = this->m_parameters.begin();
 
@@ -413,12 +413,12 @@ bool XmlNode::add_parameter(XmlAttribute param)
     return true;
 }
 
-bool XmlNode::remove_parameter(XmlAttribute param)
+bool XmlNode::remove_attribute(XmlAttribute param)
 {
-    return this->remove_parameter(param.get_name());
+    return this->remove_attribute(param.get_name());
 }
 
-bool XmlNode::remove_parameter(Glib::ustring name)
+bool XmlNode::remove_attribute(Glib::ustring name)
 {
     list<XmlAttribute>::iterator it = this->m_parameters.begin();
 

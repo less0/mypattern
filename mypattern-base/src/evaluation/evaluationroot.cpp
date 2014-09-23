@@ -41,7 +41,6 @@ shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<Patte
             if(landmark_node != NULL &&
                     landmark_node->get_landmark()->get_name() == p_landmark->get_name())
             {
-                std::cout << "Fehler: " << p_landmark->get_name() << std::endl;
                 throw ObjectNameTakenEvaluationException();
             }
 
@@ -147,13 +146,11 @@ list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::add_objects(list<shared_ptr
             {
                 added_nodes.push_back(add_object(*it));
 
-                std::cout << "Raus: " << (*it)->get_name() << std::endl;
 
                 unresolvable = false;
             }
             catch(UnmetDependenciesEvaluationException e)
             {
-                std::cout << "Behalten: " << (*it)->get_name() << std::endl;
                 unresolved.push_back(*it);
             }
         }
@@ -262,7 +259,7 @@ bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode>
     }
     else
     {
-        throw Exception();
+        throw MyPattern::Exceptions::Exception();
     }
 }
 
@@ -295,7 +292,7 @@ bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> no
     }
     else
     {
-        throw Exception();
+        throw MyPattern::Exceptions::Exception();
     }
 }
 
