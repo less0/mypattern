@@ -1,0 +1,134 @@
+Synopsis
+========
+This documents documents the file format that is used to store pattern 
+definitions.
+
+Versions
+========
+1.0 2014-09-22
+
+File format
+===========
+The common file name extension for MyPattern pattern defintion files is xpat.
+xpat-Files are basically XML-Files whose nodes and attributes define the 
+properties of the pattern. The root node of an xpat file is a pattern-node. 
+Custom measure value sets are stored in a xcm file, whose root node is a 
+measures node. Same applies to actual measurements, which store the measures of
+an actual person in a xpm files. The latter do not only store defaults values of
+measurevalue nodes, but also actual values (see measurevalue node).
+
+pattern node
+============
+There is one and only one pattern-node in an xpat file. A pattern node may have
+a name attribute, a timestamp attribute, a version attribute (optional), up to 
+one license subnode, up to one author subnode, up to one measures subnode and an 
+arbitrary number of part subnodes. 
+
+license node
+============
+The license node holds information about the license the pattern is released 
+under. The license node has no attributes and no subnodes. It is a pure text 
+node. Any text that is compliant with XML is allowed.
+
+author node
+===========
+The author node holds informations about the original author of the pattern. At
+the moment it only stores local author information. The author node has no 
+subnodes, but may have in a future version. It has a name attribute to store the 
+authors name.
+
+measures node
+=============
+The measures node holds a set of measure values for the pattern. If it's absent
+the standard set of measure values is assumed. The measures node should have at
+least one measurevalue subnode, for an empty set of measure values is useless. 
+Anyway, if there are no measure values the pattern relies on, the set may be 
+empty. 
+
+measurevalue node
+=================
+measurevalue nodes define the actual measure values that may be used in a 
+pattern. A measurevalue node has got no subnodes and contains the measure values 
+description. Furthermore it has the attributes name and default. The latter is 
+the numeric default value for the measure value (decimal separator is a dot (.),
+only fixed-point formatting allowed). Furthermore an optional 'actual' attribute
+is allowed, which represents an actual measurement in an xpm file. 
+
+part node
+=========
+Part nodes store the actual information about the part of the pattern. Each part
+node has a name attribute, and arbitrary numbers each of landmark nodes and 
+curve nodes (in future versions there may be more subnodes). Patterns are 
+invariant to the order of objects, for dependencies are resolved when loaded.
+
+landmark node
+=============
+Landmark nodes define abstract point definitions in a pattern. A landmark node 
+contains no subnodes and has the attributes name, x (optional) and y (optional).
+While x and y values are optional ommiting them only makes limited sense, for
+the respective value will be set to .0 .
+
+curve node
+==========
+Curve nodes have a name and a type attribute. The latter defines the actual 
+curve type (e.g. "bezier"). Curve nodes have two or more lmref nodes. The number 
+of lmref nodes depends on the type of the curve.
+
+lmref node
+==========
+lmref nodes refer to landmarks. The nodes text corresponds to the landmarks 
+name. 
+
+Example
+=======
+The following example XML defines a correct pattern, which draws a rectangle 
+with an inner bezier and a size which is customizable by changing the only 
+measure value. 
+
+<pattern name="Test pattern">
+	<measures>
+		<measurevalue name="length" default="2.0">
+			Length of the squares sides
+		<measurevalue>
+	</measures>
+	<part name="Square">
+		<landmark name="ul" x="0" y="0" />
+		<landmark name="ur" x="#length" y="0">
+		<curve name="u" type="bezier">
+			<!-- There are actually no straight lines atm -->
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+		</curve>
+		<curve name="u" type="bezier">
+			<!-- Not all landmarks have to be defined, yet -->
+			<lmref>ur</lmref>
+			<lmref>lr</lmref>
+			<lmref>ur</lmref>
+			<lmref>lr</lmref>
+		</curve>
+		<curve name="u" type="bezier">
+			<lmref>lr</lmref>
+			<lmref>ll</lmref>
+			<lmref>lr</lmref>
+			<lmref>ll</lmref>
+		</curve>
+		<curve name="u" type="bezier">
+			<lmref>ll</lmref>
+			<lmref>ul</lmref>
+			<lmref>ll</lmref>
+			<lmref>ul</lmref>
+		</curve>
+		<curve name="u" type="bezier">
+			<!-- There are actually no straight lines atm -->
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+			<lmref>ll</lmref>
+			<lmref>lr</lmref>
+		</curve>
+		<landmark name="lr" x="#length" y="#length" />
+		<landmark name="ur" x="0" y="#length" />
+	</part>
+</pattern>
+
