@@ -3,11 +3,9 @@
 
 #include <filereader.h>
 #include <glibmm/ustring.h>
-#include <patterndefinition.h>
 #include <xmlnode.h>
 #include <memory>
 
-using namespace MyPattern::Base;
 
 namespace MyPattern
 {
@@ -18,10 +16,8 @@ namespace MyPattern
             public:
                 XmlFileReader();
 
-                shared_ptr<PatternDefinition> read_pattern(Glib::ustring);
-
-
-                shared_ptr<Measures> read_measures(Glib::ustring filename, bool read_personal_values);
+                void read(Glib::ustring filename);
+                shared_ptr<XmlNode> get_root_node();
             protected:
             private:
                 /** \brief Reads all data from a file
@@ -31,26 +27,9 @@ namespace MyPattern
                 /** \brief Converts a PartDefinition serialized to XML back to
                 * its object representation
                 */
-                shared_ptr<PartDefinition> get_part(shared_ptr<XmlNode>,
-                    shared_ptr<PatternDefinition>);
-                /** \brief Convers a Landmark serialized to XML back to its
-                * object representation.
-                */
-                shared_ptr<Landmark> get_landmark(shared_ptr<XmlNode>,
-                    shared_ptr<PartDefinition>);
-                /** \brief Converts a CurveDefinition serialized to XML back to
-                * its object representation
-                */
-                shared_ptr<CurveDefinition> get_curve(shared_ptr<XmlNode>,
-                    shared_ptr<PartDefinition>);
-                /** \brief Converts a PatternParameter serialized to XML back to
-                * its object representation
-                */
-                shared_ptr<PatternParameter> get_parameter(shared_ptr<XmlNode>,
-                    shared_ptr<PatternDefinition>);
 
-
-                Glib::ustring m_filename;
+                Glib::ustring m_raw_xml;
+                shared_ptr<XmlNode> m_root_node;
         };
     }
 }

@@ -1,19 +1,23 @@
 #ifndef CURVEDEFINITION_H
 #define CURVEDEFINITION_H
 
-#include "landmark.h"
+#include "patternobject.h"
 #include "beziercomplex.h"
+#include "mypattern-data.h"
 
-#include "glibmm/ustring.h"
+
+#include "glibmm.h"
 #include <list>
 
 using namespace Glib;
 using namespace std;
+using namespace MyPattern::Data;
 
 namespace MyPattern
 {
     namespace Base
     {
+
         /** \brief Defines an abstract definition for a curve in a pattern
         *
         * \todo Define and implement member functions
@@ -34,6 +38,11 @@ namespace MyPattern
                     assembled from single Bézier curves
                 */
                 virtual BezierComplex get_bezier(list<Point>) = 0;
+                virtual ustring get_class_name() = 0;
+                virtual XmlNode serialize_to_xml() = 0;
+                virtual shared_ptr<CurveDefinition> deserialize_from_xml(XmlNode) = 0;
+
+//
 
                 ustring get_name();
                 /*! \brief Sets the name of the CurveDefinition
@@ -70,15 +79,24 @@ namespace MyPattern
 
                 sigc::signal1<bool, list<ustring>> signal_request_change;
                 sigc::signal0<void> signal_changed;
+
+                static void register_class(shared_ptr<CurveDefinition> prototype);
+                static shared_ptr<CurveDefinition> create_instance(ustring class_name);
+                static list<ustring> get_registered_class_names();
+                static shared_ptr<CurveDefinition> deserialize(XmlNode);
             protected:
             private:
                 ustring m_name;
                 list<Glib::ustring> m_landmarks;
                 sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;
 
-        };
-    }
-}
+                static list<shared_ptr<CurveDefinition>> m_registered_classes;
 
+        };
+
+    }
+
+
+}
 
 #endif // CURVEDEFINITION_H

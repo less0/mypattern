@@ -1,7 +1,7 @@
 #ifndef MYPATTERN_EXCEPTIONS_EVALUATIONEXCEPTION_H
 #define MYPATTERN_EXCEPTIONS_EVALUATIONEXCEPTION_H
 
-#include <exceptions/exception.h>
+#include <exception.h>
 
 namespace MyPattern {
 namespace Exceptions {

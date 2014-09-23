@@ -231,6 +231,7 @@ namespace MyPattern
                 */
                 std::list<PatternError> check();
 
+                static shared_ptr<PatternDefinition> read_xml(ustring filename);
             protected:
             private:
                 bool on_name_change_request(Glib::ustring name);

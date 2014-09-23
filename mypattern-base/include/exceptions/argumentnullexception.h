@@ -1,7 +1,7 @@
 #ifndef MYPATTERN_EXCEPTIONS_ARGUMENTNULLEXCEPTION_H
 #define MYPATTERN_EXCEPTIONS_ARGUMENTNULLEXCEPTION_H
 
-#include <exceptions/exception.h>
+#include <exception.h>
 
 namespace MyPattern {
 namespace Exceptions {
