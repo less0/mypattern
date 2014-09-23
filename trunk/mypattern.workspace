@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="Workspace">
-		<Project filename="mypattern-data/mypattern-data.cbp" />
+		<Project filename="mypattern-data/mypattern-data.cbp">
+			<Depends filename="mypattern-exceptions/mypattern-exceptions.cbp" />
+		</Project>
 		<Project filename="mypattern-base-test/mypattern-base-test.cbp">
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
 			<Depends filename="UnitTest++/UnitTest++.cbp" />
+			<Depends filename="mypattern-exceptions/mypattern-exceptions.cbp" />
 		</Project>
-		<Project filename="mypattern-base/mypattern-base.cbp" />
+		<Project filename="mypattern-base/mypattern-base.cbp">
+			<Depends filename="mypattern-data/mypattern-data.cbp" />
+			<Depends filename="mypattern-exceptions/mypattern-exceptions.cbp" />
+		</Project>
 		<Project filename="mypattern-cad/mypattern-cad.cbp">
 			<Depends filename="mypattern-data/mypattern-data.cbp" />
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
 			<Depends filename="mypattern-draw/mypattern-draw.cbp" />
+			<Depends filename="mypattern-exceptions/mypattern-exceptions.cbp" />
 		</Project>
 		<Project filename="mypattern-draw/mypattern-draw.cbp">
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
@@ -19,7 +26,9 @@
 			<Depends filename="mypattern-data/mypattern-data.cbp" />
 			<Depends filename="mypattern-base/mypattern-base.cbp" />
 			<Depends filename="UnitTest++/UnitTest++.cbp" />
+			<Depends filename="mypattern-exceptions/mypattern-exceptions.cbp" />
 		</Project>
 		<Project filename="UnitTest++/UnitTest++.cbp" />
+		<Project filename="mypattern-exceptions/mypattern-exceptions.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

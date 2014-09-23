@@ -3,6 +3,8 @@
 using namespace MyPattern::Base;
 
 
+list<shared_ptr<CurveDefinition>> CurveDefinition::m_registered_classes = list<shared_ptr<CurveDefinition>>();
+
 CurveDefinition::~CurveDefinition()
 {}
 
@@ -51,61 +53,75 @@ void CurveDefinition::set_landmarks(list<ustring> landmarks)
     }
 }
 
-//bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark)
+void CurveDefinition::register_class(shared_ptr<CurveDefinition> prototype)
+{
+    for(list<shared_ptr<CurveDefinition>>::iterator it = m_registered_classes.begin();
+        it != m_registered_classes.end();
+        it++)
+    {
+        if((*it)->get_class_name() == prototype->get_class_name());
+        {
+            //TODO (paul#8#) throw exception class object
+            throw "";
+        }
+    }
+
+    CurveDefinition::m_registered_classes.push_back(prototype);
+}
+
+list<ustring> CurveDefinition::get_registered_class_names()
+{
+    list<ustring> names;
+
+    for(list<shared_ptr<CurveDefinition>>::iterator it = CurveDefinition::m_registered_classes.begin();
+        it != CurveDefinition::m_registered_classes.end();
+        it++)
+    {
+        names.push_back((*it)->get_class_name());
+    }
+
+    return names;
+}
+
+
+shared_ptr<CurveDefinition> CurveDefinition::deserialize(XmlNode node)
+{
+    if(node.get_name() != "curve")
+    {
+        throw MyPattern::Exceptions::Exception();
+    }
+
+    shared_ptr<CurveDefinition> deserialized_definition = shared_ptr<CurveDefinition>(NULL);
+    list<XmlAttribute> attributes;
+    ustring type;
+
+    attributes = node.get_attributes();
+
+    for(list<XmlAttribute>::iterator it = attributes.begin();
+        it != attributes.end();
+        it++)
+    {
+        if(it->get_name() == "type")
+        {
+            type = it->get_value();
+        }
+    }
+
+    for(list<shared_ptr<CurveDefinition>>::iterator it = m_registered_classes.begin();
+        it != m_registered_classes.end();
+        it++)
+    {
+        if((*it)->get_class_name() == type)
+        {
+            (*it)->deserialize_from_xml(node);
+        }
+    }
+
+    return deserialized_definition;
+}
+
+//shared_ptr<CurveDefinition> CurveDefinition::deserialize_from_xml(XmlNode)
 //{
-//    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
-//    {
-//        this->m_landmarks.push_back(landmark);
-//
-//        if(!this->signal_changed.empty())
-//            this->signal_changed.emit();
-//
-//        return true;
-//    }
-//    else
-//    {
-//        return false;
-//    }
+//    return nullptr;
 //}
-//
-//bool CurveDefinition::add_landmark(shared_ptr<Landmark> landmark, ustring after)
-//{
-//    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
-//
-//    if(int(this->m_landmarks.size()) < this->get_max_landmarks())
-//    {
-//        while(it != m_landmarks.end())
-//        {
-//            if((*it)->get_name() == after)
-//            {
-//                m_landmarks.insert(++it, landmark);
-//
-//                this->signal_changed();
-//
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//    return false;
-//}
-//
-//
-//bool CurveDefinition::remove_landmark(Glib::ustring name)
-//{
-//    list<shared_ptr<Landmark>>::iterator it = m_landmarks.begin();
-//
-//    while(it != m_landmarks.end())
-//    {
-//        if((*it)->get_name() == name)
-//        {
-//            m_landmarks.erase(it);
-//
-//            return true;
-//        }
-//
-//        it++;
-//    }
-//
-//    return false;
-//}
+

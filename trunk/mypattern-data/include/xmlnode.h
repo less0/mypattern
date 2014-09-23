@@ -39,13 +39,13 @@ namespace MyPattern
 
                 /*! \brief Gets a list of all parameters of the current node
                 */
-                list<XmlAttribute> get_parameters();
+                list<XmlAttribute> get_attributes();
                 /*! \brief Adds a new parameter to the XmlNode
                 */
-                bool add_parameter(XmlAttribute);
+                bool add_attribute(XmlAttribute);
 
-                bool remove_parameter(XmlAttribute);
-                bool remove_parameter(Glib::ustring);
+                bool remove_attribute(XmlAttribute);
+                bool remove_attribute(Glib::ustring);
 
                 /*! \brief Gets a list of all subnodes */
                 list<shared_ptr<XmlNode>> get_nodes();

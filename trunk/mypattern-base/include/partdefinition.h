@@ -1,4 +1,3 @@
-//#include "mypattern-base.h"
 #include "measures.h"
 #include "patternparametervalue.h"
 #include "patternerror.h"
@@ -70,11 +69,11 @@ namespace MyPattern
                 bool add_curve_definition(shared_ptr<CurveDefinition> definition);
 
                 /*! \brief Sets the currently available measures
-		 * 
-		 * This method sets the measures used for the calculation of 
-		 * Landmark objects, etc. If there already is a measureobject 
-		 * in the part the object is tried to be replaced with 
-		 * respect to objects depending on MeasureValue object the 
+		 *
+		 * This method sets the measures used for the calculation of
+		 * Landmark objects, etc. If there already is a measureobject
+		 * in the part the object is tried to be replaced with
+		 * respect to objects depending on MeasureValue object the
 		 * Measures object contains, i.e. if some part of the pattern
 		 * depends on a MeasureValue that would be removed when replacing
 		 * Measures the operation will fail
