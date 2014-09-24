@@ -1,3 +1,7 @@
+#ifndef PATTERNDEFINITION_H
+#define PATTERNDEFINITION_H
+
+#include "mypattern-data.h"
 #include "pattern.h"
 #include "measures.h"
 #include "patternparameter.h"
@@ -9,11 +13,9 @@
 #include "user.h"
 #include <list>
 
-#ifndef PATTERNDEFINITION_H
-#define PATTERNDEFINITION_H
-
 using namespace Glib;
 using namespace std;
+using namespace MyPattern::Data;
 
 namespace MyPattern
 {
@@ -238,6 +240,7 @@ namespace MyPattern
 
                 list<shared_ptr<PartDefinition>> m_part_definitions;
                 list<shared_ptr<PatternParameter>> m_pattern_parameters;
+                shared_ptr<Measures> m_measures;
 
                 shared_ptr<User> m_author;
 
