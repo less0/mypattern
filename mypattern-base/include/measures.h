@@ -2,6 +2,7 @@
 #define MEASURES_H
 
 #include "measurevalue.h"
+#include "mypattern-data.h"
 
 #include <memory>
 #include <list>
@@ -9,6 +10,7 @@
 
 using namespace std;
 using namespace Glib;
+using namespace MyPattern::Data;
 
 namespace MyPattern
 {
@@ -25,6 +27,8 @@ namespace MyPattern
                 bool remove(shared_ptr<MeasureValue>);
 
                 list<shared_ptr<MeasureValue>> get_measure_values();
+
+                static shared_ptr<Measures> deserialize_from_xml(shared_ptr<XmlNode> node);
             protected:
             private:
                 list<shared_ptr<MeasureValue>> m_measureValues;
