@@ -5,7 +5,7 @@ CC_OPTIONS=`pkg-config --cflags --libs gtkmm-3.0`
 
 all: mypattern-base
 
-coverage: CC_OPTIONS=$(CC_OPTIONS) --coverage
+coverage: CC_OPTIONS+= --coverage
 coverage: test
 	@cd mypattern-base;lcov --capture --directory . --base-directory . --output-file coverage.info;genhtml coverage.info --output-directory /var/www/cov/mypattern-base
 
