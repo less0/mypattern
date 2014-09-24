@@ -45,7 +45,31 @@ shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename
     XmlFileReader filereader = XmlFileReader();
 
     filereader.read(filename);
+    shared_ptr<PatternDefinition> result = shared_ptr<PatternDefinition>(new PatternDefinition());
     shared_ptr<XmlNode> root_node = filereader.get_root_node();
+    shared_ptr<Measures> measures;
+
+    list<shared_ptr<XmlNode>> subnodes = root_node->get_nodes();
+
+    for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+        it != subnodes.end();
+        it++)
+    {
+        if((*it)->get_name() == "measures")
+        {
+            result->m_measures = Measures::deserialize_from_xml(*it);
+        }
+    }
+
+    for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+        it != subnodes.end();
+        it++)
+    {
+        if((*it)->get_name() == "part")
+        {
+            result->add_part_definition(PartDefinition::deserialize_from_xml(*it, result->m_measures));
+        }
+    }
 
     return shared_ptr<PatternDefinition>(NULL);
 }
