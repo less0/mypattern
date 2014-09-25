@@ -16,14 +16,18 @@ clean:
 	-@cd mypattern-cad; make clean
 	-@cd mypattern-base-test; make clean
 	-@cd mypattern-data-test; make clean
+	-@cd mypattern-exceptions; make clean
 	-@rm -r /var/www/cov/mypattern-base 2>/dev/null
 
 test: mypattern-base-test mypattern-data-test
 
-mypattern-base: force-update
+mypattern-exceptions: force-update
+	@cd mypattern-exceptions; make CC_OPTIONS='$(CC_OPTIONS)'	
+
+mypattern-base: mypattern-data
 	@cd mypattern-base; make CC_OPTIONS='$(CC_OPTIONS)'
 
-mypattern-data: mypattern-base
+mypattern-data: mypattern-exceptions
 	@cd mypattern-data; make CC_OPTIONS='$(CC_OPTIONS)'
 
 mypattern-cad: mypattern-draw
