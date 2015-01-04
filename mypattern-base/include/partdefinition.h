@@ -126,8 +126,14 @@ namespace MyPattern
                 */
                 sigc::signal1<bool,Glib::ustring> signal_name_change_request();
 
+                /*! \brief Deserializes a PartDefinition from an XmlNode
+                 *
+                 * \param node part node to parse
+                 * \param measures Measures parsed in PatternDefinition level
+                 */
                 static shared_ptr<PartDefinition> deserialize_from_xml(
-                    shared_ptr<XmlNode> node, shared_ptr<Measures> measures);
+                    shared_ptr<XmlNode> node,
+                    shared_ptr<Measures> measures);
             protected:
             private:
                 sigc::signal1<bool,Glib::ustring> m_signal_name_change_request;

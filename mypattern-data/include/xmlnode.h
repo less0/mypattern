@@ -52,6 +52,11 @@ namespace MyPattern
                 /*! \brief Adds a new subnode */
                 void add_node(shared_ptr<XmlNode>);
 
+                bool is_text_node();
+                Glib::ustring get_text();
+                void set_text(Glib::ustring);
+
+
                 /*! \brief Parses an XmlNode from text
                 *
                 * This function is meant to be used on a single node, or the root of the

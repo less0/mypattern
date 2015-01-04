@@ -20,6 +20,7 @@
 				<Linker>
 					<Add library="dmypattern-base" />
 					<Add library="glibmm-2.4" />
+					<Add library="dmypattern-data" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 				<ExtraCommands>
@@ -42,6 +43,7 @@
 					<Add option="-s" />
 					<Add library="mypattern-base" />
 					<Add library="glibmm-2.4" />
+					<Add library="mypattern-data" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 			</Target>
@@ -72,6 +74,7 @@
 					<Add library="dmypattern-base" />
 					<Add library="sigc-2.0" />
 					<Add library="cairomm-1.0" />
+					<Add library="dmypattern-data" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
@@ -104,6 +107,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="mypattern-base" />
+					<Add library="mypattern-data" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 				</Linker>
 			</Target>
@@ -137,6 +141,7 @@
 			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
 			<Add directory="../UnitTest++/bin/Debug" />
+			<Add directory="../mypattern-data" />
 		</Linker>
 		<Unit filename="Makefile" />
 		<Unit filename="src/INT_EvaluationTree.cpp" />
