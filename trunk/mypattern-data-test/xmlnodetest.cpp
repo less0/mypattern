@@ -115,4 +115,11 @@ namespace
         list<shared_ptr<XmlNode>>::iterator it2 = subSubnodes.begin();
         CHECK_EQUAL("bar", (*it2)->get_name());
     }
+
+    TEST(ParseTextNode)
+    {
+        shared_ptr<XmlNode> textNode = XmlNode::parse("<qux>This is a >Text</qux>");
+        CHECK_EQUAL("qux", textNode->get_name());
+        //CHECK_EQUAL("This is a >Text", textNode->get_text());
+    }
 }

@@ -1,6 +1,8 @@
 #include "mypattern-base.h"
+#include "measures.h"
 #include "UnitTest++.h"
 
+using namespace MyPattern::Data;
 
 namespace PartDefintionIntegration
 {
@@ -243,5 +245,45 @@ TEST_FIXTURE(PartDefinitionFixture, ChangeNameFail)
     _partDefinition.set_name("Test1");
     _partDefinition.set_name("Reserved");
     CHECK_EQUAL("Test1", _partDefinition.get_name());
+}
+
+TEST(ParseFromXml)
+{
+    shared_ptr<XmlNode> partDefinitionNode = shared_ptr<XmlNode>(new XmlNode("part"));
+    partDefinitionNode->add_attribute(XmlAttribute("name", "part1"));
+
+    shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm1"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("y", "0"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm2"));
+    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
+    landmarkNode->add_attribute(XmlAttribute("y", "0"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm3"));
+    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
+    landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm4"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    shared_ptr<XmlNode> curve_node = shared_ptr<XmlNode>(new XmlNode("curve"));
+    curve_node->add_attribute(XmlAttribute("name", "c1"));
+    curve_node->add_attribute(XmlAttribute("type", "bezier"));
+    shared_ptr<XmlNode> lmref1 = shared_ptr<XmlNode>(new XmlNode("lmref"));
+
+    shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
+    measures->define("mv1", "test", 1.0);
+
+    shared_ptr<PartDefinition> parsedPartDefiniton = PartDefinition::deserialize_from_xml(partDefinitionNode, measures);
 }
 }

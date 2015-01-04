@@ -50,7 +50,6 @@ namespace MyPattern {
 
             Glib::ustring remainder = schema.substr(start_index);
             Glib::ustring regexPattern = "^</{0,1}([A-Za-z0-9:]+)( ([A-Za-u]+=\"[A-Za-z0-9\\. ]*\"))*( )*/{0,1}>";
-//            Glib::ustring regexPattern = "^</{0,1}([A-Za-z0-9:]+)( ([A-Za-u]+=\"[A-Za-z0-9\\. ]*\"))*";
 
             Glib::RefPtr<Glib::Regex> elementRegex = Glib::Regex::create(regexPattern,
                                                                    (Glib::RegexCompileFlags)0,
@@ -77,99 +76,6 @@ namespace MyPattern {
             {
                 throw XmlException("Unexpected ");
             }
-
-//            XmlElement result;
-//
-//            bool inElement = true;
-//
-//            bool inName = false;
-//
-//            bool inAttribute = false;
-//            bool inAttributeValue = false;
-//
-//            bool isContentStart = true;
-//
-//            int current_index = start_index+1;
-//            XmlAttribute currentAttribute();
-//
-//            Glib::ustring name = "";
-//            bool isEmpty = false;
-//
-//            while(inElement)
-//            {
-//                if(inAttributeValue)
-//                {
-//                    if(schema[current_index] == '"')
-//                    {
-//                        inAttributeValue = false;
-//                    }
-//                }
-//                else
-//                {
-//                    switch(schema[current_index])
-//                    {
-//                        case '>':
-//                            if(!inAttributeValue)
-//                            {
-//                                end_index = current_index;
-//                                inElement = false; //leave the looop
-//                            }
-//
-//                            break;
-//                        case ' ':
-//                            if(inName)
-//                            {
-//                                inName = false;
-//                            }
-//                            break;
-//                        case '/':
-//                            if(!inAttributeValue)
-//                            {
-//                                if(isContentStart)
-//                                {
-//                                    isEmpty = true;
-//                                }
-//                            }
-//                            break;
-//                        case '"':
-//                            if(!inAttribute)
-//                            {
-//                                throw XmlException("Unexpected \" in XML-element");
-//                            }
-//
-//                            break;
-//                        default:
-//                            if(isContentStart && is_valid_name_char(schema[current_index]))
-//                            {
-//                                name += schema[current_index];
-//                                inName = true;
-//                            }
-//                            else if(isContentStart && schema[current_index] == '/')
-//                            {
-//                                inName = true;
-//                                isEmpty = true;
-//                            }
-//                            else if(isContentStart && !is_valid_name_char(schema[current_index]))
-//                            {
-//                                //throw an exception
-//                                throw XmlException("Unexpected character in element name");
-//                            }
-//                            else if(inName && is_valid_name_char(schema[current_index]))
-//                            {
-//                                name += schema[current_index];
-//                            }
-//                            else if(!inName && !inAttributeValue && is_valid_name_char(schema[current_index]))
-//                            {
-//                                inAttribute = true;
-//                            }
-//                    }
-//                }
-//
-//                isContentStart = false;
-//                current_index++;
-//            }
-//
-//            return result;
         }
 
     } // namespace Data
