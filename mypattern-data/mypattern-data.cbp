@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug Linux">
-				<Option output="dmypattern-data" prefix_auto="1" extension_auto="1" />
+				<Option output="d_mypattern-data" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
 				<Option type="2" />
@@ -75,6 +75,10 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
+			<lib_finder>
+				<lib name="gtkmm-3.0" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
