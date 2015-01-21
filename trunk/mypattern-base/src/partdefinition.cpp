@@ -127,3 +127,8 @@ sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
     return this->m_signal_name_change_request;
 }
 
+shared_ptr<PartDefinition> PartDefinition::deserialize_from_xml(
+                    shared_ptr<XmlNode> node, shared_ptr<Measures> measures)
+{
+	return shared_ptr<PartDefinition>(NULL);
+}

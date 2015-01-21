@@ -283,3 +283,8 @@ Glib::ustring XmlNode::get_text()
 {
     return m_text;
 }
+
+void XmlNode::set_text(Glib::ustring text)
+{
+	m_text = text;
+}

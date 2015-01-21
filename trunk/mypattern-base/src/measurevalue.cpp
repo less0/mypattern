@@ -48,4 +48,46 @@ void MeasureValue::set_value(double value)
         signal_changed.emit();
 }
 
+double parse(ustring);
 
+shared_ptr<MeasureValue> MeasureValue::deserialize_from_xml(shared_ptr<XmlNode> measureValueNode)
+{
+	if(measureValueNode->get_name() != "measurevalue")
+	{
+		throw MyPattern::Exceptions::Exception();
+	}
+	
+	ustring name = "";
+	double value = .0;
+	ustring description = "";
+	
+	list<XmlAttribute> attributes = measureValueNode->get_attributes();
+	
+	for(list<XmlAttribute>::iterator it = attributes.begin(); it != attributes.end(); it++)
+	{
+		if(it->get_name() == "name")
+		{
+			name = it->get_value();
+		}
+		else if(it->get_name() == "default")
+		{
+			value = parse(it->get_value());
+		}
+	}
+	
+	description = measureValueNode->get_text();
+	
+	shared_ptr<MeasureValue> parsedMeasureValue = shared_ptr<MeasureValue>(new MeasureValue(name, description, value));
+	
+	return parsedMeasureValue;
+}
+
+double parse(ustring in)
+{
+	//TODO check if number is formatted correctly
+
+	stringstream s(in);
+	double value;
+    s >> value;
+	return value;
+}

@@ -18,7 +18,8 @@
 				<Linker>
 					<Add library="d_mypattern-data" />
 					<Add library="d_mypattern-base" />
-					<Add directory="../UnitTest++/bin/Debug" />
+					<Add library="d_UnitTest++" />
+					<Add directory="../UnitTest++/" />
 				</Linker>
 			</Target>
 			<Target title="Release Linux">
@@ -34,7 +35,8 @@
 					<Add option="-s" />
 					<Add library="mypattern-base" />
 					<Add library="mypattern-data" />
-					<Add directory="../UnitTest++/bin/Release" />
+					<Add library="UnitTest++" />
+					<Add directory="../UnitTest++/" />
 				</Linker>
 			</Target>
 		</Build>
@@ -44,18 +46,10 @@
 			<Add directory="../mypattern-base/include" />
 			<Add directory="../mypattern-data/include" />
 			<Add directory="../UnitTest++/src" />
-			<Add directory="/usr/include/glibmm-2.4" />
-			<Add directory="/usr/lib/i386-linux-gnu/glibmm-2.4/include" />
-			<Add directory="/usr/include/glib-2.0" />
-			<Add directory="/usr/lib/i386-linux-gnu/glib-2.0/include" />
-			<Add directory="/usr/include/sigc++-2.0" />
-			<Add directory="/usr/lib/i386-linux-gnu/sigc++-2.0/include" />
+			<Add directory="../mypattern-exceptions/include" />
 			<Add directory="../mypattern-exceptions/include" />
 		</Compiler>
 		<Linker>
-			<Add library="UnitTest++" />
-			<Add library="glibmm-2.4" />
-			<Add library="glib-2.0" />
 			<Add directory="../mypattern-data" />
 			<Add directory="../mypattern-base" />
 			<Add directory="../mypattern-exceptions" />
@@ -67,6 +61,12 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
+			<lib_finder>
+				<lib name="gtkmm-3.0" />
+				<lib name="glibmm-2.4" />
+				<lib name="glib-2.0" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
