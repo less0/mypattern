@@ -285,5 +285,6 @@ TEST(ParseFromXml)
     measures->define("mv1", "test", 1.0);
 
     shared_ptr<PartDefinition> parsedPartDefiniton = PartDefinition::deserialize_from_xml(partDefinitionNode, measures);
+	CHECK_EQUAL(false, parsedPartDefiniton == NULL);
 }
 }

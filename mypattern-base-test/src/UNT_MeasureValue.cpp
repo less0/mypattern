@@ -40,4 +40,19 @@ namespace
         CHECK_EQUAL("...", mv_c.get_description());
         CHECK_EQUAL(1.111, mv_c.get_value());
     }
+	
+	TEST(DeserializeFromXml)
+	{
+		shared_ptr<XmlNode> measureValueNode = shared_ptr<XmlNode>(new XmlNode("measurevalue"));
+		measureValueNode->add_attribute(XmlAttribute("name", "PI"));
+		measureValueNode->add_attribute(XmlAttribute("default", "3.141"));
+		measureValueNode->set_text("FooBar");
+		
+		shared_ptr<MeasureValue> parsedMeasureValue = MeasureValue::deserialize_from_xml(measureValueNode);
+		
+		CHECK_EQUAL(false, parsedMeasureValue == NULL);
+		CHECK_EQUAL("PI", parsedMeasureValue->get_name());
+		CHECK_EQUAL(3.141, parsedMeasureValue->get_value());
+		CHECK_EQUAL("FooBar", parsedMeasureValue->get_description());
+	}
 }

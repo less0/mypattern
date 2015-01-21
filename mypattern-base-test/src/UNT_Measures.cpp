@@ -137,4 +137,33 @@ namespace
         CHECK_EQUAL("Messwert3", (*it)->get_description());
         CHECK_EQUAL(2.718, (*it)->get_value());
     }
+
+	TEST(DeserializeFromXml)
+	{
+		shared_ptr<XmlNode> rootMeasuresNode = shared_ptr<XmlNode>(new XmlNode("measures"));
+		
+		shared_ptr<XmlNode> measureValueNode = shared_ptr<XmlNode>(new XmlNode("measurevalue"));
+		measureValueNode->add_attribute(XmlAttribute("name", "length"));
+		measureValueNode->add_attribute(XmlAttribute("default", "2.0"));
+		measureValueNode->set_text("The length of the square");
+		rootMeasuresNode->add_node(measureValueNode);
+		
+		shared_ptr<XmlNode> measureValueNode2 = shared_ptr<XmlNode>(new XmlNode("measurevalue"));
+		measureValueNode2->add_attribute(XmlAttribute("name", "PI"));
+		measureValueNode2->add_attribute(XmlAttribute("default", "3.14159"));
+		measureValueNode2->set_text("Pie");
+		rootMeasuresNode->add_node(measureValueNode2);
+		
+		shared_ptr<Measures> parsedMeasures = Measures::deserialize_from_xml(rootMeasuresNode);
+		
+		CHECK_EQUAL(false, parsedMeasures == NULL);
+		if(parsedMeasures != NULL)
+		{
+			list<shared_ptr<MeasureValue>> measureValues = parsedMeasures->get_measure_values();
+			CHECK_EQUAL(2, measureValues.size());
+			list<shared_ptr<MeasureValue>>::iterator it = measureValues.begin();
+			it++;
+		}
+
+	}
 }

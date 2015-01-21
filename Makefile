@@ -1,7 +1,9 @@
 #
 MAKEFLAGS += --no-print-directory
-OUTPUT=junit
-CC_OPTIONS=`pkg-config --cflags --libs gtkmm-3.0`
+OUTPUT=
+#CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0)
+
+.PHONY: all coverage clean test mypattern-base mypattern-base-test mypattern-cad mypattern-data mypattern-data-test mypattern-draw mypattern-exceptions 
 
 all: mypattern-base
 
@@ -10,42 +12,40 @@ coverage: test
 	@cd mypattern-base;lcov --capture --directory . --base-directory . --output-file coverage.info;genhtml coverage.info --output-directory /var/www/cov/mypattern-base
 
 clean:
-	-@cd mypattern-base; make clean
-	-@cd mypattern-data; make clean
-	-@cd mypattern-draw; make clean
-	-@cd mypattern-cad; make clean
-	-@cd mypattern-base-test; make clean
-	-@cd mypattern-data-test; make clean
-	-@cd mypattern-exceptions; make clean
-	-@rm -r /var/www/cov/mypattern-base 2>/dev/null
+	-@make clean -C mypattern-base
+	-@make clean -C mypattern-data
+	-@make clean -C mypattern-draw
+	-@make clean -C mypattern-cad
+	-@make clean -C mypattern-base-test
+	-@make clean -C mypattern-data-test
+	-@make clean -C mypattern-exceptions
+	-@rm -r ./cov/mypattern-base 2>/dev/null
 
 test: mypattern-base-test mypattern-data-test
 
-mypattern-exceptions: force-update
-	@cd mypattern-exceptions; make CC_OPTIONS='$(CC_OPTIONS)'	
+mypattern-exceptions: 
+	@make -C mypattern-exceptions
 
 mypattern-base: mypattern-data
-	@cd mypattern-base; make CC_OPTIONS='$(CC_OPTIONS)'
+	@make -C mypattern-base
 
 mypattern-data: mypattern-exceptions
-	@cd mypattern-data; make CC_OPTIONS='$(CC_OPTIONS)'
+	@make -C mypattern-data
 
 mypattern-cad: mypattern-draw
-	@cd mypattern-cad; make CC_OPTIONS='$(CC_OPTIONS)'
+	@make -C mypattern-cad
 
 mypattern-draw: mypattern-base
-	@cd mypattern-draw; make CC_OPTIONS='$(CC_OPTIONS)'
+	@make -C mypattern-draw
 
-UnitTest: force-update
-	@cd UnitTest++; make
+UnitTest: 
+	@make -C UnitTest++
 
-mypattern-base-test: mypattern-base UnitTest force-update
-	@cd mypattern-base-test; make CC_OPTIONS='$(CC_OPTIONS)'
+mypattern-base-test: mypattern-base UnitTest 
+	@make -C mypattern-base-test
 	@cd mypattern-base-test; ./mypattern-base-test $(OUTPUT)
 
-mypattern-data-test: mypattern-base mypattern-data force-update
-	@cd mypattern-data-test; make CC_OPTIONS='$(CC_OPTIONS)'
+mypattern-data-test: mypattern-base mypattern-data 
+	@make -C mypattern-data-test
 	@cd mypattern-data-test; ./mypattern-data-test $(OUTPUT)
 
-force-update:
-	-@true

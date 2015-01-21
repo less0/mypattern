@@ -4,10 +4,12 @@
 #include "patternobject.h"
 #include "glibmm/ustring.h"
 #include "sigc++/sigc++.h"
+#include "mypattern-data.h"
 #include <memory>
 
 using namespace sigc;
 using namespace std;
+using namespace MyPattern::Data;
 
 namespace MyPattern
 {
@@ -27,6 +29,8 @@ namespace MyPattern
                 void set_value(double value);
 
                 signal0<void> signal_changed;
+				
+				static shared_ptr<MeasureValue> deserialize_from_xml(shared_ptr<XmlNode>);
             protected:
             private:
                 Glib::ustring m_name;

@@ -1,5 +1,7 @@
 #include "measures.h"
 
+#include "exceptions/argumentexception.h"
+
 using namespace MyPattern::Base;
 
 Measures::Measures()
@@ -59,4 +61,28 @@ bool Measures::remove(shared_ptr<MeasureValue> valueToRemove)
     }
 
     return found;
+}
+
+shared_ptr<Measures> Measures::deserialize_from_xml(shared_ptr<XmlNode> measuresNode)
+{
+	if(measuresNode->get_name() != "measures")
+	{
+		throw ArgumentException("Could not parse measures");
+	}
+	
+	shared_ptr<Measures> parsedMeasures = shared_ptr<Measures>(new Measures());
+	
+	list<shared_ptr<XmlNode>> subnodes =  measuresNode->get_nodes();
+	
+	for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+		it != subnodes.end();
+		it++)
+	{
+		if((*it)->get_name() == "measurevalue")
+		{
+			parsedMeasures->m_measureValues.push_back(MeasureValue::deserialize_from_xml(*it));
+		}
+	}
+	
+	return parsedMeasures;
 }

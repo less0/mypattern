@@ -19,8 +19,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="dmypattern-base" />
-					<Add library="glibmm-2.4" />
-					<Add library="dmypattern-data" />
+					<Add library="d_UnitTest++" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 				<ExtraCommands>
@@ -42,8 +41,7 @@
 				<Linker>
 					<Add option="-s" />
 					<Add library="mypattern-base" />
-					<Add library="glibmm-2.4" />
-					<Add library="mypattern-data" />
+					<Add library="UnitTest++" />
 					<Add directory="$(GTK_BASEPATH)/lib" />
 				</Linker>
 			</Target>
@@ -72,11 +70,8 @@
 				</Compiler>
 				<Linker>
 					<Add library="dmypattern-base" />
-					<Add library="sigc-2.0" />
-					<Add library="cairomm-1.0" />
-					<Add library="dmypattern-data" />
+					<Add library="d_UnitTest++" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
-					<Add directory="../UnitTest++/bin/Debug" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="./mypattern-base-test" />
@@ -107,7 +102,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="mypattern-base" />
-					<Add library="mypattern-data" />
+					<Add library="UnitTest++" />
 					<Add directory="/usr/lib/i386-linux-gnu/" />
 				</Linker>
 			</Target>
@@ -132,16 +127,9 @@
 			<Add directory="../mypattern-data/include" />
 		</Compiler>
 		<Linker>
-			<Add library="glibmm-2.4" />
-			<Add library="glib-2.0" />
-			<Add library="gtkmm-3.0" />
-			<Add library="sigc-2.0" />
-			<Add library="UnitTest++" />
-			<Add library="cairomm-1.0" />
 			<Add directory="../mypattern-base/" />
 			<Add directory="../mypattern-base" />
-			<Add directory="../UnitTest++/bin/Debug" />
-			<Add directory="../mypattern-data" />
+			<Add directory="../UnitTest++/" />
 		</Linker>
 		<Unit filename="Makefile" />
 		<Unit filename="src/INT_EvaluationTree.cpp" />
@@ -176,6 +164,9 @@
 				<doxyfile_dot />
 				<general />
 			</DoxyBlocks>
+			<lib_finder>
+				<lib name="gtkmm-3.0" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

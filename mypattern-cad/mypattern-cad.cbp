@@ -13,6 +13,7 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="-mwindows" />
 					<Add directory="$(GTK_BASEPATH)/include" />
@@ -46,10 +47,9 @@
 					<Add directory="../mypattern-base/include" />
 					<Add directory="include" />
 					<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
+					<Add directory="../mypattern-exceptions/include" />
 				</Compiler>
 				<Linker>
-					<Add library="gtk-win32-2.0" />
-					<Add library="gdk-win32-2.0" />
 					<Add library="pangowin32-1.0" />
 				</Linker>
 			</Target>
@@ -208,6 +208,7 @@
 			<Add directory="../mypattern-base/include" />
 			<Add directory="include" />
 			<Add directory="$(GTK_BASEPATH)/include/gdk-pixbuf-2.0" />
+			<Add directory="../mypattern-data/include" />
 		</Compiler>
 		<Linker>
 			<Add library="atk-1.0" />
@@ -216,15 +217,12 @@
 			<Add library="gobject-2.0" />
 			<Add library="gmodule-2.0" />
 			<Add library="glib-2.0" />
-			<Add library="glade-2.0" />
-			<Add library="xml2" />
-			<Add library="gtkmm-2.4" />
-			<Add library="gdkmm-2.4" />
+			<Add library="gtkmm-3.0" />
+			<Add library="gdkmm-3.0" />
 			<Add library="atkmm-1.6" />
 			<Add library="pangomm-1.4" />
 			<Add library="glibmm-2.4" />
 			<Add library="sigc-2.0" />
-			<Add library="libglademm-2.4" />
 			<Add library="z" />
 			<Add library="cairomm-1.0" />
 			<Add library="cairo" />
@@ -248,6 +246,9 @@
 			<code_completion />
 			<debugger />
 			<envvars />
+			<lib_finder>
+				<lib name="gtkmm-3.0" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
