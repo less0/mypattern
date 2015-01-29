@@ -1,6 +1,6 @@
 # all: %.o
 
-OBJ=./src/UNT_SumTerm.o ./src/UNT_QuotientTerm.o ./src/UNT_DifferenceTerm.o ./src/INT_Formulae.o ./src/main.o ./src/UNT_Landmark.o ./src/UNT_Bezier.o ./src/UNT_ScalarTerm.o ./src/UNT_ConstantTerm.o ./src/UNT_ProductTerm.o ./src/UNT_Point.o ./src/UNT_CurveDefinition_BezierDefinition.o ./src/INT_EvaluationTree.o ./src/INT_PartDefinition.o ./src/UNT_MeasureValue.o ./src/UNT_Measures.o ./src/UNT_Exception.o ./src/UNT_FormulaEvaluationException.o
+OBJ=./src/UNT_SumTerm.o ./src/UNT_QuotientTerm.o ./src/UNT_DifferenceTerm.o ./src/INT_Formulae.o ./src/main.o ./src/UNT_Landmark.o ./src/UNT_Bezier.o ./src/UNT_ScalarTerm.o ./src/UNT_ConstantTerm.o ./src/UNT_ProductTerm.o ./src/UNT_Point.o ./src/UNT_CurveDefinition.o ./src/UNT_CurveDefinition_BezierDefinition.o ./src/INT_EvaluationTree.o ./src/INT_PartDefinition.o ./src/UNT_MeasureValue.o ./src/UNT_Measures.o ./src/UNT_Exception.o ./src/UNT_FormulaEvaluationException.o
 # OBJ=./src/%.o
 
 INCLUDES=-I../mypattern-base/include -I../UnitTest++/src -I./include -I../mypattern-exceptions/include -I../mypattern-data/include

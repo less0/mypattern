@@ -1,6 +1,7 @@
 #include "xmlnode.h"
 
 #include <sstream>
+#include <iostream>
 #include <exception.h>
 #include <xmlelement.h>
 #include <xmlexception.h>
@@ -16,11 +17,13 @@ XmlNode::XmlNode()
 XmlNode::XmlNode(Glib::ustring name)
 {
     m_name = name;
+	m_text = "";
 }
 
 XmlNode::XmlNode(const XmlNode& base)
 {
     m_name = base.m_name;
+	m_text = base.m_text;
 
     list<XmlAttribute>::const_iterator it = base.m_parameters.begin();
 
@@ -33,15 +36,17 @@ XmlNode::XmlNode(const XmlNode& base)
 
 shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
 {
+	int end_index;
+	
     shared_ptr<XmlNode> result(new XmlNode());
-    //int subschema_index = 0;
     Glib::ustring subschema = "";
     list<shared_ptr<XmlNode>> ls_nodes;
 
-    int start_tag_index = schema.find_first_of('<');
+    int start_tag_index = schema.find_first_of('<'); //not 100% XML compliant
     int end_element_index = 0;
     XmlElement start_element = XmlElement::parse_element(schema, start_tag_index, end_element_index);
 
+	
     result->m_name = start_element.GetName();
     result->m_parameters = start_element.GetAttributes();
 
@@ -51,86 +56,89 @@ shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
     }
 
     int end_subnodes = 0;
-    ls_nodes = parse_subnodes(schema, start_element.GetName(), end_element_index+1, end_subnodes);
+	ustring node_text = "";
+	
+    ls_nodes = parse_subnodes(schema, start_element.GetName(), end_element_index+1, end_subnodes, node_text);
 
     result->m_subnodes = ls_nodes;
 
-    return result;
+    return parse_node(schema, 0, end_index);
 }
 
-list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::ustring parent_node_name, int start_index, int& end_index)
+shared_ptr<XmlNode> XmlNode::parse_node(Glib::ustring schema, int start_index, int& end_index)
 {
+	
+}
 
+list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::ustring parent_node_name, int start_index, int& end_index, ustring& text)
+{
     list<shared_ptr<XmlNode>> parsedNodes;
     shared_ptr<XmlNode> current_node;
     int current_index = start_index;
     bool inNode = false;
     bool run = true; // states
+	text = "";
 
+	std::cout << std::endl << schema << std::endl;
+	
     while(run)
     {
-        int next_index = current_index + 1;
-
+        int next_index = current_index;
+		
         if(schema[current_index] == '<')
         {
             XmlElement element = XmlElement::parse_element(schema, current_index, next_index);
 
             if(element.isEndElement())
             {
-                if(inNode && current_node->get_name() == element.GetName())
-                {
-                    parsedNodes.push_back(current_node);
-                    inNode = false;
-                }
-                else if(inNode && current_node->get_name() != element.GetName())
-                {
-                    throw XmlException("Unexpected end-tag");
-                }
-                else if(!inNode && parent_node_name == element.GetName())
+                // if(inNode && current_node->get_name() == element.GetName())
+                // {
+					// std::cout << currentNodeText << std::endl;
+                    // parsedNodes.push_back(current_node);
+                    // inNode = false;
+                // }
+                // else 
+				if(parent_node_name == element.GetName())
                 {
                     end_index = current_index - 1;
                     run=false;
                 }
-                else if(!inNode && parent_node_name != element.GetName())
+                else
                 {
                     throw XmlException("Unexpected end-tag");
                 }
             }
-            else if(element.isEmpty())
-            {
-                if(inNode)
-                {
-                    current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
-                }
-                else
-                {
-
-                }
-            }
+            // else if(element.isEmpty())
+            // {
+                // if(inNode)
+                // { 
+                // current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
+                // }
+            // }
             else //element is start element
             {
-                if(inNode)
-                {
-                    current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
-                }
-                else
-                {
-                    inNode = true;
-                    current_node = shared_ptr<XmlNode>(new XmlNode(element.GetName()));
-                    current_node->m_parameters = element.GetAttributes();
-
-                }
+                // if(inNode)
+                // {
+                    // current_node->m_subnodes = parse_subnodes(schema, current_node->m_name, current_index, next_index);
+                // }
+                // else
+                // {
+                    // inNode = true;
+                    // current_node = shared_ptr<XmlNode>(new XmlNode(element.GetName()));
+                    // current_node->m_parameters = element.GetAttributes();
+					current_node = parse_node(schema, next_index+1, next_index);
+                // }
             }
-
-            current_index = next_index + 1;
         }
         else
         {
-            if(inNode)
-            {
-                current_node->m_text = current_node->m_text + schema[current_index];
-            }
+			// if(!inNode)
+			// {
+				text += schema[current_index];
+				std::cout << text << std::endl;
+			// }
         }
+        current_index = next_index + 1;
     }
 
     return parsedNodes;

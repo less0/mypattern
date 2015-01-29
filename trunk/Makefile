@@ -1,6 +1,7 @@
 #
 MAKEFLAGS += --no-print-directory
 OUTPUT=
+DEBUG?=FALSE
 #CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0)
 
 .PHONY: all coverage clean test mypattern-base mypattern-base-test mypattern-cad mypattern-data mypattern-data-test mypattern-draw mypattern-exceptions 
@@ -24,28 +25,28 @@ clean:
 test: mypattern-base-test mypattern-data-test
 
 mypattern-exceptions: 
-	@make -C mypattern-exceptions
+	@make -C mypattern-exceptions DEBUG=$(DEBUG)
 
 mypattern-base: mypattern-data
-	@make -C mypattern-base
+	@make -C mypattern-base DEBUG=$(DEBUG)
 
 mypattern-data: mypattern-exceptions
-	@make -C mypattern-data
+	@make -C mypattern-data DEBUG=$(DEBUG)
 
 mypattern-cad: mypattern-draw
-	@make -C mypattern-cad
+	@make -C mypattern-cad DEBUG=$(DEBUG)
 
 mypattern-draw: mypattern-base
-	@make -C mypattern-draw
+	@make -C mypattern-draw DEBUG=$(DEBUG)
 
 UnitTest: 
-	@make -C UnitTest++
+	@make -C UnitTest++ DEBUG=$(DEBUG)
 
 mypattern-base-test: mypattern-base UnitTest 
-	@make -C mypattern-base-test
+	@make -C mypattern-base-test DEBUG=$(DEBUG)
 	@cd mypattern-base-test; ./mypattern-base-test $(OUTPUT)
 
 mypattern-data-test: mypattern-base mypattern-data 
-	@make -C mypattern-data-test
+	@make -C mypattern-data-test DEBUG=$(DEBUG)
 	@cd mypattern-data-test; ./mypattern-data-test $(OUTPUT)
 

@@ -3,6 +3,8 @@
 
 #include "glibmm/regex.h"
 
+#include <iostream>
+
 namespace MyPattern {
     namespace Data {
 
@@ -55,6 +57,7 @@ namespace MyPattern {
                                                                    (Glib::RegexCompileFlags)0,
                                                                    (Glib::RegexMatchFlags)0);
 
+																   
             Glib::MatchInfo matchinfo;
 
 
@@ -62,6 +65,7 @@ namespace MyPattern {
             {
                 Glib::ustring full_match =  matchinfo.fetch(0);
                 Glib::ustring name_match = matchinfo.fetch(1);
+				
 
                 end_index = start_index + full_match.length() - 1;
 

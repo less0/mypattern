@@ -76,7 +76,8 @@ namespace MyPattern
                 * recursive parsing approach is implemented, that reads and
                 * parses the nodes all at once.
                 */
-                static list<shared_ptr<XmlNode>> parse_subnodes(Glib::ustring schema, Glib::ustring parentNodeName, int start_index, int& end_index);
+                static list<shared_ptr<XmlNode>> parse_subnodes(Glib::ustring schema, Glib::ustring parentNodeName, int start_index, int& end_index, ustring& text);
+				static shared_ptr<XmlNode> parse_node(Glib::ustring schema, int start_index, int& end_index);
                 static shared_ptr<XmlElement> parse_element(Glib::ustring schema, int start_index);
                 static Glib::ustring get_tag(Glib::ustring schema, int index);
                 static int find_end_tag(Glib::ustring schema,Glib::ustring tag_name);

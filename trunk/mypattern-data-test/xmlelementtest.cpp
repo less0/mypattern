@@ -3,6 +3,7 @@
 #include "xmlexception.h"
 
 #include <list>
+#include <iostream>
 
 using namespace std;
 using namespace MyPattern::Data;
@@ -10,20 +11,20 @@ using namespace MyPattern::Data;
 namespace
 {
     TEST(TestXmlElementWithoutAttributes)
-    {
+	{
         int end_index;
         MyPattern::Data::XmlElement::parse_element("<foo>",0,end_index);
         CHECK_EQUAL(4, end_index);
     }
 
     TEST(TestXmlElementEmptyAndEndElement)
-    {
+	{
         int endIndex= 0;
         CHECK_THROW(XmlElement::parse_element("</foo/>", 0, endIndex), MyPattern::Data::XmlException);
     }
 
     TEST(TestXmlElement)
-    {
+	{
         int nextIndex = 0;
         MyPattern::Data::XmlElement element = MyPattern::Data::XmlElement::parse_element("<test int=\"1\" double=\"1.2\"><foo>", 0, nextIndex);
         CHECK_EQUAL(26, nextIndex);
@@ -35,7 +36,7 @@ namespace
     }
 
     TEST(TestEmptyElement)
-    {
+	{
         int nextIndex = 0;
         MyPattern::Data::XmlElement element = XmlElement::parse_element("<fooBar />", 0, nextIndex);
         CHECK_EQUAL(9, nextIndex);
@@ -43,7 +44,7 @@ namespace
     }
 
     TEST(TestEndElement)
-    {
+	{
         int nextIndex = 0;
         XmlElement element = XmlElement::parse_element("</fooBar>", 0, nextIndex);
         CHECK_EQUAL(8, nextIndex);
@@ -51,13 +52,13 @@ namespace
     }
 
     TEST(TestMalformattedEndTag)
-    {
+	{
         int nextIndex = 0;
         CHECK_THROW(XmlElement::parse_element("</ barfoo>", 0, nextIndex), XmlException);
     }
 
     TEST(TestMalformattedParameters)
-    {
+	{
         int nextIndex = 0;
         CHECK_THROW(XmlElement::parse_element("<foo bar>", 0, nextIndex), XmlException);
     }

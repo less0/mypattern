@@ -14,10 +14,12 @@
 #include "evaluation/formula/term.h"
 #include "patternobject.h"
 #include "evaluation/evaluationtreeobserver.h"
+#include "mypattern-data.h"
 
 using namespace std;
 using namespace MyPattern::Base::Evaluation::Formula;
 using namespace MyPattern::Base::Evaluation;
+using namespace MyPattern::Data;
 using namespace Glib;
 
 namespace MyPattern
@@ -128,6 +130,8 @@ namespace MyPattern
                  * all dependent EvaluationTreeNode objects
                 */
                 sigc::signal0<void> signal_changed;
+				
+				static shared_ptr<Landmark> deserialize_from_xml(shared_ptr<XmlNode>);
             private:
                 //data
                 Glib::ustring m_name; /*!<\brief Name of the Landmark */
