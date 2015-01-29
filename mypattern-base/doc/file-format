@@ -101,20 +101,20 @@ measure value.
 			<lmref>ul</lmref>
 			<lmref>ur</lmref>
 		</curve>
-		<curve name="u" type="bezier">
+		<curve name="r" type="bezier">
 			<!-- Not all landmarks have to be defined, yet -->
 			<lmref>ur</lmref>
 			<lmref>lr</lmref>
 			<lmref>ur</lmref>
 			<lmref>lr</lmref>
 		</curve>
-		<curve name="u" type="bezier">
+		<curve name="w" type="bezier">
 			<lmref>lr</lmref>
 			<lmref>ll</lmref>
 			<lmref>lr</lmref>
 			<lmref>ll</lmref>
 		</curve>
-		<curve name="u" type="bezier">
+		<curve name="l" type="bezier">
 			<lmref>ll</lmref>
 			<lmref>ul</lmref>
 			<lmref>ll</lmref>

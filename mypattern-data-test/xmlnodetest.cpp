@@ -2,47 +2,55 @@
 #include "xmlnode.h"
 #include <memory>
 #include <list>
+#include <iostream>
 
 using namespace MyPattern::Data;
 
 namespace
 {
     TEST(TestCreateXmlNode)
-    {
+	{
         XmlNode node("myNode");
         CHECK_EQUAL("myNode", node.get_name());
     }
 
     TEST(TestCopyXmlNode)
-    {
+	{
         XmlNode node("testNode");
         XmlNode copyNode(node);
         CHECK_EQUAL("testNode", copyNode.get_name());
     }
 
     TEST(TestParseRootNodeFromXml)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooBar></fooBar>");
         CHECK_EQUAL("fooBar", rootNode->get_name());
     }
 
     TEST(TestParseEmptyNodeFromXml)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooFoo />");
         CHECK_EQUAL("fooFoo", rootNode->get_name());
     }
-
+ 
     TEST(TestParseSubnodeFromXml)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooBar><barFoo></barFoo></fooBar>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
         CHECK_EQUAL(false, it == subnodes.end());
         CHECK_EQUAL("barFoo", (*it)->get_name());
     }
+	
+	TEST(SetNodeText)
+	{
+		shared_ptr<XmlNode> node = shared_ptr<XmlNode>(new XmlNode("foo"));
+		node->set_text("bar");
+		CHECK_EQUAL("bar", node->get_text());
+	}
 
     TEST(ParseMultipleSubnodes)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<Foo><Bar1></Bar1><Bar2></Bar2><Bar3></Bar3></Foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
         CHECK_EQUAL(3, subnodes.size());
@@ -57,13 +65,13 @@ namespace
     }
 
     TEST(ParseWithSpaces)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooBar ></fooBar>");
         CHECK_EQUAL("fooBar", rootNode->get_name());
     }
 
     TEST(ParseSubnodeWithSpaces)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooBar><barFoo ></barFoo></fooBar>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
         CHECK_EQUAL(1, subnodes.size());
@@ -73,7 +81,7 @@ namespace
     }
 
     TEST(ParseMultipleSubnodesWithSpaces)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar1 ></bar1><bar2 ></bar2><bar3></bar3></foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
         CHECK_EQUAL(3, subnodes.size());
@@ -89,7 +97,7 @@ namespace
     }
 
     TEST(ParseMultipleLevelsOfSubnodes)
-    {
+	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><fooBar></fooBar></bar></foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
         CHECK_EQUAL(1, subnodes.size());
@@ -102,7 +110,7 @@ namespace
     }
 
     TEST(ParseMultipleLevelsOfSubnodesWithSameName)
-    {
+	{
         //UNITTEST_TIME_CONSTRAINT(20);
 
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><bar></bar></bar></foo>");
@@ -117,9 +125,9 @@ namespace
     }
 
     TEST(ParseTextNode)
-    {
-        shared_ptr<XmlNode> textNode = XmlNode::parse("<qux>This is a >Text</qux>");
+	{
+        shared_ptr<XmlNode> textNode = XmlNode::parse(ustring("<qux>This is a >Text</qux>"));
         CHECK_EQUAL("qux", textNode->get_name());
-        //CHECK_EQUAL("This is a >Text", textNode->get_text());
+        CHECK_EQUAL("This is a >Text", textNode->get_text());
     }
 }

@@ -1,7 +1,9 @@
 #include "UnitTest++.h"
 #include "landmark.h"
+#include "mypattern-base.h"
 
 using namespace MyPattern::Base;
+using namespace MyPattern::Exceptions;
 
 namespace
 {
@@ -40,5 +42,74 @@ namespace
         CHECK_EQUAL("$lm2", *it);
     }
 
+	TEST(DeserializeFromXml)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", "TEST"));
+		landmarkNode->add_attribute(XmlAttribute("x", "1.0+2.14159"));
+		landmarkNode->add_attribute(XmlAttribute("y", "-0.5+0.5"));
+		
+		shared_ptr<Landmark> parsedLandmark = Landmark::deserialize_from_xml(landmarkNode);
+		
+		CHECK_EQUAL(false, parsedLandmark == NULL);
+		CHECK_EQUAL("TEST", parsedLandmark->get_name());
+	}
+	
+	TEST(ExceptionNameEmpty)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", ""));
+		landmarkNode->add_attribute(XmlAttribute("x", "1.0+2.14159"));
+		landmarkNode->add_attribute(XmlAttribute("y", "-0.5+0.5"));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
+	}
+	
+	TEST(ExceptionNameMissing)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("x", "1.0+2.14159"));
+		landmarkNode->add_attribute(XmlAttribute("y", "-0.5+0.5"));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
+	}
+	
+	TEST(DeserializeExceptionXEmpty)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", "TEST"));
+		landmarkNode->add_attribute(XmlAttribute("x", ""));
+		landmarkNode->add_attribute(XmlAttribute("y", "-0.5+0.5"));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
+	}
+	
+	TEST(DeserializeExceptionXMissing)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", "TEST"));
+		landmarkNode->add_attribute(XmlAttribute("y", "-0.5+0.5"));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
+	}
+	
+	TEST(DeserializeExceptionYEmpty)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", "TEST"));
+		landmarkNode->add_attribute(XmlAttribute("x", "1.0+2.14159"));
+		landmarkNode->add_attribute(XmlAttribute("y", ""));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
 
+	}
+	
+	TEST(DeserializeExceptionYMissing)
+	{
+		shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+		landmarkNode->add_attribute(XmlAttribute("name", "TEST"));
+		landmarkNode->add_attribute(XmlAttribute("x", "1.0+2.14159"));
+		
+		CHECK_THROW(Landmark::deserialize_from_xml(landmarkNode), ArgumentException);
+	}
 }

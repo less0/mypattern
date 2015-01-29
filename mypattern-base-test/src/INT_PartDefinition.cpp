@@ -280,11 +280,89 @@ TEST(ParseFromXml)
     curve_node->add_attribute(XmlAttribute("name", "c1"));
     curve_node->add_attribute(XmlAttribute("type", "bezier"));
     shared_ptr<XmlNode> lmref1 = shared_ptr<XmlNode>(new XmlNode("lmref"));
+	lmref1->set_text("lm1");
+	curve_node->add_node(lmref1);
 
     shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
     measures->define("mv1", "test", 1.0);
 
     shared_ptr<PartDefinition> parsedPartDefiniton = PartDefinition::deserialize_from_xml(partDefinitionNode, measures);
 	CHECK_EQUAL(false, parsedPartDefiniton == NULL);
+	CHECK_EQUAL("part1", parsedPartDefiniton->get_name());
+	
+	list<shared_ptr<Landmark>> landmarks = parsedPartDefiniton->get_landmarks();
+	CHECK_EQUAL(4, landmarks.size());
+	
+	list<shared_ptr<Landmark>>::iterator it = landmarks.begin();
+	CHECK_EQUAL("lm1", (*it)->get_name());
+	CHECK_EQUAL("0", (*it)->get_definition_x());
+	
+	it++;
+	CHECK_EQUAL("lm2", (*it)->get_name());
+	CHECK_EQUAL("#mv1", (*it)->get_definition_x());
+	CHECK_EQUAL("0", (*it)->get_definition_y());
+	
+	list<shared_ptr<CurveDefinition>> curveDefinitions = parsedPartDefiniton->get_curve_definitions();
+	list<shared_ptr<CurveDefinition>>::iterator it_curve = curveDefinitions.begin();
+	list<ustring> lmrefs = (*it_curve)->get_landmarks();
+	
+	Part evaluatedPart = parsedPartDefiniton->get_part();
+	
+}
+
+TEST(ParseInvalidNodeException)
+{
+    shared_ptr<XmlNode> partDefinitionNode = shared_ptr<XmlNode>(new XmlNode("part"));
+    partDefinitionNode->add_attribute(XmlAttribute("name", "part1"));
+
+    shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmurks"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm1"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("y", "0"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
+    measures->define("mv1", "test", 1.0);
+
+	CHECK_THROW(PartDefinition::deserialize_from_xml(partDefinitionNode, measures), ArgumentException);
+}
+
+TEST(ParseNameMissingException)
+{
+    shared_ptr<XmlNode> partDefinitionNode = shared_ptr<XmlNode>(new XmlNode("part"));
+
+    shared_ptr<XmlNode> landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm1"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("y", "0"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm2"));
+    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
+    landmarkNode->add_attribute(XmlAttribute("y", "0"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm3"));
+    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
+    landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
+    landmarkNode->add_attribute(XmlAttribute("name", "lm4"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
+    partDefinitionNode->add_node(landmarkNode);
+
+    shared_ptr<XmlNode> curve_node = shared_ptr<XmlNode>(new XmlNode("curve"));
+    curve_node->add_attribute(XmlAttribute("name", "c1"));
+    curve_node->add_attribute(XmlAttribute("type", "bezier"));
+    shared_ptr<XmlNode> lmref1 = shared_ptr<XmlNode>(new XmlNode("lmref"));
+
+    shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
+    measures->define("mv1", "test", 1.0);
+
+    CHECK_THROW(PartDefinition::deserialize_from_xml(partDefinitionNode, measures), ArgumentException);
 }
 }

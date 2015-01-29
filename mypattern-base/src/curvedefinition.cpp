@@ -1,5 +1,7 @@
 #include "curvedefinition.h"
 
+#include <iostream>
+
 using namespace MyPattern::Base;
 
 
@@ -37,7 +39,17 @@ bool CurveDefinition::set_name(Glib::ustring name)
 
 list<ustring> CurveDefinition::get_landmarks()
 {
-    return m_landmarks;
+	list<ustring> result;
+	list<ustring> in = m_landmarks;
+	
+	for(list<ustring>::iterator it = in.begin();
+		it != in.end();
+		it++)
+	{
+		result.push_back(*it);
+	}
+	
+    return result;
 }
 
 void CurveDefinition::set_landmarks(list<ustring> landmarks)
@@ -84,9 +96,9 @@ list<ustring> CurveDefinition::get_registered_class_names()
 }
 
 
-shared_ptr<CurveDefinition> CurveDefinition::deserialize(XmlNode node)
+shared_ptr<CurveDefinition> CurveDefinition::deserialize_from_xml(shared_ptr<XmlNode> node)
 {
-    if(node.get_name() != "curve")
+    if(node->get_name() != "curve")
     {
         throw MyPattern::Exceptions::Exception();
     }
@@ -95,7 +107,7 @@ shared_ptr<CurveDefinition> CurveDefinition::deserialize(XmlNode node)
     list<XmlAttribute> attributes;
     ustring type;
 
-    attributes = node.get_attributes();
+    attributes = node->get_attributes();
 
     for(list<XmlAttribute>::iterator it = attributes.begin();
         it != attributes.end();
@@ -113,7 +125,7 @@ shared_ptr<CurveDefinition> CurveDefinition::deserialize(XmlNode node)
     {
         if((*it)->get_class_name() == type)
         {
-            (*it)->deserialize_from_xml(node);
+            deserialized_definition = (*it)->deserialize_class_from_xml(node);
         }
     }
 

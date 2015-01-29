@@ -42,6 +42,7 @@
 #include "exceptions/objectnametakenevaluationexception.h"
 #include "exceptions/circulardependencyevaluationexception.h"
 #include "exceptions/argumentnullexception.h"
+#include "exceptions/argumentexception.h"
 #include "user.h"
 #include "patterndefinition.h"
 #include "landmark.h"

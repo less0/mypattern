@@ -1,5 +1,7 @@
 #include "bezierdefinition.h"
 
+#include "exceptions/argumentexception.h"
+
 #include <sstream>
 #include <iostream>
 
@@ -51,23 +53,51 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
 
 Glib::ustring BezierDefinition::get_class_name()
 {
-    return "Bezier";
+    return "bezier";
 }
 
-shared_ptr<CurveDefinition> BezierDefinition::deserialize_from_xml(XmlNode node)
+shared_ptr<CurveDefinition> BezierDefinition::deserialize_class_from_xml(shared_ptr<XmlNode> node)
 {
-    if(node.get_name() != "curve")
+    if(node->get_name() != "curve")
     {
-
+		throw ArgumentException("Invalid node name");
     }
+	
+	shared_ptr<BezierDefinition> parsedBezierDefinition = shared_ptr<BezierDefinition>(new BezierDefinition());
+	
+	list<XmlAttribute> attributes = node->get_attributes();
+	for(list<XmlAttribute>::iterator it = attributes.begin();
+		it != attributes.end();
+		it++)
+	{
+		if(it->get_name() == "name")
+		{
+			parsedBezierDefinition->set_name(it->get_value());
+		}
+	}
+	
+	list<ustring> landmarkNames;
+	list<shared_ptr<XmlNode>> subnodes = node->get_nodes();
+	
+	for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+		it != subnodes.end();
+		it++)
+	{
+		if((*it)->get_name() == "lmref"
+			&& (*it)->get_text() != "")
+		{
+			landmarkNames.push_back((*it)->get_text());
+		}
+	}
+	parsedBezierDefinition->set_landmarks(landmarkNames);
 
-    return shared_ptr<CurveDefinition>(NULL);
+    return parsedBezierDefinition;
 
 }
 
-XmlNode BezierDefinition::serialize_to_xml()
+shared_ptr<XmlNode> BezierDefinition::serialize_to_xml()
 {
-    return XmlNode();
+    return shared_ptr<XmlNode>(NULL);
 }
 
 //shared_ptr<XmlNode> BezierDefinition::get_xml()

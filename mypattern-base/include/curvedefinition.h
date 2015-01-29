@@ -39,8 +39,8 @@ namespace MyPattern
                 */
                 virtual BezierComplex get_bezier(list<Point>) = 0;
                 virtual ustring get_class_name() = 0;
-                virtual XmlNode serialize_to_xml() = 0;
-                virtual shared_ptr<CurveDefinition> deserialize_from_xml(XmlNode) = 0;
+                virtual shared_ptr<XmlNode> serialize_to_xml() = 0;
+                virtual shared_ptr<CurveDefinition> deserialize_class_from_xml(shared_ptr<XmlNode>) = 0;
 
 //
 
@@ -83,7 +83,7 @@ namespace MyPattern
                 static void register_class(shared_ptr<CurveDefinition> prototype);
                 static shared_ptr<CurveDefinition> create_instance(ustring class_name);
                 static list<ustring> get_registered_class_names();
-                static shared_ptr<CurveDefinition> deserialize(XmlNode);
+                static shared_ptr<CurveDefinition> deserialize_from_xml(shared_ptr<XmlNode>);
             protected:
             private:
                 ustring m_name;

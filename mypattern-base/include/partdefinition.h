@@ -136,6 +136,8 @@ namespace MyPattern
                     shared_ptr<Measures> measures);
             protected:
             private:
+				void add_objects(list<shared_ptr<PatternObject>> objectsToAdd);
+			
                 sigc::signal1<bool,Glib::ustring> m_signal_name_change_request;
 
                 list<shared_ptr<CurveDefinition>> m_curve_definitions;
