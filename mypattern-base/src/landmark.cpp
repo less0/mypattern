@@ -1,6 +1,8 @@
 #include "landmark.h"
 #include "evaluation/formula/term.h"
 #include "exceptions/formulaevaluationexception.h"
+#include "exceptions/argumentexception.h"
+
 
 
 #include <sstream>
@@ -195,4 +197,64 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
 Point Landmark::get_point(map<ustring,double> values)
 {
 	return Point(m_x_term->evaluate(values), m_y_term->evaluate(values));
+}
+
+shared_ptr<Landmark> Landmark::deserialize_from_xml(shared_ptr<XmlNode> node)
+{
+	if(node->get_name() != "landmark")
+	{
+		throw ArgumentException("Wrong node type");
+	}
+	
+	bool parsedName = false;
+	bool parsedXDefinition = false;
+	bool parsedYDefinition = false;
+
+	shared_ptr<Landmark> parsedLandmark = shared_ptr<Landmark>(new Landmark());
+	
+	list<XmlAttribute> attributes = node->get_attributes();
+	for(list<XmlAttribute>::iterator it = attributes.begin();
+		it != attributes.end();
+		it++)
+	{
+		if(it->get_name() == "name")
+		{
+			if(it->get_value() == "")
+			{
+				throw ArgumentException("Empty landmark name");
+			}
+		
+			parsedLandmark->set_name(it->get_value());
+			parsedName = true;
+		}
+		else if(it->get_name() == "x")
+		{
+			if(it->get_value() == "")
+			{
+				throw ArgumentException("Empty landmark x definition");
+			}
+		
+			parsedLandmark->set_definition_x(it->get_value());
+			parsedXDefinition = true;
+		}
+		else if(it->get_name() == "y")
+		{
+			if(it->get_value() == "")
+			{
+				throw ArgumentException("Empty landmark y definition");
+			}
+			
+			parsedLandmark->set_definition_y(it->get_value());
+			parsedYDefinition = true;
+		}
+	}
+	
+	if(!parsedXDefinition
+		|| !parsedYDefinition
+		|| !parsedName)
+	{
+		throw ArgumentException("Incomplete landmark");
+	}
+
+	return parsedLandmark;
 }

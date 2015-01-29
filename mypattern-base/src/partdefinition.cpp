@@ -1,4 +1,4 @@
-#include "partdefinition.h"
+#include "mypattern-base.h"
 
 #include <sstream>
 
@@ -130,5 +130,59 @@ sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
 shared_ptr<PartDefinition> PartDefinition::deserialize_from_xml(
                     shared_ptr<XmlNode> node, shared_ptr<Measures> measures)
 {
-	return shared_ptr<PartDefinition>(NULL);
+	if(node->get_name() != "part")
+	{
+		throw ArgumentException("Invalid node");
+	}
+	
+	shared_ptr<PartDefinition> parsedPartDefinition = shared_ptr<PartDefinition>(new PartDefinition());
+	parsedPartDefinition->set_measures(measures);
+	
+	list<XmlAttribute> attributes = node->get_attributes();
+	bool parsedName = false;
+	
+	for(list<XmlAttribute>::iterator it = attributes.begin();
+		it != attributes.end();
+		it++)
+	{
+		if(it->get_name() == "name")
+		{
+			parsedPartDefinition->set_name(it->get_value());
+			parsedName = true;
+		}
+	}
+	
+	if(!parsedName)
+	{
+		throw ArgumentException("Name of part missing");
+	}
+	
+	list<shared_ptr<PatternObject>> parsedPatternObjects;
+	list<shared_ptr<XmlNode>> subnodes = node->get_nodes();
+	
+	for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
+		it != subnodes.end();
+		it++)
+	{
+		if((*it)->get_name() == "curve")
+		{
+			shared_ptr<CurveDefinition> parsedCurveDefinition = CurveDefinition::deserialize_from_xml(*it);
+			parsedPatternObjects.push_back(parsedCurveDefinition);
+			parsedPartDefinition->m_curve_definitions.push_back(parsedCurveDefinition);
+		}
+		else if((*it)->get_name() == "landmark")
+		{
+			shared_ptr<Landmark> parsedLandmark = Landmark::deserialize_from_xml(*it);
+			parsedPatternObjects.push_back(parsedLandmark);
+			parsedPartDefinition->m_landmarks.push_back(parsedLandmark);
+		}
+		else
+		{
+			throw ArgumentException("Unknown node type");
+		}
+	}
+	
+	parsedPartDefinition->m_evaluationRoot.add_objects(parsedPatternObjects);
+
+	return parsedPartDefinition;
 }
