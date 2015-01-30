@@ -73,12 +73,17 @@ void CurveDefinition::register_class(shared_ptr<CurveDefinition> prototype)
     {
         if((*it)->get_class_name() == prototype->get_class_name());
         {
-            //TODO (paul#8#) throw exception class object
-            throw "";
+            return; //if a type with the class name has already been registered return
+					//without doing anything
         }
     }
 
     CurveDefinition::m_registered_classes.push_back(prototype);
+}
+
+void CurveDefinition::unregister_all_classes()
+{
+	CurveDefinition::m_registered_classes.clear();
 }
 
 list<ustring> CurveDefinition::get_registered_class_names()
