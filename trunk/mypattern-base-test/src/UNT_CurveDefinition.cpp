@@ -9,24 +9,32 @@ using namespace MyPattern::Exceptions;
 
 namespace
 {
-	
+	struct CurveDefinitionFixture
+	{
+		CurveDefinitionFixture()
+		{
+			CurveDefinition::unregister_all_classes();
+		}
+	};
 
-    TEST(TestRegisterClasses)
+    TEST_FIXTURE(CurveDefinitionFixture, TestRegisterClasses)
     {
+		list<ustring> class_names = CurveDefinition::get_registered_class_names();
+		
         shared_ptr<CurveDefinition> bezier_prototype = shared_ptr<CurveDefinition>(new BezierDefinition());
 
         CurveDefinition::register_class(bezier_prototype);
-        list<ustring> class_names = CurveDefinition::get_registered_class_names();
+        class_names = CurveDefinition::get_registered_class_names();
         CHECK_EQUAL(1, class_names.size());
 		list<ustring>::iterator it = class_names.begin();
 		CHECK_EQUAL("bezier", *it);
     }
 
-	TEST(DeserializeFromXml)
+	TEST_FIXTURE(CurveDefinitionFixture, DeserializeFromXml)
 	{
 		
-			// shared_ptr<CurveDefinition> bezier_prototype = shared_ptr<CurveDefinition>(new BezierDefinition());
-			// CurveDefinition::register_class(bezier_prototype);
+			shared_ptr<CurveDefinition> bezier_prototype = shared_ptr<CurveDefinition>(new BezierDefinition());
+			CurveDefinition::register_class(bezier_prototype);
 			
 			shared_ptr<XmlNode> curveNode = shared_ptr<XmlNode>(new XmlNode("curve"));
 			curveNode->add_attribute(XmlAttribute("name", "FooBar"));

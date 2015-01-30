@@ -249,6 +249,9 @@ TEST_FIXTURE(PartDefinitionFixture, ChangeNameFail)
 
 TEST(ParseFromXml)
 {
+	shared_ptr<BezierDefinition> bezierPrototype = shared_ptr<BezierDefinition>(new BezierDefinition());
+	CurveDefinition::register_class(bezierPrototype);
+	
     shared_ptr<XmlNode> partDefinitionNode = shared_ptr<XmlNode>(new XmlNode("part"));
     partDefinitionNode->add_attribute(XmlAttribute("name", "part1"));
 
@@ -282,6 +285,7 @@ TEST(ParseFromXml)
     shared_ptr<XmlNode> lmref1 = shared_ptr<XmlNode>(new XmlNode("lmref"));
 	lmref1->set_text("lm1");
 	curve_node->add_node(lmref1);
+	partDefinitionNode->add_node(curve_node);
 
     shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
     measures->define("mv1", "test", 1.0);
@@ -303,8 +307,12 @@ TEST(ParseFromXml)
 	CHECK_EQUAL("0", (*it)->get_definition_y());
 	
 	list<shared_ptr<CurveDefinition>> curveDefinitions = parsedPartDefiniton->get_curve_definitions();
+	CHECK_EQUAL(1, curveDefinitions.size());
 	list<shared_ptr<CurveDefinition>>::iterator it_curve = curveDefinitions.begin();
-	list<ustring> lmrefs = (*it_curve)->get_landmarks();
+	CHECK_EQUAL(false, *it_curve == NULL);
+	// CHECK_EQUAL("c1", (*it_curve)->get_name());
+	//list<ustring> lmrefs = (*it_curve)->get_landmarks();
+	
 	
 	Part evaluatedPart = parsedPartDefiniton->get_part();
 	

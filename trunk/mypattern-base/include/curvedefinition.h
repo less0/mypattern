@@ -81,6 +81,7 @@ namespace MyPattern
                 sigc::signal0<void> signal_changed;
 
                 static void register_class(shared_ptr<CurveDefinition> prototype);
+				static void unregister_all_classes();
                 static shared_ptr<CurveDefinition> create_instance(ustring class_name);
                 static list<ustring> get_registered_class_names();
                 static shared_ptr<CurveDefinition> deserialize_from_xml(shared_ptr<XmlNode>);
