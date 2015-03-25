@@ -32,6 +32,11 @@ void Point::set_y(double y)
     m_y = y;
 }
 
+void Point::set_landmark_name(Glib::ustring nameToSet)
+{
+	m_landmark_name = nameToSet;
+}
+
 double Point::get_x()
 {
     return m_x;
@@ -40,6 +45,11 @@ double Point::get_x()
 double Point::get_y()
 {
     return m_y;
+}
+
+Glib::ustring Point::get_landmark_name()
+{
+	return m_landmark_name;
 }
 
 double Point::abs()
@@ -94,7 +104,3 @@ void Point::draw(shared_ptr<Cairo::Context> context, bool selected)
     context->stroke();
 }
 
-Glib::ustring Point::get_landmark_name()
-{
-    return m_landmark_name;
-}

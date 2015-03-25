@@ -196,7 +196,9 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
 
 Point Landmark::get_point(map<ustring,double> values)
 {
-	return Point(m_x_term->evaluate(values), m_y_term->evaluate(values));
+	Point result = Point(m_x_term->evaluate(values), m_y_term->evaluate(values));
+	result.set_landmark_name(m_name);
+	return result;
 }
 
 shared_ptr<Landmark> Landmark::deserialize_from_xml(shared_ptr<XmlNode> node)
