@@ -1,10 +1,11 @@
 # all: %.o
 
 OBJ=./src/TestResults.o ./src/Checks.o ./src/AssertException.o ./src/CurrentTest.o ./src/tests/TestCheckMacros.o ./src/tests/TestUnitTest++.o ./src/tests/TestTestMacros.o ./src/tests/TestTestSuite.o ./src/tests/TestTimeConstraintMacro.o ./src/tests/TestTestList.o ./src/tests/TestMemoryOutStream.o ./src/tests/TestTest.o ./src/tests/TestTestResults.o ./src/tests/TestCurrentTest.o ./src/tests/TestDeferredTestReporter.o ./src/tests/TestChecks.o ./src/tests/TestTestRunner.o ./src/tests/Main.o ./src/tests/TestAssertHandler.o ./src/tests/TestTimeConstraint.o ./src/tests/TestXmlTestReporter.o ./src/TimeConstraint.o ./src/ReportAssert.o ./src/TestReporter.o ./src/TestRunner.o ./src/Test.o ./src/TestList.o ./src/DeferredTestReporter.o ./src/TestReporterStdout.o ./src/DeferredTestResult.o ./src/MemoryOutStream.o ./src/XmlTestReporter.o ./src/JUnitStyleReporter.o ./src/TestDetails.o
-UNAME=$(shell uname)
-MINGW=$(findstring MINGW,$(UNAME))
 DEBUG?=FALSE
 CC_OPTIONS=-Wall -std=c++0x -c
+
+UNAME=$(shell uname)
+MINGW=$(findstring MINGW,$(UNAME))
 
 ifeq ($(MINGW),MINGW)
 	OBJ+= ./src/Win32/TimeHelpers.o

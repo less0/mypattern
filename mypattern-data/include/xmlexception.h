@@ -1,6 +1,7 @@
 #ifndef XMLEXCEPTION_H
 #define XMLEXCEPTION_H
 
+#include <glibmm/ustring.h>
 #include <exception.h>
 
 namespace MyPattern {

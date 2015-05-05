@@ -1,6 +1,6 @@
 # all: %.o
 
-OBJ=./xmlnodetest.o ./xmlelementtest.o ./main.o ./xmlparametertest.o
+OBJ=./xmlnodetest.o ./xmlelementtest.o ./xmlparametertest.o ./main.o
 DEBUG?=FALSE
 
 CC_OPTIONS=-Wall -std=c++0x $(shell pkg-config --cflags --libs gtkmm-3.0) 
@@ -12,7 +12,7 @@ endif
 INCLUDES=-I../mypattern-base/include -I../mypattern-data/include -I../UnitTest++/src -I./include -I../mypattern-exceptions/include
 
 LIBDIRS=-L../mypattern-base/ -L../mypattern-data/ -L../UnitTest++/ -L../mypattern-exceptions
-LIBRARIES=-lUnitTest++ -lmypattern-data -lmypattern-base -lmypattern-exceptions
+LIBRARIES=-lUnitTest++ -lmypattern-data -lmypattern-exceptions
 
 mypattern-data-test: message-mypattern-data-test $(OBJ)
 	@g++ $(LIBDIRS) $(INCLUDES) $(OBJ) $(LIBRARIES) $(CC_OPTIONS) -o mypattern-data-test

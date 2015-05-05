@@ -47,7 +47,6 @@
 			<Add directory="../mypattern-data/include" />
 			<Add directory="../UnitTest++/src" />
 			<Add directory="../mypattern-exceptions/include" />
-			<Add directory="../mypattern-exceptions/include" />
 		</Compiler>
 		<Linker>
 			<Add directory="../mypattern-data" />
@@ -63,7 +62,6 @@
 			<debugger />
 			<envvars />
 			<lib_finder>
-				<lib name="gtkmm-3.0" />
 				<lib name="glibmm-2.4" />
 				<lib name="glib-2.0" />
 			</lib_finder>

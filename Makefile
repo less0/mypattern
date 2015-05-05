@@ -46,7 +46,7 @@ mypattern-base-test: mypattern-base UnitTest
 	@make -C mypattern-base-test DEBUG=$(DEBUG)
 	@cd mypattern-base-test; ./mypattern-base-test $(OUTPUT)
 
-mypattern-data-test: mypattern-base mypattern-data 
+mypattern-data-test: mypattern-data UnitTest
 	@make -C mypattern-data-test DEBUG=$(DEBUG)
 	@cd mypattern-data-test; ./mypattern-data-test $(OUTPUT)
 
