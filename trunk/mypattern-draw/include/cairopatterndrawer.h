@@ -13,7 +13,9 @@ namespace MyPattern
                 CairoPatternDrawer(Cairo::RefPtr<Cairo::Context> context);
                 ~CairoPatternDrawer();
 
-                void draw(std::shared_ptr<MyPattern::Base::Part>);
+                void draw(MyPattern::Base::Part);
+                void draw_page(MyPattern::Base::Part, int, int);
+                MyPattern::Draw::Size get_size(MyPattern::Base::Part);
             protected:
             private:
                 Cairo::RefPtr<Cairo::Context> m_cairoContext;

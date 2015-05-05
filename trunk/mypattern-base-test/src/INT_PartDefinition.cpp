@@ -2,6 +2,8 @@
 #include "measures.h"
 #include "UnitTest++.h"
 
+#include <iostream>
+
 using namespace MyPattern::Data;
 
 namespace PartDefintionIntegration
@@ -269,22 +271,35 @@ TEST(ParseFromXml)
 
     landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
     landmarkNode->add_attribute(XmlAttribute("name", "lm3"));
-    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
+    landmarkNode->add_attribute(XmlAttribute("x", "0"));
     landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
     partDefinitionNode->add_node(landmarkNode);
 
     landmarkNode = shared_ptr<XmlNode>(new XmlNode("landmark"));
     landmarkNode->add_attribute(XmlAttribute("name", "lm4"));
-    landmarkNode->add_attribute(XmlAttribute("x", "0"));
+    landmarkNode->add_attribute(XmlAttribute("x", "#mv1"));
     landmarkNode->add_attribute(XmlAttribute("y", "#mv1"));
     partDefinitionNode->add_node(landmarkNode);
 
     shared_ptr<XmlNode> curve_node = shared_ptr<XmlNode>(new XmlNode("curve"));
     curve_node->add_attribute(XmlAttribute("name", "c1"));
     curve_node->add_attribute(XmlAttribute("type", "bezier"));
-    shared_ptr<XmlNode> lmref1 = shared_ptr<XmlNode>(new XmlNode("lmref"));
-	lmref1->set_text("lm1");
-	curve_node->add_node(lmref1);
+	
+	list<ustring> landmark_references;
+	landmark_references.push_back("lm1");
+	landmark_references.push_back("lm2");
+	landmark_references.push_back("lm3");
+	landmark_references.push_back("lm4");
+	
+	for(list<ustring>::iterator it = landmark_references.begin();
+		it != landmark_references.end();
+		it++)
+	{
+		shared_ptr<XmlNode> lmref = shared_ptr<XmlNode>(new XmlNode("lmref"));
+		lmref->set_text(*it);
+		curve_node->add_node(lmref);
+	}
+		
 	partDefinitionNode->add_node(curve_node);
 
     shared_ptr<Measures> measures = shared_ptr<Measures>(new Measures());
@@ -310,12 +325,54 @@ TEST(ParseFromXml)
 	CHECK_EQUAL(1, curveDefinitions.size());
 	list<shared_ptr<CurveDefinition>>::iterator it_curve = curveDefinitions.begin();
 	CHECK_EQUAL(false, *it_curve == NULL);
-	// CHECK_EQUAL("c1", (*it_curve)->get_name());
-	//list<ustring> lmrefs = (*it_curve)->get_landmarks();
-	
+	CHECK_EQUAL("c1", (*it_curve)->get_name());
+	list<ustring> lmrefs = (*it_curve)->get_landmarks();
+	CHECK_EQUAL(4, lmrefs.size());
+	list<ustring>::iterator it_lmrefs = lmrefs.begin();
+	CHECK_EQUAL("lm1", *it_lmrefs++);
+	CHECK_EQUAL("lm2", *it_lmrefs++);
+	CHECK_EQUAL("lm3", *it_lmrefs++);
+	CHECK_EQUAL("lm4", *it_lmrefs);
 	
 	Part evaluatedPart = parsedPartDefiniton->get_part();
+	list<Point> points = evaluatedPart.get_points();
+	list<Point>::iterator it_points = points.begin();
+	CHECK_EQUAL(0, it_points->get_x());
+	CHECK_EQUAL(0, it_points->get_y());
+	CHECK_EQUAL("lm1", it_points->get_landmark_name());
+	it_points++;
+	CHECK_EQUAL(1, it_points->get_x());
+	CHECK_EQUAL(0, it_points->get_y());
+	CHECK_EQUAL("lm2", it_points->get_landmark_name());
+	it_points++;
+	CHECK_EQUAL(0, it_points->get_x());
+	CHECK_EQUAL(1, it_points->get_y());
+	CHECK_EQUAL("lm3", it_points->get_landmark_name());
+	it_points++;
+	CHECK_EQUAL(1, it_points->get_x());
+	CHECK_EQUAL(1, it_points->get_y());
+	CHECK_EQUAL("lm4", it_points->get_landmark_name());
 	
+	list<BezierComplex> curves = evaluatedPart.get_curves();
+	CHECK_EQUAL(1, curves.size());
+	list<BezierComplex>::iterator it_evaluatedCurves = curves.begin();
+	
+	CHECK_CLOSE(.0, it_evaluatedCurves->get_coordinate(0).get_x(), 1e-6);
+	CHECK_CLOSE(.0, it_evaluatedCurves->get_coordinate(0).get_y(), 1e-6);
+	
+	CHECK_EQUAL(true, it_evaluatedCurves->get_coordinate(.25).get_x() > it_evaluatedCurves->get_coordinate(.25).get_y());
+	
+	CHECK_CLOSE(.5, it_evaluatedCurves->get_coordinate(.5).get_x(), 1e-6);
+	CHECK_CLOSE(.5, it_evaluatedCurves->get_coordinate(.5).get_y(), 1e-6);
+	
+	CHECK_EQUAL(true, it_evaluatedCurves->get_coordinate(.75).get_x() < it_evaluatedCurves->get_coordinate(.75).get_y());
+	
+	for(int i=0; i<=10; i++)
+	{
+		std::cout << "X=" << it_evaluatedCurves->get_coordinate(double(i) / 10.0).get_x() << std::endl;
+		std::cout << "Y=" << it_evaluatedCurves->get_coordinate(double(i) / 10.0).get_y() << std::endl;
+		std::cout << std::endl;
+	}
 }
 
 TEST(ParseInvalidNodeException)

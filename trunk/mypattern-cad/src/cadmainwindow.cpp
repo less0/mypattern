@@ -1,12 +1,21 @@
 #include "cadmainwindow.h"
 
 #include "selectnamewindow.h"
+#include "cairopatterndrawer.h"
+#include "mypattern-base.h"
+
+#include <iostream>
 
 using namespace MyPattern::CAD;
 
 CADMainWindow::CADMainWindow(BaseObjectType* baseObject, const Glib::RefPtr<Gtk::Builder>& builder) : Gtk::Window(baseObject)
 {
     init(builder);
+}
+
+CADMainWindow::CADMainWindow() : Gtk::Window()
+{
+	init();
 }
 
 CADMainWindow::~CADMainWindow()
@@ -53,14 +62,14 @@ void CADMainWindow::selectNameWindow_addPattern_hide()
     }
 }
 
-bool CADMainWindow::mainDrawingArea_expose(GdkEventExpose* e)
+bool CADMainWindow::mainDrawingArea_expose(const Cairo::RefPtr<Cairo::Context>& cairo)
 {
-    //int i = 0;
-    Cairo::RefPtr<Cairo::Context> cairo = m_mainDrawingArea->get_window()->create_cairo_context();
-
-    cairo->move_to(0,0);
-    cairo->curve_to(50,0, 50,100,100,100);
-    cairo->stroke();
+    // cairo->move_to(0,0);
+    // cairo->curve_to(50,0, 50,100,100,100);
+    // cairo->stroke();
+	
+	MyPattern::Draw::CairoPatternDrawer drawer(cairo);
+	drawer.draw(m_selectedPartDefinition->get_part());
 
     return true;
 }
@@ -94,7 +103,7 @@ bool CADMainWindow::init(const Glib::RefPtr<Gtk::Builder>& builder)
 
     drawingArea->send_expose(NULL);
     //\todo connect signals
-    //drawingArea->signal_expose_event().connect(sigc::mem_fun(this, &CADMainWindow::mainDrawingArea_expose));
+    // drawingArea->signal_draw().connect(sigc::mem_fun(this, &CADMainWindow::mainDrawingArea_expose));
     m_buttonAddPart->signal_clicked().connect(sigc::mem_fun(this, &CADMainWindow::buttonAddPart_clicked));
 //    m_buttonAddPart->signal_clicked().connect(sigc::mem_fun(this, &CADMainWindow::buttonAddPart_clicked));
     m_buttonAddPart->add_events(Gdk::EventMask::ALL_EVENTS_MASK);
@@ -107,18 +116,76 @@ bool CADMainWindow::init(const Glib::RefPtr<Gtk::Builder>& builder)
     return true;
 }
 
+bool CADMainWindow::init() 
+{
+	m_mainPane = shared_ptr<Gtk::Paned>(new Gtk::Paned(Gtk::ORIENTATION_VERTICAL));
+	
+	m_partsComboBox = shared_ptr<Gtk::ComboBox>(new Gtk::ComboBox());
+	
+	m_mainDrawingArea = shared_ptr<Gtk::DrawingArea>(new Gtk::DrawingArea());
+	
+	m_mainDrawingArea->signal_draw().connect(sigc::mem_fun(this, &CADMainWindow::mainDrawingArea_expose));
+	m_mainDrawingArea->show();
+	m_mainDrawingArea->override_background_color (Gdk::RGBA("00FFFF"));
+	
+	m_openedPattern = shared_ptr<PatternDefinition>(new PatternDefinition("Unnamed"));
+    m_selectedPartDefinition = m_openedPattern->create_part_definition("Part1");
+	
+	shared_ptr<Landmark> landmarkToAdd = shared_ptr<Landmark>(new Landmark());
+	landmarkToAdd->set_name("lm1");
+	landmarkToAdd->set_definition_x("2");
+	landmarkToAdd->set_definition_y("2");
+	m_selectedPartDefinition->add_landmark(landmarkToAdd);
+	landmarkToAdd = shared_ptr<Landmark>(new Landmark());
+	landmarkToAdd->set_name("lm2");
+	landmarkToAdd->set_definition_x("4");
+	landmarkToAdd->set_definition_y("2");
+	m_selectedPartDefinition->add_landmark(landmarkToAdd);
+	landmarkToAdd = shared_ptr<Landmark>(new Landmark());
+	landmarkToAdd->set_name("lm3");
+	landmarkToAdd->set_definition_x("2");
+	landmarkToAdd->set_definition_y("4");
+	m_selectedPartDefinition->add_landmark(landmarkToAdd);
+	landmarkToAdd = shared_ptr<Landmark>(new Landmark());
+	landmarkToAdd->set_name("lm4");
+	landmarkToAdd->set_definition_x("4");
+	landmarkToAdd->set_definition_y("4");
+	m_selectedPartDefinition->add_landmark(landmarkToAdd);
+	
+	list<Glib::ustring> landmarkNames;
+	landmarkNames.push_back("lm1");
+	landmarkNames.push_back("lm2");
+	landmarkNames.push_back("lm3");
+	landmarkNames.push_back("lm4");
+	shared_ptr<CurveDefinition> curveDefinitionToAdd = shared_ptr<CurveDefinition>(new BezierDefinition());
+	curveDefinitionToAdd->set_name("Test");
+	curveDefinitionToAdd->set_landmarks(landmarkNames);
+	m_selectedPartDefinition->add_curve_definition(curveDefinitionToAdd);
+	
+	m_partsComboBox->show();
+	m_mainPane->show();
+	
+	m_mainPane->add1(*m_partsComboBox);
+	m_mainPane->add2(*m_mainDrawingArea);
+	add(*m_mainPane);
+	
+	update();
+	
+	return true;
+}
+
 void CADMainWindow::update()
 {
     list<Glib::ustring> part_definition_names = m_openedPattern->get_part_defintion_names();
     list<Glib::ustring>::iterator it_names = part_definition_names.begin();
 
-    //m_part_names_treestore->clear();
-
-    m_partsComboBox->set_model(m_partNamesTreestore =  Gtk::TreeStore::create(m_partColumns));
+    m_partsComboBox->set_model(m_partNamesTreestore = Gtk::TreeStore::create(m_partColumns));
 
 
     while(it_names != part_definition_names.end())
     {
+		std::cout << *it_names << std::endl;
+		
         Gtk::TreeModel::Row row = *(m_partNamesTreestore->append());
         row[m_partColumns.column_name] = *it_names;
         row[m_partColumns.column_pattern] = shared_ptr<MyPattern::Base::PatternDefinition>((MyPattern::Base::PatternDefinition*)NULL);
@@ -133,6 +200,4 @@ void CADMainWindow::update()
         Gdk::Rectangle r(0, 0, get_allocation().get_width(), get_allocation().get_height());
         win->invalidate_rect(r, true);
     }
-
-    //int i=0;
 }

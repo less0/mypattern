@@ -12,6 +12,7 @@ class PartColumnRecord : public Gtk::TreeModel::ColumnRecord
         PartColumnRecord()
         {
             add(column_name);
+			add(column_pattern);
         }
 
         Gtk::TreeModelColumn<Glib::ustring> column_name;

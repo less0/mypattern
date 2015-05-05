@@ -1,1 +1,74 @@
 # depslib dependency file v1.0
+1416664682 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\exceptions\filenotfoundexception.cpp
+	"exceptions/filenotfoundexception.h"
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\exceptions\filenotfoundexception.h
+	<exception.h>
+
+1416664680 c:\users\paul\documents\programming\mypattern\mypattern-exceptions\include\exception.h
+	"glibmm/ustring.h"
+
+1416664682 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\filereader.cpp
+	"filereader.h"
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\filereader.h
+	<glibmm/ustring.h>
+	<memory>
+
+1416664682 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\xmlattribute.cpp
+	"xmlattribute.h"
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\xmlattribute.h
+	"glibmm/ustring.h"
+	"glibmm/regex.h"
+	<list>
+
+1425804656 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\xmlelement.cpp
+	"xmlelement.h"
+	"xmlexception.h"
+	"glibmm/regex.h"
+	<iostream>
+	<regex>
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\xmlelement.h
+	"exception.h"
+	"glibmm/ustring.h"
+	"xmlattribute.h"
+	<memory>
+	<list>
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\xmlexception.h
+	<exception.h>
+
+1416664682 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\xmlexception.cpp
+	"xmlexception.h"
+
+1416664682 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\xmlfilereader.cpp
+	"xmlfilereader.h"
+	"xmlexception.h"
+	"exceptions/filenotfoundexception.h"
+	<fstream>
+	<sstream>
+
+1416664682 c:\users\paul\documents\programming\mypattern\mypattern-data\include\xmlfilereader.h
+	<filereader.h>
+	<glibmm/ustring.h>
+	<xmlnode.h>
+	<memory>
+
+1422512752 c:\users\paul\documents\programming\mypattern\mypattern-data\include\xmlnode.h
+	"xmlattribute.h"
+	"xmlelement.h"
+	"glibmm/ustring.h"
+	<list>
+	<memory>
+	<sstream>
+
+1422546906 source:c:\users\paul\documents\programming\mypattern\mypattern-data\src\xmlnode.cpp
+	"xmlnode.h"
+	<sstream>
+	<iostream>
+	<exception.h>
+	<xmlelement.h>
+	<xmlexception.h>
+
