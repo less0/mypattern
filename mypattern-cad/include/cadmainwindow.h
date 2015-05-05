@@ -22,6 +22,7 @@ namespace MyPattern
         {
             public:
                 CADMainWindow(BaseObjectType* base, const Glib::RefPtr<Gtk::Builder>& builder);
+                CADMainWindow();
                 virtual ~CADMainWindow();
                 void closeButton_clicked();
                 bool newButton_clicked(GdkEventButton* e);
@@ -30,10 +31,11 @@ namespace MyPattern
                 bool saveAsButtonClicked(GdkEventButton* e);
                 void buttonAddPart_clicked();
                 void selectNameWindow_addPattern_hide();
-                bool mainDrawingArea_expose(GdkEventExpose*);
+                bool mainDrawingArea_expose(const Cairo::RefPtr<Cairo::Context>&);
                 /** \brief Gets the widgets loaded in builder and connects the signals
                 */
                 bool init(const Glib::RefPtr<Gtk::Builder>& builder);
+				bool init();
 
                 static void test();
             protected:
@@ -42,11 +44,14 @@ namespace MyPattern
                 Glib::RefPtr<Gtk::Builder> m_builder;
 
                 shared_ptr<PatternDefinition> m_openedPattern;
+				shared_ptr<PartDefinition> m_selectedPartDefinition;
+				
                 shared_ptr<Gtk::ComboBox> m_partsComboBox;
                 shared_ptr<Gtk::ToolButton> m_buttonAddPart;
                 shared_ptr<Gtk::DrawingArea> m_mainDrawingArea;
 
                 shared_ptr<SelectNameWindow> m_selectNameWindow;
+				shared_ptr<Gtk::Paned> m_mainPane;
 
                 bool m_patternSaved = true;
                 PartColumnRecord m_partColumns;

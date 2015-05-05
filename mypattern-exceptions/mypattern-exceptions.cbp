@@ -43,7 +43,7 @@
 			<debugger />
 			<envvars />
 			<lib_finder>
-				<lib name="gtkmm-3.0" />
+				<lib name="gtkmm-2.4" />
 			</lib_finder>
 		</Extensions>
 	</Project>
