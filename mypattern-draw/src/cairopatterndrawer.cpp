@@ -1,5 +1,10 @@
+#include <array>
+
 #include "cairopatterndrawer.h"
 #include "pattern.h"
+#include "bezier.h"
+#include "beziercomplex.h"
+#include "point.h"
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Draw;
@@ -36,9 +41,17 @@ void CairoPatternDrawer::draw(Part part)
 		
 		list<BezierComplex> curves = part.get_curves();
 		
-		for(list<BezieComplex>::iterator it_curve = curves.begin(); it_curve!=curves.end(); it_curve++)
+		for(list<BezierComplex>::iterator it_curve = curves.begin(); it_curve!=curves.end(); it_curve++)
 		{
-			
+			list<Bezier> base_curves = it_curve->get_beziers();
+			for(list<Bezier>::iterator it_base_curve = base_curves.begin(); it_base_curve != base_curves.end(); it_base_curve++)
+			{
+				array<Point,4> points = it_base_curve->get_points();
+				
+				m_cairoContext->move_to(points[0].get_x() * 50.0, points[0].get_y() *  50.0);
+				m_cairoContext->curve_to(points[1].get_x() * 50.0, points[1].get_y() * 50.0,points[2].get_x() * 50.0, points[2].get_y() * 50.0,points[3].get_x() * 50.0, points[3].get_y() * 50.0);
+				m_cairoContext->stroke();
+			}
 		}
     }
 }

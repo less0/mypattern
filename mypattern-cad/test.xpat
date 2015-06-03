@@ -1,0 +1,46 @@
+<pattern name="Test pattern">
+	<measures>
+		<measurevalue name="length" default="2.0">
+			Length of the squares sides
+		</measurevalue>
+	</measures>
+	<part name="Square">
+		<landmark name="ul" x="0" y="0" />
+		<landmark name="ur" x="#length" y="0">
+		<curve name="u" type="bezier">
+			<!-- There are actually no straight lines atm -->
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+		</curve>
+		<curve name="r" type="bezier">
+			<!-- Not all landmarks have to be defined, yet -->
+			<lmref>ur</lmref>
+			<lmref>lr</lmref>
+			<lmref>ur</lmref>
+			<lmref>lr</lmref>
+		</curve>
+		<curve name="w" type="bezier">
+			<lmref>lr</lmref>
+			<lmref>ll</lmref>
+			<lmref>lr</lmref>
+			<lmref>ll</lmref>
+		</curve>
+		<curve name="l" type="bezier">
+			<lmref>ll</lmref>
+			<lmref>ul</lmref>
+			<lmref>ll</lmref>
+			<lmref>ul</lmref>
+		</curve>
+		<curve name="u" type="bezier">
+			<!-- There are actually no straight lines atm -->
+			<lmref>ul</lmref>
+			<lmref>ur</lmref>
+			<lmref>ll</lmref>
+			<lmref>lr</lmref>
+		</curve>
+		<landmark name="lr" x="#length" y="#length" />
+		<landmark name="ur" x="0" y="#length" />
+	</part>
+</pattern>

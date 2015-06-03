@@ -13,12 +13,13 @@ namespace MyPattern {
             //ctor
         }
 
-        XmlElement::XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement)
+        XmlElement::XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment)
         {
             m_name = name;
             m_Attributes = attributes;
             m_isEmpty = isEmpty;
             m_isEndElement = isEndElement;
+			m_isComment = isComment;
 
             if(isEmpty && isEndElement)
             {
@@ -51,7 +52,7 @@ namespace MyPattern {
             }
 
             Glib::ustring remainder = schema.substr(start_index);
-            Glib::ustring regexPattern = "^</{0,1}([A-Za-z0-9:]+)( ([A-Za-u]+=\"[A-Za-z0-9\\. ]*\"))*( )*/{0,1}>";
+            Glib::ustring regexPattern = "^(<!-- [\\S\\s]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-u]+=\"[A-Za-z0-9\\. ]*\"))*( )*/{0,1}>)";
 
             Glib::RefPtr<Glib::Regex> elementRegex = Glib::Regex::create(regexPattern,
                                                                    (Glib::RegexCompileFlags)0,
@@ -64,17 +65,18 @@ namespace MyPattern {
             if(elementRegex->match(remainder, matchinfo))
             {
                 Glib::ustring full_match =  matchinfo.fetch(0);
-                Glib::ustring name_match = matchinfo.fetch(1);
-				
+                Glib::ustring name_match = matchinfo.fetch(2);
 
                 end_index = start_index + full_match.length() - 1;
 
                 list<XmlAttribute> attributes = XmlAttribute::parse_from_tag(remainder.substr(0, full_match.length()));
                 bool isEndElement = full_match[1] == '/';
                 bool isEmpty = full_match[full_match.length() - 2] == '/';
+				bool isComment = full_match[1] == '!' 
+					&& full_match[2] == '-' 
+					&& full_match[3] == '-';
 
-
-                return XmlElement(name_match, attributes, isEmpty, isEndElement);
+                return XmlElement(name_match, attributes, isEmpty, isEndElement, isComment);
             }
             else
             {

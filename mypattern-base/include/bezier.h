@@ -30,10 +30,6 @@ namespace MyPattern
                 Bezier(const Bezier& bezier);
                 Bezier();
 
-                /*! \brief Draws the bezier curve to a cairo context
-                */
-                void draw(shared_ptr<Cairo::Context> context);
-
                 /*! \brief Approximates the length of the Bezier
                 */
                 double get_length();
@@ -49,6 +45,8 @@ namespace MyPattern
                 *
                 */
                 Point get_coordinate(double);
+				
+				array<Point,4> get_points();
 
                 /*! Brief gets the value of the Bernstein-Polynomial B_{i,n}(t)
                 */

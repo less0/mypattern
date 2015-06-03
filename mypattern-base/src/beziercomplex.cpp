@@ -33,26 +33,6 @@ BezierComplex::BezierComplex(const BezierComplex& bezier_complex)
     this->m_curve_name = bezier_complex.m_curve_name;
 }
 
-void BezierComplex::draw(shared_ptr<Cairo::Context> context, bool selected)
-{
-
-    if(selected)
-        context->set_source_rgb(1.0f, 0.0f, 0.0f);
-    else
-        context->set_source_rgb(0.0f, 0.0f, 0.0f);
-
-
-    list<Bezier>::iterator it = m_bezier_curves.begin();
-
-    while(it != m_bezier_curves.end())
-    {
-        (*it).draw(context);
-        it++;
-    }
-
-    context->stroke();
-}
-
 double BezierComplex::get_length()
 {
     list<Bezier>::iterator it = m_bezier_curves.begin();
@@ -125,4 +105,9 @@ double BezierComplex::get_distance(Point click)
     }
 
     return min_distance;
+}
+
+list<Bezier> BezierComplex::get_beziers()
+{
+	return m_bezier_curves;
 }
