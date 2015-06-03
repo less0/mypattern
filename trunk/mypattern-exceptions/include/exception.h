@@ -34,6 +34,8 @@ class Exception
          * \return The current value of m_stacktrace
          */
         ustring get_stacktrace() { return m_stacktrace; }
+		
+		ustring get_type() { return "Exception"; }
     protected:
         ustring m_message; //!< Member variable "m_message"
     private:

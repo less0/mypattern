@@ -84,8 +84,6 @@ list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::us
     int current_index = start_index;
     bool run = true; // states
 	text = "";
-
-	
 	
     while(run)
     {
@@ -104,9 +102,13 @@ list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::us
                 }
                 else
                 {
+					std::cout << "Unexpected end-tag" << std::endl;
                     throw XmlException("Unexpected end-tag");
                 }
             }
+			else if(element.isComment())
+			{
+			}
             else //element is start element
             {
 				current_node = parse_node(schema, current_index, next_index);

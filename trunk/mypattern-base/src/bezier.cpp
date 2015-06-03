@@ -19,15 +19,6 @@ Bezier::Bezier(const Bezier& bezier)
 Bezier::Bezier()
 {}
 
-void Bezier::draw(shared_ptr<Cairo::Context> context)
-{
-    context->move_to(this->m_points[0].get_x(), this->m_points[0].get_y());
-    context->curve_to(this->m_points[1].get_x(), this->m_points[1].get_y(),
-                      this->m_points[2].get_x(), this->m_points[2].get_y(),
-                      this->m_points[3].get_x(), this->m_points[3].get_y());
-
-}
-
 double Bezier::get_distance(Point click)
 {
     double d = .001;
@@ -118,4 +109,7 @@ double Bezier::binom(int n, int k)
     return binom;
 }
 
-
+array<Point,4> Bezier::get_points()
+{
+	return m_points;
+}
