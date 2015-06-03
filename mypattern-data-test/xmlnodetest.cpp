@@ -95,6 +95,11 @@ namespace
 
 
     }
+	
+	TEST(ParseWithCommentSubnode)
+	{
+		shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><!-- Comment --></foo>");
+	}
 
     TEST(ParseMultipleLevelsOfSubnodes)
 	{

@@ -17,7 +17,7 @@ using namespace std;
 namespace MyPattern
 {
     namespace Base
-    {
+	{
         /** \brief A class to define a complex curve consisting of multiple
         * Bézier curves.
         *
@@ -33,7 +33,6 @@ namespace MyPattern
 		BezierComplex();
                 BezierComplex(const BezierComplex& instance_to_copy);
 
-                void draw(shared_ptr<Cairo::Context> context, bool selected);
                 /** \brief Approximates the length of a complex Bézier
                 *
                 *
@@ -71,6 +70,8 @@ namespace MyPattern
                 /** \brief Adds a Bezier to the BezierComplex
                 */
                 void add_bezier(Bezier);
+				
+				list<Bezier> get_beziers();
                 /** \brief Gets the shortest distance of a Point to the
                 * BezierComplex
                 */

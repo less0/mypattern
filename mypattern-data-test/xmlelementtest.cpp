@@ -22,6 +22,13 @@ namespace
         int endIndex= 0;
         CHECK_THROW(XmlElement::parse_element("</foo/>", 0, endIndex), MyPattern::Data::XmlException);
     }
+	
+	TEST(TestCommentNode)
+	{
+		int endIndex = 0;
+		XmlElement commentElement = XmlElement::parse_element("<!-- Comment -->",0, endIndex);
+		CHECK_EQUAL(true, commentElement.isComment());
+	}
 
     TEST(TestXmlElement)
 	{

@@ -6,11 +6,11 @@ DEBUG?=FALSE
 
 .PHONY: all coverage clean test mypattern-base mypattern-base-test mypattern-cad mypattern-data mypattern-data-test mypattern-draw mypattern-exceptions 
 
-all: mypattern-base
+all: mypattern-cad
 
 coverage: CC_OPTIONS+= --coverage
 coverage: test
-	@cd mypattern-base;lcov --capture --directory . --base-directory . --output-file coverage.info;genhtml coverage.info --output-directory /var/www/cov/mypattern-base
+	@cd mypattern-base;gcov --capture --directory . --base-directory . --output-file coverage.info;genhtml coverage.info --output-directory /var/www/cov/mypattern-base
 
 clean:
 	-@make clean -C mypattern-base

@@ -10,14 +10,14 @@ LIBRARIES=-lmypattern-base -lmypattern-draw -lmypattern-exceptions -lmypattern-d
 
 OUT=mypattern-cad
 CC=g++ -Wall -std=c++0x
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0) 
+CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0)
 
 ifeq ($(DEBUG),TRUE)
 	CC_OPTIONS+= -g
 endif
 
-mypattern-cad: message-mypattern-cad
-	@$(CC) $(LIBDIRS) $(INCLUDES) -o $(OUT) main.cpp $(CPP) $(LIBRARIES) $(CC_OPTIONS)
+mypattern-cad: message-mypattern-cad $(OBJ)
+	@$(CC) $(LIBDIRS) $(INCLUDES) -o $(OUT) main.cpp $(OBJ) $(LIBRARIES) $(CC_OPTIONS)
 	@cp ../GUI/mypattern-cad.glade .
 
 message-mypattern-cad:

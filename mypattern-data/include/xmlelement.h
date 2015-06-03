@@ -20,7 +20,7 @@ class XmlElement
         /** Default constructor */
         XmlElement();
 
-        XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement);
+        XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment);
         /** Default destructor */
         virtual ~XmlElement();
         /** Copy constructor
@@ -44,6 +44,7 @@ class XmlElement
         bool isEmpty() { return m_isEmpty; }
 
         bool isEndElement() { return m_isEndElement; }
+		bool isComment() { return m_isComment; }
 
         /*! \brief Gets the name of the element */
         Glib::ustring GetName()
@@ -57,6 +58,7 @@ class XmlElement
         list<XmlAttribute> m_Attributes; //!< Member variable "m_Attributes;"
         bool m_isEmpty; //!< Member variable "m_isEmpty"
         bool m_isEndElement;
+		bool m_isComment;
         Glib::ustring m_name;
 
         static bool is_valid_name_char(char c);
