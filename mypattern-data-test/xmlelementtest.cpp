@@ -49,6 +49,13 @@ namespace
         CHECK_EQUAL(9, nextIndex);
         CHECK(element.isEmpty());
     }
+	
+	TEST(TestEmptyElementWithParameters)
+	{
+		int nextIndex = 0;
+		XmlElement element = XmlElement::parse_element("<landmark name=\"ul\" x=\"0\" y=\"0\" />", 0, nextIndex);
+
+	}
 
     TEST(TestEndElement)
 	{

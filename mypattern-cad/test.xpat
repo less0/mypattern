@@ -6,7 +6,7 @@
 	</measures>
 	<part name="Square">
 		<landmark name="ul" x="0" y="0" />
-		<landmark name="ur" x="#length" y="0">
+		<landmark name="ur" x="#length" y="0" />
 		<curve name="u" type="bezier">
 			<!-- There are actually no straight lines atm -->
 			<lmref>ul</lmref>

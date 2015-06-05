@@ -137,8 +137,3 @@ shared_ptr<CurveDefinition> CurveDefinition::deserialize_from_xml(shared_ptr<Xml
     return deserialized_definition;
 }
 
-//shared_ptr<CurveDefinition> CurveDefinition::deserialize_from_xml(XmlNode)
-//{
-//    return nullptr;
-//}
-
