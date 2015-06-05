@@ -12,6 +12,8 @@ class FileNotFoundException : public MyPattern::Exceptions::Exception
     public:
         FileNotFoundException();
         virtual ~FileNotFoundException();
+		
+		virtual ustring get_type() { return typeid(*this).name(); }
     protected:
     private:
 };

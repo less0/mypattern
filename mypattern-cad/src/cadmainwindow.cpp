@@ -120,6 +120,7 @@ bool CADMainWindow::init(const Glib::RefPtr<Gtk::Builder>& builder)
 
 bool CADMainWindow::init() 
 {
+	CurveDefinition::register_class(shared_ptr<CurveDefinition>(new BezierDefinition()));
 	
 	m_mainPane = shared_ptr<Gtk::Paned>(new Gtk::Paned(Gtk::ORIENTATION_VERTICAL));
 	
@@ -133,37 +134,6 @@ bool CADMainWindow::init()
 	
 	m_openedPattern = PatternDefinition::read_xml("test.xpat");
     m_selectedPartDefinition = m_openedPattern->get_part_definition("Square");
-	
-	// shared_ptr<Landmark> landmarkToAdd = shared_ptr<Landmark>(new Landmark());
-	// landmarkToAdd->set_name("lm1");
-	// landmarkToAdd->set_definition_x("2");
-	// landmarkToAdd->set_definition_y("2");
-	// m_selectedPartDefinition->add_landmark(landmarkToAdd);
-	// landmarkToAdd = shared_ptr<Landmark>(new Landmark());
-	// landmarkToAdd->set_name("lm2");
-	// landmarkToAdd->set_definition_x("4");
-	// landmarkToAdd->set_definition_y("2");
-	// m_selectedPartDefinition->add_landmark(landmarkToAdd);
-	// landmarkToAdd = shared_ptr<Landmark>(new Landmark());
-	// landmarkToAdd->set_name("lm3");
-	// landmarkToAdd->set_definition_x("2");
-	// landmarkToAdd->set_definition_y("4");
-	// m_selectedPartDefinition->add_landmark(landmarkToAdd);
-	// landmarkToAdd = shared_ptr<Landmark>(new Landmark());
-	// landmarkToAdd->set_name("lm4");
-	// landmarkToAdd->set_definition_x("4");
-	// landmarkToAdd->set_definition_y("4");
-	// m_selectedPartDefinition->add_landmark(landmarkToAdd);
-	
-	// list<Glib::ustring> landmarkNames;
-	// landmarkNames.push_back("lm1");
-	// landmarkNames.push_back("lm2");
-	// landmarkNames.push_back("lm3");
-	// landmarkNames.push_back("lm4");
-	// shared_ptr<CurveDefinition> curveDefinitionToAdd = shared_ptr<CurveDefinition>(new BezierDefinition());
-	// curveDefinitionToAdd->set_name("Test");
-	// curveDefinitionToAdd->set_landmarks(landmarkNames);
-	// m_selectedPartDefinition->add_curve_definition(curveDefinitionToAdd);
 	
 	m_partsComboBox->show();
 	m_mainPane->show();

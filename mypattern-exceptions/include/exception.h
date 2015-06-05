@@ -2,6 +2,7 @@
 #define MYPATTERN_EXCEPTIONS_EXCEPTION_H
 
 #include "glibmm/ustring.h"
+#include <typeinfo>
 
 using namespace Glib;
 
@@ -35,7 +36,7 @@ class Exception
          */
         ustring get_stacktrace() { return m_stacktrace; }
 		
-		ustring get_type() { return "Exception"; }
+		virtual ustring get_type() { return typeid(*this).name(); }
     protected:
         ustring m_message; //!< Member variable "m_message"
     private:
