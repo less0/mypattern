@@ -26,6 +26,8 @@ class FormulaEvaluationException : public Exception
          *  \return A reference to this
          */
         FormulaEvaluationException& operator=(const FormulaEvaluationException& other);
+		
+		ustring get_type() { return typeid(*this).name(); }
 
     protected:
     private:

@@ -52,7 +52,7 @@ namespace MyPattern {
             }
 
             Glib::ustring remainder = schema.substr(start_index);
-            Glib::ustring regexPattern = "^(<!-- [\\S\\s]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-u]+=\"[A-Za-z0-9\\. ]*\"))*( )*/{0,1}>)";
+            Glib::ustring regexPattern = "^(<!-- [\\w\\s.,\\-\\S]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-z]+=\"[A-Za-z0-9\\. #$]*\"))*( )*/{0,1}>)";
 
             Glib::RefPtr<Glib::Regex> elementRegex = Glib::Regex::create(regexPattern,
                                                                    (Glib::RegexCompileFlags)0,
@@ -80,7 +80,7 @@ namespace MyPattern {
             }
             else
             {
-                throw XmlException("Unexpected ");
+                throw XmlException("Unexpected " + remainder);
             }
         }
 

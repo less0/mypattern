@@ -1,6 +1,7 @@
 #include <gtkmm.h>
 #include <iostream>
 #include <exception.h>
+#include <exceptions\evaluationexception.h>
 #include "program.h"
 #ifdef WIN32
 	#include <windows.h>
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 
 	try
 	{
-		MyPattern::CAD::Program prog(argc,argv);
+		MyPattern::CAD::Program prog(argc, argv);
 		return_value = prog.run();
 	}
 	catch(MyPattern::Exceptions::Exception& exception)
