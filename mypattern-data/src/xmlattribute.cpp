@@ -64,7 +64,7 @@ list<XmlAttribute> XmlAttribute::parse_from_tag(Glib::ustring tag)
         tag_remainder = tag_remainder.substr(0, tag_remainder.length() - 1);
     }
 
-    Glib::ustring search_pattern = "^([A-Za-u]+=\"[A-Za-z0-9 \\.]*\")";
+    Glib::ustring search_pattern = "^([A-Za-z]+=\"[A-Za-z0-9 \\.]*\")";
 
     Glib::RefPtr<Glib::Regex> parameterRegex = Glib::Regex::create(search_pattern,
                                                                    (Glib::RegexCompileFlags)0,

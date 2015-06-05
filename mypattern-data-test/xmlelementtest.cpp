@@ -54,7 +54,8 @@ namespace
 	{
 		int nextIndex = 0;
 		XmlElement element = XmlElement::parse_element("<landmark name=\"ul\" x=\"0\" y=\"0\" />", 0, nextIndex);
-
+		list<MyPattern::Data::XmlAttribute> parameters = element.GetAttributes();
+		CHECK_EQUAL(3, parameters.size());
 	}
 
     TEST(TestEndElement)
