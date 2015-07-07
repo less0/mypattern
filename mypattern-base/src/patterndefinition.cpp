@@ -71,7 +71,7 @@ shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename
         }
     }
 
-    return shared_ptr<PatternDefinition>(NULL);
+    return result;
 }
 
 //bool PatternDefinition::write_xml(Glib::ustring filename)

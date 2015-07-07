@@ -41,7 +41,7 @@ shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<Patte
             if(landmark_node != NULL &&
                     landmark_node->get_landmark()->get_name() == p_landmark->get_name())
             {
-                throw ObjectNameTakenEvaluationException();
+                throw ObjectNameTakenEvaluationException(p_landmark->get_name());
             }
 
             it_nodes++;
@@ -81,7 +81,6 @@ shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<Patte
     }
     else if(p_curve != NULL)
     {
-
         shared_ptr<CurveEvaluationTreeNode> newNode(new CurveEvaluationTreeNode(p_curve));
 
         for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_tree_nodes.begin();
@@ -93,7 +92,7 @@ shared_ptr<EvaluationTreeNode> EvaluationRoot::add_object(const shared_ptr<Patte
             if(existing_node != NULL &&
                     existing_node->get_prefixed_name() == newNode->get_prefixed_name())
             {
-                throw ObjectNameTakenEvaluationException();
+                throw ObjectNameTakenEvaluationException(p_curve->get_name());
             }
         }
 
@@ -145,8 +144,6 @@ list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::add_objects(list<shared_ptr
             try
             {
                 added_nodes.push_back(add_object(*it));
-
-
                 unresolvable = false;
             }
             catch(UnmetDependenciesEvaluationException e)
@@ -154,6 +151,11 @@ list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::add_objects(list<shared_ptr
                 unresolved.push_back(*it);
             }
         }
+		
+		if(unresolvable)
+		{
+			throw MyPattern::Exceptions::Exception("There are unresolvable objects");
+		}
 
         objects = unresolved;
         unresolved.clear();

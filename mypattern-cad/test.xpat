@@ -33,7 +33,7 @@
 			<lmref>ll</lmref>
 			<lmref>ul</lmref>
 		</curve>
-		<curve name="u" type="bezier">
+		<curve name="b" type="bezier">
 			<!-- There are actually no straight lines atm -->
 			<lmref>ul</lmref>
 			<lmref>ur</lmref>
@@ -41,6 +41,6 @@
 			<lmref>lr</lmref>
 		</curve>
 		<landmark name="lr" x="#length" y="#length" />
-		<landmark name="ur" x="0" y="#length" />
+		<landmark name="ll" x="0" y="#length" />
 	</part>
 </pattern>

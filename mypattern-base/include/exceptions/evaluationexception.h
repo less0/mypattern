@@ -10,6 +10,7 @@ class EvaluationException : public MyPattern::Exceptions::Exception
 {
     public:
         /** Default constructor */
+        EvaluationException(ustring message);
         EvaluationException();
         /** Default destructor */
         virtual ~EvaluationException();

@@ -3,7 +3,7 @@
 namespace MyPattern {
 namespace Exceptions {
 
-CircularDependencyEvaluationException::CircularDependencyEvaluationException()
+CircularDependencyEvaluationException::CircularDependencyEvaluationException() : EvaluationException("Circular dependency found")
 {
     //ctor
 }
