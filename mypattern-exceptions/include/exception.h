@@ -36,7 +36,7 @@ class Exception
          */
         ustring get_stacktrace() { return m_stacktrace; }
 		
-		virtual ustring get_type() { return typeid(*this).name(); }
+		virtual ustring get_type() { return typeid(this).name(); }
     protected:
         ustring m_message; //!< Member variable "m_message"
     private:

@@ -10,7 +10,7 @@ class ObjectNameTakenEvaluationException : public MyPattern::Exceptions::Evaluat
 {
     public:
         /** Default constructor */
-        ObjectNameTakenEvaluationException();
+        ObjectNameTakenEvaluationException(ustring object_name);
         /** Default destructor */
         virtual ~ObjectNameTakenEvaluationException();
         /** Copy constructor

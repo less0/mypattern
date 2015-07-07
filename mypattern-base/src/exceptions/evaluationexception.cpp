@@ -3,7 +3,12 @@
 namespace MyPattern {
 namespace Exceptions {
 
-EvaluationException::EvaluationException()
+EvaluationException::EvaluationException(ustring message) : Exception(message)
+{
+    //ctor
+}
+
+EvaluationException::EvaluationException() : Exception("Evaluation exception")
 {
     //ctor
 }
