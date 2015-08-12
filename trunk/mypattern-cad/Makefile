@@ -32,4 +32,5 @@ message-mypattern-cad:
 clean:
 	@echo "\033[31mCleaning mypattern-base\033[0m"
 	-@rm $(OUT)
+	-@rm $(OBJ)
 	-@rm mypattern-cad.glade

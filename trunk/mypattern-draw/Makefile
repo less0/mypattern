@@ -1,6 +1,6 @@
 # all: %.o
 
-OBJ=./src/patterndrawer.o ./src/papersettings.o ./src/drawoptions.o ./src/exceptions/pageoutofrangeexception.o ./src/cairopatterndrawer.o 
+OBJ=./src/patterndrawer.o ./src/papersettings.o ./src/drawoptions.o ./src/exceptions/pageoutofrangeexception.o ./src/cairopatterndrawer.o  ./src/coordinatetransformation.o
 DEBUG?=FALSE
 
 INCLUDES=-I./include -I../mypattern-base/include -I../mypattern-base/include/exceptions

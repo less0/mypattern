@@ -9,6 +9,7 @@
 #include "patterndefinition.h"
 #include "partdefinition.h"
 #include "selectnamewindow.h"
+#include "coordinatetransformation.h"
 #include <memory>
 
 using namespace MyPattern::Base;
@@ -32,6 +33,7 @@ namespace MyPattern
                 void buttonAddPart_clicked();
                 void selectNameWindow_addPattern_hide();
                 bool mainDrawingArea_expose(const Cairo::RefPtr<Cairo::Context>&);
+				bool mainDrawingArea_click(GdkEventButton* event);
                 /** \brief Gets the widgets loaded in builder and connects the signals
                 */
                 bool init(const Glib::RefPtr<Gtk::Builder>& builder);
@@ -40,6 +42,8 @@ namespace MyPattern
                 static void test();
             protected:
             private:
+                void update();
+				
                 Glib::RefPtr<Gtk::TreeStore> m_partNamesTreestore;
                 Glib::RefPtr<Gtk::Builder> m_builder;
 
@@ -52,11 +56,15 @@ namespace MyPattern
 
                 shared_ptr<SelectNameWindow> m_selectNameWindow;
 				shared_ptr<Gtk::Paned> m_mainPane;
+				
+				shared_ptr<MyPattern::Draw::CoordinateTransformation> m_coordinateTransformation;
 
+				list<ustring> m_selectedLandmarks;
+				list<ustring> m_selectedCurves;
+				
                 bool m_patternSaved = true;
                 PartColumnRecord m_partColumns;
 
-                void update();
         };
     }
 }
