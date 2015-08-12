@@ -3,7 +3,6 @@
 
 #include "point.h"
 #include "bezier.h"
-//#include "drawoptions.h"
 
 #include "glibmm/ustring.h"
 #include "cairomm/cairomm.h"

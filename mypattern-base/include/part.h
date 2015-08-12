@@ -11,7 +11,6 @@
 #include "point.h"
 #include "beziercomplex.h"
 #include "patternobject.h"
-//#include "size.h"
 
 using namespace std;
 
