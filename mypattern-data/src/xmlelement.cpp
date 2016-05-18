@@ -2,6 +2,7 @@
 #include "xmlexception.h"
 
 #include "glibmm/regex.h"
+#include <regex>
 
 #include <iostream>
 
@@ -13,7 +14,7 @@ namespace MyPattern {
             //ctor
         }
 
-        XmlElement::XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment)
+        XmlElement::XmlElement(std::string name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment)
         {
             m_name = name;
             m_Attributes = attributes;
@@ -44,16 +45,17 @@ namespace MyPattern {
             return *this;
         }
 
-        XmlElement XmlElement::parse_element(Glib::ustring schema, int start_index, int& end_index)
+        XmlElement XmlElement::parse_element(std::string schema, int start_index, int& end_index)
         {
             if(schema[start_index] != '<')
             {
                 throw XmlException("Parser error");
             }
+			
 
-            Glib::ustring remainder = schema.substr(start_index);
-            Glib::ustring regexPattern = "^(<!-- [\\w\\s.,\\-\\S]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-z]+=\"[A-Za-z0-9\\. #$]*\"))*( )*/{0,1}>)";
-
+            std::string remainder = schema.substr(start_index);
+            std::string regexPattern = "^(<!-- [\\w\\s.,\\-\\S]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-z]+=\"[A-Za-z0-9\\. #$]*\"))*( )*/{0,1}>)";
+			
             Glib::RefPtr<Glib::Regex> elementRegex = Glib::Regex::create(regexPattern,
                                                                    (Glib::RegexCompileFlags)0,
                                                                    (Glib::RegexMatchFlags)0);
@@ -64,8 +66,8 @@ namespace MyPattern {
 
             if(elementRegex->match(remainder, matchinfo))
             {
-                Glib::ustring full_match =  matchinfo.fetch(0);
-                Glib::ustring name_match = matchinfo.fetch(2);
+                std::string full_match =  matchinfo.fetch(0);
+                std::string name_match = matchinfo.fetch(2);
 
                 end_index = start_index + full_match.length() - 1;
 

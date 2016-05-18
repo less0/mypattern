@@ -7,7 +7,7 @@ XmlAttribute::XmlAttribute()
     //ctor
 }
 
-XmlAttribute::XmlAttribute(Glib::ustring name, Glib::ustring value)
+XmlAttribute::XmlAttribute(std::string name, std::string value)
 {
     this->m_key = name;
     this->m_value = value;
@@ -19,17 +19,17 @@ XmlAttribute::XmlAttribute(const XmlAttribute& base)
     this->m_value = base.m_value;
 }
 
-Glib::ustring XmlAttribute::get_name()
+std::string XmlAttribute::get_name()
 {
-    return Glib::ustring(this->m_key);
+    return std::string(this->m_key);
 }
 
-Glib::ustring XmlAttribute::get_value()
+std::string XmlAttribute::get_value()
 {
     return this->m_value;
 }
 
-XmlAttribute XmlAttribute::parse(Glib::ustring key_value_pair)
+XmlAttribute XmlAttribute::parse(std::string key_value_pair)
 {
     XmlAttribute result;
     int equalSignIndex = key_value_pair.find("=");
@@ -41,20 +41,20 @@ XmlAttribute XmlAttribute::parse(Glib::ustring key_value_pair)
 
     //TODO: Check if the value is placed between "s
 
-    Glib::ustring key = key_value_pair.substr(0, equalSignIndex);
-    Glib::ustring value = key_value_pair.substr(equalSignIndex + 2,
+    std::string key = key_value_pair.substr(0, equalSignIndex);
+    std::string value = key_value_pair.substr(equalSignIndex + 2,
                                                 key_value_pair.length() - (equalSignIndex + 2) - 1);
 
-    result.m_key = Glib::ustring(key);
-    result.m_value = Glib::ustring(value);
+    result.m_key = std::string(key);
+    result.m_value = std::string(value);
 
     return XmlAttribute(result);
 }
 
 
-list<XmlAttribute> XmlAttribute::parse_from_tag(Glib::ustring tag)
+list<XmlAttribute> XmlAttribute::parse_from_tag(std::string tag)
 {
-    Glib::ustring tag_remainder = tag;
+    std::string tag_remainder = tag;
     list<XmlAttribute> parsed_parameters;
 
     //trim of trailing spaces. There might be a better way to achieve this, but
@@ -64,7 +64,7 @@ list<XmlAttribute> XmlAttribute::parse_from_tag(Glib::ustring tag)
         tag_remainder = tag_remainder.substr(0, tag_remainder.length() - 1);
     }
 
-    Glib::ustring search_pattern = "^([A-Za-z]+=\"[A-Za-z0-9 \\. #$]*\")";
+    std::string search_pattern = "^([A-Za-z]+=\"[A-Za-z0-9 \\. #$]*\")";
 
     Glib::RefPtr<Glib::Regex> parameterRegex = Glib::Regex::create(search_pattern,
                                                                    (Glib::RegexCompileFlags)0,
@@ -79,7 +79,7 @@ list<XmlAttribute> XmlAttribute::parse_from_tag(Glib::ustring tag)
             int endQuoteIndex = tag_remainder.find('"', checkPatternIndex);
             endQuoteIndex = tag_remainder.find('"', ++endQuoteIndex);
 
-            Glib::ustring match = tag_remainder.substr(checkPatternIndex,
+            std::string match = tag_remainder.substr(checkPatternIndex,
                                                        endQuoteIndex - checkPatternIndex + 1);
 
             XmlAttribute parsed_parameter = XmlAttribute::parse(match);

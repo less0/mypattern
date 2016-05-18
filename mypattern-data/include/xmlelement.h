@@ -2,12 +2,11 @@
 #define MYPATTERN_DATA_XMLELEMENT_H
 //
 #include "exception.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include "xmlattribute.h"
 #include <memory>
 #include <list>
 
-//using namespace MyPattern::Base;
 using namespace MyPattern::Exceptions;
 
 
@@ -20,7 +19,7 @@ class XmlElement
         /** Default constructor */
         XmlElement();
 
-        XmlElement(Glib::ustring name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment);
+        XmlElement(std::string name, list<XmlAttribute> attributes, bool isEmpty, bool isEndElement, bool isComment);
         /** Default destructor */
         virtual ~XmlElement();
         /** Copy constructor
@@ -47,19 +46,19 @@ class XmlElement
 		bool isComment() { return m_isComment; }
 
         /*! \brief Gets the name of the element */
-        Glib::ustring GetName()
+        std::string GetName()
         {
             return m_name;
         }
 
-        static XmlElement parse_element(Glib::ustring schema, int start_index, int& end_index);
+        static XmlElement parse_element(std::string schema, int start_index, int& end_index);
     protected:
     private:
         list<XmlAttribute> m_Attributes; //!< Member variable "m_Attributes;"
         bool m_isEmpty; //!< Member variable "m_isEmpty"
         bool m_isEndElement;
 		bool m_isComment;
-        Glib::ustring m_name;
+        std::string m_name;
 
         static bool is_valid_name_char(char c);
 };

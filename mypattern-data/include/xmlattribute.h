@@ -1,7 +1,7 @@
 #ifndef XMLPARAMETER_H
 #define XMLPARAMETER_H
 
-#include "glibmm/ustring.h"
+#include <string>
 #include "glibmm/regex.h"
 #include <list>
 
@@ -24,15 +24,15 @@ namespace MyPattern
         {
             public:
                 XmlAttribute();
-                XmlAttribute(Glib::ustring name, Glib::ustring value);
+                XmlAttribute(std::string name, std::string value);
                 XmlAttribute(const XmlAttribute& parameter);
                 /** \brief Gets the name of the parameter
                 *
                 */
-                Glib::ustring get_name();
-                void set_name(Glib::ustring);
-                Glib::ustring get_value();
-                void set_value(Glib::ustring);
+                std::string get_name();
+                void set_name(std::string);
+                std::string get_value();
+                void set_value(std::string);
                 /** \brief Parses a list of XmlAttribute objects from a valid
                 * XML-Tag.
                 *
@@ -45,18 +45,18 @@ namespace MyPattern
                 * expected key-value-pair format
                 *
                 */
-                static list<XmlAttribute> parse_from_tag(Glib::ustring tag);
+                static list<XmlAttribute> parse_from_tag(std::string tag);
                 /** \brief Parses a key-value-pair as given in the XML-tag.
                 *
                 * This function takes a key-value-pair in the form key="value"
                 * and creates a new XmlAttribute with the corresponding key and
                 * value.
                 */
-                static XmlAttribute parse(Glib::ustring key_value_pair);
+                static XmlAttribute parse(std::string key_value_pair);
             protected:
             private:
-                Glib::ustring m_key;
-                Glib::ustring m_value;
+                std::string m_key;
+                std::string m_value;
         };
     }
 }

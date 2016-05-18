@@ -13,7 +13,7 @@ XmlFileReader::XmlFileReader()
     m_raw_xml = "";
 }
 
-void XmlFileReader::read(Glib::ustring filename)
+void XmlFileReader::read(std::string filename)
 {
     m_raw_xml = read_file(filename);
 }
@@ -28,7 +28,7 @@ shared_ptr<XmlNode> XmlFileReader::get_root_node()
     return m_root_node;
 }
 
-Glib::ustring XmlFileReader::read_file(Glib::ustring filename)
+std::string XmlFileReader::read_file(std::string filename)
 {
     stringstream data;
     char* buffer;
@@ -51,5 +51,5 @@ Glib::ustring XmlFileReader::read_file(Glib::ustring filename)
 
     inputStream.read(buffer, BUFFERSIZE);
 
-    return Glib::ustring(buffer);
+    return std::string(buffer);
 }

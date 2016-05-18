@@ -1,7 +1,7 @@
 #ifndef XMLEXCEPTION_H
 #define XMLEXCEPTION_H
 
-#include <glibmm/ustring.h>
+#include <string>
 #include <exception.h>
 
 namespace MyPattern {
@@ -13,7 +13,7 @@ class XmlException : public MyPattern::Exceptions::Exception
         /*! Default constructor */
         XmlException();
         /*! Constructor with custom message */
-        XmlException(Glib::ustring message) : Exception(message)
+        XmlException(std::string message) : Exception(message)
         {}
         /** Default destructor */
         virtual ~XmlException();
