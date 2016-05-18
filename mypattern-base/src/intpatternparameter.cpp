@@ -4,7 +4,7 @@ using namespace MyPattern::Base;
 
 //! \todo Implement the functions of IntPatternParameter
 
-IntPatternParameter::IntPatternParameter(Glib::ustring name, std::list<int> valueRange, ValueRangeType valueRangeType)
+IntPatternParameter::IntPatternParameter(string name, std::list<int> valueRange, ValueRangeType valueRangeType)
 {
     this->set_name(name);
 
@@ -37,7 +37,7 @@ IntPatternParameter::IntPatternParameter(Glib::ustring name, std::list<int> valu
     }
 }
 
-IntPatternParameter::IntPatternParameter(Glib::ustring name)
+IntPatternParameter::IntPatternParameter(string name)
 {
     this->set_name(name);
     this->m_rangeType = VALUERANGETYPE_UNKNOWN;
@@ -48,10 +48,10 @@ IntPatternParameter::~IntPatternParameter()
     //dtor
 }
 
-void IntPatternParameter::parse_value_range(Glib::ustring valueRange)
+void IntPatternParameter::parse_value_range(string valueRange)
 {
     size_t spaceIndex = 0;
-    Glib::ustring substring = "";
+    string substring = "";
 
     m_valueRange = std::list<int>();
 

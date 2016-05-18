@@ -3,7 +3,7 @@
 namespace MyPattern {
 namespace Exceptions {
 
-ArgumentException::ArgumentException(Glib::ustring argument_name) : Exception("Argument " + argument_name + " must not be NULL")
+ArgumentException::ArgumentException(string argument_name) : Exception("Argument " + argument_name + " must not be NULL")
 {
     //ctor
 }

@@ -2,9 +2,9 @@
 #define MYPATTERN_BASE_EXCEPTIONS_FORMULAEVALUATIONEXCEPTION_H
 
 #include <exception.h>
-#include <glibmm/ustring.h>
+#include <string>
 
-using namespace Glib;
+using namespace std;
 
 namespace MyPattern {
 namespace Exceptions {
@@ -13,7 +13,7 @@ class FormulaEvaluationException : public Exception
 {
     public:
         /** Default constructor */
-        FormulaEvaluationException(ustring message);
+        FormulaEvaluationException(string message);
 
         /** Default destructor */
         virtual ~FormulaEvaluationException();

@@ -11,7 +11,7 @@ PatternParameter::~PatternParameter()
     //dtor
 }
 
-shared_ptr<PatternParameter> PatternParameter::create_object(Glib::ustring name, Glib::ustring type, Glib::ustring valueRange)
+shared_ptr<PatternParameter> PatternParameter::create_object(string name, string type, string valueRange)
 {
     shared_ptr<PatternParameter> createdObject(NULL);
 
@@ -43,12 +43,12 @@ shared_ptr<PatternParameter> PatternParameter::create_object(Glib::ustring name,
     return createdObject;
 }
 
-Glib::ustring PatternParameter::get_name()
+string PatternParameter::get_name()
 {
     return m_name;
 }
 
-void PatternParameter::set_name(Glib::ustring name)
+void PatternParameter::set_name(string name)
 {
     m_name = name;
 }

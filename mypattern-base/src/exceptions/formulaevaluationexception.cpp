@@ -3,7 +3,7 @@
 namespace MyPattern {
 namespace Exceptions {
 
-FormulaEvaluationException::FormulaEvaluationException(ustring message) : Exception(message)
+FormulaEvaluationException::FormulaEvaluationException(string message) : Exception(message)
 {
 }
 

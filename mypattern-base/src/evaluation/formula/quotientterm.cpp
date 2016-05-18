@@ -16,17 +16,17 @@ QuotientTerm::~QuotientTerm()
     //dtor
 }
 
-double QuotientTerm::evaluate(map<ustring,double> values)
+double QuotientTerm::evaluate(map<string,double> values)
 {
     return m_divident->evaluate(values) / m_divisor->evaluate(values);
 }
 
-list<ustring> QuotientTerm::get_symbol_names()
+list<string> QuotientTerm::get_symbol_names()
 {
-    list<ustring> result = m_divisor->get_symbol_names();
-    list<ustring> divident_symbols = m_divident->get_symbol_names();
+    list<string> result = m_divisor->get_symbol_names();
+    list<string> divident_symbols = m_divident->get_symbol_names();
 
-    list<ustring>::iterator it = divident_symbols.begin();
+    list<string>::iterator it = divident_symbols.begin();
     while(it != divident_symbols.end())
     {
         result.push_back(*it);

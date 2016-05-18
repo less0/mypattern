@@ -2,7 +2,7 @@
 
 using namespace MyPattern::Base;
 
-Part::Part(Glib::ustring name, list<Point> points, list<BezierComplex> curves)
+Part::Part(string name, list<Point> points, list<BezierComplex> curves)
 {
     m_name = name;
     m_points = points;
@@ -22,12 +22,12 @@ Part::~Part()
 }
 
 
-Glib::ustring Part::get_name()
+string Part::get_name()
 {
     return m_name;
 }
 
-void Part::set_name(Glib::ustring name)
+void Part::set_name(string name)
 {
     m_name = name;
 }

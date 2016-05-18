@@ -27,14 +27,14 @@ ConstantTerm& ConstantTerm::operator=(const ConstantTerm& rhs)
     return *this;
 }
 
-double ConstantTerm::evaluate(map<Glib::ustring,double>)
+double ConstantTerm::evaluate(map<string,double>)
 {
     return m_value;
 }
 
-list<Glib::ustring> ConstantTerm::get_symbol_names()
+list<string> ConstantTerm::get_symbol_names()
 {
-    return list<Glib::ustring>();
+    return list<string>();
 }
 
 } // namespace Formula

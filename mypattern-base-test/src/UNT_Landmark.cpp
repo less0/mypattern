@@ -34,11 +34,11 @@ namespace
         landmark->set_definition_x("$lm2[X]*2");
         landmark->set_definition_y("$lm2[Y]*2");
 
-        list<ustring> dependencies = landmark->depends_on();
+        list<string> dependencies = landmark->depends_on();
 
         CHECK_EQUAL(1, dependencies.size());
 
-        list<ustring>::iterator it = dependencies.begin();
+        list<string>::iterator it = dependencies.begin();
         CHECK_EQUAL("$lm2", *it);
     }
 

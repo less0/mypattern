@@ -208,7 +208,7 @@ bool CADMainWindow::mainDrawingArea_click(GdkEventButton* event)
 	{
 		bool wasSelected = false;
 		
-		for(list<Glib::ustring>::iterator it = m_selectedLandmarks.begin(); it!=m_selectedLandmarks.end(); it++)
+		for(list<string>::iterator it = m_selectedLandmarks.begin(); it!=m_selectedLandmarks.end(); it++)
 		{
 			if(*it == pointWithminimumPointDistance.get_landmark_name())
 			{
@@ -225,7 +225,7 @@ bool CADMainWindow::mainDrawingArea_click(GdkEventButton* event)
 	{
 		bool hasBeenSelectedBefore = false;
 		
-		for(list<Glib::ustring>::iterator it  = m_selectedCurves.begin(); it != m_selectedCurves.end(); it++)
+		for(list<string>::iterator it  = m_selectedCurves.begin(); it != m_selectedCurves.end(); it++)
 		{
 			if(*it == curveWithMinimumDistance.get_name())
 			{
@@ -250,8 +250,8 @@ bool CADMainWindow::mainDrawingArea_click(GdkEventButton* event)
 
 void CADMainWindow::update()
 {
-    list<Glib::ustring> part_definition_names = m_openedPattern->get_part_defintion_names();
-    list<Glib::ustring>::iterator it_names = part_definition_names.begin();
+    list<string> part_definition_names = m_openedPattern->get_part_defintion_names();
+    list<string>::iterator it_names = part_definition_names.begin();
 
     m_partsComboBox->set_model(m_partNamesTreestore = Gtk::TreeStore::create(m_partColumns));
 

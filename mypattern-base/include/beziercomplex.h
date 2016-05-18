@@ -4,7 +4,7 @@
 #include "point.h"
 #include "bezier.h"
 
-#include "glibmm/ustring.h"
+#include <string>
 #include "cairomm/cairomm.h"
 
 #include <list>
@@ -28,7 +28,7 @@ namespace MyPattern
         {
             public:
                 BezierComplex(list<Bezier>);
-                BezierComplex(list<Bezier>, Glib::ustring name);
+                BezierComplex(list<Bezier>, string name);
 		BezierComplex();
                 BezierComplex(const BezierComplex& instance_to_copy);
 
@@ -57,14 +57,14 @@ namespace MyPattern
                 * created from.
                 * /return Name of the BezierComplex object
                 */
-                Glib::ustring get_name();
+                string get_name();
                 /** \brief Sets the name of a BezierComplex object
                 *
                 * This function sets the name of a BezierComplex object,
                 * generally this has to match the name of the CurveDefinition
                 * the BezierComplex has been generated from
                 */
-                void set_name(Glib::ustring name);
+                void set_name(string name);
 
                 /** \brief Adds a Bezier to the BezierComplex
                 */
@@ -78,7 +78,7 @@ namespace MyPattern
             protected:
             private:
                 list<Bezier> m_bezier_curves;
-                Glib::ustring m_curve_name;
+                string m_curve_name;
         };
     }
 }

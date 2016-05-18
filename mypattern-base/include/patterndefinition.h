@@ -8,12 +8,11 @@
 #include "patternparametervalue.h"
 #include "partdefinition.h"
 #include "patterntype.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include "patternerror.h"
 #include "user.h"
 #include <list>
 
-using namespace Glib;
 using namespace std;
 using namespace MyPattern::Data;
 
@@ -33,7 +32,7 @@ namespace MyPattern
             public:
                 PatternDefinition();
                 PatternDefinition(const PatternDefinition& instance);
-                PatternDefinition(Glib::ustring name);
+                PatternDefinition(string name);
 
                 /*! \brief Create a Pattern object from a PatternDefinition and Measures.
                 *
@@ -50,7 +49,7 @@ namespace MyPattern
                 * \return A pointer to the newly created PartDefinition object, or NULL,
                 * if the creation failed
                 */
-                shared_ptr<PartDefinition> create_part_definition(Glib::ustring name);
+                shared_ptr<PartDefinition> create_part_definition(string name);
 
                 /*! \brief Adds an existing PartDefinition object to the current
                 * PatternDefinition
@@ -68,7 +67,7 @@ namespace MyPattern
                 * \return A pointer to the according PartDefinition object, if an object
                 * with the given name exists, NULL otherwise
                 */
-                shared_ptr<PartDefinition> get_part_definition(Glib::ustring name);
+                shared_ptr<PartDefinition> get_part_definition(string name);
 
                 /*! \brief Gets a PartDefinition object by index
                 *
@@ -89,7 +88,7 @@ namespace MyPattern
                 /*! \brief Returns a list of all PartDefinition names in the current
                 * PatternDefinition object
                 */
-                std::list<Glib::ustring> get_part_defintion_names();
+                std::list<string> get_part_defintion_names();
 
                 /*! Removes a PartDefinition from the current PatternDefinition
                 *
@@ -98,7 +97,7 @@ namespace MyPattern
                 * \param name Name of the part definition to remoove
                 * \return true if the object existed and was removed, false otherwise
                 */
-                bool remove_part_definition(Glib::ustring name);
+                bool remove_part_definition(string name);
 
                 /*! \brief Adds a PatternParameter to the current PatternDefinition
                 *
@@ -108,7 +107,7 @@ namespace MyPattern
                 bool add_pattern_parameter(shared_ptr<PatternParameter> parameter);
                 /*! \brief Returns a list of the names of all pattern parameters
                 */
-                std::list<ustring> get_pattern_parameter_names();
+                std::list<string> get_pattern_parameter_names();
                 /*! \brief Gets a PatternParameter by name
                 *
                 *
@@ -116,7 +115,7 @@ namespace MyPattern
                 * \return A pointer to the PatternParameter object with the given name,
                 * NULL, if there was no PatternParameter object with the given name
                 */
-                shared_ptr<PatternParameter> get_pattern_parameter(Glib::ustring name);
+                shared_ptr<PatternParameter> get_pattern_parameter(string name);
 
                 list<shared_ptr<PatternParameter>> get_pattern_parameters();
 
@@ -128,7 +127,7 @@ namespace MyPattern
                 * \return true if an object with the given name was found and removed,
                 * false otherwise
                 */
-                bool remove_pattern_parameter(Glib::ustring name);
+                bool remove_pattern_parameter(string name);
 
                 void set_author(shared_ptr<User> author);
 
@@ -172,10 +171,10 @@ namespace MyPattern
 
                 /*! \brief Gets the license text for the current PatternDefinition
                 */
-                Glib::ustring get_license();
+                string get_license();
 
                 /*! \brief Sets the license text of the pattern definition */
-                void set_license(Glib::ustring);
+                void set_license(string);
 
                 /*! \brief Gets the PatternType of the current PatternDefinition
                 */
@@ -193,7 +192,7 @@ namespace MyPattern
                 *
                 * \return The name of a pattern definition.
                 */
-                Glib::ustring get_name();
+                string get_name();
 
                 /*! \brief Set pattern definition name
                 *
@@ -202,7 +201,7 @@ namespace MyPattern
                 * meaningful, if a pattern is meant to be uploaded.
                 * \param name The designated name of the pattern
                 */
-                void set_name(Glib::ustring name);
+                void set_name(string name);
 
                 /*! \brief Gets the UID of the pattern definition
                 *
@@ -210,7 +209,7 @@ namespace MyPattern
                 * identifier (UID) to the very pattern, this identifier is used to
                 * version patterns.
                 */
-                Glib::ustring get_uid();
+                string get_uid();
 
                 /*! \brief Sets the uid of the pattern definition
                 *
@@ -219,7 +218,7 @@ namespace MyPattern
                 * saved along with the pattern
                 * \param uid UID of the pattern
                 */
-                void set_uid(Glib::ustring uid);
+                void set_uid(string uid);
 
                 /*! \brief Checks the pattern definition for errors
                 *
@@ -233,10 +232,10 @@ namespace MyPattern
                 */
                 std::list<PatternError> check();
 
-                static shared_ptr<PatternDefinition> read_xml(ustring filename);
+                static shared_ptr<PatternDefinition> read_xml(string filename);
             protected:
             private:
-                bool on_name_change_request(Glib::ustring name);
+                bool on_name_change_request(string name);
 
                 list<shared_ptr<PartDefinition>> m_part_definitions;
                 list<shared_ptr<PatternParameter>> m_pattern_parameters;
@@ -244,11 +243,11 @@ namespace MyPattern
 
                 shared_ptr<User> m_author;
 
-                Glib::ustring m_name;
+                string m_name;
 
                 int m_version;
                 int m_revision;
-                Glib::ustring m_uid;
+                string m_uid;
 
         };
     }

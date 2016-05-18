@@ -6,7 +6,7 @@
 #include <bezier.h>
 #include <list>
 #include <array>
-#include "glibmm/ustring.h"
+#include <string>
 
 using namespace std;
 
@@ -32,7 +32,7 @@ namespace MyPattern
                 shared_ptr<CurveDefinition> deserialize_class_from_xml(shared_ptr<XmlNode>);
                 shared_ptr<XmlNode> serialize_to_xml();
 
-                Glib::ustring get_class_name();
+                string get_class_name();
 
                 BezierDefinition();
                 virtual ~BezierDefinition();

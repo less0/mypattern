@@ -39,7 +39,7 @@ void CairoPatternDrawer::draw(Part part)
 			m_cairoContext->line_to(x-5,y+5);
 			m_cairoContext->line_to(x-5,y-5);
 			
-			for(list<Glib::ustring>::iterator it_selected_landmark = m_selectedLandmarks.begin(); it_selected_landmark != m_selectedLandmarks.end(); it_selected_landmark++)
+			for(list<string>::iterator it_selected_landmark = m_selectedLandmarks.begin(); it_selected_landmark != m_selectedLandmarks.end(); it_selected_landmark++)
 			{
 				if(*it_selected_landmark == p.get_landmark_name())
 				{
@@ -69,7 +69,7 @@ void CairoPatternDrawer::draw(Part part)
 				m_cairoContext->move_to(points[0].get_x(), points[0].get_y());
 				m_cairoContext->curve_to(points[1].get_x(), points[1].get_y(),points[2].get_x(), points[2].get_y(),points[3].get_x(), points[3].get_y());
 				
-				for(list<Glib::ustring>::iterator it_selected_curve = m_selectedCurves.begin(); it_selected_curve != m_selectedCurves.end(); it_selected_curve++)
+				for(list<string>::iterator it_selected_curve = m_selectedCurves.begin(); it_selected_curve != m_selectedCurves.end(); it_selected_curve++)
 				{
 					if(*it_selected_curve == it_curve->get_name())
 					{
@@ -94,12 +94,12 @@ MyPattern::Draw::Size CairoPatternDrawer::get_size(MyPattern::Base::Part)
 	return Size();
 }
 
-void CairoPatternDrawer::set_selected_landmarks(list<Glib::ustring> selectedLandmarks)
+void CairoPatternDrawer::set_selected_landmarks(list<string> selectedLandmarks)
 {
 	m_selectedLandmarks = selectedLandmarks;
 }
 
-void CairoPatternDrawer::set_selected_curves(list<Glib::ustring> selectedCurves)
+void CairoPatternDrawer::set_selected_curves(list<string> selectedCurves)
 {
 	m_selectedCurves = selectedCurves;
 }

@@ -3,13 +3,13 @@
 
 using namespace MyPattern::Base;
 
-FloatPatternParameter::FloatPatternParameter(Glib::ustring name)
+FloatPatternParameter::FloatPatternParameter(string name)
 {
     this->set_name(name);
     this->m_rangeType = VALUERANGETYPE_UNKNOWN;
 }
 
-FloatPatternParameter::FloatPatternParameter(Glib::ustring  name,
+FloatPatternParameter::FloatPatternParameter(string  name,
                                              list<float>    valueRange,
                                              ValueRangeType valueRangeType)
 {
@@ -48,30 +48,30 @@ FloatPatternParameter::~FloatPatternParameter()
     //dtor
 }
 
-void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
+void FloatPatternParameter::parse_value_range(string valueRange)
 {
     size_t spaceIndex = 0;
 
     //prepare REGEX expressions
-    Glib::ustring regexFloat = "[\\+\\-]{0,1}[0-9]{1,}(\\.[0-9]{1,}){0,1}([eE][\\+\\-]{0,1}[0-9]{1,}){0,1}";
-    Glib::ustring regexUpperLimit = Glib::ustring("^\\<")
+    string regexFloat = "[\\+\\-]{0,1}[0-9]{1,}(\\.[0-9]{1,}){0,1}([eE][\\+\\-]{0,1}[0-9]{1,}){0,1}";
+    string regexUpperLimit = string("^\\<")
         .append(regexFloat)
         .append("$");
-    Glib::ustring regexLowerLimit = Glib::ustring("^\\>")
+    string regexLowerLimit = string("^\\>")
         .append(regexFloat)
         .append("$");
-    Glib::ustring regexInterval = Glib::ustring("^")
+    string regexInterval = string("^")
         .append(regexFloat)
         .append("\\-")
         .append(regexFloat)
         .append("$");
-    Glib::ustring regexDiscrete = Glib::ustring("^(")
+    string regexDiscrete = string("^(")
         .append(regexFloat)
         .append("\\,){0,}(")
         .append(regexFloat)
         .append(")");
 
-    Glib::ustring substring = "";
+    string substring = "";
     m_valueRange = list<float>();
 
     ///\todo this is not a high performance function, thus the code parsing the
@@ -133,7 +133,7 @@ void FloatPatternParameter::parse_value_range(Glib::ustring valueRange)
     }
 }
 
-bool FloatPatternParameter::try_parse_value(Glib::ustring s, float* o)
+bool FloatPatternParameter::try_parse_value(string s, float* o)
 {
     bool parseError         = false;
     float parsedValue       = 0.0f;

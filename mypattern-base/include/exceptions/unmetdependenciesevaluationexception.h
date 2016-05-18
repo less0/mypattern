@@ -3,6 +3,7 @@
 
 #include <exceptions/evaluationexception.h>
 #include <list>
+#include <string>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ class UnmetDependenciesEvaluationException : public MyPattern::Exceptions::Evalu
 
         /*! \brief Constructor that takes a list of unmet dependencies
          */
-        UnmetDependenciesEvaluationException(list<ustring> dependencies);
+        UnmetDependenciesEvaluationException(list<string> dependencies);
         /** Default destructor */
         virtual ~UnmetDependenciesEvaluationException();
         /** Copy constructor
@@ -39,10 +40,10 @@ class UnmetDependenciesEvaluationException : public MyPattern::Exceptions::Evalu
         /*! \brief Gets a list of the names of the unmet dependencies (if
          * available)
          */
-        list<ustring> get_unmet_dependencies();
+        list<string> get_unmet_dependencies();
     protected:
     private:
-        list<ustring> m_unmet_dependencies;
+        list<string> m_unmet_dependencies;
 };
 
 } // namespace Exceptions

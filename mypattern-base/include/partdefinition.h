@@ -5,13 +5,13 @@
 #include "curvedefinition.h"
 #include "part.h"
 #include "evaluation/evaluationroot.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include <memory>
 
 #ifndef PARTDEFINITION_H
 #define PARTDEFINITION_H
 
-using namespace Glib;
+using namespace std;
 using namespace MyPattern::Data;
 
 namespace MyPattern
@@ -34,7 +34,7 @@ namespace MyPattern
                 *
                 * \param name Name of the landmark
                 */
-                shared_ptr<Landmark> get_landmark(Glib::ustring name);
+                shared_ptr<Landmark> get_landmark(string name);
 
                 /*! \brief Gets a list of pointers to all landmarks in the part
                 */
@@ -42,7 +42,7 @@ namespace MyPattern
 
                 /*! \brief Gets a list of landmark names in the current part
                 */
-                list<Glib::ustring> get_landmark_names();
+                list<string> get_landmark_names();
 
                 /*! \brief Adds a landmark to the part
                 *
@@ -54,7 +54,7 @@ namespace MyPattern
                 *
                 * \param name Name of the curve definition
                 */
-                shared_ptr<CurveDefinition> get_curve_definition(Glib::ustring name);
+                shared_ptr<CurveDefinition> get_curve_definition(string name);
 
                 /*! Adds a curve definition to the current part
                 *
@@ -93,7 +93,7 @@ namespace MyPattern
                 /*! \brief Gets the name of the part.
                  *
                  */
-                Glib::ustring get_name();
+                string get_name();
 
                 /*! \brief Sets the name of the part
                 *
@@ -112,7 +112,7 @@ namespace MyPattern
                 * \return true if the parent pattern allowed the name change,
                 * false otherwise
                 */
-                bool set_name(Glib::ustring name);
+                bool set_name(string name);
 
                 /*! \brief Gets the signal for requesting a name change
                 *
@@ -124,7 +124,7 @@ namespace MyPattern
                 * PartDefinition object emits the signal returned by this
                 * function.
                 */
-                sigc::signal1<bool,Glib::ustring> signal_name_change_request();
+                sigc::signal1<bool,string> signal_name_change_request();
 
                 /*! \brief Deserializes a PartDefinition from an XmlNode
                  *
@@ -138,13 +138,13 @@ namespace MyPattern
             private:
 				void add_objects(list<shared_ptr<PatternObject>> objectsToAdd);
 			
-                sigc::signal1<bool,Glib::ustring> m_signal_name_change_request;
+                sigc::signal1<bool,string> m_signal_name_change_request;
 
                 list<shared_ptr<CurveDefinition>> m_curve_definitions;
                 list<shared_ptr<Landmark>> m_landmarks;
                 shared_ptr<Measures> m_measures;
 
-                Glib::ustring m_name;
+                string m_name;
                 MyPattern::Base::Evaluation::EvaluationRoot m_evaluationRoot;
         };
 

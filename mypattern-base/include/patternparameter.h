@@ -1,8 +1,7 @@
 #ifndef PATTERNPARAMETER_H
 #define PATTERNPARAMETER_H
 
-#include "glibmm/ustring.h"
-
+#include <string>
 #include <memory>
 
 using namespace std;
@@ -28,10 +27,10 @@ namespace MyPattern
                 * changed after the creation of the object.
                 * \return Name of the pattern
                 */
-                Glib::ustring get_name();
+                string get_name();
 
 
-                virtual void parse_value_range(Glib::ustring valueRange) = 0;
+                virtual void parse_value_range(string valueRange) = 0;
 
                 /*! \brief Creates a PatternParameter object given a name and a type
                 *
@@ -45,14 +44,14 @@ namespace MyPattern
                 * \return A new PatternParameter object if the creation succeeded, a NULL-pointer
                 * otherwise
                 */
-                static shared_ptr<PatternParameter> create_object(Glib::ustring name,
-                    Glib::ustring type,
-                    Glib::ustring = "");
+                static shared_ptr<PatternParameter> create_object(string name,
+                    string type,
+                    string = "");
 
             protected:
-                void set_name(Glib::ustring name);
+                void set_name(string name);
             private:
-                Glib::ustring m_name;
+                string m_name;
         };
 
     }

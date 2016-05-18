@@ -1,7 +1,9 @@
-#include "glibmm/ustring.h"
-
 #ifndef PATTERNPARAMETERVALUE_H
 #define PATTERNPARAMETERVALUE_H
+
+#include <string>
+
+using namespace std;
 
 namespace MyPattern
 {
@@ -13,8 +15,8 @@ namespace MyPattern
                 PatternParameterValue();
                 virtual ~PatternParameterValue();
 
-                void set_parameterName(Glib::ustring name);
-                Glib::ustring get_paramterName();
+                void set_parameterName(string name);
+                string get_paramterName();
 
             protected:
             private:

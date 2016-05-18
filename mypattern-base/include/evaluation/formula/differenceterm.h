@@ -4,10 +4,9 @@
 #include <evaluation/formula/term.h>
 #include <memory>
 #include <map>
-#include <glibmm/ustring.h>
+#include <string>
 
 using namespace std;
-using namespace Glib;
 
 namespace MyPattern {
 namespace Base {
@@ -21,8 +20,8 @@ class DifferenceTerm : public MyPattern::Base::Evaluation::Formula::Term
         DifferenceTerm(shared_ptr<Term>,shared_ptr<Term>);
         /** Default destructor */
         virtual ~DifferenceTerm() {};
-        double evaluate(map<ustring, double>);
-        list<ustring> get_symbol_names();
+        double evaluate(map<string, double>);
+        list<string> get_symbol_names();
     protected:
     private:
         shared_ptr<Term> m_subtrahend;

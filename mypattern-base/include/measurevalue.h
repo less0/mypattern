@@ -2,7 +2,7 @@
 #define MEASUREVALUE_H
 
 #include "patternobject.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include "sigc++/sigc++.h"
 #include "mypattern-data.h"
 #include <memory>
@@ -18,12 +18,12 @@ namespace MyPattern
         class MeasureValue : public PatternObject
         {
             public:
-                MeasureValue(Glib::ustring name, Glib::ustring description, double default_value);
+                MeasureValue(string name, string description, double default_value);
                 MeasureValue(const MeasureValue& valueToCopy);
                 virtual ~MeasureValue();
 
-                Glib::ustring get_name();
-                Glib::ustring get_description();
+                string get_name();
+                string get_description();
 
                 double get_value();
                 void set_value(double value);
@@ -33,8 +33,8 @@ namespace MyPattern
 				static shared_ptr<MeasureValue> deserialize_from_xml(shared_ptr<XmlNode>);
             protected:
             private:
-                Glib::ustring m_name;
-                Glib::ustring m_description;
+                string m_name;
+                string m_description;
                 double m_value;
                 double m_default_value;
 

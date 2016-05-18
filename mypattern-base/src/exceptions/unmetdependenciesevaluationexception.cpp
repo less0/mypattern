@@ -8,7 +8,7 @@ UnmetDependenciesEvaluationException::UnmetDependenciesEvaluationException()
     //ctor
 }
 
-UnmetDependenciesEvaluationException::UnmetDependenciesEvaluationException(list<ustring> deps)
+UnmetDependenciesEvaluationException::UnmetDependenciesEvaluationException(list<string> deps)
 {
 	m_unmet_dependencies = deps;
 }
@@ -31,7 +31,7 @@ UnmetDependenciesEvaluationException& UnmetDependenciesEvaluationException::oper
     return *this;
 }
 
-list<ustring> UnmetDependenciesEvaluationException::get_unmet_dependencies()
+list<string> UnmetDependenciesEvaluationException::get_unmet_dependencies()
 {
     return m_unmet_dependencies;
 }

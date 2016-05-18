@@ -6,10 +6,9 @@
 
 #include <memory>
 #include <list>
-#include "glibmm/ustring.h"
+#include <string>
 
 using namespace std;
-using namespace Glib;
 using namespace MyPattern::Data;
 
 namespace MyPattern
@@ -22,8 +21,8 @@ namespace MyPattern
                 Measures();
                 virtual ~Measures();
 
-                shared_ptr<MeasureValue> define(Glib::ustring name, Glib::ustring comment, double default_value);
-                bool remove(ustring name);
+                shared_ptr<MeasureValue> define(string name, string comment, double default_value);
+                bool remove(string name);
                 bool remove(shared_ptr<MeasureValue>);
 
                 list<shared_ptr<MeasureValue>> get_measure_values();

@@ -16,7 +16,7 @@ CurveEvaluationTreeNode::CurveEvaluationTreeNode(shared_ptr<CurveDefinition> bas
 
 }
 
-Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
+string CurveEvaluationTreeNode::get_prefixed_name()
 {
     if(m_base_curve_definition == NULL)
     {
@@ -25,12 +25,12 @@ Glib::ustring CurveEvaluationTreeNode::get_prefixed_name()
     return "$" + m_base_curve_definition->get_name();
 }
 
-std::list<Glib::ustring> CurveEvaluationTreeNode::depends_on()
+std::list<string> CurveEvaluationTreeNode::depends_on()
 {
-    std::list<Glib::ustring> landmark_names = m_base_curve_definition->get_landmarks();
-    std::list<Glib::ustring> dependencies;
+    std::list<string> landmark_names = m_base_curve_definition->get_landmarks();
+    std::list<string> dependencies;
 
-    for(std::list<Glib::ustring>::iterator it = landmark_names.begin(); it != landmark_names.end(); it++)
+    for(std::list<string>::iterator it = landmark_names.begin(); it != landmark_names.end(); it++)
     {
         dependencies.push_back("@" + *it);
     }
@@ -82,7 +82,7 @@ void CurveEvaluationTreeNode::base_curve_changed()
 	update_value();
 }
 
-bool CurveEvaluationTreeNode::base_curve_change_request(list<ustring> new_landmarks)
+bool CurveEvaluationTreeNode::base_curve_change_request(list<string> new_landmarks)
 {
 	if(!signal_request_change.empty())
 	{

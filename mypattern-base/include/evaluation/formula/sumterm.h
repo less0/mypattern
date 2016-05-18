@@ -2,11 +2,10 @@
 #define MYPATTERN_BASE_EVALUATION_FORMULA_SUMTERM_H
 
 #include <evaluation/formula/term.h>
-#include <glibmm/ustring.h>
+#include <string>
 #include <map>
 #include <list>
 
-using namespace Glib;
 using namespace std;
 
 
@@ -23,8 +22,8 @@ class SumTerm : public MyPattern::Base::Evaluation::Formula::Term
         /** Default destructor */
         ~SumTerm();
 
-        double evaluate(map<ustring, double>);
-        list<ustring> get_symbol_names();
+        double evaluate(map<string, double>);
+        list<string> get_symbol_names();
     protected:
     private:
         shared_ptr<Term> m_summand_1;

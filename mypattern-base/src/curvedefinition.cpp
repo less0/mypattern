@@ -10,16 +10,16 @@ list<shared_ptr<CurveDefinition>> CurveDefinition::m_registered_classes = list<s
 CurveDefinition::~CurveDefinition()
 {}
 
-Glib::ustring CurveDefinition::get_name()
+string CurveDefinition::get_name()
 {
     return m_name;
 }
 
-bool CurveDefinition::set_name(Glib::ustring name)
+bool CurveDefinition::set_name(string name)
 {
     if(request_name_change.empty() || request_name_change(name, OBJECTTYPE_CURVE))
     {
-        Glib::ustring old_name = m_name;
+        string old_name = m_name;
 
         m_name = name;
 
@@ -37,12 +37,12 @@ bool CurveDefinition::set_name(Glib::ustring name)
 
 }
 
-list<ustring> CurveDefinition::get_landmarks()
+list<string> CurveDefinition::get_landmarks()
 {
-	list<ustring> result;
-	list<ustring> in = m_landmarks;
+	list<string> result;
+	list<string> in = m_landmarks;
 	
-	for(list<ustring>::iterator it = in.begin();
+	for(list<string>::iterator it = in.begin();
 		it != in.end();
 		it++)
 	{
@@ -52,7 +52,7 @@ list<ustring> CurveDefinition::get_landmarks()
     return result;
 }
 
-void CurveDefinition::set_landmarks(list<ustring> landmarks)
+void CurveDefinition::set_landmarks(list<string> landmarks)
 {
     if(signal_request_change.empty() || signal_request_change(landmarks))
     {
@@ -86,9 +86,9 @@ void CurveDefinition::unregister_all_classes()
 	CurveDefinition::m_registered_classes.clear();
 }
 
-list<ustring> CurveDefinition::get_registered_class_names()
+list<string> CurveDefinition::get_registered_class_names()
 {
-    list<ustring> names;
+    list<string> names;
 
     for(list<shared_ptr<CurveDefinition>>::iterator it = CurveDefinition::m_registered_classes.begin();
         it != CurveDefinition::m_registered_classes.end();
@@ -110,7 +110,7 @@ shared_ptr<CurveDefinition> CurveDefinition::deserialize_from_xml(shared_ptr<Xml
 
     shared_ptr<CurveDefinition> deserialized_definition = shared_ptr<CurveDefinition>(NULL);
     list<XmlAttribute> attributes;
-    ustring type;
+    string type;
 
     attributes = node->get_attributes();
 

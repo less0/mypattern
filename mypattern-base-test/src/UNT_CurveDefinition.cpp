@@ -6,6 +6,7 @@
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Exceptions;
+using namespace std;
 
 namespace
 {
@@ -19,14 +20,14 @@ namespace
 
     TEST_FIXTURE(CurveDefinitionFixture, TestRegisterClasses)
     {
-		list<ustring> class_names = CurveDefinition::get_registered_class_names();
+		list<string> class_names = CurveDefinition::get_registered_class_names();
 		
         shared_ptr<CurveDefinition> bezier_prototype = shared_ptr<CurveDefinition>(new BezierDefinition());
 
         CurveDefinition::register_class(bezier_prototype);
         class_names = CurveDefinition::get_registered_class_names();
         CHECK_EQUAL(1, class_names.size());
-		list<ustring>::iterator it = class_names.begin();
+		list<string>::iterator it = class_names.begin();
 		CHECK_EQUAL("bezier", *it);
     }
 
@@ -65,8 +66,8 @@ namespace
 				CHECK_EQUAL("bezier", deserializedCurveDefinition->get_class_name());
 				CHECK_EQUAL("FooBar", deserializedCurveDefinition->get_name());
 				
-				list<ustring> landmarkNames = deserializedCurveDefinition->get_landmarks();
-				list<ustring>::iterator landmarkIterator = landmarkNames.begin();
+				list<string> landmarkNames = deserializedCurveDefinition->get_landmarks();
+				list<string>::iterator landmarkIterator = landmarkNames.begin();
 				CHECK_EQUAL("A", *landmarkIterator);
 				landmarkIterator++;
 				CHECK_EQUAL("B", *landmarkIterator);

@@ -3,7 +3,7 @@
 namespace MyPattern {
 namespace Exceptions {
 
-ObjectNameTakenEvaluationException::ObjectNameTakenEvaluationException(ustring object_name)  : EvaluationException("Object name \"" + object_name + "\" is already takem")
+ObjectNameTakenEvaluationException::ObjectNameTakenEvaluationException(string object_name)  : EvaluationException("Object name \"" + object_name + "\" is already takem")
 {
     //ctor
 }

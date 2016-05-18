@@ -5,11 +5,9 @@
 #include "beziercomplex.h"
 #include "mypattern-data.h"
 
-
-#include "glibmm.h"
 #include <list>
+#include <string>
 
-using namespace Glib;
 using namespace std;
 using namespace MyPattern::Data;
 
@@ -38,13 +36,13 @@ namespace MyPattern
                     assembled from single Bézier curves
                 */
                 virtual BezierComplex get_bezier(list<Point>) = 0;
-                virtual ustring get_class_name() = 0;
+                virtual string get_class_name() = 0;
                 virtual shared_ptr<XmlNode> serialize_to_xml() = 0;
                 virtual shared_ptr<CurveDefinition> deserialize_class_from_xml(shared_ptr<XmlNode>) = 0;
 
 //
 
-                ustring get_name();
+                string get_name();
                 /*! \brief Sets the name of the CurveDefinition
                 *
                 * This function sets the name of a CurveDefinition object.
@@ -59,37 +57,37 @@ namespace MyPattern
                 * PatternDefinition the CurveDefinition belongs to, false
                 * otherwise
                 */
-                bool set_name(ustring);
+                bool set_name(string);
 
                 /*! \brief Sets the names of the Landmarks of the current CurveDefinition
                  */
-                void set_landmarks(list<ustring>);
+                void set_landmarks(list<string>);
 
                 /*! \brief Gets the names of Landmarks in the current CurveDefinition
                 *
                 * \return A list with all Landmark names in the CurveDefinition
                 * in the correct order
                 */
-                list<ustring> get_landmarks();
+                list<string> get_landmarks();
 
                 /** \brief Gets a signal to add a function to to request a name change
                 */
-                sigc::signal1<bool, Glib::ustring> signal_name_change_request;
+                sigc::signal1<bool, string> signal_name_change_request;
                 sigc::signal0<void> signal_name_changed;
 
-                sigc::signal1<bool, list<ustring>> signal_request_change;
+                sigc::signal1<bool, list<string>> signal_request_change;
                 sigc::signal0<void> signal_changed;
 
                 static void register_class(shared_ptr<CurveDefinition> prototype);
 				static void unregister_all_classes();
-                static shared_ptr<CurveDefinition> create_instance(ustring class_name);
-                static list<ustring> get_registered_class_names();
+                static shared_ptr<CurveDefinition> create_instance(string class_name);
+                static list<string> get_registered_class_names();
                 static shared_ptr<CurveDefinition> deserialize_from_xml(shared_ptr<XmlNode>);
             protected:
             private:
-                ustring m_name;
-                list<Glib::ustring> m_landmarks;
-                sigc::signal2<bool, Glib::ustring, ObjectType> request_name_change;
+                string m_name;
+                list<string> m_landmarks;
+                sigc::signal2<bool, string, ObjectType> request_name_change;
 
                 static list<shared_ptr<CurveDefinition>> m_registered_classes;
 

@@ -29,9 +29,9 @@ class ConstantTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ConstantTerm& operator=(const ConstantTerm& other);
 
-        double evaluate(map<Glib::ustring,double>);
+        double evaluate(map<string,double>);
 
-        list<Glib::ustring> get_symbol_names();
+        list<string> get_symbol_names();
     protected:
     private:
         double m_value;

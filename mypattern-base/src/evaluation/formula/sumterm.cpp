@@ -16,17 +16,17 @@ SumTerm::~SumTerm()
 
 }
 
-double SumTerm::evaluate(map<ustring, double> values)
+double SumTerm::evaluate(map<string, double> values)
 {
     return m_summand_1->evaluate(values) + m_summand_2->evaluate(values);
 }
 
-list<ustring> SumTerm::get_symbol_names()
+list<string> SumTerm::get_symbol_names()
 {
-    list<ustring> result = m_summand_1->get_symbol_names();
-    list<ustring> s2_symbols = m_summand_2->get_symbol_names();
+    list<string> result = m_summand_1->get_symbol_names();
+    list<string> s2_symbols = m_summand_2->get_symbol_names();
 
-    for(list<ustring>::iterator it = s2_symbols.begin(); it!=s2_symbols.end(); it++)
+    for(list<string>::iterator it = s2_symbols.begin(); it!=s2_symbols.end(); it++)
     {
         result.push_back(*it);
     }

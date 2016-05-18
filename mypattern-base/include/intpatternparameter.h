@@ -1,4 +1,4 @@
-#include "glibmm/ustring.h"
+#include <string>
 #include <list>
 
 #ifndef INTPATTERNPARAMETER_H
@@ -16,12 +16,12 @@ namespace MyPattern
         class IntPatternParameter : public PatternParameter
         {
             public:
-                IntPatternParameter(Glib::ustring name);
-                IntPatternParameter(Glib::ustring name, list<int> valueRange, ValueRangeType valueRangeType = VALUERANGETYPE_UNKNOWN);
+                IntPatternParameter(string name);
+                IntPatternParameter(string name, list<int> valueRange, ValueRangeType valueRangeType = VALUERANGETYPE_UNKNOWN);
                 virtual ~IntPatternParameter();
 
 
-                void parse_value_range(Glib::ustring valueRange);
+                void parse_value_range(string valueRange);
 
                 //! \todo Implement get_default_value (add a set_default_value, too?)
                 int get_default_value();
