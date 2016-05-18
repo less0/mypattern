@@ -2,6 +2,9 @@
 #define MYPATTERN_BASE_EXCEPTIONS_OBJECTNAMETAKENEVALUATIONEXCEPTION_H
 
 #include <exceptions/evaluationexception.h>
+#include <string>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Exceptions {
@@ -10,7 +13,7 @@ class ObjectNameTakenEvaluationException : public MyPattern::Exceptions::Evaluat
 {
     public:
         /** Default constructor */
-        ObjectNameTakenEvaluationException(ustring object_name);
+        ObjectNameTakenEvaluationException(string object_name);
         /** Default destructor */
         virtual ~ObjectNameTakenEvaluationException();
         /** Copy constructor

@@ -202,15 +202,15 @@ list<Point> EvaluationRoot::get_points()
     return points;
 }
 
-list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<ustring> deps)
+list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<string> deps)
 {
     list<shared_ptr<EvaluationTreeNode>> result;
-    list<ustring> unmet_dependencies;
+    list<string> unmet_dependencies;
 
     list<shared_ptr<EvaluationTreeNode>>::iterator it_objects;
 
 
-    for(list<ustring>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
+    for(list<string>::iterator it_deps = deps.begin(); it_deps != deps.end(); it_deps++)
     {
         bool resolved_current_dependency = false;
 
@@ -240,7 +240,7 @@ list<shared_ptr<EvaluationTreeNode>> EvaluationRoot::resolve_dependencies(list<u
 }
 
 
-bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_dependencies)
+bool EvaluationRoot::landmark_node_change_request(shared_ptr<EvaluationTreeNode> node, list<string> new_dependencies)
 {
     shared_ptr<LandmarkEvaluationTreeNode> landmark_node = dynamic_pointer_cast<LandmarkEvaluationTreeNode>(node);
 
@@ -282,7 +282,7 @@ void EvaluationRoot::landmark_update_dependencies(shared_ptr<EvaluationTreeNode>
     }
 }
 
-bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> node, list<ustring> new_landmarks)
+bool EvaluationRoot::curve_node_change_request(shared_ptr<EvaluationTreeNode> node, list<string> new_landmarks)
 {
     shared_ptr<CurveEvaluationTreeNode> curve_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(node);
 

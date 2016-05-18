@@ -51,7 +51,7 @@ BezierComplex BezierDefinition::get_bezier(list<Point> l_points)
     return bezier_complex;
 }
 
-Glib::ustring BezierDefinition::get_class_name()
+string BezierDefinition::get_class_name()
 {
     return "bezier";
 }
@@ -76,7 +76,7 @@ shared_ptr<CurveDefinition> BezierDefinition::deserialize_class_from_xml(shared_
 		}
 	}
 	
-	list<ustring> landmarkNames;
+	list<string> landmarkNames;
 	list<shared_ptr<XmlNode>> subnodes = node->get_nodes();
 	
 	for(list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();

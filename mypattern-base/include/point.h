@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include "glibmm/ustring.h"
+#include <string>
 #include "cairomm/context.h"
 #include <memory>
 
@@ -40,9 +40,9 @@ namespace MyPattern
 
                 /*! \brief Gets the name of the Landmark object the point was derived from
                 */
-                Glib::ustring get_landmark_name();
+                string get_landmark_name();
 
-                void set_landmark_name(Glib::ustring);
+                void set_landmark_name(string);
 
                 void draw(shared_ptr<Cairo::Context> context, bool selected);
 
@@ -57,7 +57,7 @@ namespace MyPattern
             protected:
             private:
                 double m_x, m_y;
-                Glib::ustring m_landmark_name;
+                string m_landmark_name;
         };
     }
 }

@@ -245,7 +245,7 @@ namespace
 
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
 
-		list<ustring> dependency_names;
+		list<string> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
@@ -279,7 +279,7 @@ namespace
 
 		shared_ptr<BezierDefinition> bezier = shared_ptr<BezierDefinition>(new BezierDefinition());
 
-		list<ustring> dependency_names;
+		list<string> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
@@ -318,7 +318,7 @@ namespace
 
 		bezier->set_name("bezier1");
 
-		list<ustring> dependency_names;
+		list<string> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
@@ -328,11 +328,11 @@ namespace
 
 		shared_ptr<CurveEvaluationTreeNode> bezier_node = dynamic_pointer_cast<CurveEvaluationTreeNode>(root.add_object(bezier));
 
-		list<ustring> deps_from_node = bezier_node->depends_on();
+		list<string> deps_from_node = bezier_node->depends_on();
 
 		CHECK_EQUAL(4, deps_from_node.size());
 
-		list<ustring>::iterator it = deps_from_node.begin();
+		list<string>::iterator it = deps_from_node.begin();
 
 		CHECK_EQUAL("@foo", *it);
 		it++;
@@ -351,7 +351,7 @@ namespace
 
 		bezier->set_name("bezier1");
 
-		list<ustring> dependency_names;
+		list<string> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
@@ -386,7 +386,7 @@ namespace
 		bezier1->set_name("bezier1");
 		bezier2->set_name("bezier1");
 
-		list<ustring> dependency_names;
+		list<string> dependency_names;
 		dependency_names.push_back("foo");
 		dependency_names.push_back("bar");
 		dependency_names.push_back("baz");
@@ -423,7 +423,7 @@ namespace
 		lm4->set_definition_x("1");
 		lm4->set_definition_y("1");
 
-		list<ustring> landmark_names;
+		list<string> landmark_names;
 		landmark_names.push_back("lm1");
 		landmark_names.push_back("lm2");
 		landmark_names.push_back("lm3");
@@ -474,7 +474,7 @@ namespace
 		lm4->set_definition_x("1");
 		lm4->set_definition_y("1");
 
-		list<ustring> landmark_names;
+		list<string> landmark_names;
 		landmark_names.push_back("lm1");
 		landmark_names.push_back("lm2");
 		landmark_names.push_back("lm3");
@@ -530,7 +530,7 @@ namespace
 		lm4->set_definition_x("1");
 		lm4->set_definition_y("1");
 
-		list<ustring> landmark_names;
+		list<string> landmark_names;
 		landmark_names.push_back("lm1");
 		landmark_names.push_back("lm2");
 		landmark_names.push_back("lm3");
@@ -582,7 +582,7 @@ namespace
 		lm_check->set_definition_x("$bezier1[.5][X]");
 		lm_check->set_definition_y("$bezier1[.5][Y]");
 
-		list<ustring> landmark_names;
+		list<string> landmark_names;
 		landmark_names.push_back("lm1");
 		landmark_names.push_back("lm2");
 		landmark_names.push_back("lm3");
@@ -695,7 +695,7 @@ namespace
         list<shared_ptr<PatternObject>> patternObjects;
 
         shared_ptr<CurveDefinition> curve1 = shared_ptr<CurveDefinition>(new BezierDefinition());
-        list<ustring> curve1_landmarks;
+        list<string> curve1_landmarks;
 
         curve1_landmarks.push_back("lm1");
         curve1_landmarks.push_back("lm2");

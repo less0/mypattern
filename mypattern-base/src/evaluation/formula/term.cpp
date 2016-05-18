@@ -20,11 +20,11 @@ namespace Base {
 namespace Evaluation {
 namespace Formula {
 
-ustring Term::s_operators = "/*-+";
-//ustring Term::s_valid_symbol = "^[@$#\?]{1,1}[A-Za-z0-9]+(\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
-ustring Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|(\\[0\\]|\\[0?\\.[0-9]*\\])(\\[[XY]\\]){0,1}){0,1}$";
+string Term::s_operators = "/*-+";
+//string Term::s_valid_symbol = "^[@$#\?]{1,1}[A-Za-z0-9]+(\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
+string Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|(\\[0\\]|\\[0?\\.[0-9]*\\])(\\[[XY]\\]){0,1}){0,1}$";
 
-ustring Term::s_valid_number = "^[0-9]+$|^[0-9]{0,}\\.[0-9]{1,}$";
+string Term::s_valid_number = "^[0-9]+$|^[0-9]{0,}\\.[0-9]{1,}$";
 
 Term& Term::operator=(const Term& rhs)
 {
@@ -33,10 +33,10 @@ Term& Term::operator=(const Term& rhs)
     return *this;
 }
 
-shared_ptr<Term> Term::parse(const Glib::ustring &formula)
+shared_ptr<Term> Term::parse(const string &formula)
 {
 
-    map<ustring, shared_ptr<Term>> substitutions;
+    map<string, shared_ptr<Term>> substitutions;
     int substitutions_index = 0;
 
 
@@ -47,7 +47,7 @@ shared_ptr<Term> Term::parse(const Glib::ustring &formula)
 
 }
 
-shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<Term>> &substitutions, int &substitution_index)
+shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Term>> &substitutions, int &substitution_index)
 {
     int operator_index = 0;
     int start_index = 0;
@@ -80,14 +80,14 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         return shared_ptr<Term>(new ScalarTerm(formula));
     }
 
-    ustring parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
+    string parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
     RefPtr<Regex> parentheses_regex = Regex::create(parentheses_pattern);
 
     MatchInfo match_info;
 
     while(parentheses_regex->match(formula, match_info))
     {
-        ustring subformula = match_info.fetch(0);
+        string subformula = match_info.fetch(0);
 
         subformula = subformula.substr(1, subformula.length()-2);
 
@@ -101,7 +101,7 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula.erase(subformula_index-1, subformula.length()+2);
         formula.insert(subformula_index-1, s.str());
 
-        substitutions.insert(pair<ustring, shared_ptr<Term>>(s.str(), parentheses_term));
+        substitutions.insert(pair<string, shared_ptr<Term>>(s.str(), parentheses_term));
 
         //return shared_ptr<Term>(new ConstantTerm(0));
     }
@@ -120,7 +120,7 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula.erase(start_index, (end_index - start_index) + 1);
         formula.insert(start_index, s.str());
 
-        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+        substitutions.insert(pair<string,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
     while((operator_index = formula.find('*')) > 0)
@@ -136,7 +136,7 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula.erase(start_index, (end_index - start_index) + 1);
         formula.insert(start_index, s.str());
 
-        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+        substitutions.insert(pair<string,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
     while((operator_index = formula.find('-')) > 0)
@@ -152,7 +152,7 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula.erase(start_index, (end_index - start_index) + 1);
         formula.insert(start_index, s.str());
 
-        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+        substitutions.insert(pair<string,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
     while((operator_index = formula.find('+')) > 0)
@@ -168,19 +168,19 @@ shared_ptr<Term> Term::parse_internal(ustring formula, map<ustring, shared_ptr<T
         formula.erase(start_index, (end_index - start_index) + 1);
         formula.insert(start_index, s.str());
 
-        substitutions.insert(pair<ustring,shared_ptr<Term>>(s.str(), substituted_term));
+        substitutions.insert(pair<string,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
     return substitutions.at(formula);
 }
 
-shared_ptr<Term> Term::get_left_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &start_index)
+shared_ptr<Term> Term::get_left_atomic(string formula, int index, const map<string, shared_ptr<Term>> &substitutions, int &start_index)
 {
     int current_index = index - 1;
-    ustring subterm;
+    string subterm;
 
     while(current_index>=0 &&
-        s_operators.find(formula[current_index]) == ustring::npos)
+        s_operators.find(formula[current_index]) == string::npos)
     { current_index--; }
 
     start_index = current_index + 1;
@@ -190,14 +190,14 @@ shared_ptr<Term> Term::get_left_atomic(ustring formula, int index, const map<ust
     return parse_atomic(subterm, substitutions);
 }
 
-shared_ptr<Term> Term::get_right_atomic(ustring formula, int index, const map<ustring, shared_ptr<Term>> &substitutions, int &end_index)
+shared_ptr<Term> Term::get_right_atomic(string formula, int index, const map<string, shared_ptr<Term>> &substitutions, int &end_index)
 {
     unsigned int current_index;
-    ustring subterm;
+    string subterm;
 
     for(current_index = index + 1;
         current_index < formula.length() &&
-            s_operators.find(formula[current_index]) == ustring::npos;
+            s_operators.find(formula[current_index]) == string::npos;
         current_index++);
 
     end_index = current_index - 1;
@@ -206,7 +206,7 @@ shared_ptr<Term> Term::get_right_atomic(ustring formula, int index, const map<us
     return parse_atomic(subterm, substitutions);
 }
 
-shared_ptr<Term> Term::parse_atomic(ustring term, const map<ustring, shared_ptr<Term>> &substitutions)
+shared_ptr<Term> Term::parse_atomic(string term, const map<string, shared_ptr<Term>> &substitutions)
 {
 
 //    Glib::RefPtr<Regex> regex_number = Regex::create(Term::s_valid_number);

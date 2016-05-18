@@ -5,6 +5,7 @@
 #include <iostream>
 
 using namespace MyPattern::Data;
+using namespace std;
 
 namespace PartDefintionIntegration
 {
@@ -16,7 +17,7 @@ struct PartDefinitionFixture
     PartDefinition _partDefinition;
 };
 
-bool name_change_request_handler(Glib::ustring name)
+bool name_change_request_handler(string name)
 {
     if(name == "Reserved")
     {
@@ -114,7 +115,7 @@ TEST_FIXTURE(PartDefinitionFixture, EvaluateCurve)
 
     shared_ptr<CurveDefinition> bezier = dynamic_pointer_cast<CurveDefinition>(shared_ptr<BezierDefinition>(new BezierDefinition()));
 
-    list<Glib::ustring> landmark_names;
+    list<string> landmark_names;
     landmark_names.push_back("lm1");
     landmark_names.push_back("lm2");
     landmark_names.push_back("lm3");
@@ -235,7 +236,7 @@ TEST_FIXTURE(PartDefinitionFixture, TryRemoveMeasuresWithDependingLandmarks)
 
 TEST_FIXTURE(PartDefinitionFixture, ChangeNameSuccessful)
 {
-    _partDefinition.signal_name_change_request().connect(ptr_fun1<Glib::ustring,bool>(&name_change_request_handler));
+    _partDefinition.signal_name_change_request().connect(ptr_fun1<string,bool>(&name_change_request_handler));
     _partDefinition.set_name("Test3141");
     CHECK_EQUAL("Test3141", _partDefinition.get_name());
 }
@@ -243,7 +244,7 @@ TEST_FIXTURE(PartDefinitionFixture, ChangeNameSuccessful)
 
 TEST_FIXTURE(PartDefinitionFixture, ChangeNameFail)
 {
-    _partDefinition.signal_name_change_request().connect(ptr_fun1<Glib::ustring,bool>(&name_change_request_handler));
+    _partDefinition.signal_name_change_request().connect(ptr_fun1<string,bool>(&name_change_request_handler));
     _partDefinition.set_name("Test1");
     _partDefinition.set_name("Reserved");
     CHECK_EQUAL("Test1", _partDefinition.get_name());
@@ -285,13 +286,13 @@ TEST(ParseFromXml)
     curve_node->add_attribute(XmlAttribute("name", "c1"));
     curve_node->add_attribute(XmlAttribute("type", "bezier"));
 	
-	list<ustring> landmark_references;
+	list<string> landmark_references;
 	landmark_references.push_back("lm1");
 	landmark_references.push_back("lm2");
 	landmark_references.push_back("lm3");
 	landmark_references.push_back("lm4");
 	
-	for(list<ustring>::iterator it = landmark_references.begin();
+	for(list<string>::iterator it = landmark_references.begin();
 		it != landmark_references.end();
 		it++)
 	{
@@ -326,9 +327,9 @@ TEST(ParseFromXml)
 	list<shared_ptr<CurveDefinition>>::iterator it_curve = curveDefinitions.begin();
 	CHECK_EQUAL(false, *it_curve == NULL);
 	CHECK_EQUAL("c1", (*it_curve)->get_name());
-	list<ustring> lmrefs = (*it_curve)->get_landmarks();
+	list<string> lmrefs = (*it_curve)->get_landmarks();
 	CHECK_EQUAL(4, lmrefs.size());
-	list<ustring>::iterator it_lmrefs = lmrefs.begin();
+	list<string>::iterator it_lmrefs = lmrefs.begin();
 	CHECK_EQUAL("lm1", *it_lmrefs++);
 	CHECK_EQUAL("lm2", *it_lmrefs++);
 	CHECK_EQUAL("lm3", *it_lmrefs++);

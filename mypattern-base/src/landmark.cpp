@@ -8,7 +8,9 @@
 #include <sstream>
 #include <iostream>
 #include <glibmm/regex.h>
+#include <string>
 
+using namespace std;
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Base::Evaluation::Formula;
@@ -33,14 +35,14 @@ Landmark::~Landmark()
 }
 
 
-bool Landmark::set_name(Glib::ustring name)
+bool Landmark::set_name(string name)
 {
-    sigc::signal1<bool, Glib::ustring>::slot_list_type slots =
+    sigc::signal1<bool, string>::slot_list_type slots =
         this->signal_name_change_request.slots();
 
     bool has_slots = slots.begin() != slots.end();
 
-    Glib::ustring old_name = this->m_name;
+    string old_name = this->m_name;
 
     if(!has_slots || this->signal_name_change_request.emit(name))
     {
@@ -52,19 +54,19 @@ bool Landmark::set_name(Glib::ustring name)
     return false;
 }
 
-Glib::ustring Landmark::get_name()
+string Landmark::get_name()
 {
     return m_name;
 }
 
 
-bool Landmark::set_definition_x(Glib::ustring definition)
+bool Landmark::set_definition_x(string definition)
 {
     shared_ptr<Term> new_x_term;
     new_x_term = Term::parse(definition);
 
 
-    list<ustring> new_dependencies = depends_on(new_x_term->get_symbol_names(), m_y_term->get_symbol_names(), true);
+    list<string> new_dependencies = depends_on(new_x_term->get_symbol_names(), m_y_term->get_symbol_names(), true);
 
     if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
@@ -82,16 +84,16 @@ bool Landmark::set_definition_x(Glib::ustring definition)
     return false;
 }
 
-Glib::ustring Landmark::get_definition_x()
+string Landmark::get_definition_x()
 {
     return this->m_x_definition;
 }
 
-bool Landmark::set_definition_y(Glib::ustring definition)
+bool Landmark::set_definition_y(string definition)
 {
     shared_ptr<Term> new_y_term = Term::parse(definition);
 
-    list<ustring> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names(), true);
+    list<string> new_dependencies = depends_on(m_x_term->get_symbol_names(), new_y_term->get_symbol_names(), true);
 
     if(signal_change_request.empty() || signal_change_request(new_dependencies))
     {
@@ -110,34 +112,34 @@ bool Landmark::set_definition_y(Glib::ustring definition)
 }
 
 
-Glib::ustring Landmark::get_definition_y()
+string Landmark::get_definition_y()
 {
     return this->m_y_definition;
 }
 
-list<ustring> Landmark::depends_on(bool strip_argument)
+list<string> Landmark::depends_on(bool strip_argument)
 {
-    list<ustring> dependencies_x = m_x_term->get_symbol_names();
-    list<ustring> dependencies_y = m_y_term->get_symbol_names();
+    list<string> dependencies_x = m_x_term->get_symbol_names();
+    list<string> dependencies_y = m_y_term->get_symbol_names();
 
     return depends_on(dependencies_x, dependencies_y, strip_argument);
 }
 
-list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustring> dependencies_y, bool strip_argument)
+list<string> Landmark::depends_on(list<string> dependencies_x, list<string> dependencies_y, bool strip_argument)
 {
-    list<ustring> dependencies;
-    list<ustring>::iterator it;
+    list<string> dependencies;
+    list<string>::iterator it;
 
     for(it = dependencies_x.begin(); it != dependencies_x.end(); it++)
     {
         bool found_in_list = false;
-        ustring current_dependency = *it;
+        string current_dependency = *it;
 
 
 	if(strip_argument)
 	{
         	//strip argument
-        	ustring::size_type index_of_bracket;
+        	string::size_type index_of_bracket;
 
         	if((index_of_bracket = current_dependency.find('[')) != string::npos)
         	{
@@ -145,7 +147,7 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
         	}
 	}
 
-        for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
+        for(list<string>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
         {
             if(*it2 == current_dependency)
             {
@@ -163,12 +165,12 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
     for(it = dependencies_y.begin(); it != dependencies_y.end(); it++)
     {
         bool found_in_list = false;
-        ustring current_dependency = *it;
+        string current_dependency = *it;
 
 		if(strip_argument)
 		{
 			//strip argument
-			ustring::size_type index_of_bracket;
+			string::size_type index_of_bracket;
 
 			if((index_of_bracket = current_dependency.find('[')) != string::npos)
 			{
@@ -176,7 +178,7 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
 			}
 		}
 
-        for(list<ustring>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
+        for(list<string>::iterator it2 = dependencies.begin(); it2 != dependencies.end(); it2++)
         {
             if(*it2 == current_dependency)
             {
@@ -194,7 +196,7 @@ list<Glib::ustring> Landmark::depends_on(list<ustring> dependencies_x, list<ustr
     return dependencies;
 }
 
-Point Landmark::get_point(map<ustring,double> values)
+Point Landmark::get_point(map<string,double> values)
 {
 	Point result = Point(m_x_term->evaluate(values), m_y_term->evaluate(values));
 	result.set_landmark_name(m_name);

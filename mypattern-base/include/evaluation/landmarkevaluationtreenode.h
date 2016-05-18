@@ -5,6 +5,9 @@
 #include <landmark.h>
 #include <sigc++/sigc++.h>
 #include <point.h>
+#include <string>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Base {
@@ -23,14 +26,14 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
 
         void notify_update();
 
-        list<ustring> depends_on() { return m_base_landmark->depends_on(); }
+        list<string> depends_on() { return m_base_landmark->depends_on(); }
 
         shared_ptr<Landmark> get_landmark()
         {
             return m_base_landmark;
         }
 
-        ustring get_prefixed_name();
+        string get_prefixed_name();
 
         /*! \brief Gets the last value of the associated landmark given the values of the
          * dependencies
@@ -39,7 +42,7 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
 
 	/*! \brief Gets the signal that checks the validity of a dependency
          * change */
-        sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<ustring>> signal_request_change;
+        sigc::signal2<bool, shared_ptr<EvaluationTreeNode>, list<string>> signal_request_change;
 
         /*! \brief Returns the signal that is emitted when the object has been
          * updated and the dependencies are to be updated by the EvaluationRoot */
@@ -50,7 +53,7 @@ class LandmarkEvaluationTreeNode : public MyPattern::Base::Evaluation::Evaluatio
         Point m_cached_value;
 
         /*! \brief Signal handler for Landmark::signal_request_change */
-        bool base_landmark_change_request(list<ustring> new_dependencies);
+        bool base_landmark_change_request(list<string> new_dependencies);
 
         /*! \brief Signal handler for Landmark::signal_change */
         void base_landmark_changed();

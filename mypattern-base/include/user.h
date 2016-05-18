@@ -1,7 +1,9 @@
-#include "glibmm/ustring.h"
+#include <string>
 
 #ifndef USER_H
 #define USER_H
+
+using namespace std;
 
 namespace MyPattern
 {
@@ -13,7 +15,7 @@ namespace MyPattern
             public:
                 User();
                 virtual ~User();
-                virtual Glib::ustring get_name() = 0;
+                virtual string get_name() = 0;
 
             protected:
             private:

@@ -12,7 +12,7 @@ Measures::~Measures()
 {
 }
 
-shared_ptr<MeasureValue> Measures::define(Glib::ustring name, Glib::ustring comment, double default_value)
+shared_ptr<MeasureValue> Measures::define(string name, string comment, double default_value)
 {
     shared_ptr<MeasureValue> value_to_add = shared_ptr<MeasureValue>(new MeasureValue(name, comment, default_value));
 
@@ -26,7 +26,7 @@ list<shared_ptr<MeasureValue>> Measures::get_measure_values()
     return m_measureValues;
 }
 
-bool Measures::remove(ustring name)
+bool Measures::remove(string name)
 {
     bool result = false;
 

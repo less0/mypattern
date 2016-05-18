@@ -24,7 +24,7 @@ Part PartDefinition::get_part()
     return Part(this->get_name(), points, curves);
 }
 
-shared_ptr<Landmark> PartDefinition::get_landmark(Glib::ustring name)
+shared_ptr<Landmark> PartDefinition::get_landmark(string name)
 {
     list<shared_ptr<Landmark>>::iterator it = this->m_landmarks.begin();
 
@@ -54,7 +54,7 @@ bool PartDefinition::add_landmark(shared_ptr<Landmark> landmark)
     return true;
 }
 
-shared_ptr<CurveDefinition> PartDefinition::get_curve_definition(Glib::ustring name)
+shared_ptr<CurveDefinition> PartDefinition::get_curve_definition(string name)
 {
     list<shared_ptr<CurveDefinition>>::iterator it = this->m_curve_definitions.begin();
 
@@ -85,12 +85,12 @@ bool PartDefinition::add_curve_definition(shared_ptr<CurveDefinition> curve_defi
     return true;
 }
 
-Glib::ustring PartDefinition::get_name()
+string PartDefinition::get_name()
 {
     return this->m_name;
 }
 
-bool PartDefinition::set_name(Glib::ustring name)
+bool PartDefinition::set_name(string name)
 {
     if(m_signal_name_change_request.empty() ||
         m_signal_name_change_request.emit(name))
@@ -122,7 +122,7 @@ shared_ptr<Measures> PartDefinition::get_measures()
 	return m_measures;
 }
 
-sigc::signal1<bool,Glib::ustring> PartDefinition::signal_name_change_request()
+sigc::signal1<bool,string> PartDefinition::signal_name_change_request()
 {
     return this->m_signal_name_change_request;
 }

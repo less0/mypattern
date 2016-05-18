@@ -1,6 +1,6 @@
 #include "UnitTest++.h"
 #include <map>
-#include <glibmm/ustring.h>
+#include <string>
 #include <evaluation/formula/term.h>
 #include <evaluation/formula/scalarterm.h>
 #include <exceptions/formulaevaluationexception.h>
@@ -14,9 +14,9 @@ namespace
 {
     TEST(TestScalarTermWithExistingValue)
     {
-        map<ustring, double> values;
+        map<string, double> values;
 
-        values.insert(pair<ustring, double>("#foobar", 3.141));
+        values.insert(pair<string, double>("#foobar", 3.141));
 
         shared_ptr<Term> term = shared_ptr<Term>(new ScalarTerm("#foobar"));
 
@@ -26,9 +26,9 @@ namespace
     TEST(TestScalarTermWithNonexistingValue)
     {
 
-        map<ustring, double> values;
+        map<string, double> values;
 
-        values.insert(pair<ustring, double>("#foobar", 3.141));
+        values.insert(pair<string, double>("#foobar", 3.141));
 
         shared_ptr<Term> term = shared_ptr<Term>(new ScalarTerm("#barfoo"));
 
@@ -37,32 +37,32 @@ namespace
 
     TEST(ScalarTermWithParameter)
     {
-	map<ustring, double> values;
-	values.insert(pair<ustring,double>("$bar[.25]", 1.23));
+	map<string, double> values;
+	values.insert(pair<string,double>("$bar[.25]", 1.23));
 	shared_ptr<Term> term = shared_ptr<Term>(new ScalarTerm("$bar[.25]"));
 	CHECK_EQUAL(1.23, term->evaluate(values));
     }
 
     TEST(ParseScalarTermWithNumericParameter)
     {
-        map<ustring, double> values;
-        values.insert(pair<ustring,double>("$bar[.25]", 1.23));
+        map<string, double> values;
+        values.insert(pair<string,double>("$bar[.25]", 1.23));
         shared_ptr<Term> term = Term::parse("$bar[.25]");
         CHECK_EQUAL(1.23, term->evaluate(values));
     }
 
     TEST(ParseScalarTermWithNumericAndCoordinateParameter)
     {
-        map<ustring, double> values;
-        values.insert(pair<ustring,double>("$bar[.25][X]", 1.23));
+        map<string, double> values;
+        values.insert(pair<string,double>("$bar[.25][X]", 1.23));
         shared_ptr<Term> term = Term::parse("$bar[.25][X]");
         CHECK_EQUAL(1.23, term->evaluate(values));
     }
 
     TEST(ParseScalarTermWithCoordinateParameter)
     {
-        map<ustring, double> values;
-        values.insert(pair<ustring,double>("@bar[X]", 6.485));
+        map<string, double> values;
+        values.insert(pair<string,double>("@bar[X]", 6.485));
         shared_ptr<Term> term = Term::parse("@bar[X]");
         CHECK_EQUAL(6.485, term->evaluate(values));
     }

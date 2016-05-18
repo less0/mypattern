@@ -12,7 +12,7 @@ PatternDefinition::PatternDefinition()
     this->m_name = "";
 }
 
-PatternDefinition::PatternDefinition(Glib::ustring name)
+PatternDefinition::PatternDefinition(string name)
 {
     this->set_name(name);
 }
@@ -40,7 +40,7 @@ Pattern PatternDefinition::get_pattern(Measures measures, list<PatternParameterV
     return pattern;
 }
 
-shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename)
+shared_ptr<PatternDefinition> PatternDefinition::read_xml(string filename)
 {
     XmlFileReader filereader = XmlFileReader();
 
@@ -74,7 +74,7 @@ shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename
     return result;
 }
 
-//bool PatternDefinition::write_xml(Glib::ustring filename)
+//bool PatternDefinition::write_xml(string filename)
 //{
 //    std::ofstream output_stream;
 //    list<shared_ptr<PatternParameter>>::iterator it_parameters;
@@ -114,7 +114,7 @@ shared_ptr<PatternDefinition> PatternDefinition::read_xml(Glib::ustring filename
 //    return true;
 //}
 
-shared_ptr<PartDefinition> PatternDefinition::create_part_definition(Glib::ustring name)
+shared_ptr<PartDefinition> PatternDefinition::create_part_definition(string name)
 {
     shared_ptr<PartDefinition> part_definition(new PartDefinition());
     part_definition->set_name(name);
@@ -149,7 +149,7 @@ bool PatternDefinition::add_part_definition(shared_ptr<PartDefinition> part_defi
     return true;
 }
 
-shared_ptr<PartDefinition> PatternDefinition::get_part_definition(Glib::ustring name)
+shared_ptr<PartDefinition> PatternDefinition::get_part_definition(string name)
 {
     list<shared_ptr<PartDefinition>>::iterator it = this->m_part_definitions.begin();
 
@@ -206,9 +206,9 @@ bool PatternDefinition::add_pattern_parameter(shared_ptr<PatternParameter> param
     return true;
 }
 
-list<Glib::ustring> PatternDefinition::get_part_defintion_names()
+list<string> PatternDefinition::get_part_defintion_names()
 {
-    list<Glib::ustring> names;
+    list<string> names;
     list<shared_ptr<PartDefinition>>::iterator it = this->m_part_definitions.begin();
 
     while(it != m_part_definitions.end())
@@ -220,9 +220,9 @@ list<Glib::ustring> PatternDefinition::get_part_defintion_names()
     return names;
 }
 
-list<Glib::ustring> PatternDefinition::get_pattern_parameter_names()
+list<string> PatternDefinition::get_pattern_parameter_names()
 {
-    list<Glib::ustring> names;
+    list<string> names;
 
     list<shared_ptr<PatternParameter>>::iterator it = this->m_pattern_parameters.begin();
 
@@ -235,7 +235,7 @@ list<Glib::ustring> PatternDefinition::get_pattern_parameter_names()
     return names;
 }
 
-shared_ptr<PatternParameter> PatternDefinition::get_pattern_parameter(Glib::ustring name)
+shared_ptr<PatternParameter> PatternDefinition::get_pattern_parameter(string name)
 {
     list<shared_ptr<PatternParameter>>::iterator it =  this->m_pattern_parameters.begin();
 
@@ -257,7 +257,7 @@ list<shared_ptr<PatternParameter>> PatternDefinition::get_pattern_parameters()
     return this->m_pattern_parameters;
 }
 
-bool PatternDefinition::remove_pattern_parameter(Glib::ustring name)
+bool PatternDefinition::remove_pattern_parameter(string name)
 {
     list<shared_ptr<PatternParameter>>::iterator it = this->m_pattern_parameters.begin();
 
@@ -303,27 +303,27 @@ void PatternDefinition::set_revision(int revision)
     this->m_revision = revision;
 }
 
-Glib::ustring PatternDefinition::get_name()
+string PatternDefinition::get_name()
 {
     return this->m_name;
 }
 
-void PatternDefinition::set_name(Glib::ustring name)
+void PatternDefinition::set_name(string name)
 {
     this->m_name = name;
 }
 
-Glib::ustring PatternDefinition::get_uid()
+string PatternDefinition::get_uid()
 {
     return this->m_uid;
 }
 
-void PatternDefinition::set_uid(Glib::ustring uid)
+void PatternDefinition::set_uid(string uid)
 {
     this->m_uid = uid;
 }
 
-bool PatternDefinition::on_name_change_request(Glib::ustring name)
+bool PatternDefinition::on_name_change_request(string name)
 {
     list<shared_ptr<PartDefinition>>::iterator it = m_part_definitions.begin();
 

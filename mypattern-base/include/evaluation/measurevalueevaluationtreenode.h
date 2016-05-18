@@ -3,7 +3,7 @@
 
 #include <evaluation/evaluationtreenode.h>
 #include <measurevalue.h>
-#include <glibmm/ustring.h>
+#include <string.h>
 #include <list>
 
 using namespace std;
@@ -19,11 +19,11 @@ class MeasureValueEvaluationTreeNode : public EvaluationTreeNode
         MeasureValueEvaluationTreeNode(shared_ptr<MeasureValue>);
 
         void notify_update() {}
-        list<ustring> depends_on()
+        list<string> depends_on()
         {
-            return list<Glib::ustring>();
+            return list<string>();
         }
-        Glib::ustring get_prefixed_name();
+        string get_prefixed_name();
         double get_value();
 
         sigc::signal1<void, shared_ptr<MeasureValueEvaluationTreeNode>> signal_changed;

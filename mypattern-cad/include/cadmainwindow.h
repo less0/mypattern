@@ -2,7 +2,7 @@
 #define CADMAINWINDOW_H
 
 #include "gtkmm.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include "gtkmm/widget.h"
 #include "gdkmm/window.h"
 #include "patterncolumnrecord.h"
@@ -59,8 +59,8 @@ namespace MyPattern
 				
 				shared_ptr<MyPattern::Draw::CoordinateTransformation> m_coordinateTransformation;
 
-				list<ustring> m_selectedLandmarks;
-				list<ustring> m_selectedCurves;
+				list<string> m_selectedLandmarks;
+				list<string> m_selectedCurves;
 				
                 bool m_patternSaved = true;
                 PartColumnRecord m_partColumns;

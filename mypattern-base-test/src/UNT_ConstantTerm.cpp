@@ -3,12 +3,13 @@
 #include "evaluation/formula/term.h"
 
 using namespace MyPattern::Base::Evaluation::Formula;
+using namespace std;
 
 namespace
 {
     TEST(TestConstantTerm)
     {
-        map<ustring,double> values;
+        map<string,double> values;
         shared_ptr<Term> term = shared_ptr<Term>(new ConstantTerm(1.23));
         CHECK_EQUAL(1.23, term->evaluate(values));
     }

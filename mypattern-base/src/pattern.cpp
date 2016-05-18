@@ -7,12 +7,12 @@ Pattern::Pattern()
     //ctor
 }
 
-void Pattern::set_name(Glib::ustring name)
+void Pattern::set_name(string name)
 {
     m_name = name;
 }
 
-Glib::ustring Pattern::get_name()
+string Pattern::get_name()
 {
     return m_name;
 }

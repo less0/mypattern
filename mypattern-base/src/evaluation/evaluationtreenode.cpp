@@ -51,7 +51,7 @@ namespace Evaluation
         m_nodes.clear();
     }
 
-    bool EvaluationTreeNode::depends_on(ustring name)
+    bool EvaluationTreeNode::depends_on(string name)
     {
         for(list<shared_ptr<EvaluationTreeNode>>::iterator it = m_nodes.begin(); it != m_nodes.end(); it++)
         {

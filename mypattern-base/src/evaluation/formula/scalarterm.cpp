@@ -28,7 +28,7 @@ ScalarTerm& ScalarTerm::operator=(const ScalarTerm& rhs)
 }
 
 
-double ScalarTerm::evaluate(map<Glib::ustring,double> values)
+double ScalarTerm::evaluate(map<string,double> values)
 {
     if(values.count(m_symbol) == 0)
     {
@@ -38,9 +38,9 @@ double ScalarTerm::evaluate(map<Glib::ustring,double> values)
     return values[m_symbol];
 }
 
-list<ustring> ScalarTerm::get_symbol_names()
+list<string> ScalarTerm::get_symbol_names()
 {
-    list<ustring> result;
+    list<string> result;
     result.push_back(m_symbol);
     return result;
 }

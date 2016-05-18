@@ -4,7 +4,7 @@
 
 using namespace MyPattern::Base;
 
-MeasureValue::MeasureValue(Glib::ustring name, Glib::ustring description, double value)
+MeasureValue::MeasureValue(string name, string description, double value)
 {
     this->m_name = name;
     this->m_description = description;
@@ -26,12 +26,12 @@ MeasureValue::~MeasureValue()
     //dtor
 }
 
-Glib::ustring MeasureValue::get_name()
+string MeasureValue::get_name()
 {
     return this->m_name;
 }
 
-Glib::ustring MeasureValue::get_description()
+string MeasureValue::get_description()
 {
     return this->m_description;
 }
@@ -50,7 +50,7 @@ void MeasureValue::set_value(double value)
         signal_changed.emit();
 }
 
-double parse(ustring);
+double parse(string);
 
 shared_ptr<MeasureValue> MeasureValue::deserialize_from_xml(shared_ptr<XmlNode> measureValueNode)
 {
@@ -59,9 +59,9 @@ shared_ptr<MeasureValue> MeasureValue::deserialize_from_xml(shared_ptr<XmlNode> 
 		throw MyPattern::Exceptions::Exception();
 	}
 	
-	ustring name = "";
+	string name = "";
 	double value = .0;
-	ustring description = "";
+	string description = "";
 	
 	list<XmlAttribute> attributes = measureValueNode->get_attributes();
 	
@@ -84,7 +84,7 @@ shared_ptr<MeasureValue> MeasureValue::deserialize_from_xml(shared_ptr<XmlNode> 
 	return parsedMeasureValue;
 }
 
-double parse(ustring in)
+double parse(string in)
 {
 	//TODO check if number is formatted correctly
 

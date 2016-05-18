@@ -5,11 +5,10 @@
 #include <memory>
 #include <list>
 #include <map>
-#include "glibmm/ustring.h"
+#include <string>
 #include "sigc++/sigc++.h"
 
 using namespace std;
-using namespace Glib;
 
 namespace MyPattern
 {
@@ -56,13 +55,13 @@ class EvaluationTreeNode : public std::enable_shared_from_this<EvaluationTreeNod
         void clear_dependencies();
         list<shared_ptr<EvaluationTreeNode>> get_nodes();
 
-        bool depends_on(ustring);
+        bool depends_on(string);
 
         virtual void notify_update() = 0;
 
-        virtual list<ustring> depends_on() = 0;
+        virtual list<string> depends_on() = 0;
 
-        virtual ustring get_prefixed_name() = 0;
+        virtual string get_prefixed_name() = 0;
 
     protected:
         list<shared_ptr<EvaluationTreeNode>> m_nodes;

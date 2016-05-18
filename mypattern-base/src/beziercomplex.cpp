@@ -10,7 +10,7 @@ BezierComplex::BezierComplex(list<Bezier> bezier_curves)
     this->m_bezier_curves = bezier_curves;
 }
 
-BezierComplex::BezierComplex(list<Bezier> bezier_curves, Glib::ustring curve_name)
+BezierComplex::BezierComplex(list<Bezier> bezier_curves, string curve_name)
 {
     this->m_bezier_curves = bezier_curves;
     this->m_curve_name = curve_name;
@@ -73,12 +73,12 @@ Point BezierComplex::get_coordinate(double rel_length)
 }
 
 
-Glib::ustring BezierComplex::get_name()
+string BezierComplex::get_name()
 {
     return this->m_curve_name;
 }
 
-void BezierComplex::set_name(Glib::ustring name)
+void BezierComplex::set_name(string name)
 {
     this->m_curve_name = name;
 }

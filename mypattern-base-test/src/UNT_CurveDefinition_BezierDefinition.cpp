@@ -15,7 +15,7 @@ namespace
 
     TEST(TestSetCurveLandmarks)
     {
-        std::list<Glib::ustring> landmark_names;
+        std::list<string> landmark_names;
         landmark_names.push_back("landmark1");
         landmark_names.push_back("landmark2");
         landmark_names.push_back("landmark3");
@@ -24,11 +24,11 @@ namespace
         MyPattern::Base::BezierDefinition bezier = MyPattern::Base::BezierDefinition();
         bezier.set_landmarks(landmark_names);
 
-        std::list<Glib::ustring> landmark_names_from_curve = bezier.get_landmarks();
+        std::list<string> landmark_names_from_curve = bezier.get_landmarks();
 
         CHECK_EQUAL(4, landmark_names_from_curve.size());
 
-        std::list<Glib::ustring>::iterator it = landmark_names_from_curve.begin();
+        std::list<string>::iterator it = landmark_names_from_curve.begin();
 
         CHECK_EQUAL("landmark1", *it);
         it++;
@@ -41,7 +41,7 @@ namespace
 
     TEST(TestEvaluateBezierDefinition)
     {
-        std::list<Glib::ustring> landmark_names;
+        std::list<string> landmark_names;
         landmark_names.push_back("landmark1");
         landmark_names.push_back("landmark2");
         landmark_names.push_back("landmark3");
@@ -76,7 +76,7 @@ namespace
 
     TEST(GetCurveTreeNodeDependencies)
     {
-        std::list<ustring> landmark_names;
+        std::list<string> landmark_names;
         landmark_names.push_back("foo");
         landmark_names.push_back("bar");
         landmark_names.push_back("baz");
@@ -88,10 +88,10 @@ namespace
 
         MyPattern::Base::Evaluation::CurveEvaluationTreeNode node = MyPattern::Base::Evaluation::CurveEvaluationTreeNode(bezier);
 
-        list<ustring> dependencies = node.depends_on();
+        list<string> dependencies = node.depends_on();
         CHECK_EQUAL(4, dependencies.size());
 
-        list<ustring>::iterator it = dependencies.begin();
+        list<string>::iterator it = dependencies.begin();
 
         CHECK_EQUAL("@foo", *it);
         it++;

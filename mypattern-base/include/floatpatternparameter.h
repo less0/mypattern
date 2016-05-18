@@ -1,5 +1,5 @@
 #include "valuerangetype.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include "valuerangetype.h"
 #include <patternparameter.h>
 #include <list>
@@ -18,13 +18,13 @@ namespace MyPattern
         class FloatPatternParameter : public PatternParameter
         {
             public:
-                FloatPatternParameter(Glib::ustring name);
-                FloatPatternParameter(Glib::ustring name,
+                FloatPatternParameter(string name);
+                FloatPatternParameter(string name,
                                       list<float> valueRange,
                                       ValueRangeType type = VALUERANGETYPE_UNKNOWN);
                 virtual ~FloatPatternParameter();
 
-                void parse_value_range(Glib::ustring valueRange);
+                void parse_value_range(string valueRange);
 
                 //! \todo Implement get_default_value (add a set_default_value, too?)
                 float get_default_value();
@@ -33,7 +33,7 @@ namespace MyPattern
                 list<float> m_valueRange;
                 ValueRangeType m_rangeType;
 
-                bool try_parse_value(Glib::ustring, float*);
+                bool try_parse_value(string, float*);
         };
     }
 }

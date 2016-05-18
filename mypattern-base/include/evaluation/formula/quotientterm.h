@@ -3,7 +3,7 @@
 
 #include <evaluation/formula/term.h>
 #include <map>
-#include <glibmm/ustring.h>
+#include <string>
 
 
 namespace MyPattern {
@@ -19,8 +19,8 @@ class QuotientTerm : public Term
         /** Default destructor */
         virtual ~QuotientTerm();
 
-        double evaluate(map<ustring,double> values);
-        list<ustring> get_symbol_names();
+        double evaluate(map<string,double> values);
+        list<string> get_symbol_names();
     protected:
     private:
         shared_ptr<Term> m_divident;

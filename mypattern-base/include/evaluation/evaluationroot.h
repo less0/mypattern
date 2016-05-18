@@ -5,6 +5,9 @@
 #include "point.h"
 #include "beziercomplex.h"
 #include "patternobject.h"
+#include <string>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Base {
@@ -59,15 +62,15 @@ class EvaluationRoot
          */
         shared_ptr<EvaluationTreeNode> add_object(const shared_ptr<PatternObject>&);
         list<shared_ptr<EvaluationTreeNode>> add_objects(list<shared_ptr<PatternObject>>);
-        list<shared_ptr<EvaluationTreeNode>> resolve_dependencies(list<ustring> dependency_names);
+        list<shared_ptr<EvaluationTreeNode>> resolve_dependencies(list<string> dependency_names);
     protected:
     private:
         list<shared_ptr<EvaluationTreeNode>> m_tree_nodes;
 
-        bool landmark_node_change_request(shared_ptr<EvaluationTreeNode>,list<ustring>);
+        bool landmark_node_change_request(shared_ptr<EvaluationTreeNode>,list<string>);
         void landmark_update_dependencies(shared_ptr<EvaluationTreeNode>);
 
-        bool curve_node_change_request(shared_ptr<EvaluationTreeNode>, list<ustring>);
+        bool curve_node_change_request(shared_ptr<EvaluationTreeNode>, list<string>);
         void curve_update_dependencies(shared_ptr<EvaluationTreeNode>);
 };
 

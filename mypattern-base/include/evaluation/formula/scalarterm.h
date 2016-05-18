@@ -7,7 +7,6 @@
 #include <string>
 
 using namespace std;
-using namespace Glib;
 
 namespace MyPattern {
 namespace Base {
@@ -31,9 +30,9 @@ class ScalarTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ScalarTerm& operator=(const ScalarTerm& other);
 
-        double evaluate(map<Glib::ustring,double> values);
+        double evaluate(map<string,double> values);
 
-        list<ustring> get_symbol_names();
+        list<string> get_symbol_names();
     private:
         string m_symbol;
 };

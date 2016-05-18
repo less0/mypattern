@@ -1,8 +1,9 @@
 #include "patternerror.h"
 
 using namespace MyPattern::Base;
+using namespace std;
 
-PatternError::PatternError(Glib::ustring part_name, Glib::ustring object_name, ObjectType object_type, Glib::ustring message)
+PatternError::PatternError(string part_name, string object_name, ObjectType object_type, string message)
 {
     this->m_part_name = part_name;
     this->m_object_name = object_name;
@@ -11,7 +12,7 @@ PatternError::PatternError(Glib::ustring part_name, Glib::ustring object_name, O
     this->m_error_code = ERR_GENERAL;
 }
 
-PatternError::PatternError(Glib::ustring part_name, Glib::ustring object_name, ObjectType object_type, ErrorCode error_code)
+PatternError::PatternError(string part_name, string object_name, ObjectType object_type, ErrorCode error_code)
 {
     this->m_part_name = part_name;
     this->m_object_name = object_name;
@@ -39,12 +40,12 @@ ErrorCode PatternError::get_error_code()
     return this->m_error_code;
 }
 
-Glib::ustring PatternError::get_error_message()
+string PatternError::get_error_message()
 {
     return this->m_error_message;
 }
 
-Glib::ustring PatternError::get_object_name()
+string PatternError::get_object_name()
 {
     return this->m_object_name;
 }

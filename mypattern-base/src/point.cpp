@@ -32,7 +32,7 @@ void Point::set_y(double y)
     m_y = y;
 }
 
-void Point::set_landmark_name(Glib::ustring nameToSet)
+void Point::set_landmark_name(string nameToSet)
 {
 	m_landmark_name = nameToSet;
 }
@@ -47,7 +47,7 @@ double Point::get_y()
     return m_y;
 }
 
-Glib::ustring Point::get_landmark_name()
+string Point::get_landmark_name()
 {
 	return m_landmark_name;
 }

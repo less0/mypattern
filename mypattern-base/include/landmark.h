@@ -7,7 +7,7 @@
 #include "patternparametervalue.h"
 #include <list>
 #include <map>
-#include "glibmm/ustring.h"
+#include <string>
 #include "objecttype.h"
 #include "sigc++/sigc++.h"
 #include "sigc++/signal.h"
@@ -45,7 +45,7 @@ namespace MyPattern
                 * objects is defined in a string and passed to this method. When a
                 * Pattern is created from a PatternDefinition, these definitions are
                 */
-                Glib::ustring get_definition_x();
+                string get_definition_x();
 
                 /*! \brief Sets the definition for the X-coordinate of the landmark,
                 * i.e. the dependency of the X-coordinate on other pattern objects
@@ -57,10 +57,10 @@ namespace MyPattern
                 * Pattern is created from a PatternDefinition, these definitions are
                 * used to evaluate the conditional positions of the landmarks.
                 */
-                bool set_definition_x(Glib::ustring);
+                bool set_definition_x(string);
 
-                Glib::ustring get_definition_y();
-                bool set_definition_y(Glib::ustring);
+                string get_definition_y();
+                bool set_definition_y(string);
 
                 /*! \brief Gets a list of objects (Landmarks, Curves), Measures, and
                 * PatternParameters the Landmark depends on
@@ -69,7 +69,7 @@ namespace MyPattern
                 * removed, e.g. to resolve the dependencies in the evaluation tree. If false
                 * the parameters are maintained, e.g. for actual evaluation.
                 */
-                list<Glib::ustring> depends_on(bool strip_params = true);
+                list<string> depends_on(bool strip_params = true);
 
                 /*! \brief Calculates and returns the position of the landmark, given a set of
                 *          Measures, Point objects representing the Landmarks this Landmark
@@ -85,11 +85,11 @@ namespace MyPattern
                 * \param parameterValues List of parameter values the current landmark
                 *        depends on
                 */
-                Point get_point(map<ustring,double> value);
+                Point get_point(map<string,double> value);
 
                 /*! \brief Gets the name of the Landmark
                  */
-                Glib::ustring get_name();
+                string get_name();
                 /*! \brief Sets the name of the Landmark
                 *
                 * This function sets the name of the Landmark. To check if the name is valid, this
@@ -99,18 +99,18 @@ namespace MyPattern
                 *         denied.
                 * \see signal_name_change_request
                 */
-                bool set_name(Glib::ustring name);
+                bool set_name(string name);
 
                 /*! \brief Gets a signal that's emitted to request a name change
                 *
                 * \see set_name
                 */
-                sigc::signal1<bool,ustring> signal_name_change_request;
+                sigc::signal1<bool,string> signal_name_change_request;
 
                 /*! \brief Gets the signal that is emitted when the Landmarks name has changed
                 *
                 */
-                sigc::signal2<void, shared_ptr<Landmark>, Glib::ustring> signal_name_changed;
+                sigc::signal2<void, shared_ptr<Landmark>, string> signal_name_changed;
 
                 /*! \brief Signal that is emitted when the landmarks definition is to be changed
                  *
@@ -121,7 +121,7 @@ namespace MyPattern
                  * itself passes the request to EvaluationRoot.
                  * \see set_definition_x set_definition_y
                  */
-                sigc::signal1<bool, list<ustring>> signal_change_request;
+                sigc::signal1<bool, list<string>> signal_change_request;
 
                 /*! \brief Gets the signal that is emitted when the Landmark has changed
                  *
@@ -134,16 +134,16 @@ namespace MyPattern
 				static shared_ptr<Landmark> deserialize_from_xml(shared_ptr<XmlNode>);
             private:
                 //data
-                Glib::ustring m_name; /*!<\brief Name of the Landmark */
+                string m_name; /*!<\brief Name of the Landmark */
                 /*! \brief Textual representation of the formula to calculate the x-coordinate of
                  * the Landmark
                  *
                  */
-                Glib::ustring m_x_definition;
+                string m_x_definition;
                 /*! \brief Textual representation of the formula to calculate the y-coordinate of
                 * the Landmark
                 */
-                Glib::ustring m_y_definition;
+                string m_y_definition;
 
                 shared_ptr<Term> m_x_term;
                 shared_ptr<Term> m_y_term;
@@ -152,7 +152,7 @@ namespace MyPattern
                  * desired
                  * \see depends_on
                  */
-                list<ustring> depends_on(list<ustring>, list<ustring>, bool strip_argument);
+                list<string> depends_on(list<string>, list<string>, bool strip_argument);
         };
     }
 }

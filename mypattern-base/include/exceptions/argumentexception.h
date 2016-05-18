@@ -2,6 +2,9 @@
 #define MYPATTERN_EXCEPTIONS_ARGUMENTEXCEPTION_H
 
 #include <exception.h>
+#include <string>
+
+using namespace std;
 
 namespace MyPattern {
 namespace Exceptions {
@@ -10,7 +13,7 @@ class ArgumentException : public MyPattern::Exceptions::Exception
 {
     public:
         /** Default constructor */
-        ArgumentException(Glib::ustring argument_name);
+        ArgumentException(string argument_name);
         /** Default destructor */
         virtual ~ArgumentException();
         /** Copy constructor

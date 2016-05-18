@@ -1,8 +1,10 @@
 #ifndef PATTERNOBJECT_H
 #define PATTERNOBJECT_H
 
-#include "glibmm/ustring.h"
+#include <string>
 #include "objecttype.h"
+
+using namespace std;
 
 namespace MyPattern
 {
@@ -25,7 +27,7 @@ namespace MyPattern
 
                 /** \brief Gets the name of the object
                 */
-                virtual Glib::ustring get_name() = 0;
+                virtual string get_name() = 0;
 
                 static char get_object_prefix(ObjectType);
             protected:

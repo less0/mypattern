@@ -4,9 +4,8 @@
 #include <evaluation/formula/term.h>
 #include <memory>
 #include <list>
-#include <glibmm/ustring.h>
+#include <string>
 
-using namespace std;
 using namespace std;
 
 namespace MyPattern {
@@ -31,8 +30,8 @@ class ProductTerm : public MyPattern::Base::Evaluation::Formula::Term
          */
         ProductTerm& operator=(const ProductTerm& other);
 
-        double evaluate(map<ustring,double> values);
-        list<ustring> get_symbol_names();
+        double evaluate(map<string,double> values);
+        list<string> get_symbol_names();
     protected:
     private:
         shared_ptr<Term> m_factor_1;

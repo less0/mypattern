@@ -5,7 +5,7 @@
 #include <memory>
 
 
-#include "glibmm/ustring.h"
+#include <string>
 #include "cairomm/context.h"
 
 #include "point.h"
@@ -21,7 +21,7 @@ namespace MyPattern
         class Part
         {
             public:
-                Part(Glib::ustring,
+                Part(string,
                      list<Point> points,
                      list<BezierComplex> curves);
                 //copy ctor
@@ -29,9 +29,9 @@ namespace MyPattern
                 virtual ~Part();
 
 
-                Glib::ustring get_name();
+                string get_name();
 
-                void set_name(Glib::ustring);
+                void set_name(string);
 
                 /*! \brief Is called when a user makes a click, to select objects
                  * \note This should be moved to some other place - maybe selected objects
@@ -63,10 +63,10 @@ namespace MyPattern
                 void clear_selected_objects();
             protected:
             private:
-                Glib::ustring m_name;
+                string m_name;
                 list<BezierComplex> m_curves;
                 list<Point> m_points;
-//                bool is_selected(Glib::ustring object_name, ObjectType object_type);
+//                bool is_selected(string object_name, ObjectType object_type);
         };
 
     }

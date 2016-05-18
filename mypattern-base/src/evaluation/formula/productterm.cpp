@@ -24,17 +24,17 @@ ProductTerm& ProductTerm::operator=(const ProductTerm& rhs)
     return *this;
 }
 
-double ProductTerm::evaluate(map<ustring,double> values)
+double ProductTerm::evaluate(map<string,double> values)
 {
     return m_factor_1->evaluate(values) * m_factor_2->evaluate(values);
 }
 
-list<ustring> ProductTerm::get_symbol_names()
+list<string> ProductTerm::get_symbol_names()
 {
-    list<ustring> result = m_factor_1->get_symbol_names();
-    list<ustring> factor_2_symbols = m_factor_2->get_symbol_names();
+    list<string> result = m_factor_1->get_symbol_names();
+    list<string> factor_2_symbols = m_factor_2->get_symbol_names();
 
-    list<ustring>::iterator it = factor_2_symbols.begin();
+    list<string>::iterator it = factor_2_symbols.begin();
 
     while(it != factor_2_symbols.end())
     {

@@ -27,12 +27,12 @@ PatternObject::~PatternObject()
 //    //dtor
 //}
 //
-//void PatternObject::set_object_name(Glib::ustring name)
+//void PatternObject::set_object_name(string name)
 //{
 //    m_name = name;
 //}
 //
-//Glib::ustring PatternObject::get_object_name()
+//string PatternObject::get_object_name()
 //{
 //    return m_name;
 //}
