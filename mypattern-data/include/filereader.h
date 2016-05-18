@@ -1,8 +1,7 @@
 #ifndef FILEREADER_H
 #define FILEREADER_H
 
-#include <glibmm/ustring.h>
-//#include <mypattern-base.h>
+#include <string>
 #include <memory>
 
 namespace MyPattern
@@ -15,7 +14,7 @@ namespace MyPattern
         class FileReader
         {
             public:
-               void read(Glib::ustring);
+               void read(std::string);
             protected:
             private:
         };

@@ -27,7 +27,7 @@ class FormulaEvaluationException : public Exception
          */
         FormulaEvaluationException& operator=(const FormulaEvaluationException& other);
 		
-		ustring get_type() { return typeid(*this).name(); }
+		std::string get_type() { return typeid(*this).name(); }
 
     protected:
     private:

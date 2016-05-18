@@ -3,7 +3,7 @@
 
 #include "xmlattribute.h"
 #include "xmlelement.h"
-#include "glibmm/ustring.h"
+#include <string>
 #include <list>
 #include <memory>
 #include <sstream>
@@ -26,17 +26,17 @@ namespace MyPattern
             public:
                 XmlNode();
 
-                XmlNode(Glib::ustring name);
+                XmlNode(std::string name);
                 /*! \brief Creates a deep copy of an existing XmlNode.
                 */
                 XmlNode(const XmlNode& base);
 
                 /*! \brief Gets the name of the XmlNode
                 */
-                Glib::ustring get_name();
+                std::string get_name();
                 /*! \brief Sets the name of the XmlNode
                 */
-                void set_name(Glib::ustring);
+                void set_name(std::string);
 
                 /*! \brief Gets a list of all parameters of the current node
                 */
@@ -46,7 +46,7 @@ namespace MyPattern
                 bool add_attribute(XmlAttribute);
 
                 bool remove_attribute(XmlAttribute);
-                bool remove_attribute(Glib::ustring);
+                bool remove_attribute(std::string);
 
                 /*! \brief Gets a list of all subnodes */
                 list<shared_ptr<XmlNode>> get_nodes();
@@ -54,8 +54,8 @@ namespace MyPattern
                 void add_node(shared_ptr<XmlNode>);
 
                 bool is_text_node();
-                Glib::ustring get_text();
-                void set_text(Glib::ustring);
+                std::string get_text();
+                void set_text(std::string);
 
 
                 /*! \brief Parses an XmlNode from text
@@ -66,10 +66,10 @@ namespace MyPattern
                 * Anyway, doctype and other tags are not parsed ATM, thus embedding the
                 * root node in some form of XmlDocument type may be sensible
                 */
-                static shared_ptr<XmlNode> parse(Glib::ustring);
+                static shared_ptr<XmlNode> parse(std::string);
             protected:
             private:
-                static list<Glib::ustring> split_nodes(Glib::ustring);
+                static list<std::string> split_nodes(std::string);
                 /*! \brief Gets a list of subnodes of the current node
                 *
                 * It turned out, that the split_nodes function was not
@@ -77,15 +77,15 @@ namespace MyPattern
                 * recursive parsing approach is implemented, that reads and
                 * parses the nodes all at once.
                 */
-                static list<shared_ptr<XmlNode>> parse_subnodes(Glib::ustring schema, Glib::ustring parentNodeName, int start_index, int& end_index, Glib::ustring& text);
-				static shared_ptr<XmlNode> parse_node(Glib::ustring schema, int start_index, int& end_index);
-                static shared_ptr<XmlElement> parse_element(Glib::ustring schema, int start_index);
-                static Glib::ustring get_tag(Glib::ustring schema, int index);
-                static int find_end_tag(Glib::ustring schema,Glib::ustring tag_name);
-                static bool tag_is_terminated(Glib::ustring tag);
+                static list<shared_ptr<XmlNode>> parse_subnodes(std::string schema, std::string parentNodeName, int start_index, int& end_index, std::string& text);
+				static shared_ptr<XmlNode> parse_node(std::string schema, int start_index, int& end_index);
+                static shared_ptr<XmlElement> parse_element(std::string schema, int start_index);
+                static std::string get_tag(std::string schema, int index);
+                static int find_end_tag(std::string schema,std::string tag_name);
+                static bool tag_is_terminated(std::string tag);
 
-                Glib::ustring m_name;
-                Glib::ustring m_text;
+                std::string m_name;
+                std::string m_text;
                 list<XmlAttribute> m_parameters;
                 list<shared_ptr<XmlNode>> m_subnodes;
         };

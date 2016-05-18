@@ -8,7 +8,7 @@ INCLUDES=-I./include
 
 LIB=libmypattern-exceptions.a
 CC=gcc
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0) -Wall -std=c++0x
+CC_OPTIONS=-Wall -std=c++0x
 
 ifeq ($(DEBUG),TRUE)
 	CC_OPTIONS+= -g

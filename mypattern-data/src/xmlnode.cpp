@@ -14,7 +14,7 @@ XmlNode::XmlNode()
     //ctor
 }
 
-XmlNode::XmlNode(Glib::ustring name)
+XmlNode::XmlNode(std::string name)
 {
     m_name = name;
 	m_text = "";
@@ -34,17 +34,17 @@ XmlNode::XmlNode(const XmlNode& base)
     }
 }
 
-shared_ptr<XmlNode> XmlNode::parse(Glib::ustring schema)
+shared_ptr<XmlNode> XmlNode::parse(std::string schema)
 {
 	int end_index;
 
     return parse_node(schema, 0, end_index);
 }
 
-shared_ptr<XmlNode> XmlNode::parse_node(Glib::ustring schema, int start_index, int& end_index)
+shared_ptr<XmlNode> XmlNode::parse_node(std::string schema, int start_index, int& end_index)
 {
 	shared_ptr<XmlNode> result(new XmlNode());
-    // Glib::ustring subschema = "";
+    // std::string subschema = "";
     list<shared_ptr<XmlNode>> ls_nodes;
 
     // int start_tag_index = schema.find_first_of('<'); //not 100% XML compliant
@@ -62,7 +62,7 @@ shared_ptr<XmlNode> XmlNode::parse_node(Glib::ustring schema, int start_index, i
 
 	int end_end_tag = 0;
     int end_subnodes = 0;
-	ustring node_text = "";
+	std::string node_text = "";
 	
     ls_nodes = parse_subnodes(schema, start_element.GetName(), end_element_index+1, end_subnodes, node_text);
 
@@ -77,7 +77,7 @@ shared_ptr<XmlNode> XmlNode::parse_node(Glib::ustring schema, int start_index, i
 	return result;
 }
 
-list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::ustring parent_node_name, int start_index, int& end_index, ustring& text)
+list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(std::string schema, std::string parent_node_name, int start_index, int& end_index, std::string& text)
 {
     list<shared_ptr<XmlNode>> parsedNodes;
     shared_ptr<XmlNode> current_node;
@@ -126,11 +126,11 @@ list<shared_ptr<XmlNode>> XmlNode::parse_subnodes(Glib::ustring schema, Glib::us
 }
 
 ///\brief splits a string by XML nodes
-list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
+list<std::string> XmlNode::split_nodes(std::string subschema)
 {
     int node_begin = subschema.find_first_of('<');
 
-    list<Glib::ustring> nodes;
+    list<std::string> nodes;
 
     while(node_begin >= 0 && node_begin < (int)subschema.length())
     {
@@ -150,17 +150,17 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
 
         if(node_name_end < 0)
         {
-            return list<Glib::ustring>();
+            return list<std::string>();
         }
 
-        Glib::ustring node_name = subschema.substr(node_begin + 1, node_name_end - node_begin - 1);
+        std::string node_name = subschema.substr(node_begin + 1, node_name_end - node_begin - 1);
 
         if(node_name.length() == 0)
         {
-            return list<Glib::ustring>();
+            return list<std::string>();
         }
 
-        Glib::ustring tag = get_tag(subschema, node_begin);
+        std::string tag = get_tag(subschema, node_begin);
 
         if(tag_is_terminated(tag))
         {
@@ -183,7 +183,7 @@ list<Glib::ustring> XmlNode::split_nodes(Glib::ustring subschema)
     return nodes;
 }
 
-Glib::ustring XmlNode::get_tag(Glib::ustring schema, int index)
+std::string XmlNode::get_tag(std::string schema, int index)
 {
     int start_index = schema.find('<', index);
     int end_index = schema.find('>', start_index);
@@ -191,7 +191,7 @@ Glib::ustring XmlNode::get_tag(Glib::ustring schema, int index)
     return schema.substr(start_index, end_index - start_index + 1);
 }
 
-bool XmlNode::tag_is_terminated(Glib::ustring tag)
+bool XmlNode::tag_is_terminated(std::string tag)
 {
     if(tag[tag.length() - 2] == '/')
     {
@@ -201,12 +201,12 @@ bool XmlNode::tag_is_terminated(Glib::ustring tag)
         return false;
 }
 
-Glib::ustring XmlNode::get_name()
+std::string XmlNode::get_name()
 {
     return this->m_name;
 }
 
-void XmlNode::set_name(Glib::ustring name)
+void XmlNode::set_name(std::string name)
 {
     this->m_name = name;
 }
@@ -244,7 +244,7 @@ bool XmlNode::remove_attribute(XmlAttribute param)
     return this->remove_attribute(param.get_name());
 }
 
-bool XmlNode::remove_attribute(Glib::ustring name)
+bool XmlNode::remove_attribute(std::string name)
 {
     list<XmlAttribute>::iterator it = this->m_parameters.begin();
 
@@ -268,12 +268,12 @@ void XmlNode::add_node(shared_ptr<XmlNode> nodeToAdd)
     m_subnodes.push_back(nodeToAdd);
 }
 
-Glib::ustring XmlNode::get_text()
+std::string XmlNode::get_text()
 {
     return m_text;
 }
 
-void XmlNode::set_text(Glib::ustring text)
+void XmlNode::set_text(std::string text)
 {
 	m_text = text;
 }

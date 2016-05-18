@@ -2,7 +2,7 @@
 
 using namespace MyPattern::Exceptions;
 
-Exception::Exception(Glib::ustring message)
+Exception::Exception(std::string message)
 {
     this->m_message = message;
 }
