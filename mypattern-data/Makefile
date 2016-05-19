@@ -1,12 +1,12 @@
 # all: %.o
 
 OBJ=./src/filereader.o ./src/xmlattribute.o ./src/xmlexception.o ./src/xmlelement.o ./src/xmlfilereader.o ./src/xmlnode.o ./src/exceptions/filenotfoundexception.o
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0)
+CC_OPTIONS=-Wall -std=c++0x
 
 INCLUDES=-I./include -I../mypattern-base/include/ -I../mypattern-exceptions/include
 
 LIB=libmypattern-data.a
-CC=gcc -Wall $(CC_OPTIONS) -std=c++0x
+CC=gcc
 
 libmypattern-data: message $(OBJ)
 	@ar rcs $(LIB) $(OBJ)
@@ -15,7 +15,7 @@ message:
 	@echo "\033[31mBuilding mypattern-data\033[0m"
 
 ./src/%.o: ./src/%.cpp
-	@$(CC) $(INCLUDES) $(CC_OPTIONS) -o $@  -g -c $<
+	@"$(CC)" $(INCLUDES) $(CC_OPTIONS) -o $@  -g -c $<
 
 
 clean:

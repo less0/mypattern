@@ -20,10 +20,10 @@ message-libmypattern-draw:
 	@echo "\033[31mBuilding mypattern-draw\033[0m"
 
 ./src/exceptions/%.o: ./src/exceptions/%.cpp
-	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@ -c $<
+	@"$(CC)" $(CC_OPTIONS) $(INCLUDES) -o $@ -c $<
 
 ./src/%.o: ./src/%.cpp
-	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@ -c $<
+	@"$(CC)" $(CC_OPTIONS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	@echo "\033[31mCleaning mypattern-draw\033[0m"

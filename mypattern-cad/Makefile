@@ -9,25 +9,25 @@ LIBDIRS=-L../mypattern-base/ -L../mypattern-draw/ -L../mypattern-exceptions/ -L.
 LIBRARIES=-lmypattern-base -lmypattern-draw -lmypattern-exceptions -lmypattern-data
 
 OUT=mypattern-cad
-CC=g++ -Wall -std=c++0x
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0)
+CC=g++
+CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0) -Wall -std=c++0x
 
 ifeq ($(DEBUG),TRUE)
 	CC_OPTIONS+= -g
 endif
 
 mypattern-cad: message-mypattern-cad $(OBJ)
-	@$(CC) $(LIBDIRS) $(INCLUDES) -o $(OUT) main.cpp $(OBJ) $(LIBRARIES) $(CC_OPTIONS)
+	@"$(CC)" $(LIBDIRS) $(INCLUDES) -o $(OUT) main.cpp $(OBJ) $(LIBRARIES) $(CC_OPTIONS)
 	@cp ../GUI/mypattern-cad.glade .
 
 message-mypattern-cad:
 	@echo "\033[31mBuilding mypattern-cad\033[0m"
 
 ./src/exceptions/%.o: ./src/exceptions/%.cpp
-	@$(CC) $(CC_OPTIONS)  $(INCLUDES) -o $@  -g -c $<
+	@"$(CC)" $(CC_OPTIONS)  $(INCLUDES) -o $@  -g -c $<
 
 ./src/%.o: ./src/%.cpp
-	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@"$(CC)" $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 clean:
 	@echo "\033[31mCleaning mypattern-base\033[0m"
