@@ -3,7 +3,8 @@
 OBJ=./xmlnodetest.o ./xmlelementtest.o ./xmlparametertest.o ./main.o
 DEBUG?=FALSE
 
-CC_OPTIONS=-Wall -std=c++0x $(shell pkg-config --cflags --libs gtkmm-3.0) 
+CC=gcc
+CC_OPTIONS=-Wall -std=c++0x
 
 ifeq ($(DEBUG), TRUE)
 	CC_OPTIONS+= -g
@@ -21,7 +22,7 @@ message-mypattern-data-test:
 	@echo "\033[31mBuilding mypattern-data-test\033[0m"
 
 %.o: %.cpp
-	@gcc $(CC_OPTIONS) -c $(INCLUDES) $<
+	@"$(CC)" $(CC_OPTIONS) -c $(INCLUDES) $<
 
 clean:
 	@echo "\033[31mCleaning mypattern-data-test\033[0m"

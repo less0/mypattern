@@ -21,7 +21,7 @@ message-libmypattern-exceptions:
 	@echo "\033[31mBuilding mypattern-exceptions\033[0m"
 
 ./src/%.o: ./src/%.cpp
-	@$(CC) $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
+	@"$(CC)" $(CC_OPTIONS) $(INCLUDES) -o $@  -g -c $<
 
 clean:
 	@echo "\033[31mCleaning mypattern-exceptions\033[0m"
