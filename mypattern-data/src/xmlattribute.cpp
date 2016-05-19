@@ -1,4 +1,6 @@
 #include "xmlattribute.h"
+#include <regex>
+#include <iostream>
 
 using namespace MyPattern::Data;
 
@@ -64,17 +66,15 @@ list<XmlAttribute> XmlAttribute::parse_from_tag(std::string tag)
         tag_remainder = tag_remainder.substr(0, tag_remainder.length() - 1);
     }
 
-    std::string search_pattern = "^([A-Za-z]+=\"[A-Za-z0-9 \\. #$]*\")";
+    std::string search_pattern = "^([A-Za-z]+=\"[A-Za-z0-9\\s\\.#$]*\")(.*)";
 
-    Glib::RefPtr<Glib::Regex> parameterRegex = Glib::Regex::create(search_pattern,
-                                                                   (Glib::RegexCompileFlags)0,
-                                                                   (Glib::RegexMatchFlags)0);
+    std::regex parameterRegex(search_pattern);
 
     unsigned int checkPatternIndex = tag_remainder.find(" ");
 
     while(checkPatternIndex < tag_remainder.length() && tag_remainder[checkPatternIndex] != '>')
     {
-        if(parameterRegex->match(tag_remainder.substr(checkPatternIndex)))
+        if(std::regex_match(tag_remainder.substr(checkPatternIndex), parameterRegex, regex_constants::match_any))
         {
             int endQuoteIndex = tag_remainder.find('"', checkPatternIndex);
             endQuoteIndex = tag_remainder.find('"', ++endQuoteIndex);

@@ -8,7 +8,6 @@
 #include <string>
 
 using namespace std;
-using namespace Glib;
 using namespace MyPattern::Base::Evaluation::Formula;
 
 namespace

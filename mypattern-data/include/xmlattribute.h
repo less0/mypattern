@@ -2,7 +2,6 @@
 #define XMLPARAMETER_H
 
 #include <string>
-#include "glibmm/regex.h"
 #include <list>
 
 using namespace std;

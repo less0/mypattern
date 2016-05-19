@@ -131,7 +131,7 @@ namespace
 
     TEST(ParseTextNode)
 	{
-        shared_ptr<XmlNode> textNode = XmlNode::parse(ustring("<qux>This is a >Text</qux>"));
+        shared_ptr<XmlNode> textNode = XmlNode::parse(std::string("<qux>This is a >Text</qux>"));
         CHECK_EQUAL("qux", textNode->get_name());
         CHECK_EQUAL("This is a >Text", textNode->get_text());
     }

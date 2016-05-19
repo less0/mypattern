@@ -1,7 +1,6 @@
 #include "xmlelement.h"
 #include "xmlexception.h"
 
-#include "glibmm/regex.h"
 #include <regex>
 
 #include <iostream>
@@ -51,23 +50,17 @@ namespace MyPattern {
             {
                 throw XmlException("Parser error");
             }
-			
 
             std::string remainder = schema.substr(start_index);
-            std::string regexPattern = "^(<!-- [\\w\\s.,\\-\\S]* -->|</{0,1}([A-Za-z0-9:]+)( ([A-Za-z]+=\"[A-Za-z0-9\\. #$]*\"))*( )*/{0,1}>)";
+            std::string regexPattern = "^(\\<\\!\\-\\-\\s[\\w\\s.,\\-]*\\s\\-\\-\\>|</{0,1}([A-Za-z0-9:]+)(\\s([A-Za-z]+=\"[A-Za-z0-9\\.\\s#$]*\"))*(\\s)*/{0,1}>)(.*)";
 			
-            Glib::RefPtr<Glib::Regex> elementRegex = Glib::Regex::create(regexPattern,
-                                                                   (Glib::RegexCompileFlags)0,
-                                                                   (Glib::RegexMatchFlags)0);
+			std::regex rgx(regexPattern);						   
+            std::smatch matchinfo;
 
-																   
-            Glib::MatchInfo matchinfo;
-
-
-            if(elementRegex->match(remainder, matchinfo))
+			if(regex_match(remainder, matchinfo, rgx))
             {
-                std::string full_match =  matchinfo.fetch(0);
-                std::string name_match = matchinfo.fetch(2);
+                std::string full_match =  matchinfo.str(1);
+                std::string name_match = matchinfo.str(2);
 
                 end_index = start_index + full_match.length() - 1;
 

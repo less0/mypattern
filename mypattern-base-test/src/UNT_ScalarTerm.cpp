@@ -7,7 +7,6 @@
 
 using namespace MyPattern::Base::Evaluation::Formula;
 using namespace MyPattern::Exceptions;
-using namespace Glib;
 using namespace std;
 
 namespace
