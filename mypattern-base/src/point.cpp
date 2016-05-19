@@ -88,19 +88,3 @@ Point Point::operator/(const double& divisor)
     return Point(this->m_x/divisor, this->m_y/divisor);
 }
 
-void Point::draw(shared_ptr<Cairo::Context> context, bool selected)
-{
-    if(selected)
-        context->set_source_rgb(1.0, .0, .0);
-    else
-        context->set_source_rgb(.0, .0, .0);
-
-    context->move_to(this->m_x - 3, this->m_y - 3);
-    context->line_to(this->m_x + 3, this->m_y - 3);
-    context->line_to(this->m_x + 3, this->m_y + 3);
-    context->line_to(this->m_x - 3, this->m_y + 3);
-    context->line_to(this->m_x - 3, this->m_y - 3);
-
-    context->stroke();
-}
-

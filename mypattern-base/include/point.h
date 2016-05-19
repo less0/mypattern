@@ -2,7 +2,6 @@
 #define POINT_H
 
 #include <string>
-#include "cairomm/context.h"
 #include <memory>
 
 using namespace std;
@@ -43,8 +42,6 @@ namespace MyPattern
                 string get_landmark_name();
 
                 void set_landmark_name(string);
-
-                void draw(shared_ptr<Cairo::Context> context, bool selected);
 
                 /*! \brief Gets the absolute value (distrance from (0,0)) of the point
                 */

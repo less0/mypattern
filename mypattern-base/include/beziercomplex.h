@@ -5,7 +5,6 @@
 #include "bezier.h"
 
 #include <string>
-#include "cairomm/cairomm.h"
 
 #include <list>
 #include <memory>

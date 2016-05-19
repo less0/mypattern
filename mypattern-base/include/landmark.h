@@ -20,7 +20,6 @@ using namespace std;
 using namespace MyPattern::Base::Evaluation::Formula;
 using namespace MyPattern::Base::Evaluation;
 using namespace MyPattern::Data;
-using namespace Glib;
 
 namespace MyPattern
 {

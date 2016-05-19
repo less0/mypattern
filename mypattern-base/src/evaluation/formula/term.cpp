@@ -1,5 +1,4 @@
 #include "evaluation/formula/term.h"
-#include "glibmm/regex.h"
 #include "evaluation/formula/constantterm.h"
 #include "evaluation/formula/scalarterm.h"
 #include "evaluation/formula/quotientterm.h"
@@ -10,8 +9,8 @@
 
 #include <map>
 #include <sstream>
+#include <regex>
 
-using namespace Glib;
 using namespace std;
 using namespace MyPattern::Exceptions;
 
@@ -21,9 +20,7 @@ namespace Evaluation {
 namespace Formula {
 
 string Term::s_operators = "/*-+";
-//string Term::s_valid_symbol = "^[@$#\?]{1,1}[A-Za-z0-9]+(\[([XY]{1,1}|(1\.[0]{1,})|0.[0-9]{1,})\]){0,1}$";
 string Term::s_valid_symbol = "^[@$#\\?]{1,1}[A-Za-z0-9]+(\\[[XY]\\]|(\\[0\\]|\\[0?\\.[0-9]*\\])(\\[[XY]\\]){0,1}){0,1}$";
-
 string Term::s_valid_number = "^[0-9]+$|^[0-9]{0,}\\.[0-9]{1,}$";
 
 Term& Term::operator=(const Term& rhs)
@@ -58,10 +55,10 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         formula = "0" + formula;
     }
 
-    Glib::RefPtr<Regex> regex_number = Regex::create(s_valid_number);
-    Glib::RefPtr<Regex> regex_symbol = Regex::create(s_valid_symbol);
+    std::regex regex_number(s_valid_number);
+    std::regex regex_symbol(s_valid_symbol);
 
-    if(regex_number->match(formula))
+    if(std::regex_match(formula, regex_number))
     {
 		//parse number and return ConstantTerm
         stringstream s(formula);
@@ -69,7 +66,7 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         s >> value;
         return shared_ptr<Term>(new ConstantTerm(value));
     }
-    else if(regex_symbol->match(formula))
+    else if(std::regex_match(formula, regex_symbol))
     {
         //return substitution or ScalarTerm
         if(substitutions.count(formula) > 0)
@@ -80,14 +77,14 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         return shared_ptr<Term>(new ScalarTerm(formula));
     }
 
-    string parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)";
-    RefPtr<Regex> parentheses_regex = Regex::create(parentheses_pattern);
+    string parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)(.*)";
+    std::regex parentheses_regex(parentheses_pattern);
 
-    MatchInfo match_info;
+    std::smatch match_info;
 
-    while(parentheses_regex->match(formula, match_info))
+    while(std::regex_match(formula, match_info, parentheses_regex))
     {
-        string subformula = match_info.fetch(0);
+        string subformula = match_info.str(0);
 
         subformula = subformula.substr(1, subformula.length()-2);
 
@@ -208,20 +205,18 @@ shared_ptr<Term> Term::get_right_atomic(string formula, int index, const map<str
 
 shared_ptr<Term> Term::parse_atomic(string term, const map<string, shared_ptr<Term>> &substitutions)
 {
+    std::regex regex_number(s_valid_number);
+    std::regex regex_symbol(s_valid_symbol);
 
-//    Glib::RefPtr<Regex> regex_number = Regex::create(Term::s_valid_number);
-    Glib::RefPtr<Regex> regex_number = Regex::create(s_valid_number);
-    Glib::RefPtr<Regex> regex_symbol = Regex::create(s_valid_symbol);
-
-    if(regex_number->match(term))
+    if(std::regex_match(term, regex_number))
     {
-    //parse number and return ConstantTerm
+		//parse number and return ConstantTerm
         stringstream s(term);
         double value;
         s >> value;
         return shared_ptr<Term>(new ConstantTerm(value));
     }
-    else if(regex_symbol->match(term))
+    else if(std::regex_match(term, regex_symbol))
     {
         //return substitution or ScalarTerm
         if(substitutions.count(term) > 0)

@@ -1,5 +1,4 @@
 #include "floatpatternparameter.h"
-#include "glibmm/regex.h"
 
 using namespace MyPattern::Base;
 

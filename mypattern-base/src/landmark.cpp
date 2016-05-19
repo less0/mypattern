@@ -7,7 +7,6 @@
 
 #include <sstream>
 #include <iostream>
-#include <glibmm/regex.h>
 #include <string>
 
 using namespace std;

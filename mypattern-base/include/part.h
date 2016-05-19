@@ -6,7 +6,6 @@
 
 
 #include <string>
-#include "cairomm/context.h"
 
 #include "point.h"
 #include "beziercomplex.h"

@@ -6,7 +6,7 @@ INCLUDES=-I./include -I../mypattern-exceptions/include -I../mypattern-data/inclu
 
 LIB=libmypattern-base.a
 CC=gcc
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0) -Wall -std=c++0x
+CC_OPTIONS=$(shell pkg-config --cflags --libs sigc++-2.0) -Wall -std=c++0x
 
 libmypattern-base: message-libmypattern-base $(OBJ)
 	@ar rcs $(LIB) $(OBJ)

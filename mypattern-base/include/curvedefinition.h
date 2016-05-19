@@ -5,6 +5,7 @@
 #include "beziercomplex.h"
 #include "mypattern-data.h"
 
+#include <sigc++/sigc++.h>
 #include <list>
 #include <string>
 
