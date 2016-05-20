@@ -1,6 +1,5 @@
 #include "UnitTest++.h"
 #include "mypattern-base.h"
-#include <iostream>
 
 using namespace MyPattern::Base;
 using namespace MyPattern::Base::Evaluation;
@@ -84,7 +83,7 @@ namespace
 
         list<shared_ptr<EvaluationTreeNode>> landmark2_deps = landmark2_node->get_nodes();
 
-        CHECK_EQUAL(1, landmark2_deps.size());
+        CHECK_EQUAL((unsigned int)1, landmark2_deps.size());
 
         list<shared_ptr<EvaluationTreeNode>>::iterator it_deps = landmark2_deps.begin();
 
@@ -109,12 +108,12 @@ namespace
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
         list<shared_ptr<EvaluationTreeNode>> lm2_deps = lm2_node->get_nodes();
 
-        CHECK_EQUAL(1, lm2_deps.size());
+        CHECK_EQUAL((unsigned int)1, lm2_deps.size());
 
         landmark2->set_definition_y("0");
 
         lm2_deps = lm2_node->get_nodes();
-        CHECK_EQUAL(0, lm2_deps.size());
+        CHECK_EQUAL((unsigned int)0, lm2_deps.size());
     }
 
     TEST(ChangeLandmarkDefinitionX)
@@ -133,12 +132,12 @@ namespace
         shared_ptr<EvaluationTreeNode> lm2_node = root.add_object(landmark2);
         list<shared_ptr<EvaluationTreeNode>> lm2_deps = lm2_node->get_nodes();
 
-        CHECK_EQUAL(1, lm2_deps.size());
+        CHECK_EQUAL((unsigned int)1, lm2_deps.size());
 
         landmark2->set_definition_x("0");
 
         lm2_deps = lm2_node->get_nodes();
-        CHECK_EQUAL(0, lm2_deps.size());
+        CHECK_EQUAL((unsigned int)0, lm2_deps.size());
     }
 
 	TEST(EvaluateLandmarkPositionWhenAdded)
@@ -330,7 +329,7 @@ namespace
 
 		list<string> deps_from_node = bezier_node->depends_on();
 
-		CHECK_EQUAL(4, deps_from_node.size());
+		CHECK_EQUAL((unsigned int)4, deps_from_node.size());
 
 		list<string>::iterator it = deps_from_node.begin();
 
@@ -735,7 +734,7 @@ namespace
 
         list<shared_ptr<EvaluationTreeNode>> nodes = root.add_objects(patternObjects);
 
-        CHECK_EQUAL(6, nodes.size());
+        CHECK_EQUAL((unsigned int)6, nodes.size());
 
         for(list<shared_ptr<EvaluationTreeNode>>::iterator it = nodes.begin();
             it != nodes.end();

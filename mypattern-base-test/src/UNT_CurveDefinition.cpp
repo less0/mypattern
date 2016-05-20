@@ -26,7 +26,7 @@ namespace
 
         CurveDefinition::register_class(bezier_prototype);
         class_names = CurveDefinition::get_registered_class_names();
-        CHECK_EQUAL(1, class_names.size());
+        CHECK_EQUAL((unsigned int)1, class_names.size());
 		list<string>::iterator it = class_names.begin();
 		CHECK_EQUAL("bezier", *it);
     }

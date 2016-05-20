@@ -21,7 +21,7 @@ namespace
     TEST_FIXTURE(MeasuresFixture, TestDefinedValues)
     {
         list<shared_ptr<MeasureValue>> values = _measures.get_measure_values();
-        CHECK_EQUAL(3, values.size());
+        CHECK_EQUAL((unsigned int)3, values.size());
         list<shared_ptr<MeasureValue>>::iterator it = values.begin();
 
         CHECK_EQUAL("mv1", (*it)->get_name());
@@ -45,7 +45,7 @@ namespace
     {
         CHECK_EQUAL(true, _measures.remove("mv2"));
         list<shared_ptr<MeasureValue>> values = _measures.get_measure_values();
-        CHECK_EQUAL(2, values.size());
+        CHECK_EQUAL((unsigned int)2, values.size());
         list<shared_ptr<MeasureValue>>::iterator it = values.begin();
 
         CHECK_EQUAL("mv1", (*it)->get_name());
@@ -63,7 +63,7 @@ namespace
     {
         CHECK_EQUAL(false, _measures.remove("mv32"));
         list<shared_ptr<MeasureValue>> values = _measures.get_measure_values();
-        CHECK_EQUAL(3, values.size());
+        CHECK_EQUAL((unsigned int)3, values.size());
         list<shared_ptr<MeasureValue>>::iterator it = values.begin();
 
         CHECK_EQUAL("mv1", (*it)->get_name());
@@ -86,12 +86,12 @@ namespace
     TEST_FIXTURE(MeasuresFixture, TestRemoveValueByValue)
     {
         list<shared_ptr<MeasureValue>> values = _measures.get_measure_values();
-        CHECK_EQUAL(3, values.size());
+        CHECK_EQUAL((unsigned int)3, values.size());
         list<shared_ptr<MeasureValue>>::iterator it = values.begin();
         _measures.remove(*it);
 
         values = _measures.get_measure_values();
-        CHECK_EQUAL(2, values.size());
+        CHECK_EQUAL((unsigned int)2, values.size());
         it = values.begin();
 
         CHECK_EQUAL("mv2", (*it)->get_name());
@@ -112,14 +112,14 @@ namespace
         shared_ptr<MeasureValue> value;
 
         values = _measures.get_measure_values();
-        CHECK_EQUAL(3, values.size());
+        CHECK_EQUAL((unsigned int)3, values.size());
         value = shared_ptr<MeasureValue>(new MeasureValue("mv1",
                                                           "Messwert1",
                                                           1.234));
         CHECK_EQUAL(false, _measures.remove(value));
         values = _measures.get_measure_values();
 
-        CHECK_EQUAL(3, values.size());
+        CHECK_EQUAL((unsigned int)3, values.size());
 
         it = values.begin();
 
@@ -160,7 +160,7 @@ namespace
 		if(parsedMeasures != NULL)
 		{
 			list<shared_ptr<MeasureValue>> measureValues = parsedMeasures->get_measure_values();
-			CHECK_EQUAL(2, measureValues.size());
+			CHECK_EQUAL((unsigned int)2, measureValues.size());
 			list<shared_ptr<MeasureValue>>::iterator it = measureValues.begin();
 			it++;
 		}

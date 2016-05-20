@@ -1,7 +1,6 @@
 #include "UnitTest++.h"
 #include "evaluation/curveevaluationtreenode.h"
 #include "bezierdefinition.h"
-#include <iostream>
 
 namespace
 {
@@ -26,7 +25,7 @@ namespace
 
         std::list<string> landmark_names_from_curve = bezier.get_landmarks();
 
-        CHECK_EQUAL(4, landmark_names_from_curve.size());
+        CHECK_EQUAL((unsigned int)4, landmark_names_from_curve.size());
 
         std::list<string>::iterator it = landmark_names_from_curve.begin();
 
@@ -89,7 +88,7 @@ namespace
         MyPattern::Base::Evaluation::CurveEvaluationTreeNode node = MyPattern::Base::Evaluation::CurveEvaluationTreeNode(bezier);
 
         list<string> dependencies = node.depends_on();
-        CHECK_EQUAL(4, dependencies.size());
+        CHECK_EQUAL((unsigned int)4, dependencies.size());
 
         list<string>::iterator it = dependencies.begin();
 

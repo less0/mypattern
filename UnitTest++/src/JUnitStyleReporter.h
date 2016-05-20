@@ -5,10 +5,10 @@
 #include <string>
 #include <iostream>
 
-namespace {
+// namespace {
 
-std::string XmlEscape(std::string const& value);
-}
+// std::string XmlEscape(std::string const& value);
+// }
 
 namespace UnitTest {
 

@@ -1,7 +1,6 @@
 #include "UnitTest++.h"
 #include "bezier.h"
 #include <array>
-#include <iostream>
 
 namespace
 {

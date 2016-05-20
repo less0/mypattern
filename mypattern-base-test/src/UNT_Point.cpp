@@ -1,6 +1,8 @@
 #include "UnitTest++.h"
 #include "point.h"
 
+#include <cmath>
+
 namespace
 {
     TEST(CreatePointWithValues)

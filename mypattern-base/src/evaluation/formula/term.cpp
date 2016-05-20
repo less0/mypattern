@@ -10,6 +10,7 @@
 #include <map>
 #include <sstream>
 #include <regex>
+#include <iostream>
 
 using namespace std;
 using namespace MyPattern::Exceptions;
@@ -35,11 +36,6 @@ shared_ptr<Term> Term::parse(const string &formula)
 
     map<string, shared_ptr<Term>> substitutions;
     int substitutions_index = 0;
-
-
-    ///\todo remove all whitespaces, etc.
-
-
     return parse_internal(formula, substitutions, substitutions_index);
 
 }
@@ -60,7 +56,6 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
 
     if(std::regex_match(formula, regex_number))
     {
-		//parse number and return ConstantTerm
         stringstream s(formula);
         double value;
         s >> value;
@@ -68,7 +63,6 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
     }
     else if(std::regex_match(formula, regex_symbol))
     {
-        //return substitution or ScalarTerm
         if(substitutions.count(formula) > 0)
         {
             return substitutions.at(formula);
@@ -77,14 +71,14 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         return shared_ptr<Term>(new ScalarTerm(formula));
     }
 
-    string parentheses_pattern = "\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\)(.*)";
+    string parentheses_pattern = "(.*)(\\([A-Za-z#$\\?@0-9\\[\\]\\.\\*\\+\\/\\-]*\\))(.*)";
     std::regex parentheses_regex(parentheses_pattern);
 
     std::smatch match_info;
 
     while(std::regex_match(formula, match_info, parentheses_regex))
     {
-        string subformula = match_info.str(0);
+        string subformula = match_info.str(2);
 
         subformula = subformula.substr(1, subformula.length()-2);
 
@@ -99,8 +93,6 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         formula.insert(subformula_index-1, s.str());
 
         substitutions.insert(pair<string, shared_ptr<Term>>(s.str(), parentheses_term));
-
-        //return shared_ptr<Term>(new ConstantTerm(0));
     }
 
 
@@ -120,6 +112,8 @@ shared_ptr<Term> Term::parse_internal(string formula, map<string, shared_ptr<Ter
         substitutions.insert(pair<string,shared_ptr<Term>>(s.str(), substituted_term));
     }
 
+	
+	//TODO these are quite repetetive, we should find a way to capsule the behavior
     while((operator_index = formula.find('*')) > 0)
     {
         shared_ptr<Term> left_atomic = Term::get_left_atomic(formula, operator_index, substitutions, start_index);

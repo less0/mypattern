@@ -2,8 +2,6 @@
 #include "measures.h"
 #include "UnitTest++.h"
 
-#include <iostream>
-
 using namespace MyPattern::Data;
 using namespace std;
 
@@ -55,7 +53,7 @@ TEST_FIXTURE(PartDefinitionFixture, EvaluateSingleLandmark)
 
     list<Point> points = evaluatedPart.get_points();
 
-    CHECK_EQUAL(1, points.size());
+    CHECK_EQUAL((unsigned int)1, points.size());
 
     list<Point>::iterator it = points.begin();
 
@@ -81,7 +79,7 @@ TEST_FIXTURE(PartDefinitionFixture, EvaluateDependentLandmarks)
     Part evaluatedPart = _partDefinition.get_part();
     list<Point> points = evaluatedPart.get_points();
 
-    CHECK_EQUAL(2, points.size());
+    CHECK_EQUAL((unsigned int)2, points.size());
 
     list<Point>::iterator it = points.begin();
     it++;
@@ -131,7 +129,7 @@ TEST_FIXTURE(PartDefinitionFixture, EvaluateCurve)
     Part evaluated_part = _partDefinition.get_part();
     list<BezierComplex> curves = evaluated_part.get_curves();
 
-    CHECK_EQUAL(1, curves.size());
+    CHECK_EQUAL((unsigned int)1, curves.size());
 
     list<BezierComplex>::iterator it = curves.begin();
     Point p = it->get_coordinate(0.0);
@@ -161,7 +159,7 @@ TEST_FIXTURE(PartDefinitionFixture, AddMeasureValues)
     shared_ptr<Measures> measures_out = _partDefinition.get_measures();
 
     list<shared_ptr<MeasureValue>> measure_values = measures_out->get_measure_values();
-    CHECK_EQUAL(2, measure_values.size());
+    CHECK_EQUAL((unsigned int)2, measure_values.size());
     list<shared_ptr<MeasureValue>>::iterator it = measure_values.begin();
     CHECK_EQUAL("mv1", (*it)->get_name());
     CHECK_EQUAL(1.0, (*it)->get_value());
@@ -189,7 +187,7 @@ TEST_FIXTURE(PartDefinitionFixture, ReplaceMeasures)
     shared_ptr<Measures> measures_out = _partDefinition.get_measures();
 
     list<shared_ptr<MeasureValue>> measure_values = measures_out->get_measure_values();
-    CHECK_EQUAL(2, measure_values.size());
+    CHECK_EQUAL((unsigned int)2, measure_values.size());
     list<shared_ptr<MeasureValue>>::iterator it = measure_values.begin();
     CHECK_EQUAL("mv1", (*it)->get_name());
     CHECK_EQUAL(1.5, (*it)->get_value());
@@ -218,7 +216,7 @@ TEST_FIXTURE(PartDefinitionFixture, EvaluateLandmarkRelativeToMeasureValues)
     Part evaluatedPart = _partDefinition.get_part();
     list<Point> points = evaluatedPart.get_points();
 
-    CHECK_EQUAL(1, points.size());
+    CHECK_EQUAL((unsigned int)1, points.size());
 
     list<Point>::iterator it = points.begin();
 
@@ -311,7 +309,7 @@ TEST(ParseFromXml)
 	CHECK_EQUAL("part1", parsedPartDefiniton->get_name());
 	
 	list<shared_ptr<Landmark>> landmarks = parsedPartDefiniton->get_landmarks();
-	CHECK_EQUAL(4, landmarks.size());
+	CHECK_EQUAL((unsigned int)4, landmarks.size());
 	
 	list<shared_ptr<Landmark>>::iterator it = landmarks.begin();
 	CHECK_EQUAL("lm1", (*it)->get_name());
@@ -323,12 +321,12 @@ TEST(ParseFromXml)
 	CHECK_EQUAL("0", (*it)->get_definition_y());
 	
 	list<shared_ptr<CurveDefinition>> curveDefinitions = parsedPartDefiniton->get_curve_definitions();
-	CHECK_EQUAL(1, curveDefinitions.size());
+	CHECK_EQUAL((unsigned int)1, curveDefinitions.size());
 	list<shared_ptr<CurveDefinition>>::iterator it_curve = curveDefinitions.begin();
 	CHECK_EQUAL(false, *it_curve == NULL);
 	CHECK_EQUAL("c1", (*it_curve)->get_name());
 	list<string> lmrefs = (*it_curve)->get_landmarks();
-	CHECK_EQUAL(4, lmrefs.size());
+	CHECK_EQUAL((unsigned int)4, lmrefs.size());
 	list<string>::iterator it_lmrefs = lmrefs.begin();
 	CHECK_EQUAL("lm1", *it_lmrefs++);
 	CHECK_EQUAL("lm2", *it_lmrefs++);
@@ -355,7 +353,7 @@ TEST(ParseFromXml)
 	CHECK_EQUAL("lm4", it_points->get_landmark_name());
 	
 	list<BezierComplex> curves = evaluatedPart.get_curves();
-	CHECK_EQUAL(1, curves.size());
+	CHECK_EQUAL((unsigned int)1, curves.size());
 	list<BezierComplex>::iterator it_evaluatedCurves = curves.begin();
 	
 	CHECK_CLOSE(.0, it_evaluatedCurves->get_coordinate(0).get_x(), 1e-6);
@@ -367,13 +365,6 @@ TEST(ParseFromXml)
 	CHECK_CLOSE(.5, it_evaluatedCurves->get_coordinate(.5).get_y(), 1e-6);
 	
 	CHECK_EQUAL(true, it_evaluatedCurves->get_coordinate(.75).get_x() < it_evaluatedCurves->get_coordinate(.75).get_y());
-	
-	for(int i=0; i<=10; i++)
-	{
-		std::cout << "X=" << it_evaluatedCurves->get_coordinate(double(i) / 10.0).get_x() << std::endl;
-		std::cout << "Y=" << it_evaluatedCurves->get_coordinate(double(i) / 10.0).get_y() << std::endl;
-		std::cout << std::endl;
-	}
 }
 
 TEST(ParseInvalidNodeException)

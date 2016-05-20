@@ -36,7 +36,7 @@ namespace
 
         list<string> dependencies = landmark->depends_on();
 
-        CHECK_EQUAL(1, dependencies.size());
+        CHECK_EQUAL((unsigned int)1, dependencies.size());
 
         list<string>::iterator it = dependencies.begin();
         CHECK_EQUAL("$lm2", *it);
