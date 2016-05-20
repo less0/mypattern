@@ -39,7 +39,7 @@ namespace
         CHECK_EQUAL("test", element.GetName());
 
         list<MyPattern::Data::XmlAttribute> parameters = element.GetAttributes();
-        CHECK_EQUAL(2, parameters.size());
+        CHECK_EQUAL((unsigned int)2, parameters.size());
     }
 
     TEST(TestEmptyElement)
@@ -55,7 +55,7 @@ namespace
 		int nextIndex = 0;
 		XmlElement element = XmlElement::parse_element("<landmark name=\"ul\" x=\"0\" y=\"0\" />", 0, nextIndex);
 		list<MyPattern::Data::XmlAttribute> parameters = element.GetAttributes();
-		CHECK_EQUAL(3, parameters.size());
+		CHECK_EQUAL((unsigned int)3, parameters.size());
 	}
 
     TEST(TestEndElement)
