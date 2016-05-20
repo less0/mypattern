@@ -53,7 +53,7 @@ namespace
 	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<Foo><Bar1></Bar1><Bar2></Bar2><Bar3></Bar3></Foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        CHECK_EQUAL(3, subnodes.size());
+        CHECK_EQUAL((unsigned int)3, subnodes.size());
 
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
 
@@ -74,7 +74,7 @@ namespace
 	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<fooBar><barFoo ></barFoo></fooBar>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        CHECK_EQUAL(1, subnodes.size());
+        CHECK_EQUAL((unsigned int)1, subnodes.size());
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
 
         CHECK_EQUAL("barFoo", (*it)->get_name());
@@ -84,7 +84,7 @@ namespace
 	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar1 ></bar1><bar2 ></bar2><bar3></bar3></foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        CHECK_EQUAL(3, subnodes.size());
+        CHECK_EQUAL((unsigned int)3, subnodes.size());
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
 
         CHECK_EQUAL("bar1", (*it)->get_name());
@@ -105,11 +105,11 @@ namespace
 	{
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><fooBar></fooBar></bar></foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        CHECK_EQUAL(1, subnodes.size());
+        CHECK_EQUAL((unsigned int)1, subnodes.size());
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
         CHECK_EQUAL("bar", (*it)->get_name());
         list<shared_ptr<XmlNode>> subSubnodes = (*it)->get_nodes();
-        CHECK_EQUAL(1, subSubnodes.size());
+        CHECK_EQUAL((unsigned int)1, subSubnodes.size());
         list<shared_ptr<XmlNode>>::iterator it2 = subSubnodes.begin();
         CHECK_EQUAL("fooBar", (*it2)->get_name());
     }
@@ -120,11 +120,11 @@ namespace
 
         shared_ptr<XmlNode> rootNode = XmlNode::parse("<foo><bar><bar></bar></bar></foo>");
         list<shared_ptr<XmlNode>> subnodes = rootNode->get_nodes();
-        CHECK_EQUAL(1, subnodes.size());
+        CHECK_EQUAL((unsigned int)1, subnodes.size());
         list<shared_ptr<XmlNode>>::iterator it = subnodes.begin();
         CHECK_EQUAL("bar", (*it)->get_name());
         list<shared_ptr<XmlNode>> subSubnodes = (*it)->get_nodes();
-        CHECK_EQUAL(1, subSubnodes.size());
+        CHECK_EQUAL((unsigned int)1, subSubnodes.size());
         list<shared_ptr<XmlNode>>::iterator it2 = subSubnodes.begin();
         CHECK_EQUAL("bar", (*it2)->get_name());
     }
