@@ -6,7 +6,7 @@ OBJ=./src/UNT_SumTerm.o ./src/UNT_QuotientTerm.o ./src/UNT_DifferenceTerm.o ./sr
 INCLUDES=-I../mypattern-base/include -I../UnitTest++/src -I./include -I../mypattern-exceptions/include -I../mypattern-data/include
 
 CC=gcc
-CC_OPTIONS=$(shell pkg-config --cflags --libs gtkmm-3.0) -Wall -std=c++0x
+CC_OPTIONS=$(shell pkg-config --cflags --libs sigc++-2.0) -Wall -std=c++0x
 
 LIBDIRS=-L../mypattern-base/ -L../UnitTest++/ -L../mypattern-exceptions/ -L../mypattern-data/
 LIBRARIES=-lUnitTest++ -lmypattern-base -lmypattern-exceptions -lmypattern-data
